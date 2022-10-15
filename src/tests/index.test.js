@@ -5,9 +5,31 @@
 */
 //libs
 const PhysicsFormulae = require('../libs/PhysicsFormulae');
+const EconomicsFormulae = require('../libs/EconomicsFormulae');
 const {KinematicsEquations} = PhysicsFormulae;
+const {
+    GDPExpApproachFormula, 
+    GDPIncomeApproachFormula, 
+    BalanceOfTradeFormula, 
+    CurrentAccountFormula, 
+    CAGDPRatio, 
+    GDGDPRatio, 
+    RealGDPQuaterlyGrowthRateFormula, 
+    RealGDPAnnualGrowthRateFormula, 
+    GDPDeflatorFormula, 
+    RealGDPFormula, 
+    InflationRateFormula, 
+    SimpleInterestRateFormula, 
+    CompoundInterestRateFormula,
+    UnemploymentRateFormula,
+    NetExportsFormula,
+    StraightLineDepreciationFormula,
+    DoubleDecliningBalanceDepreciationFormula,
+    UnitsOfProductionDepreciationFormula,
+    SumOfYearsDigitsDepreciation,
+    NetForeignFactorIncomeFormula
+} = EconomicsFormulae;
 //Kinematics Equation Tests
-//solve for average velocity (unit test)
 const {
     solveForAverageVelocityDAE, 
     solveForInitialVelocityDAE,
@@ -60,4 +82,27 @@ describe('Kinematic Equations Tests: Displacement Curve', () => {
     test('Acceleration should equal 2', () => {
         expect(solveForAccelerationDCE(150, 5, 10)).toBe(2);
     });
+});
+//Economics Formulae Tests
+describe('Economics Formulae Tests', () => {
+    // tests GDPExpApproachFormula
+    //GDPIncomeApproachFormula, 
+    //BalanceOfTradeFormula, 
+    //CurrentAccountFormula, 
+    //CAGDPRatio, 
+    //GDGDPRatio, 
+    //RealGDPQuaterlyGrowthRateFormula, 
+    //RealGDPAnnualGrowthRateFormula, 
+    //GDPDeflatorFormula, 
+    //RealGDPFormula, 
+    //InflationRateFormula, 
+    //SimpleInterestRateFormula, 
+    //CompoundInterestRateFormula,
+    //UnemploymentRateFormula,
+    //NetExportsFormula,
+    //StraightLineDepreciationFormula,
+    //DoubleDecliningBalanceDepreciationFormula,
+    //UnitsOfProductionDepreciationFormula,
+    //SumOfYearsDigitsDepreciation,
+    //NetForeignFactorIncomeFormula
 });
