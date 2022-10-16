@@ -131,7 +131,7 @@ class GDPDeflatorFormula {
         const n = parseFloat(nominalGDP);
         const r = parseFloat(realGDP);
         //solve using gdp deflator formula
-        const deflator = ((n/r)*100).toFixed();
+        const deflator = ((n/r)*100).toFixed(2);
         return deflator;
     };
 };
@@ -144,7 +144,7 @@ class RealGDPFormula {
         const n = parseFloat(nominalGDP);
         const d = parseFloat(gdpDeflator);
         //solve using the real gdp formula
-        const gdp = (n/d).toFixed();
+        const gdp = (n/d).toFixed(2);
         return gdp;
     };
 };
