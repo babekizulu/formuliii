@@ -22,27 +22,27 @@ const {
 } = new IncomeStatementFormulae();
 describe('Income Statement Formulae Tests', () => {
     //basic income formula test 
-    test('Should return: 80.00', () => {
+    test('Basic Income Formula should return: 80.00', () => {
         expect(basicIncomeFormula(100, 20)).toBe(parseFloat(80).toFixed(2));
     });
     //earnings before interest & taxes formula test
-    test('Should return: 50.00', () => {
+    test('Earnings Before Interest & Taxes should return: 50.00', () => {
         expect(earningsBITFormula(200, 150)).toBe(parseFloat(50).toFixed(2));
     });
     //gross profit formula test
-    test('Should return: 300.00', () => {
+    test('Gross Profit should return: 300.00', () => {
         expect(grossProfitFormula(500, 200)).toBe(parseFloat(300).toFixed(2));
     });
     //operating expenses formula test
-    test('Should return: 470.00', () => {
+    test('Operating Expenses should return: 470.00', () => {
         expect(operatingExpensesFormula(120, 150, 200)).toBe(parseFloat(470).toFixed(2));
     });
     //earnings before taxes formula test
-    test('Should return: 800.00', () => {
+    test('Earnings Before Taxes should return: 800.00', () => {
         expect(earningsBTFormula(1000, 200)).toBe(parseFloat(800).toFixed(2));
     });
     //net income formula test
-    test('Should return: 640.00', () => {
+    test('Net Income should return: 640.00', () => {
         expect(netIncomeFormula(800, 160)).toBe(parseFloat(640).toFixed(2));
     });
 });

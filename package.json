@@ -16,6 +16,9 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "jest",
+        "testPhy": "jest physics.test.js",
+        "testEco": "jest economics.test.js",
+        "testAcc": "jest accounting.test.js",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
