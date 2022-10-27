@@ -19,6 +19,7 @@
         "testPhy": "jest physics.test.js",
         "testEco": "jest economics.test.js",
         "testAcc": "jest accounting.test.js",
+        "testMath": "jest mathematics.test.js",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {

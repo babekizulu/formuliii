@@ -8,27 +8,6 @@
 
 //ALGEBRAIC FORMULAE
 class AlgebraicFormulae {
-    quadraticFormula(valueA, valueB, valueC) {
-        const a = parseFloat(valueA);
-        const b = parseFloat(valueB);
-        const c = parseFloat(valueC);
-        //solve for x
-        const xPlus = ((-b + Math.sqrt(((b**2) - 4(a)(c))))/2(a));
-        const xMinus = ((-b - Math.sqrt(((b**2) - 4(a)(c))))/2(a));
-        if (xPlus && xMinus) {
-            return [xPlus, xMinus];
-        };
-        if (xPlus && !xMinus) {
-            return xPlus;
-        };
-        if (!xPlus && xMinus) {
-            return xMinus;
-        };
-        if (!xPlus && !xMinus) {
-            return 'No Real Solution';
-        };
-    };
-
     pythagoreanFormula(horizontalSideValue, verticalSideValue) {
         const a = parseFloat(horizontalSideValue);
         const b = parseFloat(verticalSideValue);

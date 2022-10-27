@@ -9,27 +9,22 @@ const MathematicsFormulae = require('../libs/MathematicsFormulae');
 //ALGEBRAIC FORMULAE TESTS
 const {AlgebraicFormulae} = MathematicsFormulae;
 const {
-    quadraticFormula,
     pythagoreanFormula,
     distanceFormula,
     midPointFormula
 } = new AlgebraicFormulae();
 
 describe('Algebraic Formulae Tests', () => {
-    //quadratic formula test
-    test('Should return:', () => {
-        expect(quadraticFormula()).toBe();
-    });
     //pythagorean formula test
-    test('Should return:', () => {
-        expect(pythagoreanFormula()).toBe();
+    test('Hypotenuse should equal: 5', () => {
+        expect(pythagoreanFormula(4, 3)).toBe(parseFloat(5));
     });
     //distance formula test
-    test('Should return:', () => {
-        expect(distanceFormula()).toBe();
+    test('Distance should equal: 5', () => {
+        expect(distanceFormula(3, 7, 2, 5)).toBe(parseFloat(5));
     });
     //midpoint formula test
-    test('Should return:', () => {
-        expect(midPointFormula()).toBe();
+    test('Midpoint Coordinates should equal: [5, 3.5]', () => {
+        expect(midPointFormula(3, 7, 2, 5)).toStrictEqual([parseFloat(5), parseFloat(7/2)]);
     });
 });
