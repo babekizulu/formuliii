@@ -1,0 +1,44 @@
+//mixins
+@mixin wh100 {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin centerFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@mixin grid1 {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@mixin grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@mixin grid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+//colors
+$liiight-orange: #ffbb38;
+$liiight-red: #ff5959;
+$liiight-blue: #8cd6ff;
+$light: #d3d3d3;
+$light-active: #a1a1a1;
+$light-alpha: #a1a1a134;
+$dark: #131313;
+$dark-active: #474747;
+//transitions
+$e: all 0.2s ease;
+$ei: all 0.2s ease-in;
+$eio: all 0.2s ease-in-out;
+//fonts
+$rob: 'Roboto',
+sans-serif;
