@@ -5,16 +5,6 @@
 */
 //Kinematics Equations
 class KinematicsEquations {
-    constructor(averageVelocity, initialVelocity, acceleration, time, finalPosition, initialPosition, displacement) {
-        this.averageVelocity = parseFloat(averageVelocity);
-        this.initialVelocity = parseFloat(initialVelocity);
-        this.acceleration = parseFloat(acceleration);
-        this.time = parseFloat(time) * 0.001; //convert time to milliseconds
-        this.finalPosition = parseFloat(finalPosition);
-        this.initialPosition = parseFloat(initialPosition);
-        this.displacement = parseFloat(displacement);
-    }
-
     //Definition of Acceleration Equations
 
     //Average Velocity

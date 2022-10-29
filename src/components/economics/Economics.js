@@ -2,10 +2,12 @@
 import React from 'react';
 //components
 import Link from '../Link';
+import BackBtn from '../BackBtn';
 
 const Economics = () => {
     return (
         <div className='calc-set'>
+            <BackBtn prevUrl='/'/>
             <Link href='/economics/balance-of-trade' className='calc-set-item'>
                 Balance of Trade Formula
             </Link>

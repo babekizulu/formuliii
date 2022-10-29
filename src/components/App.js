@@ -14,6 +14,21 @@ import Economics from './economics/Economics';
 import Mathematics from './mathematics/Mathematics';
 import Physics from './physics/Physics';
 import Accounting from './accounting/Accounting';
+//economics calc sets
+import Depreciation from './economics/depreciation/Depreciation';
+import GDP from './economics/gdp/GDP';
+import Interest from './economics/interest/Interest';
+import Ratios from './economics/ratios/Ratios';
+//accounting calc sets
+import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
+import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
+//mathematics calc sets
+import Algebra from './mathematics/algebra/Algebra';
+//physics calc sets
+import Kinematics from './physics/kinematics/Kinematics';
+//physics: kinematics calc sets
+import DefinitionOfAcceleration from './physics/kinematics/dae/DefinitionOfAcceleration';
+import DisplacementCurve from './physics/kinematics/dc/DisplacementCurve';
 //styles
 import '../scss/App.scss';
 
@@ -36,6 +51,41 @@ const App = () => {
             </Route>
             <Route path='/accounting'>
                 <Accounting/>
+            </Route>
+            {/*ECONOMIC CALC SET ROUTES*/}
+            <Route path='/economics/depreciation'>
+                <Depreciation/>
+            </Route>
+            <Route path='/economics/gdp'>
+                <GDP/>
+            </Route>
+            <Route path='/economics/interest'>
+                <Interest/>
+            </Route>
+            <Route path='/economics/ratios'>
+                <Ratios/>
+            </Route>
+            {/*ACCOUNTING CALC SET ROUTES*/}
+            <Route path='/accounting/income-statement'>
+                <IncomeStatement/>
+            </Route>
+            <Route path='/accounting/balance-sheet'>
+                <BalanceSheet/>
+            </Route>
+            {/*MATHEMATICS CALC SET ROUTES*/}
+            <Route path='/mathematics/algebra'>
+                <Algebra/>
+            </Route>
+            {/*PHYSICS CALC SET ROUTES*/}
+            <Route path='/physics/kinematics'>
+                <Kinematics/>
+            </Route>
+            {/*PHYSICS: KINEMATIC CALC SET ROUTES*/}
+            <Route path='/physics/kinematics/definition-of-acceleration'>
+                <DefinitionOfAcceleration/>
+            </Route>
+            <Route path='/physics/kinematics/displacement-curve'>
+                <DisplacementCurve/>
             </Route>
         </div>
     );

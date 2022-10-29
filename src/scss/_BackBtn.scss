@@ -1,0 +1,19 @@
+@import 'utils';
+.back-btn-container {
+    @include centerFlex;
+    width: 33px;
+    padding: 8px 22px;
+    background-color: $dark;
+    color: #fff;
+    font-family: $rob;
+    position: relative;
+    left: 33%;
+    transition: $eio;
+    &:hover {
+        background-color: $dark-active;
+        transition: $eio;
+    }
+    a {
+        text-decoration: none;
+    }
+}
