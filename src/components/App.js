@@ -22,6 +22,7 @@ import Ratios from './economics/ratios/Ratios';
 //accounting calc sets
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
+import BasicBalanceSheetCalculator from './accounting/balanceSheet/calculators/BasicBalanceSheetCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //physics calc sets
@@ -86,6 +87,10 @@ const App = () => {
             </Route>
             <Route path='/physics/kinematics/displacement-curve'>
                 <DisplacementCurve/>
+            </Route>
+            {/*CALCULATOR COMPONENT ROUTES*/}
+            <Route path='/accounting/balance-sheet/basic'>
+                <BasicBalanceSheetCalculator/>
             </Route>
         </div>
     );

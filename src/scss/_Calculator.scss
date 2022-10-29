@@ -1,0 +1,16 @@
+@import 'utils';
+.calculator-container {
+    @include grid1;
+    position: relative;
+    top: 60px;
+}
+
+.currency-selector-container {
+    @include centerFlex;
+    margin: auto;
+}
+
+.calculator {
+    @include grid1;
+    margin: auto;
+}
