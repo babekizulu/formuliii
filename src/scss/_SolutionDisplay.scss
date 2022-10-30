@@ -1,0 +1,10 @@
+@import 'utils';
+.solution-display {
+    @include centerFlex;
+    margin: 20px auto;
+    width: 100px;
+    border: 3px solid $dark;
+    padding: 20px 20px;
+    border-radius: 9px;
+    font-family: $rob;
+}

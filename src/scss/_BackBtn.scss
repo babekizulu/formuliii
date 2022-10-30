@@ -1,13 +1,15 @@
 @import 'utils';
 .back-btn-container {
     @include centerFlex;
-    width: 33px;
+    width: 35px;
     padding: 8px 22px;
     background-color: $dark;
     color: #fff;
     font-family: $rob;
+    font-weight: 600;
     position: relative;
     left: 33%;
+    cursor: pointer;
     transition: $eio;
     &:hover {
         background-color: $dark-active;

@@ -1,0 +1,25 @@
+@import 'utils';
+.currency-selector-container {
+    @include centerFlex;
+    position: fixed;
+    top: 70px;
+    right: 50%;
+    left: 50%;
+    z-index: 2;
+    select {
+        border: none;
+        width: 400px;
+        padding: 9px 20px;
+        background: $dark;
+        color: #fff;
+        font-family: $rob;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: $eio;
+        &:hover {
+            background: $dark-active;
+            transition: $eio;
+        }
+    }
+}

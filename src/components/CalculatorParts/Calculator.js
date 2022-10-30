@@ -1,7 +1,7 @@
 //libs
 import React from 'react';
 //component
-import ResultDisplay from './SolutionDisplay';
+import SolutionDisplay from './SolutionDisplay';
 import Input from './Input';
 import SolveBtn from './SolveBtn';
 import ClearBtn from './ClearBtn';
@@ -24,13 +24,16 @@ const Calculator = ({
             unitOfMeasurement={unitsOfMeasurementArr[index]}
             stateValue={stateArr[index]}
             onChangeHandler={onChangeHandler}
-            subjectTag={subjectTag}
             />
         );
     });
     return (
         <div className='calculator'>
-            <ResultDisplay solution={solution} solutionUM={solutionUM}/>
+            <SolutionDisplay 
+            solution={solution} 
+            solutionUM={solutionUM}
+            subjectTag={subjectTag}
+            />
             {renderedInputs}
             <SolveBtn solutionHandler={solutionHandler}/>
             <ClearBtn clearHandler={clearHandler}/>

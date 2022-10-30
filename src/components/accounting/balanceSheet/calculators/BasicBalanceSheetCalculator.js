@@ -1,5 +1,5 @@
 //libs
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import { BalanceSheetFormulae } from "../../../../libs/AccountingFormulae";
 //components
 import BackBtn from '../../../BackBtn';
@@ -13,6 +13,7 @@ const BasicBalanceSheetCalculator = () => {
     const [outstandingDebt, setOutstandingDebt] = useState('');
     const [ownersEquity, setOwnersEquity] = useState('');
     const [solution, setSolution] = useState(0);
+    const [solutionUM, setSolutionUM] = useState('ZAR');
     const vname1 = 'Outstanding Debt';
     const vname2 = `Owner's Equity`;
     const inputNamesArr = [
@@ -23,108 +24,115 @@ const BasicBalanceSheetCalculator = () => {
         outstandingDebt,
         ownersEquity
     ];
-    let unitsOfMeasurementArr = [];
+    const unitsOfMeasurementArr = [
+        solutionUM, 
+        solutionUM
+    ];
     //select currency handler
     const selectHandler = e => {
         setSelected(e.target.value);
-        //choose units of measurement array based on currency
+    };
+
+    //choose unit of measurement based on selected currency
+    useEffect(() => {
+        
         if(selected === 'rands') {
-            unitsOfMeasurementArr.push('ZAR', 'ZAR');
+            setSolutionUM('ZAR')
         }
         if(selected === 'pounds') {
-            unitsOfMeasurementArr.push('£', '£');
+            setSolutionUM('£')
         }
         if(selected === 'dollars') {
-            unitsOfMeasurementArr.push('$', '$');
+            setSolutionUM('$')
         }
         if(selected === 'euros') {
-            unitsOfMeasurementArr.push('€', '€');
+            setSolutionUM('€')
         }
         if(selected === 'yuan') {
-            unitsOfMeasurementArr.push('¥', '¥');
+            setSolutionUM('¥')
         }
         if(selected === 'ruble') {
-            unitsOfMeasurementArr.push('₽', '₽');
+            setSolutionUM('₽')
         }
         if(selected === 'algerianDinar') {
-            unitsOfMeasurementArr.push('DA', 'DA');
+            setSolutionUM('DA')
         }
         if(selected === 'kwanza') {
-            unitsOfMeasurementArr.push('Kz', 'Kz');
+            setSolutionUM('Kz')
         }
         if(selected === 'franc') {
-            unitsOfMeasurementArr.push('Fr', 'Fr');
+            setSolutionUM('Fr')
         }
         if(selected === 'rupee') {
-            unitsOfMeasurementArr.push('₹', '₹');
+            setSolutionUM('₹')
         }
         if(selected === 'pula') {
-            unitsOfMeasurementArr.push('P', 'P');
+            setSolutionUM('P')
         }
         if(selected === 'nakfa') {
-            unitsOfMeasurementArr.push('Nkf', 'Nkf');
+            setSolutionUM('Nkf')
         }
         if(selected === 'emalangeni') {
-            unitsOfMeasurementArr.push('E', 'E');
+            setSolutionUM('E')
         }
         if(selected === 'birr') {
-            unitsOfMeasurementArr.push('Br', 'Br');
+            setSolutionUM('Br')
         }
         if(selected === 'dalasi') {
-            unitsOfMeasurementArr.push('D', 'D');
+            setSolutionUM('D')
         }
         if(selected === 'cedi') {
-            unitsOfMeasurementArr.push('GH₵', 'GH₵');
+            setSolutionUM('GH₵')
         }
         if(selected === 'shillings') {
-            unitsOfMeasurementArr.push('Shs', 'Shs');
+            setSolutionUM('Shs')
         }
         if(selected === 'loti') {
-            unitsOfMeasurementArr.push('L', 'L');
+            setSolutionUM('L')
         }
         if(selected === 'kwacha') {
-            unitsOfMeasurementArr.push('K', 'K');
+            setSolutionUM('K')
         }
         if(selected === 'ariary') {
-            unitsOfMeasurementArr.push('Ar', 'Ar');
+            setSolutionUM('Ar')
         }
         if(selected === 'ouguiya') {
-            unitsOfMeasurementArr.push('UM', 'UM');
+            setSolutionUM('UM')
         }
         if(selected === 'mauritianRupee') {
-            unitsOfMeasurementArr.push('Rs', 'Rs');
+            setSolutionUM('Rs')
         }
         if(selected === 'dirham') {
-            unitsOfMeasurementArr.push('DH', 'DH');
+            setSolutionUM('DH')
         }
         if(selected === 'metical') {
-            unitsOfMeasurementArr.push('Mt', 'Mt');
+            setSolutionUM('Mt')
         }
         if(selected === 'naira') {
-            unitsOfMeasurementArr.push('₦', '₦');
+            setSolutionUM('₦')
         }
         if(selected === 'sahrawiPeseta') {
-            unitsOfMeasurementArr.push('Pts', 'Pts');
+            setSolutionUM('Pts')
         }
         if(selected === 'dobra') {
-            unitsOfMeasurementArr.push('Db', 'Db');
+            setSolutionUM('Db')
         }
         if(selected === 'leone') {
-            unitsOfMeasurementArr.push('Le', 'Le');
+            setSolutionUM('Le')
         }
         if(selected === 'sudanesePounds') {
-            unitsOfMeasurementArr.push('LS', 'LS');
+            setSolutionUM('LS')
         }
         if(selected === 'paanga') {
-            unitsOfMeasurementArr.push('T$', 'T$');
+            setSolutionUM('T$')
         }
         if(selected === 'tunisianDinar') {
-            unitsOfMeasurementArr.push('DT', 'DT');
+            setSolutionUM('DT')
         }
         if(selected === 'libyanDinar') {
-            unitsOfMeasurementArr.push('LD', 'LD');
-        }
-    }
+            setSolutionUM('LD')
+        };
+    }, [selected]);
     //onChangeHandler
     const onChangeHandler = (variableName, value) => {
         if (variableName === vname1) {
@@ -139,6 +147,13 @@ const BasicBalanceSheetCalculator = () => {
         const solution = basicBalanceSheetFormula(outstandingDebt, ownersEquity);
         setSolution(solution);
     }
+
+    //clear handler
+    const clearHandler = () => {
+        setOutstandingDebt('');
+        setOwnersEquity('');
+        setSolution(0);
+    };
     
     return (
         <div className="calculator-container">
@@ -149,10 +164,11 @@ const BasicBalanceSheetCalculator = () => {
             unitsOfMeasurementArr={unitsOfMeasurementArr}
             solutionHandler={solutionHandler}
             solution={solution}
-            solutionUM='R'
+            solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
             subjectTag='financial'
+            clearHandler={clearHandler}
             />
         </div>
     );

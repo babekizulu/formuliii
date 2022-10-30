@@ -1,19 +1,13 @@
 //libs
 import React from "react";
 
-const Input = ({name, unitOfMeasurement, stateValue, onChangeHandler, subjectTag}) => {
+const Input = ({name, unitOfMeasurement, stateValue, onChangeHandler}) => {
     return (
         <div className="input-container">
-            {subjectTag === 'financial' ? 
-                <label>
-                (${unitOfMeasurement}){name}
-                </label>
-                :
-                <label>
-                {name}(${unitOfMeasurement})
-                </label>
-            }
-            <input value={stateValue} type="number" onChange={e => onChangeHandler(name, e.target.value)}/>
+            <label>
+                {name}
+            </label>
+            <input placeholder={`${name} in ${unitOfMeasurement}`} value={stateValue} type="number" onChange={e => onChangeHandler(name, e.target.value)}/>
         </div>
     );
 };
