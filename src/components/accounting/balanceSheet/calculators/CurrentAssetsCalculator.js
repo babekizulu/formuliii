@@ -1,38 +1,50 @@
 //libs
-import {React, useState, useEffect} from "react";
-import { BalanceSheetFormulae } from "../../../../libs/AccountingFormulae";
+import {React, useState, useEffect} from 'react';
+import {BalanceSheetFormulae} from '../../../../libs/AccountingFormulae';
 //components
 import BackBtn from '../../../BackBtn';
-import CurrencySelector from "../../../CurrencySelector";
+import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
-//destructured formulas
-const {basicBalanceSheetFormula} = new BalanceSheetFormulae();
+//destructured formula
+const {currentAssetsFormula} = new BalanceSheetFormulae();
 
-const BasicBalanceSheetCalculator = () => {
+const CurrentAssetsCalculator = () => {
     const [selected, setSelected] = useState('rand');
-    const [outstandingDebt, setOutstandingDebt] = useState('');
-    const [ownersEquity, setOwnersEquity] = useState('');
-    const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    const vname1 = 'Outstanding Debt';
-    const vname2 = `Owner's Equity`;
+    const [cash, setCash] = useState('');
+    const [accountsReceivable, setAccountsReceivable] = useState('');
+    const [inventories, setInventories] = useState('');
+    const [prepaidExpenses, setPrepaidExpenses] = useState('');
+    const [solution, setSolution] = useState(0);
+    //variable names and subject tag
+    const vname1 = 'Cash';
+    const vname2 = 'Accounts Receivable';
+    const vname3 = 'Inventories';
+    const vname4 = 'Prepaid Expenses';
+    const subTag = 'financial';
+    //arrays
     const inputNamesArr = [
         vname1,
-        vname2
-    ];
-    const stateArr = [
-        outstandingDebt,
-        ownersEquity
+        vname2,
+        vname3,
+        vname4
     ];
     const unitsOfMeasurementArr = [
-        solutionUM, 
+        solutionUM,
+        solutionUM,
+        solutionUM,
         solutionUM
     ];
-    //select currency handler
+    const stateArr = [
+        cash,
+        accountsReceivable,
+        inventories,
+        prepaidExpenses
+    ];
+    //select handler
     const selectHandler = e => {
         setSelected(e.target.value);
     };
-
     //choose unit of measurement based on selected currency
     useEffect(() => {
         
@@ -133,45 +145,56 @@ const BasicBalanceSheetCalculator = () => {
             setSolutionUM('LD')
         };
     }, [selected]);
-    //onChangeHandler
+    //on change handler
     const onChangeHandler = (variableName, value) => {
-        if (variableName === vname1) {
-            setOutstandingDebt(value);
+        if(variableName === vname1) {
+            setCash(value);
         }
-        if (variableName === vname2) {
-            setOwnersEquity(value);
+        if(variableName === vname2) {
+            setAccountsReceivable(value);
         }
-    }
+        if(variableName === vname3) {
+            setInventories(value);
+        }
+        if(variableName === vname4) {
+            setPrepaidExpenses(value);
+        };
+    };
     //solution handler
     const solutionHandler = () => {
-        const solution = basicBalanceSheetFormula(outstandingDebt, ownersEquity);
+        const solution = currentAssetsFormula(
+            cash,
+            accountsReceivable,
+            inventories,
+            prepaidExpenses
+        );
         setSolution(solution);
-    }
-
+    };
     //clear handler
     const clearHandler = () => {
-        setOutstandingDebt('');
-        setOwnersEquity('');
+        setCash('');
+        setAccountsReceivable('');
+        setInventories('');
+        setPrepaidExpenses('');
         setSolution(0);
     };
-    
     return (
-        <div className="calculator-container">
+        <div className='calculator-container'>
             <BackBtn prevUrl='/accounting/balance-sheet'/>
             <CurrencySelector selectHandler={selectHandler} selected={selected}/>
-            <Calculator 
-            inputNames={inputNamesArr} 
+            <Calculator
+            inputNames={inputNamesArr}
             unitsOfMeasurementArr={unitsOfMeasurementArr}
             solutionHandler={solutionHandler}
+            clearHandler={clearHandler}
             solution={solution}
             solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
-            subjectTag='financial'
-            clearHandler={clearHandler}
+            subjectTag={subTag}
             />
         </div>
     );
 };
 
-export default BasicBalanceSheetCalculator;
+export default CurrentAssetsCalculator;

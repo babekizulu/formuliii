@@ -3,12 +3,11 @@
     @include centerFlex;
     position: fixed;
     top: 70px;
-    right: 50%;
-    left: 50%;
+    left: 60%;
     z-index: 2;
     select {
         border: none;
-        width: 400px;
+        width: 150px;
         padding: 9px 20px;
         background: $dark;
         color: #fff;

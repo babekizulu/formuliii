@@ -1,38 +1,45 @@
 //libs
-import {React, useState, useEffect} from "react";
-import { BalanceSheetFormulae } from "../../../../libs/AccountingFormulae";
+import {React, useState, useEffect} from 'react';
+import {BalanceSheetFormulae} from '../../../../libs/AccountingFormulae';
 //components
 import BackBtn from '../../../BackBtn';
-import CurrencySelector from "../../../CurrencySelector";
+import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
-//destructured formulas
-const {basicBalanceSheetFormula} = new BalanceSheetFormulae();
+//destructured formula
+const {totalAssetsFormula} = new BalanceSheetFormulae();
 
-const BasicBalanceSheetCalculator = () => {
+const TotalAssetsCalculator = () => {
     const [selected, setSelected] = useState('rand');
-    const [outstandingDebt, setOutstandingDebt] = useState('');
-    const [ownersEquity, setOwnersEquity] = useState('');
+    const [currentAssets, setCurrentAssets] = useState('');
+    const [fixedAssets, setFixedAssets] = useState('');
+    const [otherAssets, setOtherAssets] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    const vname1 = 'Outstanding Debt';
-    const vname2 = `Owner's Equity`;
+    //variable names & subject tag
+    const vname1 = 'Current Assets';
+    const vname2 = 'Fixed Assets';
+    const vname3 = 'Other Assets';
+    const subTag = 'financial';
+    //arrays
     const inputNamesArr = [
         vname1,
-        vname2
-    ];
-    const stateArr = [
-        outstandingDebt,
-        ownersEquity
+        vname2,
+        vname3,
     ];
     const unitsOfMeasurementArr = [
-        solutionUM, 
+        solutionUM,
+        solutionUM,
         solutionUM
     ];
-    //select currency handler
+    const stateArr = [
+        currentAssets, 
+        fixedAssets,
+        otherAssets
+    ];
+    //selectHandler 
     const selectHandler = e => {
         setSelected(e.target.value);
     };
-
     //choose unit of measurement based on selected currency
     useEffect(() => {
         
@@ -133,45 +140,51 @@ const BasicBalanceSheetCalculator = () => {
             setSolutionUM('LD')
         };
     }, [selected]);
-    //onChangeHandler
+    //on change handler
     const onChangeHandler = (variableName, value) => {
-        if (variableName === vname1) {
-            setOutstandingDebt(value);
+        if(variableName === vname1) {
+            setCurrentAssets(value);
         }
-        if (variableName === vname2) {
-            setOwnersEquity(value);
+        if(variableName === vname2) {
+            setFixedAssets(value);
         }
-    }
+        if(variableName === vname3) {
+            setOtherAssets(value);
+        };
+    };
     //solution handler
     const solutionHandler = () => {
-        const solution = basicBalanceSheetFormula(outstandingDebt, ownersEquity);
+        const solution = totalAssetsFormula(currentAssets, fixedAssets, otherAssets);
         setSolution(solution);
-    }
-
+    };
     //clear handler
     const clearHandler = () => {
-        setOutstandingDebt('');
-        setOwnersEquity('');
+        setCurrentAssets('');
+        setFixedAssets('');
+        setOtherAssets('');
         setSolution(0);
     };
-    
+
     return (
-        <div className="calculator-container">
+        <div className='calculator-container'>
             <BackBtn prevUrl='/accounting/balance-sheet'/>
-            <CurrencySelector selectHandler={selectHandler} selected={selected}/>
-            <Calculator 
-            inputNames={inputNamesArr} 
+            <CurrencySelector 
+            selectHandler={selectHandler} 
+            selected={selected}
+            />
+            <Calculator
+            inputNames={inputNamesArr}
             unitsOfMeasurementArr={unitsOfMeasurementArr}
             solutionHandler={solutionHandler}
+            clearHandler={clearHandler}
             solution={solution}
             solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
-            subjectTag='financial'
-            clearHandler={clearHandler}
+            subjectTag={subTag}
             />
         </div>
     );
 };
 
-export default BasicBalanceSheetCalculator;
+export default TotalAssetsCalculator;

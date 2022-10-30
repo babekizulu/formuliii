@@ -23,6 +23,8 @@ import Ratios from './economics/ratios/Ratios';
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
 import BasicBalanceSheetCalculator from './accounting/balanceSheet/calculators/BasicBalanceSheetCalculator';
+import TotalAssetsCalculator from './accounting/balanceSheet/calculators/TotalAssetsCalculator';
+import CurrentAssetsCalculator from './accounting/balanceSheet/calculators/CurrentAssetsCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //physics calc sets
@@ -91,6 +93,12 @@ const App = () => {
             {/*CALCULATOR COMPONENT ROUTES*/}
             <Route path='/accounting/balance-sheet/basic'>
                 <BasicBalanceSheetCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/total-assets'>
+                <TotalAssetsCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/current-assets'>
+                <CurrentAssetsCalculator/>
             </Route>
         </div>
     );

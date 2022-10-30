@@ -77,7 +77,7 @@ class BalanceSheetFormulae {
     }
 
     //Total Assets Value
-    totalAssetsFormula(currentAssets, fixedAssets, otherAssets, totalAssets) {
+    totalAssetsFormula(currentAssets, fixedAssets, otherAssets) {
         const c = parseFloat(currentAssets);
         const f = parseFloat(fixedAssets);
         const o = parseFloat(otherAssets);
@@ -87,7 +87,7 @@ class BalanceSheetFormulae {
     }
 
     //Current Assets Value
-    currentAssetsFormula(cash, accountsReceivable, inventories, prepaidExpenses, currentAssets) {
+    currentAssetsFormula(cash, accountsReceivable, inventories, prepaidExpenses) {
         const c = parseFloat(cash);
         const a = parseFloat(accountsReceivable);
         const i = parseFloat(inventories);

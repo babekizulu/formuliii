@@ -1,6 +1,11 @@
 @import 'utils';
 .solution-display {
     @include centerFlex;
+    background: rgba(255, 255, 255, 0.21);
+    backdrop-filter: blur(7.2px);
+    -webkit-backdrop-filter: blur(7.2px);
+    position: sticky;
+    top: 70px;
     margin: 20px auto;
     width: 100px;
     border: 3px solid $dark;

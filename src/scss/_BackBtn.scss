@@ -1,21 +1,24 @@
 @import 'utils';
 .back-btn-container {
     @include centerFlex;
-    width: 35px;
-    padding: 8px 22px;
-    background-color: $dark;
-    color: #fff;
-    font-family: $rob;
-    font-weight: 600;
-    position: relative;
+    position: fixed;
+    top: 70px;
     left: 33%;
-    cursor: pointer;
-    transition: $eio;
-    &:hover {
-        background-color: $dark-active;
-        transition: $eio;
-    }
-    a {
+    z-index: 3;
+    p {
+        @include centerFlex;
+        width: 35px;
+        padding: 8px 22px;
+        background-color: $dark;
+        color: #fff;
+        font-family: $rob;
+        font-weight: 600;
         text-decoration: none;
+        cursor: pointer;
+        transition: $eio;
+        &:hover {
+            background-color: $dark-active;
+            transition: $eio;
+        }
     }
 }
