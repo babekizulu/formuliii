@@ -25,6 +25,10 @@ import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
 import BasicBalanceSheetCalculator from './accounting/balanceSheet/calculators/BasicBalanceSheetCalculator';
 import TotalAssetsCalculator from './accounting/balanceSheet/calculators/TotalAssetsCalculator';
 import CurrentAssetsCalculator from './accounting/balanceSheet/calculators/CurrentAssetsCalculator';
+import OtherAssetsCalculator from './accounting/balanceSheet/calculators/OtherAssetsCalculator';
+import TotalDebtAndEquityCalculator from './accounting/balanceSheet/calculators/TotalDebtAndEquityCalculator';
+import DebtCapitalCalculator from './accounting/balanceSheet/calculators/DebtCapitalCalculator';
+import CurrentDebtCalculator from './accounting/balanceSheet/calculators/CurrentDebtCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //physics calc sets
@@ -34,6 +38,7 @@ import DefinitionOfAcceleration from './physics/kinematics/dae/DefinitionOfAccel
 import DisplacementCurve from './physics/kinematics/dc/DisplacementCurve';
 //styles
 import '../scss/App.scss';
+import FixedAssetsCalculator from './accounting/balanceSheet/calculators/FixedAssetsCalculator';
 
 const App = () => {
     return (
@@ -99,6 +104,21 @@ const App = () => {
             </Route>
             <Route path='/accounting/balance-sheet/current-assets'>
                 <CurrentAssetsCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/fixed-assets'>
+                <FixedAssetsCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/other-assets'>
+                <OtherAssetsCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/total-debt-equity'>
+                <TotalDebtAndEquityCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/debt-capital'>
+                <DebtCapitalCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/current-debt'>
+                <CurrentDebtCalculator/>
             </Route>
         </div>
     );
