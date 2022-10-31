@@ -36,7 +36,7 @@ const BalanceSheet = () => {
                 Long-Term Debt Formula
             </Link>
             <Link href='/accounting/balance-sheet/owners-equity-capital' className='calc-set-item'>
-                Owners Equiy Capital Formula
+                Owners Equity Capital Formula
             </Link>
         </div>
     );

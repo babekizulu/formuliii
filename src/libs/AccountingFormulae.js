@@ -159,15 +159,9 @@ class BalanceSheetFormulae {
         const o = parseFloat(ownersNetWorth);
         const p = parseFloat(partnershipEquity);
         const c = parseFloat(commonStockEquity);
-        const arr = [o, p, c];
         //solve for owners equity capital
-        // - only one of these variables will contain a value,
-        // so loop through an array of the variables and return the
-        // variable which has value that's not zero.
-        // - since zero is falsey, we can simply check if variable is true
-        arr.forEach(v => {
-            if (v) return v.toFixed(2);
-        });
+        const oec = o + p + c;
+        return oec.toFixed(2);
     };
 };
 

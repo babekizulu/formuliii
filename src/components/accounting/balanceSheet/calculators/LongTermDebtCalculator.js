@@ -5,42 +5,32 @@ import {BalanceSheetFormulae} from '../../../../libs/AccountingFormulae';
 import BackBtn from '../../../BackBtn';
 import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
-//destructured formula
-const {currentDebtFormula} = new BalanceSheetFormulae();
+//destructure formula
+const {longTermDebtFormula} = new BalanceSheetFormulae();
 
-const CurrentDebtCalculator = () => {
+const LongTermDebtCalculator = () => {
     //state
-    const [selected, setSelected] = useState('rand');
-    const [accountsPayable, setAccountsPayable] = useState('');
-    const [otherPayables, setOtherPayables] = useState('');
-    const [accruedExpenses, setAccruedExpenses] = useState('');
-    const [shortTermNotes, setShortTermNotes] = useState('');
+    const [selected, setSelected] = useState('rand')
+    const [longTermNotes, setLongTermNotes] = useState('');
+    const [mortgages, setMortgages] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    //vname & subject tag
-    const vname1 = 'Accounts Payable';
-    const vname2 = 'Other Payables';
-    const vname3 = 'Accrued Expenses';
-    const vname4 = 'Short-Term Notes';
+    //vnames & subject tag
+    const vname1 = 'Long-Term Notes';
+    const vname2 = 'Mortgages';
     const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2,
-        vname3,
-        vname4
+        vname2
     ];
     const unitsOfMeasurementArr = [
-        solutionUM,
-        solutionUM,
         solutionUM,
         solutionUM
     ];
     const stateArr = [
-        accountsPayable,
-        otherPayables,
-        accruedExpenses,
-        shortTermNotes
+        longTermNotes,
+        mortgages
     ];
     //currency selection
     //choose unit of measurement based on selected currency
@@ -146,44 +136,28 @@ const CurrentDebtCalculator = () => {
     //handlers
     const selectHandler = e => {
         setSelected(e.target.value);
-    }
+    };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setAccountsPayable(value);
+            setLongTermNotes(value);
         };
         if(variableName === vname2) {
-            setOtherPayables(value);
-        };
-        if(variableName === vname3) {
-            setAccruedExpenses(value);
-        };
-        if(variableName === vname4) {
-            setShortTermNotes(value);
+            setMortgages(value);
         };
     };
     const solutionHandler = () => {
-        const solution = currentDebtFormula(
-            accountsPayable,
-            otherPayables,
-            accruedExpenses,
-            shortTermNotes
-        );
+        const solution = longTermDebtFormula(longTermNotes, mortgages);
         setSolution(solution);
     };
     const clearHandler = () => {
-        setAccountsPayable('');
-        setOtherPayables('');
-        setAccruedExpenses('');
-        setShortTermNotes('');
+        setLongTermNotes('');
+        setMortgages('');
         setSolution(0);
-    };
+    }
     return (
         <div className='calculator-container'>
             <BackBtn prevUrl='/accounting/balance-sheet'/>
-            <CurrencySelector 
-            selectHandler={selectHandler} 
-            selected={selected}
-            />
+            <CurrencySelector selectHandler={selectHandler} selected={selected}/>
             <Calculator
             inputNames={inputNamesArr}
             unitsOfMeasurementArr={unitsOfMeasurementArr}
@@ -199,4 +173,4 @@ const CurrentDebtCalculator = () => {
     );
 };
 
-export default CurrentDebtCalculator;
+export default LongTermDebtCalculator;

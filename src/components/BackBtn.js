@@ -5,7 +5,7 @@ import Link from './Link';
 const BackBtn = ({prevUrl}) => {
     return (
        <Link href={prevUrl} className='back-btn-container'>
-        <p>BACK</p>
+        <p>back</p>
        </Link>
     );
 };

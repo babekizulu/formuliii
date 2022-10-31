@@ -18,7 +18,8 @@ const {
     grossProfitFormula,
     operatingExpensesFormula,
     earningsBTFormula,
-    netIncomeFormula
+    netIncomeFormula,
+    ownersEquityCapitalFormula
 } = new IncomeStatementFormulae();
 
 //income statement formulae tests
@@ -107,5 +108,10 @@ describe('Balance Sheet Formulae Tests', () => {
     //long-term debt formula test
     test('Long-Term Debt should return: 120000.00', () => {
         expect(longTermDebtFormula(100000, 20000)).toBe(parseFloat(120000).toFixed(2));
+    });
+
+    //owners equity capital formula test
+    test('Owners Equity Capital should return: 70.00', () => {
+        expect(ownersEquityCapitalFormula(70, 0, 0)).toBe(parseFloat(70).toFixed(2));
     });
 });

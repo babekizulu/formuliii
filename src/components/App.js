@@ -29,6 +29,8 @@ import OtherAssetsCalculator from './accounting/balanceSheet/calculators/OtherAs
 import TotalDebtAndEquityCalculator from './accounting/balanceSheet/calculators/TotalDebtAndEquityCalculator';
 import DebtCapitalCalculator from './accounting/balanceSheet/calculators/DebtCapitalCalculator';
 import CurrentDebtCalculator from './accounting/balanceSheet/calculators/CurrentDebtCalculator';
+import LongTermDebtCalculator from './accounting/balanceSheet/calculators/LongTermDebtCalculator';
+import OwnersEquityCapitalCalculator from './accounting/balanceSheet/calculators/OwnersEquityCapitalCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //physics calc sets
@@ -119,6 +121,12 @@ const App = () => {
             </Route>
             <Route path='/accounting/balance-sheet/current-debt'>
                 <CurrentDebtCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/long-term-debt'>
+                <LongTermDebtCalculator/>
+            </Route>
+            <Route path='/accounting/balance-sheet/owners-equity-capital'>
+                <OwnersEquityCapitalCalculator/>
             </Route>
         </div>
     );
