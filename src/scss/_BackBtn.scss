@@ -9,6 +9,7 @@
         @include centerFlex;
         width: 35px;
         padding: 8px 22px;
+        border-radius: 0px;
         background-color: $dark;
         color: #fff;
         font-family: $rob;
@@ -19,6 +20,11 @@
         transition: $eio;
         &:hover {
             background-color: $dark-active;
+            transition: $eio;
+        }
+        &:active {
+            background-color: $dark-active;
+            border-radius: 8px;
             transition: $eio;
         }
     }

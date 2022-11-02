@@ -1,7 +1,7 @@
 /*
 * @Author: Lwandle Babekizulu Dlamini
 * @Desc: Primary App Component
-* @Date: 2022/10/03
+* @Date: 2022/11/01
 */
 //libs
 import React from 'react';
@@ -22,6 +22,7 @@ import Ratios from './economics/ratios/Ratios';
 //accounting calc sets
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
+//acc: balance sheet calculators
 import BasicBalanceSheetCalculator from './accounting/balanceSheet/calculators/BasicBalanceSheetCalculator';
 import TotalAssetsCalculator from './accounting/balanceSheet/calculators/TotalAssetsCalculator';
 import CurrentAssetsCalculator from './accounting/balanceSheet/calculators/CurrentAssetsCalculator';
@@ -31,6 +32,13 @@ import DebtCapitalCalculator from './accounting/balanceSheet/calculators/DebtCap
 import CurrentDebtCalculator from './accounting/balanceSheet/calculators/CurrentDebtCalculator';
 import LongTermDebtCalculator from './accounting/balanceSheet/calculators/LongTermDebtCalculator';
 import OwnersEquityCapitalCalculator from './accounting/balanceSheet/calculators/OwnersEquityCapitalCalculator';
+//acc:income statement calculators
+import BasicIncomeCalculator from './accounting/incomeStatement/calculators/BasicIncomeCalculator';
+import EarningsBITCalculator from './accounting/incomeStatement/calculators/EarningsBITCalculator';
+import GrossProfitCalculator from './accounting/incomeStatement/calculators/GrossProfitCalculator';
+import OperatingExpensesCalculator from './accounting/incomeStatement/calculators/OperatingExpensesCalculator';
+import EarningsBTCalculator from './accounting/incomeStatement/calculators/EarningsBTCalculator';
+import NetIncomeCalculator from './accounting/incomeStatement/calculators/NetIncomeCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //physics calc sets
@@ -97,7 +105,7 @@ const App = () => {
             <Route path='/physics/kinematics/displacement-curve'>
                 <DisplacementCurve/>
             </Route>
-            {/*CALCULATOR COMPONENT ROUTES*/}
+            {/*ACC: BALANCE SHEET CALCULATOR ROUTES*/}
             <Route path='/accounting/balance-sheet/basic'>
                 <BasicBalanceSheetCalculator/>
             </Route>
@@ -127,6 +135,25 @@ const App = () => {
             </Route>
             <Route path='/accounting/balance-sheet/owners-equity-capital'>
                 <OwnersEquityCapitalCalculator/>
+            </Route>
+            {/*ACC: INCOME STATEMENT CALCULATOR ROUTES*/}
+            <Route path='/accounting/income-statement/basic-income'>
+                <BasicIncomeCalculator/>
+            </Route>
+            <Route path='/accounting/income-statement/earnings-bit'>
+                <EarningsBITCalculator/>
+            </Route>
+            <Route path='/accounting/income-statement/gross-profit'>
+                <GrossProfitCalculator/>
+            </Route>
+            <Route path='/accounting/income-statement/operating-expenses'>
+                <OperatingExpensesCalculator/>
+            </Route>
+            <Route path='/accounting/income-statement/earnings-bt'>
+                <EarningsBTCalculator/>
+            </Route>
+            <Route path='/accounting/income-statement/net-income'>
+                <NetIncomeCalculator/>
             </Route>
         </div>
     );

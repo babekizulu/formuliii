@@ -28,9 +28,9 @@ class IncomeStatementFormulae {
     };
 
     //Gross Profit
-    grossProfitFormula(salesRevenue, CostOfProduction) {
+    grossProfitFormula(salesRevenue, costOfProduction) {
         const s = parseFloat(salesRevenue);
-        const c = parseFloat(CostOfProduction);
+        const c = parseFloat(costOfProduction);
         //solve for gross profit
         const g = s - c;
         return g.toFixed(2);
