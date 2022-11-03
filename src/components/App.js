@@ -19,6 +19,17 @@ import Depreciation from './economics/depreciation/Depreciation';
 import GDP from './economics/gdp/GDP';
 import Interest from './economics/interest/Interest';
 import Ratios from './economics/ratios/Ratios';
+//eco: calculators
+import BalanceOfTradeCalculator from './economics/calculators/BalanceOfTradeCalculator';
+import CurrentAccountCalculator from './economics/calculators/CurrentAccountCalculator';
+import InflationRateCalculator from './economics/calculators/InflationRateCalculator';
+import NFFICalculator from './economics/calculators/NFFICalculator';
+import UnemploymentRateCalculator from './economics/calculators/UnemploymentRateCalculator';
+import DDBDepreciationCalculator from './economics/depreciation/calculators/DDBDepreciationCalculator';
+import SLDepreciationCalculator from './economics/depreciation/calculators/SLDepreciationCalculator';
+import SOYDepreciationCalculator from './economics/depreciation/calculators/SOYDepreciationCalculator';
+import UOPDepreciationCalculator from './economics/depreciation/calculators/UOPDepreciationCalculator';
+import GDPDeflatorCalculator from './economics/gdp/calculators/GDPDeflatorCalculator';
 //accounting calc sets
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
@@ -154,6 +165,37 @@ const App = () => {
             </Route>
             <Route path='/accounting/income-statement/net-income'>
                 <NetIncomeCalculator/>
+            </Route>
+            {/*ECO: Calculator Routes*/}
+            <Route path='/economics/balance-of-trade'>
+                <BalanceOfTradeCalculator/>
+            </Route>
+            <Route path='/economics/current-account'>
+                <CurrentAccountCalculator/>
+            </Route>
+            <Route path='/economics/inflation-rate'>
+                <InflationRateCalculator/>
+            </Route>
+            <Route path='/economics/net-foreign-factor-income'>
+                <NFFICalculator/>
+            </Route>
+            <Route path='/economics/unemployment-rate'>
+                <UnemploymentRateCalculator/>
+            </Route>
+            <Route path='/economics/depreciation/ddb'>
+                <DDBDepreciationCalculator/>
+            </Route>
+            <Route path='/economics/depreciation/straight-line'>
+                <SLDepreciationCalculator/>
+            </Route>
+            <Route path='/economics/depreciation/sum-of-the-years'>
+                <SOYDepreciationCalculator/>
+            </Route>
+            <Route path='/economics/depreciation/units-of-production'>
+                <UOPDepreciationCalculator/>
+            </Route>
+            <Route path='/economics/gdp/deflator'>
+                <GDPDeflatorCalculator/>
             </Route>
         </div>
     );

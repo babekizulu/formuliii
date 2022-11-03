@@ -1,23 +1,23 @@
 //libs
 import {React, useState, useEffect} from 'react';
-import {BalanceOfTradeFormula} from '../../../libs/EconomicsFormulae';
+import { NetForeignFactorIncomeFormula } from '../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../BackBtn';
 import CurrencySelector from '../../CurrencySelector';
 import Calculator from '../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new BalanceOfTradeFormula();
+const {solve}  = new NetForeignFactorIncomeFormula();
 
-const BalanceOfTradeCalculator = () => {
+const NFFICalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [valueOfExports, setValueOfExports] = useState('');
-    const [valueOfImports, setValueOfImports] = useState('');
+    const [grossNationalProduct, setGrossNationalProduct] = useState('');
+    const [grossDomesticProduct, setGrossDomesticProduct] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
     //vnames & subject tag
-    const vname1 = 'Value of Exports';
-    const vname2 = 'Value of Imports';
+    const vname1 = 'Gross National Product';
+    const vname2 = 'Gross Domestic Product';
     const subTag = 'financial';
     //arrays
     const inputNamesArr = [
@@ -29,9 +29,9 @@ const BalanceOfTradeCalculator = () => {
         solutionUM
     ];
     const stateArr = [
-        valueOfExports,
-        valueOfImports
-    ];
+        grossNationalProduct,
+        grossDomesticProduct
+    ]
     //currency selection
     //choose unit of measurement based on selected currency
     useEffect(() => {
@@ -139,22 +139,21 @@ const BalanceOfTradeCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setValueOfExports(value);
+            setGrossNationalProduct(value);
         };
         if(variableName === vname2) {
-            setValueOfImports(value);
+            setGrossDomesticProduct(value);
         };
     };
     const solutionHandler = () => {
-        const solution = solve(valueOfExports, valueOfImports);
+        const solution = solve(grossNationalProduct, grossDomesticProduct);
         setSolution(solution);
     };
     const clearHandler = () => {
-        setValueOfExports('');
-        setValueOfImports('');
+        setGrossNationalProduct('');
+        setGrossDomesticProduct('');
         setSolution(0);
     };
-    //jsx
     return (
         <div className="calculator-container">
             <BackBtn prevUrl='/economics'/>
@@ -177,4 +176,4 @@ const BalanceOfTradeCalculator = () => {
     );
 };
 
-export default BalanceOfTradeCalculator;
+export default NFFICalculator;

@@ -1,36 +1,46 @@
 //libs
 import {React, useState, useEffect} from 'react';
-import {BalanceOfTradeFormula} from '../../../libs/EconomicsFormulae';
+import { CurrentAccountFormula } from '../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../BackBtn';
 import CurrencySelector from '../../CurrencySelector';
 import Calculator from '../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new BalanceOfTradeFormula();
+const {solve} = new CurrentAccountFormula();
 
-const BalanceOfTradeCalculator = () => {
+const CurrentAccountCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [valueOfExports, setValueOfExports] = useState('');
-    const [valueOfImports, setValueOfImports] = useState('');
+    const [exportOfGoodsAndServices, setExportOfGoodsAndServices] = useState('');
+    const [importOfGoodsAndServices, setImportOfGoodsAndServices] = useState('');
+    const [netEarningsFromAbroad, setNetEarningsFromAbroad] = useState('');
+    const [netTransferPayments, setNetTransferPayments] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    //vnames & subject tag
-    const vname1 = 'Value of Exports';
-    const vname2 = 'Value of Imports';
+    //vname & subject tag
+    const vname1 = 'Export of Goods & Services';
+    const vname2 = 'Import of Goods & Services';
+    const vname3 = 'Net Earnings from Abroad';
+    const vname4 = 'Net Transfer Payments';
     const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2
+        vname2,
+        vname3,
+        vname4
     ];
     const unitsOfMeasurementArr = [
+        solutionUM,
+        solutionUM,
         solutionUM,
         solutionUM
     ];
     const stateArr = [
-        valueOfExports,
-        valueOfImports
+        exportOfGoodsAndServices,
+        importOfGoodsAndServices,
+        netEarningsFromAbroad,
+        netTransferPayments
     ];
     //currency selection
     //choose unit of measurement based on selected currency
@@ -139,22 +149,34 @@ const BalanceOfTradeCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setValueOfExports(value);
+            setExportOfGoodsAndServices(value);
         };
         if(variableName === vname2) {
-            setValueOfImports(value);
+            setImportOfGoodsAndServices(value);
+        };
+        if(variableName === vname3) {
+            setNetEarningsFromAbroad(value);
+        };
+        if(variableName === vname4) {
+            setNetTransferPayments(value);
         };
     };
     const solutionHandler = () => {
-        const solution = solve(valueOfExports, valueOfImports);
+        const solution = solve(
+            exportOfGoodsAndServices,
+            importOfGoodsAndServices,
+            netEarningsFromAbroad,
+            netTransferPayments
+        );
         setSolution(solution);
     };
     const clearHandler = () => {
-        setValueOfExports('');
-        setValueOfImports('');
+        setExportOfGoodsAndServices('');
+        setImportOfGoodsAndServices('');
+        setNetEarningsFromAbroad('');
+        setNetTransferPayments('');
         setSolution(0);
     };
-    //jsx
     return (
         <div className="calculator-container">
             <BackBtn prevUrl='/economics'/>
@@ -177,4 +199,4 @@ const BalanceOfTradeCalculator = () => {
     );
 };
 
-export default BalanceOfTradeCalculator;
+export default CurrentAccountCalculator;

@@ -1,23 +1,23 @@
 //libs
 import {React, useState, useEffect} from 'react';
-import {BalanceOfTradeFormula} from '../../../libs/EconomicsFormulae';
+import { DoubleDecliningBalanceDepreciationFormula } from "../../../../libs/EconomicsFormulae";
 //components
-import BackBtn from '../../BackBtn';
-import CurrencySelector from '../../CurrencySelector';
-import Calculator from '../../CalculatorParts/Calculator';
+import BackBtn from '../../../BackBtn';
+import CurrencySelector from '../../../CurrencySelector';
+import Calculator from '../../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new BalanceOfTradeFormula();
+const {solve} = new DoubleDecliningBalanceDepreciationFormula();
 
-const BalanceOfTradeCalculator = () => {
+const DDBDepreciationCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [valueOfExports, setValueOfExports] = useState('');
-    const [valueOfImports, setValueOfImports] = useState('');
+    const [startingBookValue, setStartingBookValue] = useState('');
+    const [assetLifespan, setAssetLifespan] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    //vnames & subject tag
-    const vname1 = 'Value of Exports';
-    const vname2 = 'Value of Imports';
+    //vname & subject tag
+    const vname1 = 'Starting Book Value';
+    const vname2 = 'Asset Lifespan';
     const subTag = 'financial';
     //arrays
     const inputNamesArr = [
@@ -26,16 +26,16 @@ const BalanceOfTradeCalculator = () => {
     ];
     const unitsOfMeasurementArr = [
         solutionUM,
-        solutionUM
+        'years'
     ];
     const stateArr = [
-        valueOfExports,
-        valueOfImports
+        startingBookValue,
+        assetLifespan
     ];
     //currency selection
     //choose unit of measurement based on selected currency
     useEffect(() => {
-    
+
         if(selected === 'rands') {
             setSolutionUM('ZAR')
         }
@@ -139,25 +139,24 @@ const BalanceOfTradeCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setValueOfExports(value);
+            setStartingBookValue(value)
         };
         if(variableName === vname2) {
-            setValueOfImports(value);
+            setAssetLifespan(value);
         };
     };
     const solutionHandler = () => {
-        const solution = solve(valueOfExports, valueOfImports);
+        const solution = solve(startingBookValue, assetLifespan);
         setSolution(solution);
-    };
+    }
     const clearHandler = () => {
-        setValueOfExports('');
-        setValueOfImports('');
+        setStartingBookValue('');
+        setAssetLifespan('');
         setSolution(0);
     };
-    //jsx
     return (
         <div className="calculator-container">
-            <BackBtn prevUrl='/economics'/>
+            <BackBtn prevUrl='/economics/depreciation'/>
             <CurrencySelector
             selectHandler={selectHandler}
             selected={selected}
@@ -177,4 +176,4 @@ const BalanceOfTradeCalculator = () => {
     );
 };
 
-export default BalanceOfTradeCalculator;
+export default DDBDepreciationCalculator;

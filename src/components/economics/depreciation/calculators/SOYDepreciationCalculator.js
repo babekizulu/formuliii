@@ -1,41 +1,51 @@
 //libs
-import {React, useState, useEffect} from 'react';
-import {BalanceOfTradeFormula} from '../../../libs/EconomicsFormulae';
+import {React, useEffect, useState} from 'react';
+import { SumOfYearsDigitsDepreciation } from '../../../../libs/EconomicsFormulae';
 //components
-import BackBtn from '../../BackBtn';
-import CurrencySelector from '../../CurrencySelector';
-import Calculator from '../../CalculatorParts/Calculator';
+import BackBtn from '../../../BackBtn';
+import CurrencySelector from '../../../CurrencySelector';
+import Calculator from '../../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new BalanceOfTradeFormula();
+const {solve} = new SumOfYearsDigitsDepreciation();
 
-const BalanceOfTradeCalculator = () => {
+const SOYDepreciationCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [valueOfExports, setValueOfExports] = useState('');
-    const [valueOfImports, setValueOfImports] = useState('');
+    const [remainingLife, setRemainingLife] = useState('');
+    const [sumOfYearsDigits, setSumOfYearsDigits] = useState('');
+    const [cost, setCost] = useState('');
+    const [salvageValue, setSalvageValue] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
     //vnames & subject tag
-    const vname1 = 'Value of Exports';
-    const vname2 = 'Value of Imports';
+    const vname1 = 'Remaining Life';
+    const vname2 = 'Sum of Years';
+    const vname3 = 'Cost';
+    const vname4 = 'Salvage Value';
     const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2
+        vname2,
+        vname3,
+        vname4
     ];
     const unitsOfMeasurementArr = [
+        'Years',
+        'Years',
         solutionUM,
         solutionUM
     ];
     const stateArr = [
-        valueOfExports,
-        valueOfImports
+        remainingLife,
+        sumOfYearsDigits,
+        cost,
+        salvageValue
     ];
     //currency selection
     //choose unit of measurement based on selected currency
     useEffect(() => {
-    
+
         if(selected === 'rands') {
             setSolutionUM('ZAR')
         }
@@ -139,25 +149,37 @@ const BalanceOfTradeCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setValueOfExports(value);
+            setRemainingLife(value);
         };
         if(variableName === vname2) {
-            setValueOfImports(value);
+            setSumOfYearsDigits(value);
+        };
+        if(variableName === vname3) {
+            setCost(value);
+        };
+        if(variableName === vname4) {
+            setSalvageValue(value);
         };
     };
     const solutionHandler = () => {
-        const solution = solve(valueOfExports, valueOfImports);
+        const solution = solve(
+            remainingLife,
+            sumOfYearsDigits,
+            cost,
+            salvageValue
+        );
         setSolution(solution);
     };
     const clearHandler = () => {
-        setValueOfExports('');
-        setValueOfImports('');
+        setRemainingLife('');
+        setSumOfYearsDigits('');
+        setCost('');
+        setSalvageValue('');
         setSolution(0);
     };
-    //jsx
     return (
         <div className="calculator-container">
-            <BackBtn prevUrl='/economics'/>
+            <BackBtn prevUrl='/economics/depreciation'/>
             <CurrencySelector
             selectHandler={selectHandler}
             selected={selected}
@@ -177,4 +199,4 @@ const BalanceOfTradeCalculator = () => {
     );
 };
 
-export default BalanceOfTradeCalculator;
+export default SOYDepreciationCalculator;
