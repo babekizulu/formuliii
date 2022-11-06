@@ -5,7 +5,7 @@ const SolutionDisplay = ({solution, solutionUM, subjectTag}) => {
     return (
         <div className='solution-display'>
             <header className="solution">
-                {subjectTag === 'financial' ?
+                {subjectTag === 'financial' || subjectTag === 'mathematics' ?
                     <h4>
                         <span>{solutionUM}</span>    {solution}
                     </h4>

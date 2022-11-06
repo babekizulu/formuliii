@@ -17,14 +17,14 @@ const {
 describe('Algebraic Formulae Tests', () => {
     //pythagorean formula test
     test('Hypotenuse should equal: 5', () => {
-        expect(pythagoreanFormula(4, 3)).toBe(parseFloat(5));
+        expect(pythagoreanFormula(4, 3)).toBe(parseFloat(5).toFixed(3));
     });
     //distance formula test
     test('Distance should equal: 5', () => {
-        expect(distanceFormula(3, 7, 2, 5)).toBe(parseFloat(5));
+        expect(distanceFormula(3, 7, 2, 5)).toBe(parseFloat(5).toFixed(3));
     });
     //midpoint formula test
     test('Midpoint Coordinates should equal: [5, 3.5]', () => {
-        expect(midPointFormula(3, 7, 2, 5)).toStrictEqual([parseFloat(5), parseFloat(7/2)]);
+        expect(midPointFormula(3, 7, 2, 5)).toStrictEqual([parseFloat(5).toFixed(3), parseFloat(7/2).toFixed(3)]);
     });
 });

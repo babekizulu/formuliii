@@ -13,7 +13,7 @@ class AlgebraicFormulae {
         const b = parseFloat(verticalSideValue);
         //solve for hypotenuse
         const hyp = Math.sqrt(a**2 + b**2);
-        return hyp;
+        return hyp.toFixed(3);
     };
 
     distanceFormula(xCoord1, xCoord2, yCoord1, yCoord2) {
@@ -23,7 +23,7 @@ class AlgebraicFormulae {
         const y2 = parseFloat(yCoord2);
         //solve for distance
         const d = Math.sqrt((x2 - x1)**2 + (y2 - y1)**2);
-        return d;
+        return d.toFixed(3);
     };
 
     midPointFormula(endpointX1, endpointX2, endpointY1, endpointY2) {
@@ -34,7 +34,7 @@ class AlgebraicFormulae {
         //solve for midpoint coordinates
         const midpointX = (x1 + x2)/2;
         const midpointY = (y1 + y2)/2;
-        return [midpointX, midpointY];
+        return [midpointX.toFixed(3), midpointY.toFixed(3)];
     };
 };
 

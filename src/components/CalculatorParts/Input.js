@@ -7,7 +7,12 @@ const Input = ({name, unitOfMeasurement, stateValue, onChangeHandler}) => {
             <label>
                 {name}
             </label>
+            {
+            unitOfMeasurement ? 
             <input placeholder={`${name} in ${unitOfMeasurement}`} value={stateValue} type="number" onChange={e => onChangeHandler(name, e.target.value)}/>
+            :
+            <input placeholder={`${name}`} value={stateValue} type="number" onChange={e => onChangeHandler(name, e.target.value)}/>
+            }
         </div>
     );
 };

@@ -51,6 +51,7 @@ import DebtCapitalCalculator from './accounting/balanceSheet/calculators/DebtCap
 import CurrentDebtCalculator from './accounting/balanceSheet/calculators/CurrentDebtCalculator';
 import LongTermDebtCalculator from './accounting/balanceSheet/calculators/LongTermDebtCalculator';
 import OwnersEquityCapitalCalculator from './accounting/balanceSheet/calculators/OwnersEquityCapitalCalculator';
+import FixedAssetsCalculator from './accounting/balanceSheet/calculators/FixedAssetsCalculator';
 //acc:income statement calculators
 import BasicIncomeCalculator from './accounting/incomeStatement/calculators/BasicIncomeCalculator';
 import EarningsBITCalculator from './accounting/incomeStatement/calculators/EarningsBITCalculator';
@@ -60,6 +61,10 @@ import EarningsBTCalculator from './accounting/incomeStatement/calculators/Earni
 import NetIncomeCalculator from './accounting/incomeStatement/calculators/NetIncomeCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
+//math: algebraic calculators
+import PythagoreanCalculator from './mathematics/algebra/calculators/PythagoreanCalculator';
+import DistanceCalculator from './mathematics/algebra/calculators/DistanceCalculator';
+import MidpointCalculator from './mathematics/algebra/calculators/MidpointCalculator';
 //physics calc sets
 import Kinematics from './physics/kinematics/Kinematics';
 //physics: kinematics calc sets
@@ -67,7 +72,7 @@ import DefinitionOfAcceleration from './physics/kinematics/dae/DefinitionOfAccel
 import DisplacementCurve from './physics/kinematics/dc/DisplacementCurve';
 //styles
 import '../scss/App.scss';
-import FixedAssetsCalculator from './accounting/balanceSheet/calculators/FixedAssetsCalculator';
+
 
 const App = () => {
     return (
@@ -228,6 +233,16 @@ const App = () => {
             </Route>
             <Route path='/economics/ratios/gov-debt-to-gdp'>
                 <GDGDPRatioCalculator/>
+            </Route>
+            {/*MATH: Algebraic Calculator Routes*/}
+            <Route path='/mathematics/algebra/pythagorean'>
+                <PythagoreanCalculator/>
+            </Route>
+            <Route path='/mathematics/algebra/distance'>
+                <DistanceCalculator/>
+            </Route>
+            <Route path='/mathematics/algebra/midpoint'>
+                <MidpointCalculator/>
             </Route>
         </div>
     );
