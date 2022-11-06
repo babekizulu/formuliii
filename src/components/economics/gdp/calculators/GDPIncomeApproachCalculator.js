@@ -1,36 +1,46 @@
 //libs
 import {React, useEffect, useState} from 'react';
-import { GDPDeflatorFormula } from '../../../../libs/EconomicsFormulae';
+import { GDPIncomeApproachFormula } from '../../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../../BackBtn';
 import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new GDPDeflatorFormula();
+const {solve} = new GDPIncomeApproachFormula();
 
-const GDPDeflatorCalculator = () => {
+const GDPIncomeApproachCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [nominalGDP, setNominalGDP] = useState('');
-    const [realGDP, setRealGDP] = useState('');
+    const [totalNationalIncome, setTotalNationalIncome] = useState('');
+    const [salesTaxes, setSalesTaxes] = useState('');
+    const [depreciation, setDepreciation] = useState('');
+    const [netForeignFactorIncome, setNetForeignFactorIncome] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
     //vnames & subject tag
-    const vname1 = 'Nominal GDP';
-    const vname2 = 'Real GDP';
-    const subTag = '';
+    const vname1 = 'Total National Income';
+    const vname2 = 'Sales Taxes';
+    const vname3 = 'Depreciation';
+    const vname4 = 'Net Foreign Factor Income';
+    const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2
+        vname2,
+        vname3,
+        vname4
     ];
     const unitsOfMeasurementArr = [
+        solutionUM, 
+        solutionUM,
         solutionUM,
         solutionUM
     ];
     const stateArr = [
-        nominalGDP,
-        realGDP
+        totalNationalIncome,
+        salesTaxes,
+        depreciation,
+        netForeignFactorIncome
     ];
     //currency selection
     //choose unit of measurement based on selected currency
@@ -136,22 +146,35 @@ const GDPDeflatorCalculator = () => {
     //handlers
     const selectHandler = e => {
         setSelected(e.target.value);
-    };
+    }
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setNominalGDP(value);
-        };
+            setTotalNationalIncome(value);
+        }
         if(variableName === vname2) {
-            setRealGDP(value);
+            setSalesTaxes(value);
         };
-    }
+        if(variableName === vname3) {
+            setDepreciation(value);
+        };
+        if(variableName === vname4) {
+            setNetForeignFactorIncome(value);
+        };
+    };
     const solutionHandler = () => {
-        const solution = solve(nominalGDP, realGDP);
+        const solution = solve(
+            totalNationalIncome,
+            salesTaxes,
+            depreciation,
+            netForeignFactorIncome
+        );
         setSolution(solution);
     };
     const clearHandler = () => {
-        setNominalGDP('');
-        setRealGDP('');
+        setTotalNationalIncome('');
+        setSalesTaxes('');
+        setDepreciation('');
+        setNetForeignFactorIncome('');
         setSolution(0);
     };
     return (
@@ -167,7 +190,7 @@ const GDPDeflatorCalculator = () => {
             solutionHandler={solutionHandler}
             clearHandler={clearHandler}
             solution={solution}
-            solutionUM='%'
+            solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
             subjectTag={subTag}
@@ -176,4 +199,4 @@ const GDPDeflatorCalculator = () => {
     );
 };
 
-export default GDPDeflatorCalculator;
+export default GDPIncomeApproachCalculator;

@@ -1,41 +1,46 @@
 //libs
 import {React, useEffect, useState} from 'react';
-import { GDPDeflatorFormula } from '../../../../libs/EconomicsFormulae';
+import { SimpleInterestRateFormula } from '../../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../../BackBtn';
 import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new GDPDeflatorFormula();
+const {solve} = new SimpleInterestRateFormula();
 
-const GDPDeflatorCalculator = () => {
+const SimpleInterestRateCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [nominalGDP, setNominalGDP] = useState('');
-    const [realGDP, setRealGDP] = useState('');
+    const [interestRate, setInterestRate] = useState('');
+    const [principalAmount, setPrincipalAmount] = useState('');
+    const [timePeriod, setTimePeriod] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
-    //vnames & subject tag
-    const vname1 = 'Nominal GDP';
-    const vname2 = 'Real GDP';
-    const subTag = '';
+    //vnames & subject tag & UM's
+    const vname1 = 'Interest Rate';
+    const vname2 = 'Principal Amount';
+    const vname3 = 'Time Period';
+    const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2
+        vname2,
+        vname3
     ];
     const unitsOfMeasurementArr = [
+        '%',
         solutionUM,
-        solutionUM
+        'Years'
     ];
     const stateArr = [
-        nominalGDP,
-        realGDP
+        interestRate,
+        principalAmount,
+        timePeriod
     ];
     //currency selection
     //choose unit of measurement based on selected currency
     useEffect(() => {
-    
+
         if(selected === 'rands') {
             setSolutionUM('ZAR')
         }
@@ -139,24 +144,29 @@ const GDPDeflatorCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setNominalGDP(value);
+            setInterestRate(value);
         };
         if(variableName === vname2) {
-            setRealGDP(value);
+            setPrincipalAmount(value);
+        }
+        if(variableName === vname3) {
+            setTimePeriod(value);
         };
-    }
+    };
+
     const solutionHandler = () => {
-        const solution = solve(nominalGDP, realGDP);
+        const solution = solve(interestRate, principalAmount, timePeriod);
         setSolution(solution);
     };
     const clearHandler = () => {
-        setNominalGDP('');
-        setRealGDP('');
+        setInterestRate('');
+        setPrincipalAmount('');
+        setTimePeriod('');
         setSolution(0);
     };
     return (
         <div className="calculator-container">
-            <BackBtn prevUrl='/economics/gdp'/>
+            <BackBtn prevUrl='/economics/interest'/>
             <CurrencySelector
             selectHandler={selectHandler}
             selected={selected}
@@ -167,7 +177,7 @@ const GDPDeflatorCalculator = () => {
             solutionHandler={solutionHandler}
             clearHandler={clearHandler}
             solution={solution}
-            solutionUM='%'
+            solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
             subjectTag={subTag}
@@ -176,4 +186,4 @@ const GDPDeflatorCalculator = () => {
     );
 };
 
-export default GDPDeflatorCalculator;
+export default SimpleInterestRateCalculator;

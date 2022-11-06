@@ -30,6 +30,14 @@ import SLDepreciationCalculator from './economics/depreciation/calculators/SLDep
 import SOYDepreciationCalculator from './economics/depreciation/calculators/SOYDepreciationCalculator';
 import UOPDepreciationCalculator from './economics/depreciation/calculators/UOPDepreciationCalculator';
 import GDPDeflatorCalculator from './economics/gdp/calculators/GDPDeflatorCalculator';
+import GDPExpApproachCalculator from './economics/gdp/calculators/GDPExpApproachCalculator';
+import GDPIncomeApproachCalculator from './economics/gdp/calculators/GDPIncomeApproachCalculator';
+import NetExportsCalculator from './economics/gdp/calculators/NetExportsCalculator.js';
+import RealGDPCalculator from './economics/gdp/calculators/RealGDPCalculator';
+import SimpleInterestRateCalculator from './economics/interest/calculators/SimpleInterestRateCalculator';
+import CompoundInterestRateCalculator from './economics/interest/calculators/CompoundInterestRateCalculator';
+import CAGDPRatioCalculator from './economics/ratios/calculators/CAGDPRatioCalculator';
+import GDGDPRatioCalculator from './economics/ratios/calculators/GDGDPRatioCalculator';
 //accounting calc sets
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
@@ -196,6 +204,30 @@ const App = () => {
             </Route>
             <Route path='/economics/gdp/deflator'>
                 <GDPDeflatorCalculator/>
+            </Route>
+            <Route path='/economics/gdp/exp-approach'>
+                <GDPExpApproachCalculator/>
+            </Route>
+            <Route path='/economics/gdp/income-approach'>
+                <GDPIncomeApproachCalculator/>
+            </Route>
+            <Route path='/economics/gdp/net-exports'>
+                <NetExportsCalculator/>
+            </Route>
+            <Route path='/economics/gdp/real'>
+                <RealGDPCalculator/>
+            </Route>
+            <Route path='/economics/interest/simple'>
+                <SimpleInterestRateCalculator/>
+            </Route>
+            <Route path='/economics/interest/compound'>
+                <CompoundInterestRateCalculator/>
+            </Route>
+            <Route path='/economics/ratios/current-acc-to-gdp'>
+                <CAGDPRatioCalculator/>
+            </Route>
+            <Route path='/economics/ratios/gov-debt-to-gdp'>
+                <GDGDPRatioCalculator/>
             </Route>
         </div>
     );

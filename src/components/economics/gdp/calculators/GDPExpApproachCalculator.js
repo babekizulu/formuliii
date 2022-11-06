@@ -1,36 +1,46 @@
 //libs
 import {React, useEffect, useState} from 'react';
-import { GDPDeflatorFormula } from '../../../../libs/EconomicsFormulae';
+import { GDPExpApproachFormula } from '../../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../../BackBtn';
 import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
-//destructured formula
-const {solve} = new GDPDeflatorFormula();
+//destructured formulas
+const {solve} = new GDPExpApproachFormula();
 
-const GDPDeflatorCalculator = () => {
+const GDPExpApproachCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
-    const [nominalGDP, setNominalGDP] = useState('');
-    const [realGDP, setRealGDP] = useState('');
+    const [consumption, setConsumption] = useState('');
+    const [investment, setInvestment] = useState('');
+    const [governmentExpenditure, setGovernmentExpenditure] = useState('');
+    const [netExports, setNetExports] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
     //vnames & subject tag
-    const vname1 = 'Nominal GDP';
-    const vname2 = 'Real GDP';
-    const subTag = '';
+    const vname1 = 'Consumption';
+    const vname2 = 'Investment';
+    const vname3 = 'Government Expenditure';
+    const vname4 = 'Net Exports';
+    const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
-        vname2
+        vname2,
+        vname3,
+        vname4
     ];
     const unitsOfMeasurementArr = [
+        solutionUM,
+        solutionUM,
         solutionUM,
         solutionUM
     ];
     const stateArr = [
-        nominalGDP,
-        realGDP
+        consumption,
+        investment,
+        governmentExpenditure,
+        netExports
     ];
     //currency selection
     //choose unit of measurement based on selected currency
@@ -139,19 +149,32 @@ const GDPDeflatorCalculator = () => {
     };
     const onChangeHandler = (variableName, value) => {
         if(variableName === vname1) {
-            setNominalGDP(value);
+            setConsumption(value);
         };
         if(variableName === vname2) {
-            setRealGDP(value);
+            setInvestment(value);
         };
-    }
+        if(variableName === vname3) {
+            setGovernmentExpenditure(value);
+        };
+        if(variableName === vname4) {
+            setNetExports(value);
+        };
+    };
     const solutionHandler = () => {
-        const solution = solve(nominalGDP, realGDP);
+        const solution = solve(
+            consumption,
+            investment,
+            governmentExpenditure,
+            netExports
+        );
         setSolution(solution);
     };
     const clearHandler = () => {
-        setNominalGDP('');
-        setRealGDP('');
+        setConsumption('');
+        setInvestment('');
+        setGovernmentExpenditure('');
+        setNetExports('');
         setSolution(0);
     };
     return (
@@ -167,13 +190,14 @@ const GDPDeflatorCalculator = () => {
             solutionHandler={solutionHandler}
             clearHandler={clearHandler}
             solution={solution}
-            solutionUM='%'
+            solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
             subjectTag={subTag}
             />
+            GDP Expenditure Approach Calculator
         </div>
     );
 };
 
-export default GDPDeflatorCalculator;
+export default GDPExpApproachCalculator;

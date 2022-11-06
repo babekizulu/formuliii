@@ -15,15 +15,15 @@ const InflationRateCalculator = () => {
     //vnames & subject tag
     const vname1 = 'Past Consumer Price Index';
     const vname2 = 'Current Consumer Price Index';
-    const subTag = 'financial';
+    const subTag = '';
     //arrays
     const inputNamesArr = [
         vname1,
         vname2
     ];
     const unitsOfMeasurementArr = [
-        'CPI',
-        'CPI'
+        '%',
+        '%'
     ];
     const stateArr = [
         pastConsumerPriceIndex,

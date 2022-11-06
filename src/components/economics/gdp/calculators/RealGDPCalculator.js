@@ -1,24 +1,24 @@
 //libs
 import {React, useEffect, useState} from 'react';
-import { GDPDeflatorFormula } from '../../../../libs/EconomicsFormulae';
+import { RealGDPFormula } from '../../../../libs/EconomicsFormulae';
 //components
 import BackBtn from '../../../BackBtn';
 import CurrencySelector from '../../../CurrencySelector';
 import Calculator from '../../../CalculatorParts/Calculator';
 //destructured formula
-const {solve} = new GDPDeflatorFormula();
+const {solve} = new RealGDPFormula();
 
-const GDPDeflatorCalculator = () => {
+const RealGDPCalculator = () => {
     //state
     const [selected, setSelected] = useState('rand');
     const [nominalGDP, setNominalGDP] = useState('');
-    const [realGDP, setRealGDP] = useState('');
+    const [gdpDeflator, setGDPDeflator] = useState('');
     const [solution, setSolution] = useState(0);
     const [solutionUM, setSolutionUM] = useState('ZAR');
     //vnames & subject tag
     const vname1 = 'Nominal GDP';
-    const vname2 = 'Real GDP';
-    const subTag = '';
+    const vname2 = 'GDP Deflator';
+    const subTag = 'financial';
     //arrays
     const inputNamesArr = [
         vname1,
@@ -26,16 +26,16 @@ const GDPDeflatorCalculator = () => {
     ];
     const unitsOfMeasurementArr = [
         solutionUM,
-        solutionUM
+        '%'
     ];
     const stateArr = [
         nominalGDP,
-        realGDP
+        gdpDeflator
     ];
     //currency selection
     //choose unit of measurement based on selected currency
     useEffect(() => {
-    
+
         if(selected === 'rands') {
             setSolutionUM('ZAR')
         }
@@ -142,16 +142,19 @@ const GDPDeflatorCalculator = () => {
             setNominalGDP(value);
         };
         if(variableName === vname2) {
-            setRealGDP(value);
+            setGDPDeflator(value);
         };
-    }
+    };
     const solutionHandler = () => {
-        const solution = solve(nominalGDP, realGDP);
+        const solution = solve(
+            nominalGDP,
+            gdpDeflator
+        );
         setSolution(solution);
     };
     const clearHandler = () => {
         setNominalGDP('');
-        setRealGDP('');
+        setGDPDeflator('');
         setSolution(0);
     };
     return (
@@ -167,7 +170,7 @@ const GDPDeflatorCalculator = () => {
             solutionHandler={solutionHandler}
             clearHandler={clearHandler}
             solution={solution}
-            solutionUM='%'
+            solutionUM={solutionUM}
             stateArr={stateArr}
             onChangeHandler={onChangeHandler}
             subjectTag={subTag}
@@ -176,4 +179,4 @@ const GDPDeflatorCalculator = () => {
     );
 };
 
-export default GDPDeflatorCalculator;
+export default RealGDPCalculator;
