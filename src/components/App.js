@@ -70,6 +70,17 @@ import Kinematics from './physics/kinematics/Kinematics';
 //physics: kinematics calc sets
 import DefinitionOfAcceleration from './physics/kinematics/dae/DefinitionOfAcceleration';
 import DisplacementCurve from './physics/kinematics/dc/DisplacementCurve';
+//phy: dae calculators
+import AverageVelocityCalculator from './physics/kinematics/dae/calculators/AverageVelocityCalculator';
+import InitialVelocityCalculator from './physics/kinematics/dae/calculators/InitialVelocityCalculator';
+import AccelerationCalculator from './physics/kinematics/dae/calculators/AccelerationCalculator';
+import TimeCalculator from './physics/kinematics/dae/calculators/TimeCalculator';
+//phy: dc calculators
+import DCDisplacementCalculator from './physics/kinematics/dc/calculators/DCDisplacementCalculator';
+import DCFinalPositionCalculator from './physics/kinematics/dc/calculators/DCFinalPositionCalculator';
+import DCInitialPositionCalculator from './physics/kinematics/dc/calculators/DCInitialPositionCalculator';
+import DCInitialVelocityCalculator from './physics/kinematics/dc/calculators/DCInitialVelocityCalculator';
+import DCAccelerationCalculator from './physics/kinematics/dc/calculators/DCAccelerationCalculator';
 //styles
 import '../scss/App.scss';
 
@@ -243,6 +254,53 @@ const App = () => {
             </Route>
             <Route path='/mathematics/algebra/midpoint'>
                 <MidpointCalculator/>
+            </Route>
+            {/*PHY: Definition of Acceleration Calculator Routes*/}
+            <Route 
+            path='/physics/kinematics/definition-of-acceleration/average-velocity'
+            >
+                <AverageVelocityCalculator/>
+            </Route>
+            <Route 
+            path='/physics/kinematics/definition-of-acceleration/initial-velocity'
+            >
+                <InitialVelocityCalculator/>
+            </Route>
+            <Route 
+            path='/physics/kinematics/definition-of-acceleration/acceleration'
+            >
+                <AccelerationCalculator/>
+            </Route>
+            <Route
+            path='/physics/kinematics/definition-of-acceleration/time'
+            >
+                <TimeCalculator/>
+            </Route>
+            {/*PHY: Displacement Curve Calculator Routes*/}
+            <Route 
+            path='/physics/kinematics/displacement-curve/displacement'
+            >
+                <DCDisplacementCalculator/>
+            </Route>
+            <Route
+            path='/physics/kinematics/displacement-curve/final-position'
+            >
+                <DCFinalPositionCalculator/>
+            </Route>
+            <Route
+            path='/physics/kinematics/displacement-curve/initial-position'
+            >
+                <DCInitialPositionCalculator/>
+            </Route>
+            <Route
+            path='/physics/kinematics/displacement-curve/initial-velocity'
+            >
+                <DCInitialVelocityCalculator/>
+            </Route>
+            <Route
+            path='/physics/kinematics/displacement-curve/acceleration'
+            >
+                <DCAccelerationCalculator/>
             </Route>
         </div>
     );
