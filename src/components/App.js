@@ -41,6 +41,10 @@ import GDGDPRatioCalculator from './economics/ratios/calculators/GDGDPRatioCalcu
 //accounting calc sets
 import IncomeStatement from './accounting/incomeStatement/IncomeStatement';
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
+import CashFlowStatement from './accounting/cashFlowStatement/CashFlowStatement';
+//acc: cash flow statement calc sets
+import FirmCashFlowStatement from './accounting/cashFlowStatement/firm/FirmCashFlowStatement';
+import FinancingCashFlowStatement from './accounting/cashFlowStatement/financing/FinancingCashFlowStatement';
 //acc: balance sheet calculators
 import BasicBalanceSheetCalculator from './accounting/balanceSheet/calculators/BasicBalanceSheetCalculator';
 import TotalAssetsCalculator from './accounting/balanceSheet/calculators/TotalAssetsCalculator';
@@ -59,6 +63,8 @@ import GrossProfitCalculator from './accounting/incomeStatement/calculators/Gros
 import OperatingExpensesCalculator from './accounting/incomeStatement/calculators/OperatingExpensesCalculator';
 import EarningsBTCalculator from './accounting/incomeStatement/calculators/EarningsBTCalculator';
 import NetIncomeCalculator from './accounting/incomeStatement/calculators/NetIncomeCalculator';
+//acc: firm cash flow statement calculators
+import FirmCashFlowsCalculator from './accounting/cashFlowStatement/firm/calculators/FirmCashFlowsCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //math: algebraic calculators
@@ -125,6 +131,16 @@ const App = () => {
             <Route path='/accounting/balance-sheet'>
                 <BalanceSheet/>
             </Route>
+            <Route path='/accounting/cash-flow'>
+                <CashFlowStatement/>
+            </Route>
+            {/*ACC: CASH FLOW STATEMENT CALC SET ROUTES*/}
+            <Route path='/accounting/cash-flow-statement/firm'>
+                <FirmCashFlowStatement/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/financial'>
+                <FinancingCashFlowStatement/>
+            </Route>
             {/*MATHEMATICS CALC SET ROUTES*/}
             <Route path='/mathematics/algebra'>
                 <Algebra/>
@@ -189,6 +205,10 @@ const App = () => {
             </Route>
             <Route path='/accounting/income-statement/net-income'>
                 <NetIncomeCalculator/>
+            </Route>
+            {/*ACC: FIRM CASH FLOW STATEMENT CALCULATOR ROUTES*/}
+            <Route path='/accounting/cash-flow-statement/firm/cash-flow'>
+                <FirmCashFlowsCalculator/>
             </Route>
             {/*ECO: Calculator Routes*/}
             <Route path='/economics/balance-of-trade'>

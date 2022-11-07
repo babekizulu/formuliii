@@ -14,6 +14,9 @@ const Accounting = () => {
             <Link href='/accounting/balance-sheet' className='calc-set-item'>
                 Balance Sheet Formulae
             </Link>
+            <Link href='/accounting/cash-flow-statement' className='calc-set-item'>
+                Cash Flow Statement Formulae
+            </Link>
         </div>
     );
 };

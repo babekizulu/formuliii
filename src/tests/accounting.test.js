@@ -8,8 +8,8 @@ const AccountingFormulae = require('../libs/AccountingFormulae');
 const {
     IncomeStatementFormulae,
     BalanceSheetFormulae,
-    FirmCashFlowsFormulae,
-    FinancingCashFlowsFormulae
+    FirmCashFlowStatementFormulae,
+    FinancingCashFlowStatementFormulae
 } = AccountingFormulae;
 
 //Accounting Formulae Tests 
@@ -126,7 +126,7 @@ const {
     cashTaxesFormula,
     deltaNOWCFormula,
     deltaLTAFormula
-} = new FirmCashFlowsFormulae()
+} = new FirmCashFlowStatementFormulae()
 describe('Firm Cash Flow Formulae Tests', () => {
     //cash flow formula test
     test('Cash Flow should return: 10.00', () => {
@@ -162,7 +162,7 @@ describe('Firm Cash Flow Formulae Tests', () => {
 //financing cash flow formulae tests
 const {
     financingCashFlowsFormula
-} = new FinancingCashFlowsFormulae();
+} = new FinancingCashFlowStatementFormulae();
 
 describe('Financial Cash Flow Formulae Tests', () => {
     //financing cash flow formula test(

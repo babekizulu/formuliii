@@ -165,7 +165,7 @@ class BalanceSheetFormulae {
     };
 };
 
-class FirmCashFlowsFormulae {
+class FirmCashFlowStatementFormulae {
     //cash flows formula
     cashFlowsFormula(
         afterTaxCashFlows, 
@@ -236,7 +236,7 @@ class FirmCashFlowsFormulae {
     };
 }
 
-class FinancingCashFlowsFormulae {
+class FinancingCashFlowStatementFormulae {
     //financing cash flows formula
     financingCashFlowsFormula(
         interestPayments,
@@ -257,6 +257,6 @@ class FinancingCashFlowsFormulae {
 module.exports = {
     IncomeStatementFormulae,
     BalanceSheetFormulae,
-    FirmCashFlowsFormulae,
-    FinancingCashFlowsFormulae
+    FirmCashFlowStatementFormulae,
+    FinancingCashFlowStatementFormulae
 };
