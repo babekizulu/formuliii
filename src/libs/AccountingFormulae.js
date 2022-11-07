@@ -165,7 +165,98 @@ class BalanceSheetFormulae {
     };
 };
 
+class FirmCashFlowsFormulae {
+    //cash flows formula
+    cashFlowsFormula(
+        afterTaxCashFlows, 
+        investmentInNetOperatingWorkingCapital, 
+        investmentInFixedAssetsAndOtherAssets
+    ) 
+    {
+        const atcf = parseFloat(afterTaxCashFlows);
+        const ic = parseFloat(investmentInNetOperatingWorkingCapital);
+        const ia = parseFloat(investmentInFixedAssetsAndOtherAssets);
+        //solve for cash flow
+        const cf = atcf - ic - ia;
+        return cf.toFixed(2);
+    };
+
+    //earnings before interest, taxes, depreciation and amortization formula
+    ebitdaFormula(operatingIncome, depreciation) {
+        const oi = parseFloat(operatingIncome);
+        const d = parseFloat(depreciation);
+        //solve for ebitda
+        const ebitda = oi + d;
+        return ebitda.toFixed(2);
+    };
+
+    //after-tax cash flows from operations formula
+    atcfoFormula(earningsBeforeITDA, cashTaxPayments) {
+        const ebitda = parseFloat(earningsBeforeITDA);
+        const ctp = parseFloat(cashTaxPayments);
+        //solve for atcfo
+        const atcfo = ebitda - ctp;
+        return atcfo.toFixed(2);
+    };
+
+    //cash taxes formula
+    cashTaxesFormula(
+        incomeTaxes, 
+        changesInAccruedOrDeferredTaxes
+    ) {
+        const it = parseFloat(incomeTaxes);
+        const deltaADT = parseFloat(changesInAccruedOrDeferredTaxes);
+        //solve for cash taxes
+        const ct = it - deltaADT;
+        return ct.toFixed(2);
+    };
+
+    //change in net operating working capital formula
+    deltaNOWCFormula(
+        changeInCurrentAssets,
+        changeInNIBCOL
+    ) {
+        const deltaCA = parseFloat(changeInCurrentAssets);
+        const deltaNIBCOL = parseFloat(changeInNIBCOL);
+        //solve for deltaNOWC
+        const deltaNOWC = deltaCA - deltaNIBCOL;
+        return deltaNOWC.toFixed(2);
+    };
+
+    //change in long-term assets formula
+    deltaLTAFormula(
+        grossPurchasePriceOfFixedAssets,
+        netCashUsedForInvestments
+    ) {
+        const gpfa = parseFloat(grossPurchasePriceOfFixedAssets);
+        const nci = parseFloat(netCashUsedForInvestments);
+        //solve for deltaLTA
+        const deltaLTA = gpfa + nci;
+        return deltaLTA.toFixed(2);
+    };
+}
+
+class FinancingCashFlowsFormulae {
+    //financing cash flows formula
+    financingCashFlowsFormula(
+        interestPayments,
+        changeInDebtPrincipal,
+        dividendsPaid,
+        changeInStock
+    ) {
+        const i = parseFloat(interestPayments);
+        const deltaDP = parseFloat(changeInDebtPrincipal);
+        const div = parseFloat(dividendsPaid);
+        const deltaS = parseFloat(changeInStock);
+        //solve for cash flow
+        const cf = i + deltaDP + div + deltaS;
+        return cf.toFixed(2);
+    };
+};
+
 module.exports = {
     IncomeStatementFormulae,
-    BalanceSheetFormulae
+    BalanceSheetFormulae,
+    FirmCashFlowsFormulae,
+    FinancingCashFlowsFormulae
 };

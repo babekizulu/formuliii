@@ -7,7 +7,9 @@
 const AccountingFormulae = require('../libs/AccountingFormulae');
 const {
     IncomeStatementFormulae,
-    BalanceSheetFormulae
+    BalanceSheetFormulae,
+    FirmCashFlowsFormulae,
+    FinancingCashFlowsFormulae
 } = AccountingFormulae;
 
 //Accounting Formulae Tests 
@@ -19,7 +21,6 @@ const {
     operatingExpensesFormula,
     earningsBTFormula,
     netIncomeFormula,
-    ownersEquityCapitalFormula
 } = new IncomeStatementFormulae();
 
 //income statement formulae tests
@@ -60,10 +61,11 @@ const {
     totalDebtAndEquityFormula,
     debtCapitalFormula,
     currentDebtFormula,
-    longTermDebtFormula
+    longTermDebtFormula,
+    ownersEquityCapitalFormula
 } = new BalanceSheetFormulae();
 
-//balance sheet formulae test
+//balance sheet formulae tests
 describe('Balance Sheet Formulae Tests', () => {
     //basic balance sheet formula test
     test('Basic Balance Sheet should return: 2000.00', () => {
@@ -113,5 +115,58 @@ describe('Balance Sheet Formulae Tests', () => {
     //owners equity capital formula test
     test('Owners Equity Capital should return: 70.00', () => {
         expect(ownersEquityCapitalFormula(70, 0, 0)).toBe(parseFloat(70).toFixed(2));
+    });
+});
+
+//firm cash flow formulae tests
+const {
+    cashFlowsFormula,
+    ebitdaFormula,
+    atcfoFormula,
+    cashTaxesFormula,
+    deltaNOWCFormula,
+    deltaLTAFormula
+} = new FirmCashFlowsFormulae()
+describe('Firm Cash Flow Formulae Tests', () => {
+    //cash flow formula test
+    test('Cash Flow should return: 10.00', () => {
+        expect(cashFlowsFormula(100, 20, 70)).toBe(parseFloat(10).toFixed(2));
+    });
+
+    //ebitda formula test
+    test('EBITDA should return: 270.00', () => {
+        expect(ebitdaFormula(200, 70)).toBe(parseFloat(270).toFixed(2));
+    });
+
+    //atcfo formula test
+    test('ATCFO should return: 160.00', () => {
+        expect(atcfoFormula(500, 340)).toBe(parseFloat(160).toFixed(2));
+    });
+
+    //cash taxes formula test
+    test('Cash Taxes should return: 550.00', () => {
+        expect(cashTaxesFormula(400, -150)).toBe(parseFloat(550).toFixed(2));
+    });
+
+    //delta NOWC formula test
+    test('deltaNOWC should return: 520.00', () => {
+        expect(deltaNOWCFormula(400, -120)).toBe(parseFloat(520).toFixed(2));
+    });
+
+    //delta LTA formula test
+    test('deltaLTA should return: 1700', () => {
+        expect(deltaLTAFormula(700, 1000)).toBe(parseFloat(1700).toFixed(2));
+    });
+});
+
+//financing cash flow formulae tests
+const {
+    financingCashFlowsFormula
+} = new FinancingCashFlowsFormulae();
+
+describe('Financial Cash Flow Formulae Tests', () => {
+    //financing cash flow formula test(
+    test('Cash Flow should return: 450.00', () => {
+        expect(financingCashFlowsFormula(250, -150, 50, 300)).toBe(parseFloat(450).toFixed(2))
     });
 });
