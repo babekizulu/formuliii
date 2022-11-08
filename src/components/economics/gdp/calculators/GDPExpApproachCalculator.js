@@ -195,7 +195,6 @@ const GDPExpApproachCalculator = () => {
             onChangeHandler={onChangeHandler}
             subjectTag={subTag}
             />
-            GDP Expenditure Approach Calculator
         </div>
     );
 };

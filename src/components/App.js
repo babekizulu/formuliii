@@ -65,6 +65,13 @@ import EarningsBTCalculator from './accounting/incomeStatement/calculators/Earni
 import NetIncomeCalculator from './accounting/incomeStatement/calculators/NetIncomeCalculator';
 //acc: firm cash flow statement calculators
 import FirmCashFlowsCalculator from './accounting/cashFlowStatement/firm/calculators/FirmCashFlowsCalculator';
+import EBITDACalculator from './accounting/cashFlowStatement/firm/calculators/EBITDACalculator';
+import ATCFOCalculator from './accounting/cashFlowStatement/firm/calculators/ATCFOCalculator';
+import CashTaxesCalculator from './accounting/cashFlowStatement/firm/calculators/CashTaxesCalculator';
+import ChangeInNOWCCalculator from './accounting/cashFlowStatement/firm/calculators/ChangeInNOWCCalculator.js';
+import ChangeInLTA from './accounting/cashFlowStatement/firm/calculators/ChangeInLTA';
+//acc: financial cash flow statement calculators
+import FinancingCashFlowCalculator from './accounting/cashFlowStatement/financing/calculators/FinancingCashFlowCalculator';
 //mathematics calc sets
 import Algebra from './mathematics/algebra/Algebra';
 //math: algebraic calculators
@@ -131,14 +138,14 @@ const App = () => {
             <Route path='/accounting/balance-sheet'>
                 <BalanceSheet/>
             </Route>
-            <Route path='/accounting/cash-flow'>
+            <Route path='/accounting/cash-flow-statement'>
                 <CashFlowStatement/>
             </Route>
             {/*ACC: CASH FLOW STATEMENT CALC SET ROUTES*/}
             <Route path='/accounting/cash-flow-statement/firm'>
                 <FirmCashFlowStatement/>
             </Route>
-            <Route path='/accounting/cash-flow-statement/financial'>
+            <Route path='/accounting/cash-flow-statement/financing'>
                 <FinancingCashFlowStatement/>
             </Route>
             {/*MATHEMATICS CALC SET ROUTES*/}
@@ -207,8 +214,27 @@ const App = () => {
                 <NetIncomeCalculator/>
             </Route>
             {/*ACC: FIRM CASH FLOW STATEMENT CALCULATOR ROUTES*/}
-            <Route path='/accounting/cash-flow-statement/firm/cash-flow'>
+            <Route path='/accounting/cash-flow-statement/firm/cash-flows'>
                 <FirmCashFlowsCalculator/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/firm/ebitda'>
+                <EBITDACalculator/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/firm/atcfo'>
+                <ATCFOCalculator/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/firm/cash-taxes'>
+                <CashTaxesCalculator/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/firm/change-in-nowc'>
+                <ChangeInNOWCCalculator/>
+            </Route>
+            <Route path='/accounting/cash-flow-statement/firm/change-in-lta'>
+                <ChangeInLTA/>
+            </Route>
+            {/*ACC: FINANCING CASH FLOW STATEMENT CALCULATOR ROUTES*/}
+            <Route path='/accounting/cash-flow-statement/financing/cash-flows'>
+                <FinancingCashFlowCalculator/>
             </Route>
             {/*ECO: Calculator Routes*/}
             <Route path='/economics/balance-of-trade'>

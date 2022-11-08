@@ -24,6 +24,7 @@ const Calculator = ({
             unitOfMeasurement={unitsOfMeasurementArr[index]}
             stateValue={stateArr[index]}
             onChangeHandler={onChangeHandler}
+            key={index}
             />
         );
     });

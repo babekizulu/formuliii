@@ -137,7 +137,7 @@ const CurrencySelector = ({selectHandler, selected}) => {
             <select value={selected} className="currency-selector" onChange={(e) => selectHandler(e)}>
                 {options.map(({value, label}) => {
                     return (
-                        <option value={value} >
+                        <option value={value} key={label}>
                             {label}
                         </option>
                     );
