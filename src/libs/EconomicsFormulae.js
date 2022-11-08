@@ -5,11 +5,6 @@
 * @TODO: 
     - Create a function that checks how many decimal places
       a solution has, if none, then return an integer instead of a float
-    - Add a "currency" option to all constructors, to decide what currency 
-      symbol to display to users
-    - Addition Formulae to add:
-        - Real Interest Rate
-        - Nominal Interest Rate
 */
 
 //Nominal Gross Domestic Product using the Expenditure Approach
