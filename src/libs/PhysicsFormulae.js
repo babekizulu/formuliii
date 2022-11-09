@@ -37,6 +37,7 @@ class KinematicsEquations {
         return a.toFixed(3);
     };
 
+    //Time
     solveForTimeDAE(averageVelocity, initialVelocity, acceleration) {
         const av = parseFloat(averageVelocity);
         const v0 = parseFloat(initialVelocity);
