@@ -159,5 +159,83 @@ class Mechanics {
       val: parseFloat(nf).toFixed(3),
     };
   }
+
+  //weight equation
+  /*
+  @param: m - mass
+  @param: g - gravity
+  */
+  weight(m, g) {
+    const w = m * g;
+    return {
+      valName: 'Weight',
+      val: parseFloat(w).toFixed(3),
+    };
+  }
+
+  //dry friction equation
+  /*
+  @param: mu - coefficient of friction
+  @param: n - normal force
+  */
+  dryFriction(mu, n) {
+    const f = mu * n;
+    return {
+      valName: 'Friction Force',
+      val: parseFloat(f).toFixed(3),
+    };
+  }
+
+  //centripetal acceleration equation
+  /*
+  @param: v - velocity
+  @param: r - radius
+  */
+  centripetalAcceleration(v, r) {
+    const ac = v ** 2 / r;
+    return {
+      valName: 'Centripetal Acceleration',
+      val: parseFloat(ac).toFixed(3),
+    };
+  }
+
+  //momentum equation
+  /*
+  @param: m - mass
+  @param: v - velocity
+  */
+  momentum(m, v) {
+    const p = m * v;
+    return {
+      valName: 'Momentum',
+      val: parseFloat(p).toFixed(3),
+    };
+  }
+
+  //impulse equation
+  /*
+  @param: f - applied force
+  @param: deltaT - change in time
+  */
+  impulse(f, deltaT) {
+    const deltaP = f * deltaT;
+    return {
+      valName: 'Impulse',
+      val: parseFloat(deltaP).toFixed(3),
+    };
+  }
+
+  //impulse momentum equation
+  /*
+  @param: m - mass
+  @param: deltaV - change in velocity
+  */
+  impulseMomentum(m, deltaV) {
+    const im = m * deltaV;
+    return {
+      valName: 'Impulse-Momentum',
+      val: parseFloat(im).toFixed(3),
+    };
+  }
 }
 module.exports = Mechanics;
