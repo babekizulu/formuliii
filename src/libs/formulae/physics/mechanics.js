@@ -1,14 +1,8 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/01/04
+@Date: 2023/01/05
 @TODO:
-o	Weight
-o	Dry Friction
-o	Centripetal Acceleration
-o	Momentum
-o	Impulse
-o	Impulse-Momentum
 o	Work
 o	Work-Energy
 o	Kinetic Energy
@@ -70,10 +64,7 @@ class Mechanics {
     */
   velocity(deltaX, deltaT) {
     const avV = deltaX / deltaT;
-    return {
-      valName: 'Average Velocity',
-      val: parseFloat(avV).toFixed(3),
-    };
+    return parseFloat(avV).toFixed(3);
   }
 
   //acceleration equation
@@ -83,10 +74,7 @@ class Mechanics {
   */
   acceleration(deltaV, deltaT) {
     const avA = deltaV / deltaT;
-    return {
-      valName: '',
-      val: parseFloat(avA).toFixed(3),
-    };
+    return parseFloat(avA).toFixed(3);
   }
   //equations of motion
   //1. velocity equation
@@ -106,32 +94,20 @@ class Mechanics {
     return {
       velocityEM: function (v0, a, t) {
         const v = v0 + a * t;
-        return {
-          valName: 'Velocity',
-          val: parseFloat(v).toFixed(3),
-        };
+        return parseFloat(v).toFixed(3);
       },
       displacement: function (d0, v0, t, a) {
         const d = d0 + v0 * t + 0.5 * (a * t) ** 2;
-        return {
-          valName: 'Displacement',
-          val: parseFloat(d).toFixed(3),
-        };
+        return parseFloat(d).toFixed(3);
       },
       velocitySquared: function (v0, a, d, d0) {
         const sqrtV = Math.sqrt(v0 ** 2 + 2 * a * (d - d0));
         const vSquared = sqrtV ** 2;
-        return {
-          valName: 'Velocity Squared',
-          val: parseFloat(vSquared).toFloat(3),
-        };
+        return parseFloat(vSquared).toFloat(3);
       },
       averageVelocity: function (v0, v) {
         const av = 0.5 * (v + v0);
-        return {
-          valName: 'Average Velocity',
-          val: parseFloat(av).toFixed(3),
-        };
+        return parseFloat(av).toFixed(3);
       },
     };
   }
@@ -142,10 +118,7 @@ class Mechanics {
   */
   netForce1(m, a) {
     const nf = m * a;
-    return {
-      valName: 'Net Force',
-      val: parseFloat(nf).toFixed(3),
-    };
+    return parseFloat(nf).toFixed(3);
   }
 
   /*
@@ -154,10 +127,7 @@ class Mechanics {
   */
   netForce2(deltaP, deltaT) {
     const nf = deltaP / deltaT;
-    return {
-      valName: 'Net Force',
-      val: parseFloat(nf).toFixed(3),
-    };
+    return parseFloat(nf).toFixed(3);
   }
 
   //weight equation
@@ -167,10 +137,7 @@ class Mechanics {
   */
   weight(m, g) {
     const w = m * g;
-    return {
-      valName: 'Weight',
-      val: parseFloat(w).toFixed(3),
-    };
+    return parseFloat(w).toFixed(3);
   }
 
   //dry friction equation
@@ -180,10 +147,7 @@ class Mechanics {
   */
   dryFriction(mu, n) {
     const f = mu * n;
-    return {
-      valName: 'Friction Force',
-      val: parseFloat(f).toFixed(3),
-    };
+    return parseFloat(f).toFixed(3);
   }
 
   //centripetal acceleration equation
@@ -193,10 +157,7 @@ class Mechanics {
   */
   centripetalAcceleration(v, r) {
     const ac = v ** 2 / r;
-    return {
-      valName: 'Centripetal Acceleration',
-      val: parseFloat(ac).toFixed(3),
-    };
+    return parseFloat(ac).toFixed(3);
   }
 
   //momentum equation
@@ -206,10 +167,7 @@ class Mechanics {
   */
   momentum(m, v) {
     const p = m * v;
-    return {
-      valName: 'Momentum',
-      val: parseFloat(p).toFixed(3),
-    };
+    return parseFloat(p).toFixed(3);
   }
 
   //impulse equation
@@ -219,10 +177,7 @@ class Mechanics {
   */
   impulse(f, deltaT) {
     const deltaP = f * deltaT;
-    return {
-      valName: 'Impulse',
-      val: parseFloat(deltaP).toFixed(3),
-    };
+    return parseFloat(deltaP).toFixed(3);
   }
 
   //impulse momentum equation
@@ -232,10 +187,7 @@ class Mechanics {
   */
   impulseMomentum(m, deltaV) {
     const im = m * deltaV;
-    return {
-      valName: 'Impulse-Momentum',
-      val: parseFloat(im).toFixed(3),
-    };
+    return parseFloat(im).toFixed(3);
   }
 }
 module.exports = Mechanics;
