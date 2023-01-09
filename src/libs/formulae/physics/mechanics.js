@@ -189,5 +189,66 @@ class Mechanics {
     const im = m * deltaV;
     return parseFloat(im).toFixed(3);
   }
+
+  //work equation
+  /*
+  @param: f - force
+  @param: d - displacement
+  */
+  work(f, d) {
+    const w = f * d;
+    return parseFloat(w).toFixed(3);
+  }
+
+  //work-energy equation
+  /*
+  @param: KA - initial kinetic energy
+  @param: KB - final kinetic energy
+  */
+  workEnergy(KA, KB) {
+    const wNet = KB - KA;
+    return parseFloat(wNet).toFixed(3);
+  }
+
+  //kinetic energy equation
+  /*
+  @param: m - mass
+  @param: v - velocity
+   */
+  kineticEnergy(m, v) {
+    const K = 0.5 * (m * v ** 2);
+    return parseFloat(K).toFixed(3);
+  }
+
+  //general potential energy equation
+  /*
+  @param: f - force
+  @param: d - displacement
+  */
+  generalPotentialEnergy(f, d) {
+    const U = -f * d;
+    return parseFloat(U).toFixed(3);
+  }
+
+  //gravitational potential energy equation
+  /*
+  @param: m - mass
+  @param: g - gravitational field
+  @param: h - height
+   */
+  gravitationalPotentialEnergy(m, g, h) {
+    const U = m * g * h;
+    return parseFloat(U).toFixed(3);
+  }
+
+  //efficiency equation
+  /*
+  @param: eo - energy output
+  @param: ei - energy input
+  */
+  efficiency(eo, ei) {
+    const eta = eo / ei;
+    return parseFloat(eta).toFixed(3);
+  }
 }
 module.exports = Mechanics;
