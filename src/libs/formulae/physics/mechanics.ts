@@ -1,19 +1,8 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/01/05
+@Date: 2023/01/15
 @TODO:
-o	Power
-o	Power-Velocity
-o	Angular Velocity
-o	Angular Acceleration
-o	Equations of Rotation
-o	Torque
-o	Second Law of Rotation
-o	Moment of Inertia
-o	Rotational Work
-o	Rotational Power
-o	Rotational Kinetic Energy
 o	Angular Momentum
 o	Angular Impulse
 o	Angular Impulse & Momentum
@@ -48,6 +37,10 @@ o	Young’s Modulus
 o	Shear Modulus
 o	Bulk Modulus
 o	Surface Tension
+
+- equations that take angles as inputs should limit
+  argument input numbers to [-360, 360]
+- add parameter descriptions to each equation of motion
 */
 
 class Mechanics {
@@ -244,6 +237,172 @@ class Mechanics {
       const eta = eo / ei;
       return eta.toFixed(3);
     }
+
+    //power equation
+    /*
+    @param: deltaW - change in work
+    @param: deltaT - change in time
+    */
+   power(deltaW:number, deltaT:number) {
+    const P = deltaW/deltaT;
+    return P.toFixed(3);
+   }
+   
+   //power-velocity
+   /*
+   @param: F - force
+   @param: v - velocity
+   */
+   powerVelocity(F:number, v:number) {
+    const P = F*v;
+    return P.toFixed(3);
+   }
+
+   //angular velocity
+   /*
+   @param: deltaTheta - change in angular rotation
+   @param: deltaT - change in time
+   */
+  angularVelocity(deltaTheta:number, deltaT:number) {
+    const omega = deltaTheta/deltaT;
+    return omega.toFixed(3);
   }
 
-export default Mechanics;
+  //angular acceleration
+  /*
+  @param: deltaOmega - change in angular velocity
+  @param: deltaT - change in time
+  */
+  angularAcceleration(deltaOmega:number, deltaT:number) {
+    const a = deltaOmega/deltaT;
+    return a.toFixed(3);
+  }
+
+  //equations of rotation
+  /*
+  @methods:
+  - angularVelocityEOR()
+  - angularRotationEOR()
+  - angularVelocitySquaredEOR()
+  - averageAngularVelocityEOR()
+  */
+ equationsOfRotation() {
+  return {
+    //angular velocity (equations of rotation)
+    /*
+    @param: omega0 -  initial angular velocity
+    @param: a - acceleration
+    @param: t - time
+    */
+    angularVelocityEOR: (omega0:number, a:number, t:number) => {
+      const omega = omega0 + (a*t);
+      return omega.toFixed(3);
+    },
+    //angular rotation (equations of rotation)
+    /*
+    @param: theta0 - initial angular rotation
+    @param: omega0 - initial angular velocity
+    @param: t - time
+    @param: a - acceleration
+    */
+    angularRotationEOR: (theta0:number, omega0:number, t:number, a:number) => {
+      const theta = theta0 + (omega0*t) + (0.5* ((a*t)**2));
+      return theta.toFixed(3);
+    },
+    //angular velocity squared (equations of rotation)
+    /*
+    @param: omega0 - initial angular velocity
+    @param: a - acceleration
+    @param: theta - angular rotation
+    @param: theta0 - initial angular rotation
+    */
+    angularVelocitySquaredEOR: (omega0:number, a:number, theta:number, theta0:number) => {
+      const omegaSquared = omega0**2 + (2*a*(theta - theta0));
+      return omegaSquared.toFixed(3);
+    },
+    //average angular velocity (equations of rotation)
+    /*
+    @param: omega - angular velocity
+    @param: omega0 - initial angular velocity
+    */
+    averageAngularVelocity(omega:number, omega0:number) {
+      const avOmega = 0.5*(omega + omega0);
+      return avOmega.toFixed(3);
+    }
+  }
+ }
+ //torque equation
+  /*
+  @param: r - radius
+  @param: F - force
+  */
+  torque(r:number, F:number){
+    const tau = r*F;
+    return tau.toFixed(3);
+  }
+
+  //Net Torque Equations
+
+  // 1.
+  /*
+  @param: I - moment of inertia
+  @param: a - angular acceleration
+  */
+ netTorque1(I:number, a:number) {
+  const sigmaTau = I*a;
+  return sigmaTau.toFixed(3);
+ }
+
+ // 2.
+ /*
+ @param: deltaL - change in length
+ @param: deltaT - change in time
+ */
+netTorque2(deltaL:number, deltaT:number){
+  const sigmaTau = deltaL/deltaT;
+  return sigmaTau.toFixed(3);
+}
+
+//moment of inertia equation
+/*
+@param: sigmaM - net mass
+@param: r - radius
+*/
+momentOfInertia(sigmaM:number, r:number) {
+  const I = sigmaM*(r**2);
+  return I.toFixed(3);
+}
+
+//rotational work equation
+/*
+@param: avTau - average torque
+@param: deltaTheta - change in angular rotation
+*/
+rotationalWork(avTau:number, deltaTheta:number) {
+  const W = avTau*deltaTheta;
+  return W.toFixed(3);
+}
+
+//rotational power equation
+/*
+@param: tau - torque
+@param: omega - angularVelocity
+*/
+rotationalPower(tau:number, omega:number){
+  const P = tau*omega;
+  return P.toFixed(3);
+}
+
+//rotational kinetic energy equation
+/*
+@param: I - moment of inertia
+@param: omega - angular velocity
+*/
+rotationalKineticEnergy(I:number, omega:number){
+  const K = 0.5*((I*omega)**2);
+  return K.toFixed(3);
+}
+
+}
+
+module.exports = Mechanics;

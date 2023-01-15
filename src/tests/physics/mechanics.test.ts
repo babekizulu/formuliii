@@ -9,8 +9,19 @@ o	Kinetic Energy
 o	General Potential Energy
 o	Gravitational Potential Energy
 o	Efficiency
+o	Power
+o	Power-Velocity
+o	Angular Velocity
+o	Angular Acceleration
+o	Equations of Rotation
+o	Torque
+o	Second Law of Rotation
+o	Moment of Inertia
+o	Rotational Work
+o	Rotational Power
+o	Rotational Kinetic Energy
 */
-import Mechanics from '../../libs/formulae/physics/mechanics.ts';
+const mechanics = require('../../libs/formulae/physics/mechanics.js');
 const {
   velocity,
   acceleration,
@@ -23,7 +34,7 @@ const {
   momentum,
   impulse,
   impulseMomentum,
-} = new Mechanics();
+} = new mechanics();
 //destructured equations of motion
 const { velocityEM, displacement, velocitySquared, averageVelocity } =
   equationsOfMotion();
