@@ -3,12 +3,6 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/01/05
 @TODO:
-o	Work
-o	Work-Energy
-o	Kinetic Energy
-o	General Potential Energy
-o	Gravitational Potential Energy
-o	Efficiency
 o	Power
 o	Power-Velocity
 o	Angular Velocity
@@ -31,7 +25,7 @@ o	Orbital Speed
 o	Escape Speed
 o	Hooke’s Law
 o	Spring Potential Energy
-o	Simple Harmonic Oscillator 
+o	Simple Harmonic Oscillator
 o	Simple Pendulum
 o	Frequency
 o	Angular Frequency
@@ -55,200 +49,187 @@ o	Shear Modulus
 o	Bulk Modulus
 o	Surface Tension
 */
-
-class Mechanics {
+var Mechanics = /** @class */ (function () {
+  function Mechanics() {}
   //velocity equation
   /*
-    @param: deltaX - Change in Position
-    @param: deltaT - Change in Time
-    */
-  velocity(deltaX, deltaT) {
-    const avV = deltaX / deltaT;
-    return parseFloat(avV).toFixed(3);
-  }
-
+      @param: deltaX - Change in Position
+      @param: deltaT - Change in Time
+      */
+  Mechanics.prototype.velocity = function (deltaX, deltaT) {
+    var avV = deltaX / deltaT;
+    return avV.toFixed(3);
+  };
   //acceleration equation
   /*
-  @param: deltaV - Change in Velocity
-  @param: deltaT - Change in Time
-  */
-  acceleration(deltaV, deltaT) {
-    const avA = deltaV / deltaT;
-    return parseFloat(avA).toFixed(3);
-  }
+    @param: deltaV - Change in Velocity
+    @param: deltaT - Change in Time
+    */
+  Mechanics.prototype.acceleration = function (deltaV, deltaT) {
+    var avA = deltaV / deltaT;
+    return avA.toFixed(3);
+  };
   //equations of motion
   //1. velocity equation
   //2. displacement equation
   //3. velocity^2 equation
   //4. average velocity equation
   /*
-  @param: v - velocity
-  @param: v0 - initial velocity
-  @param: a - acceleration
-  @param: t - time
-  @param: d0 - initial position
-  @param: d - displacement
-  */
-
-  equationsOfMotion() {
+    @param: v - velocity
+    @param: v0 - initial velocity
+    @param: a - acceleration
+    @param: t - time
+    @param: d0 - initial position
+    @param: d - displacement
+    */
+  Mechanics.prototype.equationsOfMotion = function () {
     return {
       velocityEM: function (v0, a, t) {
-        const v = v0 + a * t;
-        return parseFloat(v).toFixed(3);
+        var v = v0 + a * t;
+        return v.toFixed(3);
       },
       displacement: function (d0, v0, t, a) {
-        const d = d0 + v0 * t + 0.5 * (a * t) ** 2;
-        return parseFloat(d).toFixed(3);
+        var d = d0 + v0 * t + 0.5 * Math.pow(a * t, 2);
+        return d.toFixed(3);
       },
       velocitySquared: function (v0, a, d, d0) {
-        const sqrtV = Math.sqrt(v0 ** 2 + 2 * a * (d - d0));
-        const vSquared = sqrtV ** 2;
-        return parseFloat(vSquared).toFloat(3);
+        var sqrtV = Math.sqrt(Math.pow(v0, 2) + 2 * a * (d - d0));
+        var vSquared = Math.pow(sqrtV, 2);
+        return vSquared.toFixed(3);
       },
       averageVelocity: function (v0, v) {
-        const av = 0.5 * (v + v0);
-        return parseFloat(av).toFixed(3);
+        var av = 0.5 * (v + v0);
+        return av.toFixed(3);
       },
     };
-  }
+  };
   //net force equations
   /*
-  @param: m - mass
-  @param: a - acceleration
-  */
-  netForce1(m, a) {
-    const nf = m * a;
-    return parseFloat(nf).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: a - acceleration
+    */
+  Mechanics.prototype.netForce1 = function (m, a) {
+    var nf = m * a;
+    return nf.toFixed(3);
+  };
   /*
-  @param: deltaP - Change in Momentum
-  @param: deltaT - Change in Time
-  */
-  netForce2(deltaP, deltaT) {
-    const nf = deltaP / deltaT;
-    return parseFloat(nf).toFixed(3);
-  }
-
+    @param: deltaP - Change in Momentum
+    @param: deltaT - Change in Time
+    */
+  Mechanics.prototype.netForce2 = function (deltaP, deltaT) {
+    var nf = deltaP / deltaT;
+    return nf.toFixed(3);
+  };
   //weight equation
   /*
-  @param: m - mass
-  @param: g - gravity
-  */
-  weight(m, g) {
-    const w = m * g;
-    return parseFloat(w).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: g - gravity
+    */
+  Mechanics.prototype.weight = function (m, g) {
+    var w = m * g;
+    return w.toFixed(3);
+  };
   //dry friction equation
   /*
-  @param: mu - coefficient of friction
-  @param: n - normal force
-  */
-  dryFriction(mu, n) {
-    const f = mu * n;
-    return parseFloat(f).toFixed(3);
-  }
-
+    @param: mu - coefficient of friction
+    @param: n - normal force
+    */
+  Mechanics.prototype.dryFriction = function (mu, n) {
+    var f = mu * n;
+    return f.toFixed(3);
+  };
   //centripetal acceleration equation
   /*
-  @param: v - velocity
-  @param: r - radius
-  */
-  centripetalAcceleration(v, r) {
-    const ac = v ** 2 / r;
-    return parseFloat(ac).toFixed(3);
-  }
-
+    @param: v - velocity
+    @param: r - radius
+    */
+  Mechanics.prototype.centripetalAcceleration = function (v, r) {
+    var ac = Math.pow(v, 2) / r;
+    return ac.toFixed(3);
+  };
   //momentum equation
   /*
-  @param: m - mass
-  @param: v - velocity
-  */
-  momentum(m, v) {
-    const p = m * v;
-    return parseFloat(p).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: v - velocity
+    */
+  Mechanics.prototype.momentum = function (m, v) {
+    var p = m * v;
+    return p.toFixed(3);
+  };
   //impulse equation
   /*
-  @param: f - applied force
-  @param: deltaT - change in time
-  */
-  impulse(f, deltaT) {
-    const deltaP = f * deltaT;
-    return parseFloat(deltaP).toFixed(3);
-  }
-
+    @param: f - applied force
+    @param: deltaT - change in time
+    */
+  Mechanics.prototype.impulse = function (f, deltaT) {
+    var deltaP = f * deltaT;
+    return deltaP.toFixed(3);
+  };
   //impulse momentum equation
   /*
-  @param: m - mass
-  @param: deltaV - change in velocity
-  */
-  impulseMomentum(m, deltaV) {
-    const im = m * deltaV;
-    return parseFloat(im).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: deltaV - change in velocity
+    */
+  Mechanics.prototype.impulseMomentum = function (m, deltaV) {
+    var im = m * deltaV;
+    return im.toFixed(3);
+  };
   //work equation
   /*
-  @param: f - force
-  @param: d - displacement
-  */
-  work(f, d) {
-    const w = f * d;
-    return parseFloat(w).toFixed(3);
-  }
-
+    @param: f - force
+    @param: d - displacement
+    */
+  Mechanics.prototype.work = function (f, d) {
+    var w = f * d;
+    return w.toFixed(3);
+  };
   //work-energy equation
   /*
-  @param: KA - initial kinetic energy
-  @param: KB - final kinetic energy
-  */
-  workEnergy(KA, KB) {
-    const wNet = KB - KA;
-    return parseFloat(wNet).toFixed(3);
-  }
-
+    @param: KA - initial kinetic energy
+    @param: KB - final kinetic energy
+    */
+  Mechanics.prototype.workEnergy = function (KA, KB) {
+    var wNet = KB - KA;
+    return wNet.toFixed(3);
+  };
   //kinetic energy equation
   /*
-  @param: m - mass
-  @param: v - velocity
-   */
-  kineticEnergy(m, v) {
-    const K = 0.5 * (m * v ** 2);
-    return parseFloat(K).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: v - velocity
+     */
+  Mechanics.prototype.kineticEnergy = function (m, v) {
+    var K = 0.5 * (m * Math.pow(v, 2));
+    return K.toFixed(3);
+  };
   //general potential energy equation
   /*
-  @param: f - force
-  @param: d - displacement
-  */
-  generalPotentialEnergy(f, d) {
-    const U = -f * d;
-    return parseFloat(U).toFixed(3);
-  }
-
+    @param: f - force
+    @param: d - displacement
+    */
+  Mechanics.prototype.generalPotentialEnergy = function (f, d) {
+    var U = -f * d;
+    return U.toFixed(3);
+  };
   //gravitational potential energy equation
   /*
-  @param: m - mass
-  @param: g - gravitational field
-  @param: h - height
-   */
-  gravitationalPotentialEnergy(m, g, h) {
-    const U = m * g * h;
-    return parseFloat(U).toFixed(3);
-  }
-
+    @param: m - mass
+    @param: g - gravitational field
+    @param: h - height
+     */
+  Mechanics.prototype.gravitationalPotentialEnergy = function (m, g, h) {
+    var U = m * g * h;
+    return U.toFixed(3);
+  };
   //efficiency equation
   /*
-  @param: eo - energy output
-  @param: ei - energy input
-  */
-  efficiency(eo, ei) {
-    const eta = eo / ei;
-    return parseFloat(eta).toFixed(3);
-  }
-}
-module.exports = Mechanics;
+    @param: eo - energy output
+    @param: ei - energy input
+    */
+  Mechanics.prototype.efficiency = function (eo, ei) {
+    var eta = eo / ei;
+    return eta.toFixed(3);
+  };
+  return Mechanics;
+})();
+
+export default Mechanics;
