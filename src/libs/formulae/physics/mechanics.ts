@@ -3,10 +3,6 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/01/15
 @TODO:
-o	Angular Momentum
-o	Angular Impulse
-o	Angular Impulse & Momentum
-o	Universal Gravitation
 o	Gravitational Field
 o	Gravitational Potential Energy
 o	Gravitational Potential
@@ -401,6 +397,48 @@ rotationalPower(tau:number, omega:number){
 rotationalKineticEnergy(I:number, omega:number){
   const K = 0.5*((I*omega)**2);
   return K.toFixed(3);
+}
+
+//angular momentum
+/*
+@param: r - radius
+@param: p - momentum
+*/
+angularMomentum(r:number, p:number) {
+  const L = r * p;
+  return L.toFixed(3);
+}
+
+//angular impulse
+/*
+@param: avTau - average torque
+@param: deltaT - change in time
+*/
+angularImpulse(avTau:number, deltaT:number) {
+  const H = avTau * deltaT;
+  return H.toFixed(3);
+}
+
+//angular impulse momentum
+/*
+@param: m - mass 
+@param: deltaOmega - change in angular velocity
+*/
+angularImpulseMomentum(m:number, deltaOmega:number) {
+  const angIM = m*deltaOmega;
+  return angIM.toFixed(3);
+}
+
+//universal gravitation
+/*
+@param: G - gravitational constant
+@param: m1 - mass 1
+@param: m2 - mass 2
+@param: r - distance between centers of the masses
+*/
+universalGravitation(G:number, m1:number, m2:number, r:number){
+  const Fg = G*((m1*m2)/r**2);
+  return Fg.toFixed(3);
 }
 
 }

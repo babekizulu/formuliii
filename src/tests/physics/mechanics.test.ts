@@ -20,6 +20,10 @@ o	Moment of Inertia
 o	Rotational Work
 o	Rotational Power
 o	Rotational Kinetic Energy
+o	Angular Momentum
+o	Angular Impulse
+o	Angular Impulse & Momentum
+o	Universal Gravitation
 */
 const mechanics = require('../../libs/formulae/physics/mechanics.js');
 const {

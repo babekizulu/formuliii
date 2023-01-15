@@ -3,10 +3,6 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/01/15
 @TODO:
-o	Angular Momentum
-o	Angular Impulse
-o	Angular Impulse & Momentum
-o	Universal Gravitation
 o	Gravitational Field
 o	Gravitational Potential Energy
 o	Gravitational Potential
@@ -375,6 +371,44 @@ var Mechanics = /** @class */ (function () {
     Mechanics.prototype.rotationalKineticEnergy = function (I, omega) {
         var K = 0.5 * (Math.pow((I * omega), 2));
         return K.toFixed(3);
+    };
+    //angular momentum
+    /*
+    @param: r - radius
+    @param: p - momentum
+    */
+    Mechanics.prototype.angularMomentum = function (r, p) {
+        var L = r * p;
+        return L.toFixed(3);
+    };
+    //angular impulse
+    /*
+    @param: avTau - average torque
+    @param: deltaT - change in time
+    */
+    Mechanics.prototype.angularImpulse = function (avTau, deltaT) {
+        var H = avTau * deltaT;
+        return H.toFixed(3);
+    };
+    //angular impulse momentum
+    /*
+    @param: m - mass
+    @param: deltaOmega - change in angular velocity
+    */
+    Mechanics.prototype.angularImpulseMomentum = function (m, deltaOmega) {
+        var angIM = m * deltaOmega;
+        return angIM.toFixed(3);
+    };
+    //universal gravitation
+    /*
+    @param: G - gravitational constant
+    @param: m1 - mass 1
+    @param: m2 - mass 2
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.universalGravitation = function (G, m1, m2, r) {
+        var Fg = G * ((m1 * m2) / Math.pow(r, 2));
+        return Fg.toFixed(3);
     };
     return Mechanics;
 }());
