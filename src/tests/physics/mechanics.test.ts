@@ -24,6 +24,23 @@ o	Angular Momentum
 o	Angular Impulse
 o	Angular Impulse & Momentum
 o	Universal Gravitation
+o	Gravitational Field
+o	Gravitational Potential Energy
+o	Gravitational Potential
+o	Orbital Speed
+o	Escape Speed
+o	Hooke’s Law
+o	Spring Potential Energy
+o	Simple Harmonic Oscillator 
+o	Simple Pendulum
+o	Frequency
+o	Angular Frequency
+o	Density
+o	Pressure
+o	Pressure in a Fluid
+o	Buoyancy
+o	Mass Flow Rate
+o	Volume Flow Rate
 */
 const mechanics = require('../../libs/formulae/physics/mechanics.js');
 const {

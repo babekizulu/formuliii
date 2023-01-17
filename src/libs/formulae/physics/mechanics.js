@@ -3,26 +3,6 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/01/15
 @TODO:
-o	Gravitational Field
-o	Gravitational Potential Energy
-o	Gravitational Potential
-o	Orbital Speed
-o	Escape Speed
-o	Hooke’s Law
-o	Spring Potential Energy
-o	Simple Harmonic Oscillator
-o	Simple Pendulum
-o	Frequency
-o	Angular Frequency
-o	Density
-o	Pressure
-o	Pressure in a Fluid
-o	Buoyancy
-o	Mass Flow Rate
-o	Volume Flow Rate
-o	Mass Continuity
-o	Volume Continuity
-o	Bernoulli’s Equation
 o	Dynamic Viscosity
 o	Kinematic Viscosity
 o	Drag
@@ -36,7 +16,7 @@ o	Surface Tension
 
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
-- add parameter descriptions to each equation of motion
+- add a default value for all physics constants e.g gravitational constant
 */
 var Mechanics = /** @class */ (function () {
     function Mechanics() {
@@ -228,7 +208,7 @@ var Mechanics = /** @class */ (function () {
         var P = deltaW / deltaT;
         return P.toFixed(3);
     };
-    //power-velocity
+    //power-velocity equation
     /*
     @param: F - force
     @param: v - velocity
@@ -237,7 +217,7 @@ var Mechanics = /** @class */ (function () {
         var P = F * v;
         return P.toFixed(3);
     };
-    //angular velocity
+    //angular velocity equation
     /*
     @param: deltaTheta - change in angular rotation
     @param: deltaT - change in time
@@ -246,7 +226,7 @@ var Mechanics = /** @class */ (function () {
         var omega = deltaTheta / deltaT;
         return omega.toFixed(3);
     };
-    //angular acceleration
+    //angular acceleration equation
     /*
     @param: deltaOmega - change in angular velocity
     @param: deltaT - change in time
@@ -262,46 +242,28 @@ var Mechanics = /** @class */ (function () {
     - angularRotationEOR()
     - angularVelocitySquaredEOR()
     - averageAngularVelocityEOR()
+    @params:
+      @param: omega - angular velocity
+      @param: omega0 -  initial angular velocity
+      @param: a - acceleration
+      @param: t - time
+      @param: theta - angular rotation
+      @param: theta0 - initial angular rotation
     */
     Mechanics.prototype.equationsOfRotation = function () {
         return {
-            //angular velocity (equations of rotation)
-            /*
-            @param: omega0 -  initial angular velocity
-            @param: a - acceleration
-            @param: t - time
-            */
             angularVelocityEOR: function (omega0, a, t) {
                 var omega = omega0 + (a * t);
                 return omega.toFixed(3);
             },
-            //angular rotation (equations of rotation)
-            /*
-            @param: theta0 - initial angular rotation
-            @param: omega0 - initial angular velocity
-            @param: t - time
-            @param: a - acceleration
-            */
             angularRotationEOR: function (theta0, omega0, t, a) {
                 var theta = theta0 + (omega0 * t) + (0.5 * (Math.pow((a * t), 2)));
                 return theta.toFixed(3);
             },
-            //angular velocity squared (equations of rotation)
-            /*
-            @param: omega0 - initial angular velocity
-            @param: a - acceleration
-            @param: theta - angular rotation
-            @param: theta0 - initial angular rotation
-            */
             angularVelocitySquaredEOR: function (omega0, a, theta, theta0) {
                 var omegaSquared = Math.pow(omega0, 2) + (2 * a * (theta - theta0));
                 return omegaSquared.toFixed(3);
             },
-            //average angular velocity (equations of rotation)
-            /*
-            @param: omega - angular velocity
-            @param: omega0 - initial angular velocity
-            */
             averageAngularVelocity: function (omega, omega0) {
                 var avOmega = 0.5 * (omega + omega0);
                 return avOmega.toFixed(3);
@@ -372,7 +334,7 @@ var Mechanics = /** @class */ (function () {
         var K = 0.5 * (Math.pow((I * omega), 2));
         return K.toFixed(3);
     };
-    //angular momentum
+    //angular momentum equation
     /*
     @param: r - radius
     @param: p - momentum
@@ -381,7 +343,7 @@ var Mechanics = /** @class */ (function () {
         var L = r * p;
         return L.toFixed(3);
     };
-    //angular impulse
+    //angular impulse equation
     /*
     @param: avTau - average torque
     @param: deltaT - change in time
@@ -390,7 +352,7 @@ var Mechanics = /** @class */ (function () {
         var H = avTau * deltaT;
         return H.toFixed(3);
     };
-    //angular impulse momentum
+    //angular impulse momentum equation
     /*
     @param: m - mass
     @param: deltaOmega - change in angular velocity
@@ -399,7 +361,7 @@ var Mechanics = /** @class */ (function () {
         var angIM = m * deltaOmega;
         return angIM.toFixed(3);
     };
-    //universal gravitation
+    //universal gravitation equation
     /*
     @param: G - gravitational constant
     @param: m1 - mass 1
@@ -409,6 +371,166 @@ var Mechanics = /** @class */ (function () {
     Mechanics.prototype.universalGravitation = function (G, m1, m2, r) {
         var Fg = G * ((m1 * m2) / Math.pow(r, 2));
         return Fg.toFixed(3);
+    };
+    //gravitational field equation
+    /*
+    @param: G - gravitational constant
+    @param: m - mass
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.gravitationalFieldEquation = function (G, m, r) {
+        var g = -((G * m) / Math.pow(r, 2));
+        return g.toFixed(3);
+    };
+    //gravitational potential energy equation
+    /*
+    @param: G - gravitational constant
+    @param: m1 - mass 1
+    @param: m2 - mass 2
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.gravitationalPotentialEnergy2 = function (G, m1, m2, r) {
+        var Ug = -((G * m1 * m2) / r);
+        return Ug.toFixed(3);
+    };
+    //gravitational potential equation
+    /*
+    @param: G - gravitational constant
+    @param: m - mass
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.gravitationalPotential = function (G, m, r) {
+        var Vg = -((G * m) / r);
+        return Vg.toFixed(3);
+    };
+    //orbital speed equation
+    /*
+    @param: G - gravitational constant
+    @param: m - mass
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.orbitalSpeedEquation = function (G, m, r) {
+        var v = Math.sqrt((G * m) / r);
+        return v.toFixed(3);
+    };
+    //escape speed equation
+    /*
+    @param: G - gravitational constant
+    @param: m - mass
+    @param: r - distance between centers of the masses
+    */
+    Mechanics.prototype.escapeSpeed = function (G, m, r) {
+        var v = Math.sqrt((2 * G * m) / r);
+        return v.toFixed(3);
+    };
+    //hooke's law
+    /*
+    @param: k - spring constant
+    @param: deltaX - spring stretch or compression
+    */
+    Mechanics.prototype.hookesLaw = function (k, deltaX) {
+        var Fs = -(k * deltaX);
+        return Fs.toFixed(3);
+    };
+    //spring potential energy equation
+    /*
+    @param: k - spring constant
+    @param: deltaX - spring stretch or compression
+    */
+    Mechanics.prototype.springPotentialEnergy = function (k, deltaX) {
+        var Us = 0.5 * (k * Math.pow((deltaX), 2));
+        return Us.toFixed(3);
+    };
+    //simple harmonic oscillator equation
+    /*
+    @param: m - mass
+    @param: k - positive constant
+    */
+    Mechanics.prototype.simpleHarmonicOscillator = function (m, k) {
+        var T = (2 * Math.PI) * (Math.sqrt(m / k));
+        return T.toFixed(3);
+    };
+    //simple pendulum equation
+    /*
+    @param: L - pendulum length
+    @param: g - acceleration due to gravity
+    */
+    Mechanics.prototype.simplePendulum = function (L, g) {
+        var T = (2 * Math.PI) * (Math.sqrt(L / g));
+        return T.toFixed(3);
+    };
+    //frequency equation
+    /*
+    @param: T - period
+    */
+    Mechanics.prototype.frequency = function (T) {
+        var f = 1 / T;
+        return f.toFixed(3);
+    };
+    //angular frequency equation
+    /*
+    @param: f - frequency
+    */
+    Mechanics.prototype.angularFrequency = function (f) {
+        var omega = 2 * Math.PI * f;
+        return omega.toFixed(3);
+    };
+    //density equation
+    /*
+    @param: m - mass
+    @param: V - volume
+    */
+    Mechanics.prototype.density = function (m, V) {
+        var rho = m / V;
+        return rho.toFixed(3);
+    };
+    //pressure equation
+    /*
+    @param: F - force
+    @param: A - area
+    */
+    Mechanics.prototype.pressure = function (F, A) {
+        var P = F / A;
+        return P.toFixed(3);
+    };
+    //fluid pressure equation
+    /*
+    @param: p0 - initial pressure
+    @param: rho - density
+    @param: g - acceleration due to gravity
+    @param: h - fluid depth
+    */
+    Mechanics.prototype.fluidPressure = function (p0, rho, g, h) {
+        var P = p0 + (rho * g * h);
+        return P.toFixed(3);
+    };
+    //buoyancy equation
+    /*
+    @param: rho - density
+    @param: g - acceleration due to gravity
+    @param: V - volume displaced
+    */
+    Mechanics.prototype.buoyancy = function (rho, g, V) {
+        var B = rho * g * V;
+        return B.toFixed(3);
+    };
+    //mass flow rate equation
+    /*
+    @param: deltaM - change in mass
+    @param: deltaT - change in time
+    */
+    Mechanics.prototype.massFlowRate = function (deltaM, deltaT) {
+        var avqm = deltaM / deltaT;
+        return avqm.toFixed(3);
+    };
+    //volume flow rate equation
+    /*
+    @param: deltaVol - change in volume
+    @param: deltaT - change in time
+    */
+    Mechanics.prototype.volumeFlowRate = function (deltaVol, deltaT) {
+        var avqv = deltaVol / deltaT;
+        return avqv.toFixed(3);
     };
     return Mechanics;
 }());

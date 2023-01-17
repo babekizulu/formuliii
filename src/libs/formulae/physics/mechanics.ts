@@ -3,26 +3,6 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/01/15
 @TODO:
-o	Gravitational Field
-o	Gravitational Potential Energy
-o	Gravitational Potential
-o	Orbital Speed
-o	Escape Speed
-o	Hooke’s Law
-o	Spring Potential Energy
-o	Simple Harmonic Oscillator 
-o	Simple Pendulum
-o	Frequency
-o	Angular Frequency
-o	Density
-o	Pressure
-o	Pressure in a Fluid
-o	Buoyancy
-o	Mass Flow Rate
-o	Volume Flow Rate
-o	Mass Continuity
-o	Volume Continuity
-o	Bernoulli’s Equation
 o	Dynamic Viscosity
 o	Kinematic Viscosity
 o	Drag
@@ -36,7 +16,7 @@ o	Surface Tension
 
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
-- add parameter descriptions to each equation of motion
+- add a default value for all physics constants e.g gravitational constant
 */
 
 class Mechanics {
@@ -244,7 +224,7 @@ class Mechanics {
     return P.toFixed(3);
    }
    
-   //power-velocity
+   //power-velocity equation
    /*
    @param: F - force
    @param: v - velocity
@@ -254,7 +234,7 @@ class Mechanics {
     return P.toFixed(3);
    }
 
-   //angular velocity
+   //angular velocity equation
    /*
    @param: deltaTheta - change in angular rotation
    @param: deltaT - change in time
@@ -264,7 +244,7 @@ class Mechanics {
     return omega.toFixed(3);
   }
 
-  //angular acceleration
+  //angular acceleration equation
   /*
   @param: deltaOmega - change in angular velocity
   @param: deltaT - change in time
@@ -281,46 +261,28 @@ class Mechanics {
   - angularRotationEOR()
   - angularVelocitySquaredEOR()
   - averageAngularVelocityEOR()
-  */
- equationsOfRotation() {
-  return {
-    //angular velocity (equations of rotation)
-    /*
+  @params:
+    @param: omega - angular velocity
     @param: omega0 -  initial angular velocity
     @param: a - acceleration
     @param: t - time
-    */
+    @param: theta - angular rotation
+    @param: theta0 - initial angular rotation
+  */
+ equationsOfRotation() {
+  return {
     angularVelocityEOR: (omega0:number, a:number, t:number) => {
       const omega = omega0 + (a*t);
       return omega.toFixed(3);
     },
-    //angular rotation (equations of rotation)
-    /*
-    @param: theta0 - initial angular rotation
-    @param: omega0 - initial angular velocity
-    @param: t - time
-    @param: a - acceleration
-    */
     angularRotationEOR: (theta0:number, omega0:number, t:number, a:number) => {
       const theta = theta0 + (omega0*t) + (0.5* ((a*t)**2));
       return theta.toFixed(3);
     },
-    //angular velocity squared (equations of rotation)
-    /*
-    @param: omega0 - initial angular velocity
-    @param: a - acceleration
-    @param: theta - angular rotation
-    @param: theta0 - initial angular rotation
-    */
     angularVelocitySquaredEOR: (omega0:number, a:number, theta:number, theta0:number) => {
       const omegaSquared = omega0**2 + (2*a*(theta - theta0));
       return omegaSquared.toFixed(3);
     },
-    //average angular velocity (equations of rotation)
-    /*
-    @param: omega - angular velocity
-    @param: omega0 - initial angular velocity
-    */
     averageAngularVelocity(omega:number, omega0:number) {
       const avOmega = 0.5*(omega + omega0);
       return avOmega.toFixed(3);
@@ -399,7 +361,7 @@ rotationalKineticEnergy(I:number, omega:number){
   return K.toFixed(3);
 }
 
-//angular momentum
+//angular momentum equation
 /*
 @param: r - radius
 @param: p - momentum
@@ -409,7 +371,7 @@ angularMomentum(r:number, p:number) {
   return L.toFixed(3);
 }
 
-//angular impulse
+//angular impulse equation
 /*
 @param: avTau - average torque
 @param: deltaT - change in time
@@ -419,7 +381,7 @@ angularImpulse(avTau:number, deltaT:number) {
   return H.toFixed(3);
 }
 
-//angular impulse momentum
+//angular impulse momentum equation
 /*
 @param: m - mass 
 @param: deltaOmega - change in angular velocity
@@ -429,7 +391,7 @@ angularImpulseMomentum(m:number, deltaOmega:number) {
   return angIM.toFixed(3);
 }
 
-//universal gravitation
+//universal gravitation equation
 /*
 @param: G - gravitational constant
 @param: m1 - mass 1
@@ -439,6 +401,181 @@ angularImpulseMomentum(m:number, deltaOmega:number) {
 universalGravitation(G:number, m1:number, m2:number, r:number){
   const Fg = G*((m1*m2)/r**2);
   return Fg.toFixed(3);
+}
+
+//gravitational field equation
+/*
+@param: G - gravitational constant
+@param: m - mass 
+@param: r - distance between centers of the masses
+*/
+gravitationalFieldEquation(G:number, m:number, r:number) {
+  const g = -((G*m)/r**2);
+  return g.toFixed(3);
+}
+
+//gravitational potential energy equation
+/*
+@param: G - gravitational constant
+@param: m1 - mass 1
+@param: m2 - mass 2 
+@param: r - distance between centers of the masses
+*/
+gravitationalPotentialEnergy2(G:number, m1:number, m2:number, r:number) {
+  const Ug = -((G*m1*m2)/r);
+  return Ug.toFixed(3);
+}
+//gravitational potential equation
+/*
+@param: G - gravitational constant
+@param: m - mass
+@param: r - distance between centers of the masses
+*/
+gravitationalPotential(G:number, m:number, r:number) {
+  const Vg = -((G*m)/r);
+  return Vg.toFixed(3);
+}
+
+//orbital speed equation
+/*
+@param: G - gravitational constant
+@param: m - mass
+@param: r - distance between centers of the masses
+*/
+orbitalSpeedEquation(G:number, m:number, r:number) {
+  const v = Math.sqrt((G*m)/r);
+  return v.toFixed(3);
+}
+
+//escape speed equation
+/*
+@param: G - gravitational constant
+@param: m - mass
+@param: r - distance between centers of the masses
+*/
+escapeSpeed(G:number, m:number, r:number) {
+  const v = Math.sqrt((2*G*m)/r);
+  return v.toFixed(3);
+}
+//hooke's law
+/*
+@param: k - spring constant
+@param: deltaX - spring stretch or compression
+*/
+hookesLaw(k:number, deltaX:number) {
+  const Fs = -(k*deltaX);
+  return Fs.toFixed(3);
+}
+
+//spring potential energy equation
+/*
+@param: k - spring constant
+@param: deltaX - spring stretch or compression
+*/
+springPotentialEnergy(k:number, deltaX:number) {
+  const Us = 0.5*(k*(deltaX)**2);
+  return Us.toFixed(3);
+}
+
+//simple harmonic oscillator equation
+/*
+@param: m - mass
+@param: k - positive constant
+*/
+simpleHarmonicOscillator(m:number, k:number) {
+  const T = (2*Math.PI)*(Math.sqrt(m/k));
+  return T.toFixed(3);
+}
+
+//simple pendulum equation
+/*
+@param: L - pendulum length
+@param: g - acceleration due to gravity
+*/
+simplePendulum(L:number, g:number) {
+  const T = (2*Math.PI)*(Math.sqrt(L/g));
+  return T.toFixed(3);
+}
+
+//frequency equation
+/*
+@param: T - period
+*/
+frequency(T:number) {
+  const f = 1/T;
+  return f.toFixed(3);
+}
+
+//angular frequency equation
+/*
+@param: f - frequency
+*/
+angularFrequency(f:number) {
+  const omega = 2*Math.PI*f;
+  return omega.toFixed(3);
+}
+
+//density equation
+/*
+@param: m - mass
+@param: V - volume
+*/
+density(m:number, V:number) {
+  const rho = m/V;
+  return rho.toFixed(3);
+}
+
+//pressure equation
+/*
+@param: F - force
+@param: A - area
+*/
+pressure(F:number, A:number) {
+  const P = F/A;
+  return P.toFixed(3);
+}
+
+//fluid pressure equation
+/*
+@param: p0 - initial pressure
+@param: rho - density
+@param: g - acceleration due to gravity
+@param: h - fluid depth
+*/
+fluidPressure(p0:number, rho:number, g:number, h:number) {
+  const P = p0 + (rho*g*h);
+  return P.toFixed(3);
+}
+
+//buoyancy equation
+/*
+@param: rho - density
+@param: g - acceleration due to gravity
+@param: V - volume displaced
+*/
+buoyancy(rho:number, g:number, V:number) {
+  const B = rho*g*V;
+  return B.toFixed(3);
+}
+
+//mass flow rate equation
+/*
+@param: deltaM - change in mass
+@param: deltaT - change in time
+*/
+massFlowRate(deltaM:number, deltaT:number) {
+  const avqm = deltaM/deltaT;
+  return avqm.toFixed(3);
+}
+
+//volume flow rate equation
+/*
+@param: deltaVol - change in volume
+@param: deltaT - change in time
+*/
+volumeFlowRate(deltaVol:number, deltaT:number) {
+  const avqv = deltaVol/deltaT;
+  return avqv.toFixed(3);
 }
 
 }
