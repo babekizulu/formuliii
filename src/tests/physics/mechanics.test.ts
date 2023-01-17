@@ -41,6 +41,16 @@ o	Pressure in a Fluid
 o	Buoyancy
 o	Mass Flow Rate
 o	Volume Flow Rate
+o	Dynamic Viscosity
+o	Kinematic Viscosity
+o	Drag
+o	Mach Number
+o	Reynolds Number
+o	Froude Number
+o	Young’s Modulus
+o	Shear Modulus
+o	Bulk Modulus
+o	Surface Tension
 */
 const mechanics = require('../../libs/formulae/physics/mechanics.js');
 const {

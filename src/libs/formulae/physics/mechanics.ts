@@ -1,19 +1,8 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/01/15
+@Date: 2023/01/17
 @TODO:
-o	Dynamic Viscosity
-o	Kinematic Viscosity
-o	Drag
-o	Mach Number
-o	Reynolds Number
-o	Froude Number
-o	Young’s Modulus
-o	Shear Modulus
-o	Bulk Modulus
-o	Surface Tension
-
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
 - add a default value for all physics constants e.g gravitational constant
@@ -576,6 +565,113 @@ massFlowRate(deltaM:number, deltaT:number) {
 volumeFlowRate(deltaVol:number, deltaT:number) {
   const avqv = deltaVol/deltaT;
   return avqv.toFixed(3);
+}
+
+//dynamic viscosity equation
+/*
+@param: T - shearing stress
+@param: gamma - shear rate
+*/
+dynamicViscosityEquation(T:number, gamma:number) {
+  const eta = T/gamma;
+  return eta.toFixed(3);
+}
+
+//kinematic viscosity equation
+/*
+@param: eta - dynamic viscosity
+@param: rho - density
+*/
+kinematicViscosity(eta:number, rho:number) {
+  const v = eta/rho;
+  return v.toFixed(3);
+}
+
+//drag equation
+/*
+@param: rho - density of fluid
+@param: v - speed of the object relative to the fluid
+@param: Cd - drag coefficient
+@param: A - cross sectional area
+*/
+drag(rho:number, v:number, Cd:number, A:number)  {
+  const FD = 0.5*(rho*(v**2)*Cd*A);
+  return FD.toFixed(3);
+}
+
+//mach number equation
+/*
+@param: u - local flow velocity
+@param: c - speed of sound in the medium
+*/
+machNumber(u:number, c:number) {
+  const Ma = u/c;
+  return Ma.toFixed(3);
+}
+
+//reynolds number equation
+/*
+@param: rho - density
+@param: u - flow speed
+@param: L - characteristic linear dimension
+@param: eta - dynamic viscosity
+*/
+reynoldsNumber(rho:number, u:number, L:number, eta:number) {
+  const Re = (rho*u*L)/eta;
+  return Re.toFixed(3);
+}
+
+//froude number equation
+/*
+@param: u - flow speed
+@param: g - gravitational acceleration
+@param: d - depth of flow
+*/
+froudeNumber(u:number, g:number, d:number) {
+  const Fr = u/Math.sqrt(g*d);
+  return Fr.toFixed(3);
+}
+
+//young's modulus
+/*
+@param: sigma - uniaxial stress (or uniaxial force per unit surface)
+@param: epsilon - strain, or proportional deformation
+*/
+youngsModulus(sigma:number, epsilon:number) {
+  const E = sigma/epsilon;
+  return E.toFixed(3);
+}
+
+//shear modulus
+/*
+@param: tauXY - shear stress or pressure in xy direction
+@param: gammaXY - shear strain
+*/
+shearModulus(tauXY:number, gammaXY:number) {
+  const G = tauXY/gammaXY;
+  return G.toFixed(3);
+}
+
+//bulk modulus
+/*
+@param: V - initial volume of the substance
+@param: P - pressure
+@param: deltaVol - change in volume
+@param: deltaPr - change in pressure
+*/
+bulkModulus(V:number, P:number, deltaVol:number, deltaPr:number) {
+  const k = -(V*(deltaPr/deltaVol));
+  return k.toFixed(3);
+}
+
+//surface tension equation
+/*
+@param: F - force
+@param: L - length
+*/
+surfaceTension(F:number, L:number) {
+  const gamma = 0.5*(F/L);
+  return gamma.toFixed(3);
 }
 
 }
