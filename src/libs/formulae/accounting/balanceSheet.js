@@ -24,7 +24,7 @@ var BalanceSheet = /** @class */ (function () {
     */
     BalanceSheet.prototype.currentAssets = function (c, a, i, p) {
         var ca = c + a + i + p;
-        return ca.toFixed(3);
+        return ca.toFixed(2);
     };
     //current debt
     /*

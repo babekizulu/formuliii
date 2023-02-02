@@ -63,7 +63,7 @@ var CashFlowStatement = /** @class */ (function () {
             */
             cashTaxes: function (it, deltaADT) {
                 var ct = it - deltaADT;
-                ct.toFixed(2);
+                return ct.toFixed(2);
             },
             //change in net operating working capital
             /*

@@ -23,7 +23,7 @@ class BalanceSheet {
     */
    currentAssets(c:number, a:number, i:number, p:number) {
     const ca = c + a + i + p;
-    return ca.toFixed(3);
+    return ca.toFixed(2);
    }
     //current debt
     /*

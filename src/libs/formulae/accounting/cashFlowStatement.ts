@@ -61,7 +61,7 @@ class CashFlowStatement {
             */
             cashTaxes: (it:number, deltaADT:number) => {
                 const ct = it - deltaADT;
-                ct.toFixed(2);
+                return ct.toFixed(2);
             },
             //change in net operating working capital
             /*
