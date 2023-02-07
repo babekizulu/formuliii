@@ -1,7 +1,7 @@
 /*
  * @Author: Lwandle Babekizulu Dlamini
  * @Desc: A library of economics depreciation formulae
- * @Date: 2022/01/17
+ * @Date: 2022/02/07
  */
 var Depreciation = /** @class */ (function () {
     function Depreciation() {
@@ -14,40 +14,39 @@ var Depreciation = /** @class */ (function () {
     //double-declining balance depreciation formula
     Depreciation.prototype.ddb = function (lifespan, startingBookValue, salvageValue) {
         //solve for ddb rate
-        var ddbRate = 1 / (lifespan * 2);
+        var ddbRate = (1 / (lifespan * 2));
+        ddbRate.toFixed(2);
         //solve for current year depreciation
-        var cyd = startingBookValue * ddbRate;
+        var cyd = (startingBookValue * ddbRate);
+        cyd.toFixed(2);
         //solve for end book value
-        var ebv = startingBookValue - cyd;
-        //set end book value to start book value of new period
-        var sbv = ebv;
+        var ebv = (startingBookValue - cyd);
+        ebv.toFixed(2);
         //solve for final year depreciation
-        var fyd = sbv - salvageValue;
-        //return ddbRate, cyd, ebv, sbv & fyd
-        return [
-            ddbRate,
-            cyd,
-            ebv,
-            sbv,
-            fyd,
-        ];
+        var fyd = (ebv - salvageValue);
+        //return fyd
+        return fyd.toFixed(2);
     };
     //units of production depreciation formula
     Depreciation.prototype.up = function (costBasisOfAsset, salvageValue, estimatedTotalUnitsToBeProducedOverLifespan, actualUnitsProduced) {
         //solve for units of production rate
         var upRate = (costBasisOfAsset - salvageValue) /
             estimatedTotalUnitsToBeProducedOverLifespan;
+        upRate.toFixed(2);
         var d = upRate * actualUnitsProduced;
         return d.toFixed(2);
     };
     //sum of years digits depreciation formula
     Depreciation.prototype.syd = function (lifespan, cost, salvageValue) {
+        if (lifespan === void 0) { lifespan = 0; }
+        if (cost === void 0) { cost = 0; }
+        if (salvageValue === void 0) { salvageValue = 0; }
         //solve for some of years
         // - Add the number of each year of the lifespan
         // e.g 5 years = 5 + 4 + 3 + 2 + 1, which equals 15
         var sumOfYears = 0;
         for (var i = 0; i < lifespan; i++) {
-            sumOfYears += i;
+            sumOfYears += lifespan - i;
         }
         //solve for depreciable amount
         var depreciableAmount = cost - salvageValue;
@@ -57,5 +56,4 @@ var Depreciation = /** @class */ (function () {
     };
     return Depreciation;
 }());
-//methods: sl, ddb, up, syd
 module.exports = Depreciation;
