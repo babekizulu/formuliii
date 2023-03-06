@@ -2,7 +2,7 @@
 import React from 'react';
 //components
 import Link from '../../../Link';
-import BackBtn from '../../../BackBtn';
+import BackBtn from '../../../buttons/BackBtn';
 
 const Financial = () => {
   <div className='menu'>
