@@ -105,6 +105,28 @@ import Weight from './physics/mechanics/calculators/Weight';
 import Work from './physics/mechanics/calculators/Work';
 import WorkEnergy from './physics/mechanics/calculators/WorkEnergy';
 import YoungsModulus from './physics/mechanics/calculators/YoungsModulus';
+//economics sets
+import Depreciation from './economics/depreciation/Depreciation';
+import GDP from './economics/gdp/GDP';
+import Interest from './economics/interest/Interest';
+import Ratios from './economics/ratios/Ratios';
+//economics: depreciation calculators
+import DoubleDecliningBalance from './economics/depreciation/calculators/DoubleDecliningBalance';
+import StraightLine from './economics/depreciation/calculators/StraightLine';
+import SumOfYearsDigits from './economics/depreciation/calculators/SumOfYearsDigits';
+import UnitsOfProduction from './economics/depreciation/calculators/UnitsOfProduction';
+//economics: gdp calculators
+import Deflator from './economics/gdp/calculators/Deflator';
+import ExpenditureApproach from './economics/gdp/calculators/ExpenditureApproach';
+import IncomeApproach from './economics/gdp/calculators/IncomeApproach';
+import NetExports from './economics/gdp/calculators/NetExports';
+import RealGDP from './economics/gdp/calculators/RealGDP';
+//economics: interest calculators
+import CompoundInterest from './economics/interest/calculators/CompoundInterest';
+import SimpleInterest from './economics/interest/calculators/SimpleInterest';
+//economics: ratios calculators
+import CAGDPRatio from './economics/ratios/calculators/CAGDPRatio';
+import GDGDPRatio from './economics/ratios/calculators/GDGDPRatio';
 const App = () => {
   return (
     <div className='app-container'>
@@ -392,8 +414,64 @@ const App = () => {
       <Route path='/physics/mechanics/work-energy'>
         <WorkEnergy />
       </Route>
-      <Route path='/physis/mechanics/youngs-modulus'>
+      <Route path='/physics/mechanics/youngs-modulus'>
         <YoungsModulus />
+      </Route>
+      {/* ECONOMICS SETS */}
+      <Route path='/economics/depreciation'>
+        <Depreciation />
+      </Route>
+      <Route path='/economics/gdp'>
+        <GDP />
+      </Route>
+      <Route path='/economics/interest'>
+        <Interest />
+      </Route>
+      <Route path='/economics/ratios'>
+        <Ratios />
+      </Route>
+      {/* ECONOMICS: Depreciation Calculators */}
+      <Route path='/economics/depreciation/double-declining-balance'>
+        <DoubleDecliningBalance />
+      </Route>
+      <Route path='/economics/depreciation/straight-line'>
+        <StraightLine />
+      </Route>
+      <Route path='/economics/depreciation/sum-of-years-digits'>
+        <SumOfYearsDigits />
+      </Route>
+      <Route path='/economics/depreciation/units-of-production'>
+        <UnitsOfProduction />
+      </Route>
+      {/* ECONOMICS: GDP Calculators */}
+      <Route path='/economics/gdp/deflator'>
+        <Deflator />
+      </Route>
+      <Route path='/economics/gdp/expenditure-approach'>
+        <ExpenditureApproach />
+      </Route>
+      <Route path='/economics/gdp/income-approach'>
+        <IncomeApproach />
+      </Route>
+      <Route path='/economics/gdp/net-exports'>
+        <NetExports />
+      </Route>
+      <Route path='/economics/gdp/real-gdp'>
+        <RealGDP />
+      </Route>
+      {/* ECONOMICS: Interest Calculators */}
+      <Route path='/economics/interest/compound'>
+        <CompoundInterest />
+      </Route>
+      <Route path='/economics/interest/simple'>
+        <SimpleInterest />
+      </Route>
+      {/* ECONOMICS: Ratio Calculators */}
+      <Route path='/economics/ratios/current-account-to-gdp'>
+        <CAGDPRatio />
+      </Route>
+      <Route path='/economics/ratios/government-debt-to-gdp'>
+        <GDGDPRatio />
       </Route>
     </div>
   );
