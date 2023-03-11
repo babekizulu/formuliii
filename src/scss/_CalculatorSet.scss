@@ -1,0 +1,30 @@
+@import 'utils';
+.menu {
+    @include wh100;
+    @include centerFlex;
+    position: relative;
+    top: 90px;
+}
+
+.menu-grid {
+    @include grid1;
+    margin-top: 18px;
+}
+
+.menu-item {
+    text-decoration: none;
+    border: 4px solid $dark;
+    border-radius: 8px;
+    color: $dark;
+    font-family: $js;
+    font-size: 1.4rem;
+    padding: 18px;
+    margin-top: 18px;
+    background: none;
+    transition: $eio;
+    &:hover {
+        background: $dark;
+        color: #fff;
+        transition: $eio;
+    }
+}

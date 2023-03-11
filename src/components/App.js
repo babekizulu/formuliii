@@ -1,5 +1,7 @@
 //libs
 import React from 'react';
+//styling
+import '../scss/App.scss';
 //component
 import Header from './Header';
 import Explorer from './Explorer';
@@ -7,7 +9,6 @@ import Route from './Route';
 //calculator sets
 import Economics from './economics/Economics';
 import Physics from './physics/Physics';
-import Mathematics from './mathematics/Mathematics';
 import Accounting from './accounting/Accounting';
 //accounting sets
 import BalanceSheet from './accounting/balanceSheet/BalanceSheet';
@@ -51,13 +52,13 @@ import NetForce from './physics/mechanics/netForce/NetForce';
 import NetTorque from './physics/mechanics/netTorque/NetTorque';
 import Rotation from './physics/mechanics/rotation/Rotation';
 //physics: mechanics calculators
-import Acceleration from './physics/mechanics/calculators/acceleration';
-import AngularAcceleration from './physics/mechanics/calculators/angular-acceleration';
-import AngularFrequency from './physics/mechanics/calculators/angular-frequency';
-import AngularImpulse from './physics/mechanics/calculators/angular-impulse';
-import AngularImpulseMomentum from './physics/mechanics/calculators/angular-impulse-momentum';
-import AngularMomentum from './physics/mechanics/calculators/angular-momentum';
-import AngularVelocity from './physics/mechanics/calculators/angular-velocity';
+import Acceleration from './physics/mechanics/calculators/Acceleration';
+import AngularAcceleration from './physics/mechanics/calculators/AngularAcceleration';
+import AngularFrequency from './physics/mechanics/calculators/AngularFrequency';
+import AngularImpulse from './physics/mechanics/calculators/AngularImpulse';
+import AngularImpulseMomentum from './physics/mechanics/calculators/AngularImpulseMomentum';
+import AngularMomentum from './physics/mechanics/calculators/AngularMomentum';
+import AngularVelocity from './physics/mechanics/calculators/AngularVelocity';
 import BulkModulus from './physics/mechanics/calculators/BulkModulus';
 import Buoyancy from './physics/mechanics/calculators/Buoyancy';
 import CentripetalAcceleration from './physics/mechanics/calculators/CentripetalAcceleration';
@@ -140,9 +141,6 @@ const App = () => {
       </Route>
       <Route path='/physics'>
         <Physics />
-      </Route>
-      <Route path='/mathematics'>
-        <Mathematics />
       </Route>
       <Route path='/accounting'>
         <Accounting />

@@ -12,7 +12,7 @@ const Mechanics = () => {
         <Link href='/physics/mechanics/velocity' className='menu-item'>
           Velocity Calculator
         </Link>
-        <Link href='/physics/mechanics/acceleration'>
+        <Link href='/physics/mechanics/acceleration' className='menu-item'>
           Acceleration Calculator
         </Link>
         <Link href='/physics/mechanics/motion' className='menu-item'>
