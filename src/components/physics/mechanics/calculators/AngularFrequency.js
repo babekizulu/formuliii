@@ -13,36 +13,33 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularFrequency = () => {
   //state management
-  const [x, y] = useState('');
-  const [changeInTime, setChangeInTime] = useState('');
+  const [x, setX] = useState('');
+  const [y, setY] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = 'angular-acceleration';
-  const variableName1 = 'Change in Angular Velocity';
-  const variableName2 = 'Change in Time';
-  const um1 = 'm/s';
-  const um2 = 's';
-  const solutionUM = 'm/s^2';
+  const formula = '';
+  const variableName1 = '';
+  const variableName2 = '';
+  const um1 = '';
+  const um2 = '';
+  const solutionUM = '';
   const type = 'scientific';
   //handlers
   const onChange = (variableName, value) => {
     if (variableName === variableName1) {
-      setChangeInAngularVelocity(value);
+      setX(value);
     }
     if (variableName === variableName2) {
-      setChangeInTime(value);
+      setY(value);
     }
   };
   const onAC = () => {
-    setChangeInAngularVelocity('');
-    setChangeInTime('');
+    setX('');
+    setY('');
     setSolution(0);
   };
   const onSolve = () => {
-    const solution = new mechanics().angularAcceleration(
-      changeInAngularVelocity,
-      changeInTime,
-    );
+    const solution = new mechanics();
     setSolution(solution);
   };
   return (

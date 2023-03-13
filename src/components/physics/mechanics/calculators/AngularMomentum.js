@@ -12,6 +12,36 @@ import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularMomentum = () => {
+  //state management
+  const [x, setX] = useState('');
+  const [y, setY] = useState('');
+  const [solution, setSolution] = useState(0);
+  //variables
+  const formula = '';
+  const variableName1 = '';
+  const variableName2 = '';
+  const um1 = '';
+  const um2 = '';
+  const solutionUM = '';
+  const type = 'scientific';
+  //handlers
+  const onChange = (variableName, value) => {
+    if (variableName === variableName1) {
+      setX(value);
+    }
+    if (variableName === variableName2) {
+      setY(value);
+    }
+  };
+  const onAC = () => {
+    setX('');
+    setY('');
+    setSolution(0);
+  };
+  const onSolve = () => {
+    const solution = new mechanics();
+    setSolution(solution);
+  };
   return (
     <div className='calculator'>
       <BackBtn />
