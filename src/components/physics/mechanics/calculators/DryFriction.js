@@ -11,7 +11,21 @@ import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 
 const DryFriction = () => {
-  return <div className='calculator'>Dry Friction</div>;
+  return (
+    <div className='calculator'>
+      <BackBtn />
+      <div className='go-to-bar'>
+        <GoToInfo />
+        <GoToGraph />
+        <GoToNumeric />
+      </div>
+      <Solution />
+      <Input />
+      <Input />
+      <ACBtn />
+      <SolveBtn />
+    </div>
+  );
 };
 
 export default DryFriction;

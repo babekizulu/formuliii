@@ -10,7 +10,21 @@ import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 const Momentum = () => {
-  return <div className='calculator'>Momentum Calculator</div>;
+  return (
+    <div className='calculator'>
+      <BackBtn />
+      <div className='go-to-bar'>
+        <GoToInfo />
+        <GoToGraph />
+        <GoToNumeric />
+      </div>
+      <Solution />
+      <Input />
+      <Input />
+      <ACBtn />
+      <SolveBtn />
+    </div>
+  );
 };
 
 export default Momentum;

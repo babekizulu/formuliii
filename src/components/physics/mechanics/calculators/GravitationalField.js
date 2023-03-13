@@ -11,7 +11,21 @@ import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 
 const GravitationalField = () => {
-  return <div className='calculator'>Gravitational Field Calculator</div>;
+  return (
+    <div className='calculator'>
+      <BackBtn />
+      <div className='go-to-bar'>
+        <GoToInfo />
+        <GoToGraph />
+        <GoToNumeric />
+      </div>
+      <Solution />
+      <Input />
+      <Input />
+      <ACBtn />
+      <SolveBtn />
+    </div>
+  );
 };
 
 export default GravitationalField;

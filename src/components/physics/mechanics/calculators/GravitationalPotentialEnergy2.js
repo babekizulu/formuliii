@@ -13,7 +13,17 @@ import SolveBtn from '../../../buttons/SolveBtn';
 const GravitationalPotentialEnergy2 = () => {
   return (
     <div className='calculator'>
-      Gravitational Potential Energy Calculator 2
+      <BackBtn />
+      <div className='go-to-bar'>
+        <GoToInfo />
+        <GoToGraph />
+        <GoToNumeric />
+      </div>
+      <Solution />
+      <Input />
+      <Input />
+      <ACBtn />
+      <SolveBtn />
     </div>
   );
 };
