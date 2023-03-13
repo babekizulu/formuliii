@@ -1,10 +1,12 @@
 //libs
 import React from 'react';
 
-const ACBtn = () => {
+const ACBtn = ({ onAC }) => {
   return (
     <div className='btn-container'>
-      <button className='btn'>AC</button>
+      <button className='btn' onClick={() => onAC()}>
+        AC
+      </button>
     </div>
   );
 };
