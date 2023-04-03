@@ -1,0 +1,26 @@
+@import 'utils';
+.calc-set {
+    @include wh100;
+    @include grid1;
+    position: relative;
+    top: 99px;
+}
+
+.calc-set-item {
+    @include centerFlex;
+    width: 400px;
+    border: 3px solid $light;
+    border-radius: 0px;
+    font-family: $rob;
+    color: $light;
+    margin: 20px auto;
+    padding: 20px;
+    cursor: pointer;
+    transition: $eio;
+    &:hover {
+        border: 3px solid $dark;
+        border-radius: 8px;
+        color: $dark;
+        transition: $eio;
+    }
+}

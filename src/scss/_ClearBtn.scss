@@ -1,0 +1,20 @@
+@import 'utils';
+.clear-btn-container {
+    @include centerFlex;
+    button {
+        width: 400px;
+        border: none;
+        padding: 9px 20px;
+        margin-bottom: 10px;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #fff;
+        background: $dark;
+        cursor: pointer;
+        transition: $eio;
+        &:hover {
+            background: $dark-active;
+            transition: $eio;
+        }
+    }
+}

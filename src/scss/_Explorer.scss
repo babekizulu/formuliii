@@ -1,0 +1,31 @@
+@import 'utils';
+.explorer {
+    @include wh100;
+    @include grid1;
+    margin: auto;
+    position: relative;
+    top: 60px;
+}
+
+.explorer-item {
+    @include centerFlex;
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: $light;
+    border: 3px solid $light;
+    border-radius: 0px;
+    transition: $eio;
+    cursor: pointer;
+    &:hover {
+        color: $dark;
+        border: 3px solid $dark;
+        border-radius: 8px;
+        transition: $eio;
+    }
+}
+
+a {
+    text-decoration: none;
+}

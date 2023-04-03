@@ -1,0 +1,161 @@
+@import 'utils';
+@media screen and (max-width: 414px) {
+    .explorer {
+        top: 120px;
+    }
+    .calc-set {
+        top: 120px;
+    }
+    .explorer-item {
+        width: 250px;
+    }
+    .calc-set-item {
+        width: 250px;
+    }
+    .back-btn-container {
+        display: none;
+    }
+    .input-container {
+        label {
+            width: 300px;
+        }
+        input {
+            width: 300px;
+        }
+    }
+    .solve-btn-container {
+        button {
+            width: 300px;
+        }
+    }
+    .clear-btn-container {
+        button {
+            width: 300px;
+        }
+    }
+    .currency-selector-container {
+        @include centerFlex;
+        left: 50%;
+        margin: auto;
+    }
+    .input-container {
+        input::placeholder {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media screen and (max-width: 412px) {
+    .explorer {
+        top: 120px;
+    }
+    .calc-set {
+        top: 120px;
+    }
+    .explorer-item {
+        width: 250px;
+    }
+    .calc-set-item {
+        width: 250px;
+    }
+    .input-container {
+        label {
+            width: 300px;
+        }
+        input {
+            width: 300px;
+        }
+    }
+    .solve-btn-container {
+        button {
+            width: 300px;
+        }
+    }
+    .clear-btn-container {
+        button {
+            width: 300px;
+        }
+    }
+    .currency-selector-container {
+        left: 54%;
+    }
+    .input-container {
+        input::placeholder {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .solution-display {
+        width: 80px;
+    }
+    .input-container {
+        label {
+            width: 250px;
+        }
+        input {
+            width: 250px;
+        }
+    }
+    .currency-selector-container {
+        select {
+            width: 140px;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .input-container {
+        label {
+            width: 250px;
+        }
+        input {
+            width: 250px;
+        }
+    }
+    .currency-selector-container {
+        select {
+            width: 140px;
+        }
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .explorer {
+        top: 120px;
+    }
+    .calc-set {
+        top: 120px;
+    }
+    .explorer-item {
+        width: 180px;
+    }
+    .calc-set-item {
+        width: 180px;
+    }
+    .currency-selector-container {
+        left: 54%;
+        select {
+            width: 120px;
+        }
+    }
+    .input-container {
+        label {
+            width: 200px;
+        }
+        input {
+            width: 200px;
+        }
+    }
+    .solve-btn-container {
+        button {
+            width: 200px;
+        }
+    }
+    .clear-btn-container {
+        button {
+            width: 200px;
+        }
+    }
+}

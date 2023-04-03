@@ -1,0 +1,33 @@
+@import 'utils';
+.searchbar-container {
+    @include centerFlex;
+    flex-direction: column;
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    z-index: 2;
+    margin: 30px auto;
+}
+
+.search-bar {
+    @include centerFlex;
+    width: 340px;
+    padding: 20px;
+    font-family: $rob;
+    font-size: 1.4rem;
+    border: 3px solid $dark;
+    border-radius: 8px;
+    &::placeholder {
+        @include centerFlex;
+        font-size: 1rem;
+    }
+}
+
+.search-btn {
+    background: $dark;
+    padding: 8px 20px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 600;
+}

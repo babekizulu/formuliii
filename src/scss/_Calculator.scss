@@ -1,0 +1,43 @@
+@import 'utils';
+.calculator-container {
+    @include grid1;
+    position: relative;
+    top: 60px;
+}
+
+.currency-selector-container {
+    @include centerFlex;
+    margin: auto;
+}
+
+.calculator {
+    @include grid1;
+    margin: auto;
+}
+
+.input-container {
+    @include grid1;
+    label {
+        @include centerFlex;
+        font-family: sans-serif;
+        font-size: 1.4rem;
+        font-weight: 600;
+        max-width: 400px;
+        margin: auto;
+    }
+    input {
+        @include centerFlex;
+        width: 400px;
+        border: 3px solid $light;
+        padding: 10px 20px;
+        margin: 20px;
+        font-family: $rob;
+        font-size: 1.4rem;
+        border-radius: 9px;
+        transition: $eio;
+        &:hover {
+            border: 3px solid $dark;
+            transition: $eio;
+        }
+    }
+}

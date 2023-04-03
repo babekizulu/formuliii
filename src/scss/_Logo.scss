@@ -1,0 +1,14 @@
+@import 'utils';
+.logo-container {
+    @include centerFlex;
+    margin: auto;
+    height: 70px;
+}
+
+.formuliiiText {
+    transition: $eio;
+    &:hover {
+        color: $light-active;
+        transition: $eio;
+    }
+}
