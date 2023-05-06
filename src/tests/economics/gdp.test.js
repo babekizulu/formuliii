@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
-@Desc: testing library gdp formulae
+@Author: Lwandle Babekizulu Dlamini
+@Desc: testing library for gdp formulae
 @Date: 2023/02/07
 */

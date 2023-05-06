@@ -1,0 +1,24 @@
+@import 'utils';
+.input-container {
+    @include grid1;
+    label {
+        @include centerFlex;
+        font-family: $arc;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 3px 0;
+    }
+    input {
+        @include centerFlex;
+        width: 100%;
+        height: 50px;
+        border: 2px solid $light;
+        border-radius: 12px;
+        color: $dark;
+        font-size: 1rem;
+        margin: 9px 0;
+        &:active {
+            border: 2px solid $dark;
+        }
+    }
+}

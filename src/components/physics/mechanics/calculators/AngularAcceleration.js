@@ -13,32 +13,49 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularAcceleration = () => {
   //state management
-  const [changeInAngularVelocity, setChangeInAngularVelocity] = useState('');
-  const [changeInTime, setChangeInTime] = useState('');
+  const [initialAngularVelocity, setInitialAngularVelocity] = useState('');
+  const [finalAngularVelocity, setFinalAngularVelocity] = useState('');
+  const [initialTime, setInitialTime] = useState('');
+  const [finalTime, setFinalTime] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   const formula = 'angular-acceleration';
-  const variableName1 = 'Change in Angular Velocity';
-  const variableName2 = 'Change in Time';
-  const um1 = 'm/s';
-  const um2 = 's';
-  const solutionUM = 'm/s^2';
+  const variableName1 = 'Initial Angular Velocity';
+  const variableName2 = 'Final Angular Velocity';
+  const variableName3 = 'Initial Time';
+  const variableName4 = 'Final Time';
+  const um1 = 'rad/s';
+  const um2 = 'rad/s';
+  const um3 = 's';
+  const um4 = 's';
+  const solutionUM = 'rad/s²';
   const type = 'scientific';
   //handlers
   const onChange = (variableName, value) => {
     if (variableName === variableName1) {
-      setChangeInAngularVelocity(value);
+      initialAngularVelocity(value);
     }
     if (variableName === variableName2) {
-      setChangeInTime(value);
+      setFinalAngularVelocity(value);
+    }
+    if (variableName === variableName3) {
+      setInitialTime(value);
+    }
+    if (variableName === variableName4) {
+      setFinalTime(value);
     }
   };
   const onAC = () => {
-    setChangeInAngularVelocity('');
-    setChangeInTime('');
+    setInitialAngularVelocity('');
+    setFinalAngularVelocity('');
+    setInitialTime('');
+    setFinalTime('');
     setSolution(0);
   };
   const onSolve = () => {
+    const changeInAngularVelocity =
+      initialAngularVelocity - finalAngularVelocity;
+    const changeInTime = initialTime - finalTime;
     const solution = new mechanics().angularAcceleration(
       changeInAngularVelocity,
       changeInTime,
@@ -55,17 +72,31 @@ const AngularAcceleration = () => {
       </div>
       <Solution solution={solution} solutionUM={solutionUM} />
       <Input
-        value={changeInAngularVelocity}
+        value={initialAngularVelocity}
         onChange={onChange}
         um={um1}
         name={variableName1}
         type={type}
       />
       <Input
-        value={changeInTime}
+        value={finalAngularVelocity}
         onChange={onChange}
         um={um2}
         name={variableName2}
+        type={type}
+      />
+      <Input
+        value={initialTime}
+        onChange={onChange}
+        um={um3}
+        name={variableName3}
+        type={type}
+      />
+      <Input
+        value={finalTime}
+        onChange={onChange}
+        um={um4}
+        name={variableName4}
         type={type}
       />
       <ACBtn onAC={onAC} />

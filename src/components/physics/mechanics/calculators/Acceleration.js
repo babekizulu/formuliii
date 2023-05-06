@@ -13,31 +13,47 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const Acceleration = () => {
   //state management
-  const [changeInVelocity, setChangeInVelocity] = useState('');
-  const [changeInTime, setChangeInTime] = useState('');
+  const [initialVelocity, setInitialVelocity] = useState('');
+  const [finalVelocity, setFinalVelocity] = useState('');
+  const [initialTime, setInitialTime] = useState('');
+  const [finalTime, setFinalTime] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   const formula = 'acceleration';
-  const variableName1 = 'Change in Velocity';
-  const variableName2 = 'Change in Time';
+  const variableName1 = 'Initial Velocity';
+  const variableName2 = 'Final Velocity';
+  const variableName3 = 'Initial Time';
+  const variableName4 = 'Final Time';
   const um1 = 'm/s';
-  const um2 = 's';
-  const solutionUM = 'm/s^2';
+  const um2 = 'm/s';
+  const um3 = 's';
+  const um4 = 's';
+  const solutionUM = 'm/s²';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setChangeInVelocity(value);
+      setInitialVelocity(value);
     }
     if (variableName === variableName2) {
-      setChangeInTime(value);
+      setFinalVelocity(value);
+    }
+    if (variableName === variableName3) {
+      setInitialTime(value);
+    }
+    if (variableName === variableName4) {
+      setFinalTime(value);
     }
   };
-  const onAC = () => {
-    setChangeInVelocity('');
-    setChangeInTime('');
+  const onACHandler = () => {
+    setInitialVelocity('');
+    setFinalVelocity('');
+    setInitialTime('');
+    setFinalTime('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
+    const changeInVelocity = finalVelocity - initialVelocity;
+    const changeInTime = finalTime - initialTime;
     const solution = new mechanics().acceleration(
       changeInVelocity,
       changeInTime,
@@ -50,25 +66,38 @@ const Acceleration = () => {
       <div className='go-to-bar'>
         <GoToInfo formula={formula} />
         <GoToGraph formula={formula} />
-        <GoToNumeric />
       </div>
       <Solution solution={solution} solutionUM={solutionUM} />
       <Input
-        value={changeInVelocity}
-        onChange={onChange}
+        stateValue={initialVelocity}
+        onChangeHandler={onChangeHandler}
         um={um1}
         name={variableName1}
         type='scientific'
       />
       <Input
-        value={changeInTime}
-        onChange={onChange}
+        stateValue={finalVelocity}
+        onChangeHandler={onChangeHandler}
         um={um2}
         name={variableName2}
         type='scientific'
       />
-      <ACBtn onAC={onAC} />
-      <SolveBtn onSolve={onSolve} />
+      <Input
+        stateValue={initialTime}
+        onChangeHandler={onChangeHandler}
+        um={um3}
+        name={variableName3}
+        type='scientific'
+      />
+      <Input
+        stateValue={finalTime}
+        onChangeHandler={onChangeHandler}
+        um={um4}
+        name={variableName4}
+        type='scientific'
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

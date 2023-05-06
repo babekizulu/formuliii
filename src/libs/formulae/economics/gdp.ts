@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
+@Author: Lwandle Babekizulu Dlamini
 @Desc: A library of GDP formulae
 @Date: 2023/01/22
 */

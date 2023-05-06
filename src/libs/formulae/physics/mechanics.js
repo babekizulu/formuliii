@@ -1,11 +1,12 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/01/17
+@Date: 2023/05/06
 @TODO:
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
 - add a default value for all physics constants e.g gravitational constant
+- double check bulk modulus equation
 */
 var Mechanics = /** @class */ (function () {
     function Mechanics() {
@@ -52,8 +53,7 @@ var Mechanics = /** @class */ (function () {
                 return d.toFixed(3);
             },
             velocitySquared: function (v0, a, d, d0) {
-                var sqrtV = Math.sqrt(Math.pow(v0, 2) + 2 * a * (d - d0));
-                var vSquared = Math.pow(sqrtV, 2);
+                var vSquared = Math.pow(v0, 2) + 2 * a * (d - d0);
                 return vSquared.toFixed(3);
             },
             averageVelocity: function (v0, v) {
@@ -157,7 +157,7 @@ var Mechanics = /** @class */ (function () {
     @param: v - velocity
      */
     Mechanics.prototype.kineticEnergy = function (m, v) {
-        var K = 0.5 * (m * Math.pow(v, 2));
+        var K = 0.5 * (m * (Math.pow(v, 2)));
         return K.toFixed(3);
     };
     //general potential energy equation
@@ -601,12 +601,11 @@ var Mechanics = /** @class */ (function () {
     //bulk modulus
     /*
     @param: V - initial volume of the substance
-    @param: P - pressure
-    @param: deltaVol - change in volume
-    @param: deltaPr - change in pressure
+    @param: deltaV - change in volume
+    @param: deltaP - change in pressure
     */
-    Mechanics.prototype.bulkModulus = function (V, P, deltaVol, deltaPr) {
-        var k = -(V * (deltaPr / deltaVol));
+    Mechanics.prototype.bulkModulus = function (V0, deltaV, deltaP) {
+        var k = -(V0 * (deltaP / deltaV));
         return k.toFixed(3);
     };
     //surface tension equation

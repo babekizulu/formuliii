@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
+@Author: Lwandle Babekizulu Dlamini
 @Desc: testing library depreciation formulae
 @Date: 2023/02/07
 */

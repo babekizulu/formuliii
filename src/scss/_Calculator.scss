@@ -1,0 +1,11 @@
+@import 'utils';
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    top: 90px;
+    height: 100%;
+    width: 700px;
+    margin: auto;
+    font: $robmon;
+}

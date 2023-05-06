@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
+@Author: Lwandle Babekizulu Dlamini
 @Desc: testing library for cash flow statement formulae
 @Date: 2023/02/02
 */

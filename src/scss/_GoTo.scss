@@ -1,0 +1,12 @@
+@import 'utils';
+.go-to-bar {
+    @include grid3;
+    margin: 18px;
+}
+
+.info-btn {
+    border: 4px solid $dark;
+    background: none;
+    padding: 9px;
+    margin: 9px;
+}

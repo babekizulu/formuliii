@@ -1,5 +1,5 @@
 //libs
-import React from 'react';
+import React, { useState } from 'react';
 import mechanics from '../../../../libs/formulae/physics/mechanics';
 //components
 import BackBtn from '../../../buttons/BackBtn';
@@ -13,7 +13,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const Velocity = () => {
   //state management
-  const [x, setX] = useState('');
+  const [changeInPosition, setX] = useState('');
   const [y, setY] = useState('');
   const [solution, setSolution] = useState(0);
   //variables

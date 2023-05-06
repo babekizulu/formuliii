@@ -1,10 +1,10 @@
 //libs
 import React from 'react';
 
-const SolveBtn = ({ onSolve }) => {
+const SolveBtn = ({ onSolveHandler }) => {
   return (
-    <div className='btn-container'>
-      <button className='btn' onClick={() => onSolve()}>
+    <div className='solve-btn-container'>
+      <button className='solve-btn' onClick={() => onSolveHandler()}>
         =
       </button>
     </div>

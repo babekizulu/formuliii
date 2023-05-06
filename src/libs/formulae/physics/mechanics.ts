@@ -1,11 +1,12 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/01/17
+@Date: 2023/05/06
 @TODO:
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
 - add a default value for all physics constants e.g gravitational constant
+- double check bulk modulus equation
 */
 
 class Mechanics {
@@ -53,8 +54,7 @@ class Mechanics {
           return d.toFixed(3);
         },
         velocitySquared: function (v0:number, a:number, d:number, d0:number) {
-          const sqrtV = Math.sqrt(v0 ** 2 + 2 * a * (d - d0));
-          const vSquared = sqrtV ** 2;
+          const vSquared = v0 ** 2 + 2 * a * (d - d0);
           return vSquared.toFixed(3);
         },
         averageVelocity: function (v0:number, v:number) {
@@ -168,7 +168,7 @@ class Mechanics {
     @param: v - velocity
      */
     kineticEnergy(m:number, v:number) {
-      const K = 0.5 * (m * v ** 2);
+      const K = 0.5 * (m * (v ** 2));
       return K.toFixed(3);
     }
   
@@ -655,12 +655,11 @@ shearModulus(tauXY:number, gammaXY:number) {
 //bulk modulus
 /*
 @param: V - initial volume of the substance
-@param: P - pressure
-@param: deltaVol - change in volume
-@param: deltaPr - change in pressure
+@param: deltaV - change in volume
+@param: deltaP - change in pressure
 */
-bulkModulus(V:number, P:number, deltaVol:number, deltaPr:number) {
-  const k = -(V*(deltaPr/deltaVol));
+bulkModulus(V0:number, deltaV:number, deltaP:number) {
+  const k = -(V0*(deltaP/deltaV));
   return k.toFixed(3);
 }
 

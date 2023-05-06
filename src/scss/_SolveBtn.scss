@@ -1,0 +1,22 @@
+@import 'utils';
+.solve-btn-container {
+    @include centerFlex;
+}
+
+.solve-btn {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    background: $dark;
+    padding: 12px 12px;
+    margin: 9px 0;
+    cursor: pointer;
+    transition: $eio;
+    &:hover {
+        background: $dark-active;
+        transition: $eio;
+    }
+}

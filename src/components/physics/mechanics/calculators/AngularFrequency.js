@@ -13,41 +13,34 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularFrequency = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [frequency, setFrequency] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const formula = 'angular-frequency';
+  const variableName1 = 'Frequency';
+  const um1 = 'Hz';
+  const solutionUM = 'rad/s';
   const type = 'scientific';
   //handlers
   const onChange = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
-    }
-    if (variableName === variableName2) {
-      setY(value);
+      setFrequency(value);
     }
   };
   const onAC = () => {
-    setX('');
-    setY('');
+    setFrequency('');
     setSolution(0);
   };
   const onSolve = () => {
-    const solution = new mechanics();
+    const solution = new mechanics().angularFrequency(frequency);
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       <div className='go-to-bar'>
-        <GoToInfo />
-        <GoToGraph />
+        <GoToInfo formula={formula} />
+        <GoToGraph formula={formula} />
         <GoToNumeric />
       </div>
       <Solution />

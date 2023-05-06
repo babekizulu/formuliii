@@ -13,48 +13,60 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularImpulse = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [averageTorque, setAverageTorque] = useState('');
+  const [initialTime, setInitialTime] = useState('');
+  const [finalTime, setFinalTime] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const formula = 'angular-impulse';
+  const variableName1 = 'Average Torque';
+  const variableName2 = 'Initial Time';
+  const variableName3 = 'Final Time';
+  const um1 = 'N-m';
+  const um2 = 's';
+  const um3 = 's';
+  const solutionUM = 'Nm s';
   const type = 'scientific';
   //handlers
   const onChange = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setAverageTorque(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setInitialTime(value);
+    }
+    if (variableName === variableName3) {
+      setFinalTime(value);
     }
   };
   const onAC = () => {
-    setX('');
-    setY('');
+    setAverageTorque('');
+    setInitialTime('');
+    setFinalTime('');
     setSolution(0);
   };
   const onSolve = () => {
-    const solution = new mechanics();
+    const changeInTime = finalTime - initialTime;
+    const solution = new mechanics().angularImpulse(
+      averageTorque,
+      changeInTime,
+    );
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       <div className='go-to-bar'>
-        <GoToInfo />
-        <GoToGraph />
+        <GoToInfo formula={formula} />
+        <GoToGraph formula={formula} />
         <GoToNumeric />
       </div>
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input value={averageTorque} onChange={onChange} um={um1} type={type} />
+      <Input value={initialTime} onChange={onChange} um={um2} type={type} />
+      <Input value={finalTime} onChange={onChange} um={um3} type={type} />
+      <ACBtn onAC={onAC} />
+      <SolveBtn onSolve={onSolve} />
     </div>
   );
 };
