@@ -20,7 +20,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "jest mechanics.test.js",
+        "test": "jest balanceSheet.test.js cashFlowStatement.test.js incomeStatement.test.js depreciation.test.js gdp.test.js interest.test.js ratios.test.js mechanics.test.js",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
