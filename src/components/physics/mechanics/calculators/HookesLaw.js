@@ -5,7 +5,6 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -48,7 +47,6 @@ const HookesLaw = () => {
       <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
-        <GoToNumeric />
       </div>
       <Solution />
       <Input />

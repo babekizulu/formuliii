@@ -48,7 +48,6 @@ const FroudeNumber = () => {
       <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
-        <GoToNumeric />
       </div>
       <Solution />
       <Input />

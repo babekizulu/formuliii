@@ -5,56 +5,72 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularImpulseMomentum = () => {
+  //@TODO: Set solutionUM value
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [mass, setMass] = useState('');
+  const [changeInAngularVelocity, setChangeInAngularVelocity] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
+  const formula = 'angular-impulse-momentum';
+  const variableName1 = 'Mass';
+  const variableName2 = 'Change in Angular Velocity';
+  const um1 = 'kg';
+  const um2 = 'm/s';
   const solutionUM = '';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setMass(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setChangeInAngularVelocity(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setMass('');
+    setChangeInAngularVelocity('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().angularImpulseMomentum(
+      mass,
+      changeInAngularVelocity,
+    );
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       <div className='go-to-bar'>
-        <GoToInfo />
-        <GoToGraph />
-        <GoToNumeric />
+        <GoToInfo formula={formula} />
+        <GoToGraph formula={formula} />
+        <AddToSpreadsheet />
       </div>
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={mass}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={changeInAngularVelocity}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName1}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

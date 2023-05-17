@@ -5,7 +5,7 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -13,13 +13,13 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularMomentum = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [radius, setRadius] = useState('');
+  const [momentum, setMomentum] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
+  const formula = 'angular-momentum';
+  const variableName1 = 'Radius';
+  const variableName2 = 'Momentum';
   const um1 = '';
   const um2 = '';
   const solutionUM = '';
@@ -44,11 +44,10 @@ const AngularMomentum = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
-        <GoToNumeric />
       </div>
       <Solution />
       <Input />

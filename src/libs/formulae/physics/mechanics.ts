@@ -3,6 +3,7 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/05/06
 @TODO:
+- (High Priority) Comment Units of Measure for all formulae
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
 - add a default value for all physics constants e.g gravitational constant

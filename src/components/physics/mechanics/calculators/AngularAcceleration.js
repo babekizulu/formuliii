@@ -5,7 +5,7 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -31,7 +31,7 @@ const AngularAcceleration = () => {
   const solutionUM = 'rad/s²';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
       initialAngularVelocity(value);
     }
@@ -45,14 +45,14 @@ const AngularAcceleration = () => {
       setFinalTime(value);
     }
   };
-  const onAC = () => {
+  const onACHandler = () => {
     setInitialAngularVelocity('');
     setFinalAngularVelocity('');
     setInitialTime('');
     setFinalTime('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
     const changeInAngularVelocity =
       initialAngularVelocity - finalAngularVelocity;
     const changeInTime = initialTime - finalTime;
@@ -68,39 +68,39 @@ const AngularAcceleration = () => {
       <div className='go-to-bar'>
         <GoToInfo formula={formula} />
         <GoToGraph formula={formula} />
-        <GoToNumeric />
+        <AddToSpreadsheet />
       </div>
       <Solution solution={solution} solutionUM={solutionUM} />
       <Input
         value={initialAngularVelocity}
-        onChange={onChange}
+        onChangeHandler={onChangeHandler}
         um={um1}
         name={variableName1}
         type={type}
       />
       <Input
         value={finalAngularVelocity}
-        onChange={onChange}
+        onChangeHandler={onChangeHandler}
         um={um2}
         name={variableName2}
         type={type}
       />
       <Input
         value={initialTime}
-        onChange={onChange}
+        onChangeHandler={onChangeHandler}
         um={um3}
         name={variableName3}
         type={type}
       />
       <Input
         value={finalTime}
-        onChange={onChange}
+        onChangeHandler={onChangeHandler}
         um={um4}
         name={variableName4}
         type={type}
       />
-      <ACBtn onAC={onAC} />
-      <SolveBtn onSolve={onSolve} />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

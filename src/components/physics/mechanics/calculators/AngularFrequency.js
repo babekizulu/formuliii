@@ -5,7 +5,7 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -22,16 +22,16 @@ const AngularFrequency = () => {
   const solutionUM = 'rad/s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
       setFrequency(value);
     }
   };
-  const onAC = () => {
+  const onACHandler = () => {
     setFrequency('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
     const solution = new mechanics().angularFrequency(frequency);
     setSolution(solution);
   };
@@ -41,13 +41,18 @@ const AngularFrequency = () => {
       <div className='go-to-bar'>
         <GoToInfo formula={formula} />
         <GoToGraph formula={formula} />
-        <GoToNumeric />
+        <AddToSpreadsheet />
       </div>
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={frequency}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

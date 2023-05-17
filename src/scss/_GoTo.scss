@@ -1,12 +1,28 @@
 @import 'utils';
 .go-to-bar {
     @include grid3;
-    margin: 18px;
+    position: sticky;
+    top: 90px;
+    margin: 18px auto;
 }
 
-.info-btn {
+.goto-btn {
+    width: 90px;
+    @include centerFlex;
     border: 4px solid $dark;
-    background: none;
+    border-radius: 12px;
+    color: $dark;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
     padding: 9px;
     margin: 9px;
+    transition: $eio;
+    cursor: pointer;
+    &:hover {
+        background: $dark;
+        color: #fff;
+        transition: $eio;
+    }
 }

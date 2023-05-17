@@ -5,7 +5,7 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -13,48 +13,60 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const Velocity = () => {
   //state management
-  const [changeInPosition, setX] = useState('');
-  const [y, setY] = useState('');
+  const [changeInPosition, setChangeInPosition] = useState('');
+  const [changeInTime, setChangeInTime] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const formula = 'velocity';
+  const variableName1 = 'Change in Position';
+  const variableName2 = 'Change in Time';
+  const um1 = 'm';
+  const um2 = 's';
+  const solutionUM = 'm/s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setChangeInPosition(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setChangeInTime(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setChangeInPosition('');
+    setChangeInTime('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().velocity(changeInPosition, changeInTime);
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       <div className='go-to-bar'>
-        <GoToInfo />
-        <GoToGraph />
-        <GoToNumeric />
+        <GoToInfo formula={formula} />
+        <GoToGraph formula={formula} />
+        <AddToSpreadsheet />
       </div>
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={changeInPosition}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={changeInTime}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

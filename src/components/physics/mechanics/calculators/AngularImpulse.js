@@ -5,7 +5,7 @@ import mechanics from '../../../../libs/formulae/physics/mechanics';
 import BackBtn from '../../../buttons/BackBtn';
 import GoToInfo from '../../../buttons/GoToInfo';
 import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -28,7 +28,7 @@ const AngularImpulse = () => {
   const solutionUM = 'Nm s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
       setAverageTorque(value);
     }
@@ -39,13 +39,13 @@ const AngularImpulse = () => {
       setFinalTime(value);
     }
   };
-  const onAC = () => {
+  const onACHandler = () => {
     setAverageTorque('');
     setInitialTime('');
     setFinalTime('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
     const changeInTime = finalTime - initialTime;
     const solution = new mechanics().angularImpulse(
       averageTorque,
@@ -59,14 +59,29 @@ const AngularImpulse = () => {
       <div className='go-to-bar'>
         <GoToInfo formula={formula} />
         <GoToGraph formula={formula} />
-        <GoToNumeric />
+        <AddToSpreadsheet />
       </div>
       <Solution solution={solution} solutionUM={solutionUM} />
-      <Input value={averageTorque} onChange={onChange} um={um1} type={type} />
-      <Input value={initialTime} onChange={onChange} um={um2} type={type} />
-      <Input value={finalTime} onChange={onChange} um={um3} type={type} />
-      <ACBtn onAC={onAC} />
-      <SolveBtn onSolve={onSolve} />
+      <Input
+        value={averageTorque}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        type={type}
+      />
+      <Input
+        value={initialTime}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        type={type}
+      />
+      <Input
+        value={finalTime}
+        onChangeHandler={onChangeHandler}
+        um={um3}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };
