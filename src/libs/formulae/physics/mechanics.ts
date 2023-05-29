@@ -1,12 +1,10 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/05/06
+@Date: 2023/05/29
 @TODO:
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
-- add a default value for all physics constants e.g gravitational constant
-- double check bulk modulus equation
 - add all variations of UM's for use in dropdown list
 - Add context feature for equations whose units vary based on context
 */
@@ -469,7 +467,7 @@ angularImpulseMomentum(m:number, deltaOmega:number) {
 @param: r - distance between centers of the masses
 @unit: m
 */
-universalGravitation(G:number, m1:number, m2:number, r:number){
+universalGravitation(G:number=6.67430*10**-11, m1:number, m2:number, r:number){
   const Fg = G*((m1*m2)/r**2);
   return Fg.toFixed(3);
 }
@@ -483,7 +481,7 @@ universalGravitation(G:number, m1:number, m2:number, r:number){
 @param: r - distance between centers of the masses
 @unit: m (@TODO: ADD ALTERNATIVES TO FUTURE UPDATES - km, mi, AU (astronomical units), ly (light years) )
 */
-gravitationalFieldEquation(G:number, m:number, r:number) {
+gravitationalFieldEquation(G:number=6.67430*10**-11, m:number, r:number) {
   const g = -((G*m)/r**2);
   return g.toFixed(3);
 }
@@ -498,7 +496,7 @@ gravitationalFieldEquation(G:number, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m (@TODO: Refer to previous)
 */
-gravitationalPotentialEnergy2(G:number, m1:number, m2:number, r:number) {
+gravitationalPotentialEnergy2(G:number=6.67430*10**-11, m1:number, m2:number, r:number) {
   const Ug = -((G*m1*m2)/r);
   return Ug.toFixed(3);
 }
@@ -511,7 +509,7 @@ gravitationalPotentialEnergy2(G:number, m1:number, m2:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m
 */
-gravitationalPotential(G:number, m:number, r:number) {
+gravitationalPotential(G:number=6.67430*10**-11, m:number, r:number) {
   const Vg = -((G*m)/r);
   return Vg.toFixed(3);
 }
@@ -525,7 +523,7 @@ gravitationalPotential(G:number, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m
 */
-orbitalSpeedEquation(G:number, m:number, r:number) {
+orbitalSpeedEquation(G:number=6.67430*10**-11, m:number, r:number) {
   const v = Math.sqrt((G*m)/r);
   return v.toFixed(3);
 }
@@ -539,7 +537,7 @@ orbitalSpeedEquation(G:number, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m (@TODO: Refer to previous)
 */
-escapeSpeed(G:number, m:number, r:number) {
+escapeSpeed(G:number=6.67430*10**-11, m:number, r:number) {
   const v = Math.sqrt((2*G*m)/r);
   return v.toFixed(3);
 }
@@ -586,7 +584,7 @@ simpleHarmonicOscillator(m:number, k:number) {
 @param: g - acceleration due to gravity
 @unit: m/s²
 */
-simplePendulum(L:number, g:number) {
+simplePendulum(L:number, g:number=9.80665) {
   const T = (2*Math.PI)*(Math.sqrt(L/g));
   return T.toFixed(3);
 }
@@ -646,7 +644,7 @@ pressure(F:number, A:number) {
 @param: h - fluid depth
 @unit: m
 */
-fluidPressure(p0:number, rho:number, g:number, h:number) {
+fluidPressure(p0:number, rho:number, g:number=9.80665, h:number) {
   const P = p0 + (rho*g*h);
   return P.toFixed(3);
 }
@@ -660,7 +658,7 @@ fluidPressure(p0:number, rho:number, g:number, h:number) {
 @param: V - volume displaced
 @unit: m³
 */
-buoyancy(rho:number, g:number, V:number) {
+buoyancy(rho:number, g:number=9.80665, V:number) {
   const B = rho*g*V;
   return B.toFixed(3);
 }
@@ -767,7 +765,7 @@ reynoldsNumber(rho:number, u:number, L:number, eta:number) {
 @param: d - depth of flow
 @unit: m
 */
-froudeNumber(u:number, g:number, d:number) {
+froudeNumber(u:number, g:number=9.80665, d:number) {
   const Fr = u/Math.sqrt(g*d);
   return Fr.toFixed(3);
 }

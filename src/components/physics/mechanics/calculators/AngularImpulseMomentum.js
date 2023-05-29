@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import mechanics from '../../../../libs/formulae/physics/mechanics';
 //components
 import BackBtn from '../../../buttons/BackBtn';
-import GoToInfo from '../../../buttons/GoToInfo';
-import GoToGraph from '../../../buttons/GoToGraph';
-import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
+// import GoToInfo from '../../../buttons/GoToInfo';
+// import GoToGraph from '../../../buttons/GoToGraph';
+// import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -18,7 +18,7 @@ const AngularImpulseMomentum = () => {
   const [changeInAngularVelocity, setChangeInAngularVelocity] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = 'angular-impulse-momentum';
+  // const formula = 'angular-impulse-momentum';
   const variableName1 = 'Mass';
   const variableName2 = 'Change in Angular Velocity';
   const um1 = 'kg';
@@ -49,11 +49,11 @@ const AngularImpulseMomentum = () => {
   return (
     <div className='calculator'>
       <BackBtn prevDir='/physics/mechanics' />
-      <div className='go-to-bar'>
+      {/* <div className='go-to-bar'>
         <GoToInfo formula={formula} />
         <GoToGraph formula={formula} />
         <AddToSpreadsheet />
-      </div>
+      </div> */}
       <Solution solution={solution} solutionUM={solutionUM} />
       <Input
         stateValue={mass}

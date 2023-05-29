@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import mechanics from '../../../../libs/formulae/physics/mechanics';
 //components
 import BackBtn from '../../../buttons/BackBtn';
-import GoToInfo from '../../../buttons/GoToInfo';
-import GoToGraph from '../../../buttons/GoToGraph';
-import GoToNumeric from '../../../buttons/GoToNumeric';
+// import GoToInfo from '../../../buttons/GoToInfo';
+// import GoToGraph from '../../../buttons/GoToGraph';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -45,11 +44,10 @@ const SimpleHarmonicOscillator = () => {
   return (
     <div className='calculator'>
       <BackBtn />
-      <div className='go-to-bar'>
+      {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
-        <GoToNumeric />
-      </div>
+      </div> */}
       <Solution />
       <Input />
       <Input />

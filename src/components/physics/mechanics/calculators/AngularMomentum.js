@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import mechanics from '../../../../libs/formulae/physics/mechanics';
 //components
 import BackBtn from '../../../buttons/BackBtn';
-import GoToInfo from '../../../buttons/GoToInfo';
-import GoToGraph from '../../../buttons/GoToGraph';
-import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
+// import GoToInfo from '../../../buttons/GoToInfo';
+// import GoToGraph from '../../../buttons/GoToGraph';
+// import AddToSpreadsheet from '../../../buttons/AddToSpreadsheet';
 import Solution from '../../../calculator/Solution';
 import Input from '../../../calculator/Input';
 import ACBtn from '../../../buttons/ACBtn';
@@ -17,7 +17,7 @@ const AngularMomentum = () => {
   const [momentum, setMomentum] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const formula = 'angular-momentum';
+  // const formula = 'angular-momentum';
   const variableName1 = 'Radius';
   const variableName2 = 'Momentum';
   const um1 = '';
@@ -45,10 +45,10 @@ const AngularMomentum = () => {
   return (
     <div className='calculator'>
       <BackBtn prevDir='/physics/mechanics' />
-      <div className='go-to-bar'>
+      {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
-      </div>
+      </div> */}
       <Solution />
       <Input />
       <Input />
