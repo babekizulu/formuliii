@@ -22,8 +22,8 @@ const AngularImpulseMomentum = () => {
   const variableName1 = 'Mass';
   const variableName2 = 'Change in Angular Velocity';
   const um1 = 'kg';
-  const um2 = 'm/s';
-  const solutionUM = '';
+  const um2 = 'rad/s';
+  const solutionUM = 'kg·m²/s';
   const type = 'scientific';
   //handlers
   const onChangeHandler = (variableName, value) => {

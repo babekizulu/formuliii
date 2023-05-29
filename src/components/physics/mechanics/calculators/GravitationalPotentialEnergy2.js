@@ -43,7 +43,7 @@ const GravitationalPotentialEnergy2 = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics' />
       {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />

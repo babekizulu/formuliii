@@ -12,38 +12,38 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const AngularVelocity = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [changeInAngularRotation, setChangeInAngularRotation] = useState('');
+  const [changeInTime, setChangeInTime] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Change in Angular Rotation';
+  const variableName2 = 'Change in Time';
+  const um1 = 'rad';
+  const um2 = 's';
+  const solutionUM = 'rad/s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setChangeInAngularRotation(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setChangeInTime(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setChangeInAngularRotation('');
+    setChangeInTime('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
     const solution = new mechanics();
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/physics/mechanics'/>
       {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />

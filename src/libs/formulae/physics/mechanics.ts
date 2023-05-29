@@ -3,10 +3,12 @@
 @Desc: A library of mechanics formulae
 @Date: 2023/05/29
 @TODO:
+- (PRIORITY) Check momentum UM's again
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
 - add all variations of UM's for use in dropdown list
 - Add context feature for equations whose units vary based on context
+@CurrentComp: AngularVelocity
 */
 
 class Mechanics {
@@ -426,7 +428,7 @@ rotationalKineticEnergy(I:number, omega:number){
 @param: r - radius
 @unit: m
 @param: p - momentum
-@unit: kg.m/s
+@unit: kg·m²/s
 */
 angularMomentum(r:number, p:number) {
   const L = r * p;

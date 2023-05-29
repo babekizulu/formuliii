@@ -22,10 +22,10 @@ const AngularImpulse = () => {
   const variableName1 = 'Average Torque';
   const variableName2 = 'Initial Time';
   const variableName3 = 'Final Time';
-  const um1 = 'N-m';
+  const um1 = 'N·m';
   const um2 = 's';
   const um3 = 's';
-  const solutionUM = 'Nm s';
+  const solutionUM = 'N·m·s';
   const type = 'scientific';
   //handlers
   const onChangeHandler = (variableName, value) => {

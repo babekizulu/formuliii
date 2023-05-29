@@ -20,25 +20,25 @@ const AngularMomentum = () => {
   // const formula = 'angular-momentum';
   const variableName1 = 'Radius';
   const variableName2 = 'Momentum';
-  const um1 = '';
-  const um2 = '';
+  const um1 = 'm';
+  const um2 = 'kg·m²/s';
   const solutionUM = '';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setRadius(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setMomentum(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setRadius('');
+    setMomentum('');
     setSolution(0);
   };
-  const onSolve = () => {
+  const onSolveHandler = () => {
     const solution = new mechanics();
     setSolution(solution);
   };
@@ -49,11 +49,23 @@ const AngularMomentum = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={radius}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={momentum}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

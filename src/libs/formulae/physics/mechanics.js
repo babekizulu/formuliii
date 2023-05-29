@@ -1,14 +1,14 @@
 /*
 @Author: Lwandle Babekizulu Dlamini
 @Desc: A library of mechanics formulae
-@Date: 2023/05/06
+@Date: 2023/05/29
 @TODO:
+- (PRIORITY) Check momentum UM's again
 - equations that take angles as inputs should limit
   argument input numbers to [-360, 360]
-- add a default value for all physics constants e.g gravitational constant
-- double check bulk modulus equation
 - add all variations of UM's for use in dropdown list
 - Add context feature for equations whose units vary based on context
+@CurrentComp: AngularMomentum
 */
 var Mechanics = /** @class */ (function () {
     function Mechanics() {
@@ -401,7 +401,7 @@ var Mechanics = /** @class */ (function () {
     @param: r - radius
     @unit: m
     @param: p - momentum
-    @unit: kg.m/s
+    @unit: kg·m²/s
     */
     Mechanics.prototype.angularMomentum = function (r, p) {
         var L = r * p;
@@ -440,6 +440,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m
     */
     Mechanics.prototype.universalGravitation = function (G, m1, m2, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var Fg = G * ((m1 * m2) / Math.pow(r, 2));
         return Fg.toFixed(3);
     };
@@ -453,6 +454,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m (@TODO: ADD ALTERNATIVES TO FUTURE UPDATES - km, mi, AU (astronomical units), ly (light years) )
     */
     Mechanics.prototype.gravitationalFieldEquation = function (G, m, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var g = -((G * m) / Math.pow(r, 2));
         return g.toFixed(3);
     };
@@ -467,6 +469,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m (@TODO: Refer to previous)
     */
     Mechanics.prototype.gravitationalPotentialEnergy2 = function (G, m1, m2, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var Ug = -((G * m1 * m2) / r);
         return Ug.toFixed(3);
     };
@@ -480,6 +483,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m
     */
     Mechanics.prototype.gravitationalPotential = function (G, m, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var Vg = -((G * m) / r);
         return Vg.toFixed(3);
     };
@@ -493,6 +497,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m
     */
     Mechanics.prototype.orbitalSpeedEquation = function (G, m, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var v = Math.sqrt((G * m) / r);
         return v.toFixed(3);
     };
@@ -506,6 +511,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m (@TODO: Refer to previous)
     */
     Mechanics.prototype.escapeSpeed = function (G, m, r) {
+        if (G === void 0) { G = 6.67430 * Math.pow(10, -11); }
         var v = Math.sqrt((2 * G * m) / r);
         return v.toFixed(3);
     };
@@ -550,6 +556,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m/s²
     */
     Mechanics.prototype.simplePendulum = function (L, g) {
+        if (g === void 0) { g = 9.80665; }
         var T = (2 * Math.PI) * (Math.sqrt(L / g));
         return T.toFixed(3);
     };
@@ -605,6 +612,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m
     */
     Mechanics.prototype.fluidPressure = function (p0, rho, g, h) {
+        if (g === void 0) { g = 9.80665; }
         var P = p0 + (rho * g * h);
         return P.toFixed(3);
     };
@@ -618,6 +626,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m³
     */
     Mechanics.prototype.buoyancy = function (rho, g, V) {
+        if (g === void 0) { g = 9.80665; }
         var B = rho * g * V;
         return B.toFixed(3);
     };
@@ -717,6 +726,7 @@ var Mechanics = /** @class */ (function () {
     @unit: m
     */
     Mechanics.prototype.froudeNumber = function (u, g, d) {
+        if (g === void 0) { g = 9.80665; }
         var Fr = u / Math.sqrt(g * d);
         return Fr.toFixed(3);
     };
