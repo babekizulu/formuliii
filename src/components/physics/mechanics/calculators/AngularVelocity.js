@@ -38,21 +38,36 @@ const AngularVelocity = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new mechanics();
+    const solution = new mechanics().angularVelocity(
+      changeInAngularRotation,
+      changeInTime,
+    );
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/physics/mechanics'/>
+      <BackBtn prevDir='/physics/mechanics' />
       {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={changeInAngularRotation}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={changeInTime}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

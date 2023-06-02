@@ -11,33 +11,33 @@ import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 const Momentum = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [mass, setMass] = useState('');
+  const [velocity, setVelocity] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Mass';
+  const variableName2 = 'Velocity';
+  const um1 = 'kg';
+  const um2 = 'm/s';
+  const solutionUM = 'kg·m/s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setMass(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setVelocity(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setMass('');
+    setVelocity('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().momentum(mass, velocity);
     setSolution(solution);
   };
   return (
@@ -47,11 +47,23 @@ const Momentum = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={mass}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={velocity}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

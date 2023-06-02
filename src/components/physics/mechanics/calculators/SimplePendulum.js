@@ -12,32 +12,35 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const SimplePendulum = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [pendulumLength, setPendulumLength] = useState('');
+  const [accelerationDueToGravity, setAccelerationDueToGravity] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
+  const variableName1 = 'Pendulum Length';
+  const variableName2 = 'Acceleration due to Gravity';
+  const um1 = 'm';
+  const um2 = 'm/s²';
   const solutionUM = '';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setPendulumLength(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setAccelerationDueToGravity(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setPendulumLength('');
+    setAccelerationDueToGravity('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().simplePendulum(
+      pendulumLength,
+      accelerationDueToGravity,
+    );
     setSolution(solution);
   };
   return (
@@ -47,11 +50,23 @@ const SimplePendulum = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={pendulumLength}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={accelerationDueToGravity}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

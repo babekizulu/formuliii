@@ -30,19 +30,19 @@ describe('Mechanics Formulae Tests', () => {
   });
   //2.
   test('Equations of Motion - displacement should return: 5000.000', () => {
-    expect(new Mechanics().equationsOfMotion().displacement(0, 0, 10, 10)).toBe(
-      parseFloat(5000).toFixed(3),
-    );
+    expect(
+      new Mechanics().equationsOfMotion().displacementEM(0, 0, 10, 10),
+    ).toBe(parseFloat(5000).toFixed(3));
   });
   //3.
   test('Equations of Motion - velocitySquared should return: 100000.000', () => {
     expect(
-      new Mechanics().equationsOfMotion().velocitySquared(0, 10, 5000, 0),
+      new Mechanics().equationsOfMotion().velocitySquaredEM(0, 10, 5000, 0),
     ).toBe(parseFloat(100000).toFixed(3));
   });
   //4.
   test('Equations of Motion - averageVelocity should return: 50.000', () => {
-    expect(new Mechanics().equationsOfMotion().averageVelocity(100, 0)).toBe(
+    expect(new Mechanics().equationsOfMotion().averageVelocityEM(100, 0)).toBe(
       parseFloat(50).toFixed(3),
     );
   });

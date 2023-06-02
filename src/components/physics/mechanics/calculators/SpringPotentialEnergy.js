@@ -12,33 +12,37 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const SpringPotentialEnergy = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [springConstant, setSpringConstant] = useState('');
+  const [springStretchOrCompression, setSpringStretchOrCompression] =
+    useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Spring Constant';
+  const variableName2 = 'Spring Stretch or Compression';
+  const um1 = 'N/m';
+  const um2 = 'm';
+  const solutionUM = 'J';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setSpringConstant(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setSpringStretchOrCompression(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setSpringConstant('');
+    setSpringStretchOrCompression('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().springPotentialEnergy(
+      springConstant,
+      springStretchOrCompression,
+    );
     setSolution(solution);
   };
   return (
@@ -48,11 +52,23 @@ const SpringPotentialEnergy = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={springConstant}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={springStretchOrCompression}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

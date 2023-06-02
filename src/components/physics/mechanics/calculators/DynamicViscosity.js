@@ -12,47 +12,59 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const DynamicViscosity = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [shearingStress, setShearingStress] = useState('');
+  const [shearRate, setShearRate] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Shearing Stress';
+  const variableName2 = 'Shear Rate';
+  const um1 = 'Pa';
+  const um2 = 's⁻¹';
+  const solutionUM = 'Pa·s';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setShearingStress(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setShearRate(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setShearingStress('');
+    setShearRate('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().dynamicViscosity();
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/physics/mechanics'/>
+      <BackBtn prevDir='/physics/mechanics' />
       {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={shearingStress}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={shearRate}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

@@ -16,7 +16,7 @@ const Mechanics = () => {
           Acceleration Calculator
         </Link>
         <Link href='/physics/mechanics/motion' className='menu-item'>
-          Motion Calculator Set
+          Equations of Motion Calculator Set
         </Link>
         <Link href='/physics/mechanics/net-force' className='menu-item'>
           Net Force Calculator Set
@@ -82,7 +82,7 @@ const Mechanics = () => {
           Angular Acceleration Calculator
         </Link>
         <Link href='/physics/mechanics/rotation' className='menu-item'>
-          Rotation Calculator Set
+          Equations of Rotation Calculator Set
         </Link>
         <Link href='/physics/mechanics/torque' className='menu-item'>
           Torque Calculator

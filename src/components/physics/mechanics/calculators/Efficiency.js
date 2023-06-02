@@ -12,33 +12,32 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const Efficiency = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [energyOutput, setEnergyOutput] = useState('');
+  const [energyInput, setEnergyInput] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
+  const variableName1 = 'Energy Output';
+  const variableName2 = 'Energy Input';
+  const um = 'J';
   const solutionUM = '';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setEnergyOutput(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setEnergyInput(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setEnergyOutput('');
+    setEnergyInput('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().efficiency(energyOutput, energyInput);
     setSolution(solution);
   };
   return (
@@ -48,11 +47,23 @@ const Efficiency = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={energyOutput}
+        onChangeHandler={onChangeHandler}
+        um={um}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={energyInput}
+        onChangeHandler={onChangeHandler}
+        um={um}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

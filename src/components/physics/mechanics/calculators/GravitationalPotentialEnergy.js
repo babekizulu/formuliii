@@ -12,33 +12,44 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const GravitationalPotentialEnergy = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [mass, setMass] = useState('');
+  const [gravitationalField, setGravitationalField] = useState('');
+  const [height, setHeight] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Mass';
+  const variableName2 = 'Gravitational Field';
+  const variableName3 = 'Height';
+  const um1 = 'kg';
+  const um2 = 'N/kg';
+  const um3 = 'm';
+  const solutionUM = 'J';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setMass(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setGravitationalField(value);
+    }
+    if (variableName === variableName3) {
+      setHeight(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setMass('');
+    setGravitationalField('');
+    setHeight('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().gravitationalPotentialEnergy(
+      mass,
+      gravitationalField,
+      height,
+    );
     setSolution(solution);
   };
   return (
@@ -48,11 +59,30 @@ const GravitationalPotentialEnergy = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={mass}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={gravitationalField}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <Input
+        stateValue={height}
+        onChangeHandler={onChangeHandler}
+        um={um3}
+        name={variableName3}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

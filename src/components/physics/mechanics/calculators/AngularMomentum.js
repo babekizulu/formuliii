@@ -39,7 +39,7 @@ const AngularMomentum = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new mechanics();
+    const solution = new mechanics().angularMomentum(radius, momentum);
     setSolution(solution);
   };
   return (

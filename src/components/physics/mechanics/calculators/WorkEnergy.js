@@ -12,48 +12,61 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const WorkEnergy = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [initialKineticEnergy, setInitialKineticEnergy] = useState('');
+  const [finalKineticEnergy, setFinalKineticEnergy] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Initial Kinetic Energy';
+  const variableName2 = 'Final Kinetic Energy';
+  const solutionUM = 'J';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setInitialKineticEnergy(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setFinalKineticEnergy(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setInitialKineticEnergy('');
+    setFinalKineticEnergy('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().workEnergy(
+      initialKineticEnergy,
+      finalKineticEnergy,
+    );
     setSolution(solution);
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/physics/mechanics'/>
+      <BackBtn prevDir='/physics/mechanics' />
       {/* <div className='go-to-bar'>
         <GoToInfo />
         <GoToGraph />
         <GoToNumeric />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={initialKineticEnergy}
+        onChangeHandler={onChangeHandler}
+        um={solutionUM}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={finalKineticEnergy}
+        onChangeHandler={onChangeHandler}
+        um={solutionUM}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

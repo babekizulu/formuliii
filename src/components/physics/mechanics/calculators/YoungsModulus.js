@@ -12,33 +12,37 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const YoungsModulus = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [uniaxialStress, setUniaxialStress] = useState('');
+  const [strainOrProportionalDeformation, setStrainOrProportionalDeformation] =
+    useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
+  const variableName1 = 'Uniaxial Stress';
+  const variableName2 = 'Strain or Proportional Deformation';
+  const um1 = 'Pa';
   const um2 = '';
-  const solutionUM = '';
+  const solutionUM = 'Pa';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setUniaxialStress(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setStrainOrProportionalDeformation(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setUniaxialStress('');
+    setStrainOrProportionalDeformation('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().youngsModulus(
+      uniaxialStress,
+      strainOrProportionalDeformation,
+    );
     setSolution(solution);
   };
   return (
@@ -49,11 +53,23 @@ const YoungsModulus = () => {
         <GoToGraph />
         <GoToNumeric />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={uniaxialStress}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={strainOrProportionalDeformation}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

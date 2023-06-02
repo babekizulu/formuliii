@@ -12,33 +12,33 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const Torque = () => {
   //state management
-  const [x, setX] = useState('');
-  const [y, setY] = useState('');
+  const [radius, setRadius] = useState('');
+  const [force, setForce] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
   // const formula = '';
-  const variableName1 = '';
-  const variableName2 = '';
-  const um1 = '';
-  const um2 = '';
-  const solutionUM = '';
+  const variableName1 = 'Radius';
+  const variableName2 = 'Force';
+  const um1 = 'm';
+  const um2 = 'N';
+  const solutionUM = 'N·m';
   const type = 'scientific';
   //handlers
-  const onChange = (variableName, value) => {
+  const onChangeHandler = (variableName, value) => {
     if (variableName === variableName1) {
-      setX(value);
+      setRadius(value);
     }
     if (variableName === variableName2) {
-      setY(value);
+      setForce(value);
     }
   };
-  const onAC = () => {
-    setX('');
-    setY('');
+  const onACHandler = () => {
+    setRadius('');
+    setForce('');
     setSolution(0);
   };
-  const onSolve = () => {
-    const solution = new mechanics();
+  const onSolveHandler = () => {
+    const solution = new mechanics().torque(radius, force);
     setSolution(solution);
   };
   return (
@@ -48,11 +48,23 @@ const Torque = () => {
         <GoToInfo />
         <GoToGraph />
       </div> */}
-      <Solution />
-      <Input />
-      <Input />
-      <ACBtn />
-      <SolveBtn />
+      <Solution solution={solution} solutionUM={solutionUM} />
+      <Input
+        stateValue={radius}
+        onChangeHandler={onChangeHandler}
+        um={um1}
+        name={variableName1}
+        type={type}
+      />
+      <Input
+        stateValue={force}
+        onChangeHandler={onChangeHandler}
+        um={um2}
+        name={variableName2}
+        type={type}
+      />
+      <ACBtn onACHandler={onACHandler} />
+      <SolveBtn onSolveHandler={onSolveHandler} />
     </div>
   );
 };

@@ -8,31 +8,32 @@
   argument input numbers to [-360, 360]
 - add all variations of UM's for use in dropdown list
 - Add context feature for equations whose units vary based on context
-@CurrentComp: AngularVelocity
+- Consider switching output and input order on Efficiency Component
+@CurrentComp: Efficiency
 */
 
 class Mechanics {
     //velocity equation (m/s)
     /*
-      @param: deltaX - Change in Position
+      @param: Change in Position
       @unit: m (meters)
-      @param: deltaT - Change in Time
+      @param: Change in Time
       @unit: s (seconds)
       */
-    velocity(deltaX:number, deltaT:number) {
-      const avV = deltaX / deltaT;
+    velocity(changeInPosition:number, changeInTime:number) {
+      const avV = changeInPosition / changeInTime;
       return avV.toFixed(3);
     }
   
     //acceleration equation (m/s²)
     /*
-    @param: deltaV - Change in Velocity
+    @param: Change in Velocity
     @unit: m/s
-    @param: deltaT - Change in Time
+    @param: Change in Time
     @unit: s
     */
-    acceleration(deltaV:number, deltaT:number) {
-      const avA = deltaV / deltaT;
+    acceleration(changeInVelocity:number, changeInTime:number) {
+      const avA = changeInVelocity / changeInTime
       return avA.toFixed(3);
     }
     //equations of motion
@@ -43,11 +44,11 @@ class Mechanics {
     /*
     @param: v - velocity
     @unit: m/s
-    @param: v0 - initial velocity
+    @param: initial velocity
     @unit: m/s
-    @param: a - acceleration
+    @param: acceleration
     @unit: m/s²
-    @param: t - time
+    @param: time
     @unit: s
     @param: d0 - initial position
     @unit: m
@@ -57,20 +58,20 @@ class Mechanics {
   
     equationsOfMotion() {
       return {
-        velocityEM: function (v0:number, a:number, t:number) {
-          const v = v0 + a * t;
+        velocityEM: function (initialVelocity:number, acceleration:number, time:number) {
+          const v = initialVelocity + acceleration * time;
           return v.toFixed(3);
         },
-        displacement: function (d0:number, v0:number, t:number, a:number) {
-          const d = d0 + v0 * t + 0.5 * (a * t) ** 2;
+        displacementEM: function (initialPosition:number, initialVelocity:number, time:number, acceleration:number) {
+          const d = initialPosition + initialVelocity * time + 0.5 * (acceleration * time) ** 2;
           return d.toFixed(3);
         },
-        velocitySquared: function (v0:number, a:number, d:number, d0:number) {
-          const vSquared = v0 ** 2 + 2 * a * (d - d0);
+        velocitySquaredEM: function (initialVelocity:number, acceleration:number, displacement:number, initialPosition:number) {
+          const vSquared = initialVelocity ** 2 + 2 * acceleration * (displacement - initialPosition);
           return vSquared.toFixed(3);
         },
-        averageVelocity: function (v0:number, v:number) {
-          const av = 0.5 * (v + v0);
+        averageVelocityEM: function (initialVelocity:number, velocity:number) {
+          const av = 0.5 * (velocity + initialVelocity);
           return av.toFixed(3);
         },
       };
@@ -82,8 +83,8 @@ class Mechanics {
     @param: a - acceleration
     @unit: m/s²
     */
-    netForce1(m:number, a:number) {
-      const nf = m * a;
+    netForce1(mass:number, acceleration:number) {
+      const nf = mass* acceleration;
       return nf.toFixed(3);
     }
   
@@ -93,8 +94,8 @@ class Mechanics {
     @param: deltaT - Change in Time
     @unit: s
     */
-    netForce2(deltaP:number, deltaT:number) {
-      const nf = deltaP / deltaT;
+    netForce2(changeInMomentum:number, changeInTime:number) {
+      const nf = changeInMomentum / changeInTime;
       return nf.toFixed(3);
     }
   
@@ -105,8 +106,8 @@ class Mechanics {
     @param: g - gravity
     @unit: m/s²
     */
-    weight(m:number, g:number) {
-      const w = m * g;
+    weight(mass:number, gravity:number) {
+      const w = mass * gravity;
       return w.toFixed(3);
     }
   
@@ -117,8 +118,8 @@ class Mechanics {
     @param: n - normal force
     @unit: N
     */
-    dryFriction(mu:number, n:number) {
-      const f = mu * n;
+    dryFriction(coefficientOfFriction:number, normalForce:number) {
+      const f = coefficientOfFriction * normalForce;
       return f.toFixed(3);
     }
   
@@ -129,8 +130,8 @@ class Mechanics {
     @param: r - radius
     @unit: m
     */
-    centripetalAcceleration(v:number, r:number) {
-      const ac = v ** 2 / r;
+    centripetalAcceleration(velocity:number, radius:number) {
+      const ac = velocity ** 2 / radius;
       return ac.toFixed(3);
     }
   
@@ -141,8 +142,8 @@ class Mechanics {
     @param: v - velocity
     @unit: m/s
     */
-    momentum(m:number, v:number) {
-      const p = m * v;
+    momentum(mass:number, velocity:number) {
+      const p = mass * velocity;
       return p.toFixed(3);
     }
   
@@ -153,8 +154,8 @@ class Mechanics {
     @param: deltaT - change in time
     @unit: s
     */
-    impulse(f:number, deltaT:number) {
-      const deltaP = f * deltaT;
+    impulse(appliedForce:number, changeInTime:number) {
+      const deltaP = appliedForce * changeInTime;
       return deltaP.toFixed(3);
     }
   
@@ -165,8 +166,8 @@ class Mechanics {
     @param: deltaV - change in velocity
     @unit: m/s
     */
-    impulseMomentum(m:number, deltaV:number) {
-      const im = m * deltaV;
+    impulseMomentum(mass:number, changeInVelocity:number) {
+      const im = mass * changeInVelocity;
       return im.toFixed(3);
     }
   
@@ -177,8 +178,8 @@ class Mechanics {
     @param: d - displacement
     @unit: m
     */
-    work(f:number, d:number) {
-      const w = f * d;
+    work(force:number, displacement:number) {
+      const w = force * displacement;
       return w.toFixed(3);
     }
   
@@ -189,8 +190,8 @@ class Mechanics {
     @param: KB - final kinetic energy
     @unit: J
     */
-    workEnergy(KA:number, KB:number) {
-      const wNet = KB - KA;
+    workEnergy(initialKineticEnergy:number, finalKineticEnergy:number) {
+      const wNet = finalKineticEnergy - initialKineticEnergy;
       return wNet.toFixed(3);
     }
   
@@ -201,8 +202,8 @@ class Mechanics {
     @param: v - velocity
     @unit: m/s
      */
-    kineticEnergy(m:number, v:number) {
-      const K = 0.5 * (m * (v ** 2));
+    kineticEnergy(mass:number, velocity:number) {
+      const K = 0.5 * (mass * (velocity ** 2));
       return K.toFixed(3);
     }
   
@@ -213,8 +214,8 @@ class Mechanics {
     @param: d - displacement
     @unit: m
     */
-    generalPotentialEnergy(f:number, d:number) {
-      const U = -f * d;
+    generalPotentialEnergy(force:number, displacement:number) {
+      const U = -force * displacement;
       return U.toFixed(3);
     }
   
@@ -227,8 +228,8 @@ class Mechanics {
     @param: h - height
     @unit: m
      */
-    gravitationalPotentialEnergy(m:number, g:number, h:number) {
-      const U = m * g * h;
+    gravitationalPotentialEnergy(mass:number, gravitationalField:number, height:number) {
+      const U = mass * gravitationalField * height;
       return U.toFixed(3);
     }
   
@@ -239,8 +240,8 @@ class Mechanics {
     @param: ei - energy input
     @unit: J
     */
-    efficiency(eo:number, ei:number) {
-      const eta = eo / ei;
+    efficiency(energyOutput:number, energyInput:number) {
+      const eta = energyOutput / energyInput;
       return eta.toFixed(3);
     }
 
@@ -251,8 +252,8 @@ class Mechanics {
     @param: deltaT - change in time
     @unit: s
     */
-   power(deltaW:number, deltaT:number) {
-    const P = deltaW/deltaT;
+   power(changeInWork:number, changeInTime:number) {
+    const P = changeInWork/changeInTime;
     return P.toFixed(3);
    }
    
@@ -263,8 +264,8 @@ class Mechanics {
    @param: v - velocity
    @unit: m/s
    */
-   powerVelocity(F:number, v:number) {
-    const P = F*v;
+   powerVelocity(force:number, velocity:number) {
+    const P = force*velocity;
     return P.toFixed(3);
    }
 
@@ -275,8 +276,8 @@ class Mechanics {
    @param: deltaT - change in time
    @unit: s
    */
-  angularVelocity(deltaTheta:number, deltaT:number) {
-    const omega = deltaTheta/deltaT;
+  angularVelocity(changeInAngularRotation:number, changeInTime:number) {
+    const omega = changeInAngularRotation/changeInTime;
     return omega.toFixed(3);
   }
 
@@ -287,8 +288,8 @@ class Mechanics {
   @param: deltaT - change in time
   @unit: s
   */
-  angularAcceleration(deltaOmega:number, deltaT:number) {
-    const a = deltaOmega/deltaT;
+  angularAcceleration(changeInAngularVelocity:number, changeInTime:number) {
+    const a = changeInAngularVelocity/changeInTime;
     return a.toFixed(3);
   }
 
@@ -319,20 +320,33 @@ class Mechanics {
   */
  equationsOfRotation() {
   return {
-    angularVelocityEOR: (omega0:number, a:number, t:number) => {
-      const omega = omega0 + (a*t);
+    angularVelocityEOR: (
+      initialAngularVelocity:number, 
+      acceleration:number, 
+      time:number
+      ) => {
+      const omega = initialAngularVelocity + (acceleration*time);
       return omega.toFixed(3);
     },
-    angularRotationEOR: (theta0:number, omega0:number, t:number, a:number) => {
-      const theta = theta0 + (omega0*t) + (0.5* ((a*t)**2));
+    angularRotationEOR: (
+      intialAngularRotation:number, 
+      initialAngularVelocity:number, 
+      time:number, 
+      acceleration:number
+      ) => {
+      const theta = intialAngularRotation + (initialAngularVelocity*time) + (0.5* ((acceleration*time)**2));
       return theta.toFixed(3);
     },
-    angularVelocitySquaredEOR: (omega0:number, a:number, theta:number, theta0:number) => {
-      const omegaSquared = omega0**2 + (2*a*(theta - theta0));
+    angularVelocitySquaredEOR: (
+      initialAngularVelocity:number, 
+      acceleration:number, 
+      angularRotation:number, 
+      initialAngularRotation:number) => {
+      const omegaSquared = initialAngularVelocity**2 + (2*acceleration*(angularRotation- initialAngularRotation));
       return omegaSquared.toFixed(3);
     },
-    averageAngularVelocity(omega:number, omega0:number) {
-      const avOmega = 0.5*(omega + omega0);
+    averageAngularVelocity(angularVelocity:number, initialAngularVelocity:number) {
+      const avOmega = 0.5*(angularVelocity + initialAngularVelocity);
       return avOmega.toFixed(3);
     }
   }
@@ -344,8 +358,8 @@ class Mechanics {
   @param: F - force
   @unit: N
   */
-  torque(r:number, F:number){
-    const tau = r*F;
+  torque(radius:number, force:number){
+    const tau = radius*force;
     return tau.toFixed(3);
   }
 
@@ -358,8 +372,8 @@ class Mechanics {
   @param: a - angular acceleration
   @unit: rad/s²
   */
- netTorque1(I:number, a:number) {
-  const sigmaTau = I*a;
+ netTorque1(momentOfInertia:number, angularAcceleration:number) {
+  const sigmaTau = momentOfInertia*angularAcceleration;
   return sigmaTau.toFixed(3);
  }
 
@@ -370,8 +384,8 @@ class Mechanics {
  @param: deltaT - change in time
  @unit: s
  */
-netTorque2(deltaL:number, deltaT:number){
-  const sigmaTau = deltaL/deltaT;
+netTorque2(changeInLength:number, changeInTime:number){
+  const sigmaTau = changeInLength/changeInTime;
   return sigmaTau.toFixed(3);
 }
 
@@ -382,8 +396,8 @@ netTorque2(deltaL:number, deltaT:number){
 @param: r - radius
 @unit: m
 */
-momentOfInertia(sigmaM:number, r:number) {
-  const I = sigmaM*(r**2);
+momentOfInertia(netMass:number, radius:number) {
+  const I = netMass*(radius**2);
   return I.toFixed(3);
 }
 
@@ -394,8 +408,8 @@ momentOfInertia(sigmaM:number, r:number) {
 @param: deltaTheta - change in angular rotation
 @unit: rad
 */
-rotationalWork(avTau:number, deltaTheta:number) {
-  const W = avTau*deltaTheta;
+rotationalWork(averageTorque:number, changeInAngularRotation:number) {
+  const W = averageTorque*changeInAngularRotation;
   return W.toFixed(3);
 }
 
@@ -406,8 +420,8 @@ rotationalWork(avTau:number, deltaTheta:number) {
 @param: omega - angularVelocity
 @unit: rad/s
 */
-rotationalPower(tau:number, omega:number){
-  const P = tau*omega;
+rotationalPower(torque:number, angularVelocity:number){
+  const P = torque*angularVelocity;
   return P.toFixed(3);
 }
 
@@ -418,8 +432,8 @@ rotationalPower(tau:number, omega:number){
 @param: omega - angular velocity
 @unit: rad/s
 */
-rotationalKineticEnergy(I:number, omega:number){
-  const K = 0.5*((I*omega)**2);
+rotationalKineticEnergy(momentOfInertia:number, angularVelocity:number){
+  const K = 0.5*((momentOfInertia*angularVelocity)**2);
   return K.toFixed(3);
 }
 
@@ -430,8 +444,8 @@ rotationalKineticEnergy(I:number, omega:number){
 @param: p - momentum
 @unit: kg·m²/s
 */
-angularMomentum(r:number, p:number) {
-  const L = r * p;
+angularMomentum(radius:number, momentum:number) {
+  const L = radius * momentum;
   return L.toFixed(3);
 }
 
@@ -442,8 +456,8 @@ angularMomentum(r:number, p:number) {
 @param: deltaT - change in time
 @unit: s
 */
-angularImpulse(avTau:number, deltaT:number) {
-  const H = avTau * deltaT;
+angularImpulse(averageTorque:number, changeInTime:number) {
+  const H = averageTorque * changeInTime;
   return H.toFixed(3);
 }
 
@@ -454,8 +468,8 @@ angularImpulse(avTau:number, deltaT:number) {
 @param: deltaOmega - change in angular velocity
 @unit: rad/s
 */
-angularImpulseMomentum(m:number, deltaOmega:number) {
-  const angIM = m*deltaOmega;
+angularImpulseMomentum(mass:number, changeInAngularVelocity:number) {
+  const angIM = mass*changeInAngularVelocity;
   return angIM.toFixed(3);
 }
 
@@ -469,8 +483,13 @@ angularImpulseMomentum(m:number, deltaOmega:number) {
 @param: r - distance between centers of the masses
 @unit: m
 */
-universalGravitation(G:number=6.67430*10**-11, m1:number, m2:number, r:number){
-  const Fg = G*((m1*m2)/r**2);
+universalGravitation(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass1:number, 
+  mass2:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ){
+  const Fg = gravitationalConstant*((mass1*mass2)/distanceBetweenCentersOfTheMasses**2);
   return Fg.toFixed(3);
 }
 
@@ -483,8 +502,12 @@ universalGravitation(G:number=6.67430*10**-11, m1:number, m2:number, r:number){
 @param: r - distance between centers of the masses
 @unit: m (@TODO: ADD ALTERNATIVES TO FUTURE UPDATES - km, mi, AU (astronomical units), ly (light years) )
 */
-gravitationalFieldEquation(G:number=6.67430*10**-11, m:number, r:number) {
-  const g = -((G*m)/r**2);
+gravitationalFieldEquation(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ) {
+  const g = -((gravitationalConstant*mass)/distanceBetweenCentersOfTheMasses**2);
   return g.toFixed(3);
 }
 
@@ -498,8 +521,13 @@ gravitationalFieldEquation(G:number=6.67430*10**-11, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m (@TODO: Refer to previous)
 */
-gravitationalPotentialEnergy2(G:number=6.67430*10**-11, m1:number, m2:number, r:number) {
-  const Ug = -((G*m1*m2)/r);
+gravitationalPotentialEnergy2(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass1:number, 
+  mass2:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ) {
+  const Ug = -((gravitationalConstant*mass1*mass2)/distanceBetweenCentersOfTheMasses);
   return Ug.toFixed(3);
 }
 //gravitational potential equation (J/kg)
@@ -511,8 +539,12 @@ gravitationalPotentialEnergy2(G:number=6.67430*10**-11, m1:number, m2:number, r:
 @param: r - distance between centers of the masses
 @unit: m
 */
-gravitationalPotential(G:number=6.67430*10**-11, m:number, r:number) {
-  const Vg = -((G*m)/r);
+gravitationalPotential(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ) {
+  const Vg = -((gravitationalConstant*mass)/distanceBetweenCentersOfTheMasses);
   return Vg.toFixed(3);
 }
 
@@ -525,8 +557,12 @@ gravitationalPotential(G:number=6.67430*10**-11, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m
 */
-orbitalSpeedEquation(G:number=6.67430*10**-11, m:number, r:number) {
-  const v = Math.sqrt((G*m)/r);
+orbitalSpeedEquation(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ) {
+  const v = Math.sqrt((gravitationalConstant*mass)/distanceBetweenCentersOfTheMasses);
   return v.toFixed(3);
 }
 
@@ -539,8 +575,12 @@ orbitalSpeedEquation(G:number=6.67430*10**-11, m:number, r:number) {
 @param: r - distance between centers of the masses
 @unit: m (@TODO: Refer to previous)
 */
-escapeSpeed(G:number=6.67430*10**-11, m:number, r:number) {
-  const v = Math.sqrt((2*G*m)/r);
+escapeSpeed(
+  gravitationalConstant:number=6.67430*10**-11, 
+  mass:number, 
+  distanceBetweenCentersOfTheMasses:number
+  ) {
+  const v = Math.sqrt((2*gravitationalConstant*mass)/distanceBetweenCentersOfTheMasses);
   return v.toFixed(3);
 }
 //hooke's law (N)
@@ -550,8 +590,8 @@ escapeSpeed(G:number=6.67430*10**-11, m:number, r:number) {
 @param: deltaX - spring stretch or compression
 @unit: m
 */
-hookesLaw(k:number, deltaX:number) {
-  const Fs = -(k*deltaX);
+hookesLaw(springConstant:number, springStretchOrCompression:number) {
+  const Fs = -(springConstant*springStretchOrCompression);
   return Fs.toFixed(3);
 }
 
@@ -562,8 +602,11 @@ hookesLaw(k:number, deltaX:number) {
 @param: deltaX - spring stretch or compression
 @unit: m
 */
-springPotentialEnergy(k:number, deltaX:number) {
-  const Us = 0.5*(k*(deltaX)**2);
+springPotentialEnergy(
+  springConstant:number, 
+  springStretchOrCompression:number
+  ) {
+  const Us = 0.5*(springConstant*(springStretchOrCompression)**2);
   return Us.toFixed(3);
 }
 
@@ -574,8 +617,8 @@ springPotentialEnergy(k:number, deltaX:number) {
 @param: k - positive constant
 @unit: N/m
 */
-simpleHarmonicOscillator(m:number, k:number) {
-  const T = (2*Math.PI)*(Math.sqrt(m/k));
+simpleHarmonicOscillator(mass:number, positiveConstant:number) {
+  const T = (2*Math.PI)*(Math.sqrt(mass/positiveConstant));
   return T.toFixed(3);
 }
 
@@ -586,8 +629,11 @@ simpleHarmonicOscillator(m:number, k:number) {
 @param: g - acceleration due to gravity
 @unit: m/s²
 */
-simplePendulum(L:number, g:number=9.80665) {
-  const T = (2*Math.PI)*(Math.sqrt(L/g));
+simplePendulum(
+  pendulumLength:number, 
+  accelerationDueToGravity:number=9.80665
+  ) {
+  const T = (2*Math.PI)*(Math.sqrt(pendulumLength/accelerationDueToGravity));
   return T.toFixed(3);
 }
 
@@ -596,8 +642,8 @@ simplePendulum(L:number, g:number=9.80665) {
 @param: T - period
 @unit: s
 */
-frequency(T:number) {
-  const f = 1/T;
+frequency(period:number) {
+  const f = 1/period;
   return f.toFixed(3);
 }
 
@@ -606,8 +652,8 @@ frequency(T:number) {
 @param: f - frequency
 @unit: Hz
 */
-angularFrequency(f:number) {
-  const omega = 2*Math.PI*f;
+angularFrequency(frequency:number) {
+  const omega = 2*Math.PI*frequency;
   return omega.toFixed(3);
 }
 
@@ -618,8 +664,8 @@ angularFrequency(f:number) {
 @param: V - volume
 @unit: m³
 */
-density(m:number, V:number) {
-  const rho = m/V;
+density(mass:number, volume:number) {
+  const rho = mass/volume;
   return rho.toFixed(3);
 }
 
@@ -630,8 +676,8 @@ density(m:number, V:number) {
 @param: A - area
 @unit: m²
 */
-pressure(F:number, A:number) {
-  const P = F/A;
+pressure(force:number, area:number) {
+  const P = force/area;
   return P.toFixed(3);
 }
 
@@ -646,8 +692,13 @@ pressure(F:number, A:number) {
 @param: h - fluid depth
 @unit: m
 */
-fluidPressure(p0:number, rho:number, g:number=9.80665, h:number) {
-  const P = p0 + (rho*g*h);
+fluidPressure(
+  initialPressure:number, 
+  density:number, 
+  accelerationDueToGravity:number=9.80665, 
+  fluidDepth:number
+  ) {
+  const P = initialPressure + (density*accelerationDueToGravity*fluidDepth);
   return P.toFixed(3);
 }
 
@@ -660,8 +711,12 @@ fluidPressure(p0:number, rho:number, g:number=9.80665, h:number) {
 @param: V - volume displaced
 @unit: m³
 */
-buoyancy(rho:number, g:number=9.80665, V:number) {
-  const B = rho*g*V;
+buoyancy(
+  density:number, 
+  accelerationDueToGravity:number=9.80665, 
+  volumeDisplaced:number
+  ) {
+  const B = density*accelerationDueToGravity*volumeDisplaced;
   return B.toFixed(3);
 }
 
@@ -672,8 +727,8 @@ buoyancy(rho:number, g:number=9.80665, V:number) {
 @param: deltaT - change in time
 @unit: s
 */
-massFlowRate(deltaM:number, deltaT:number) {
-  const avqm = deltaM/deltaT;
+massFlowRate(changeInMass:number, changeInTime:number) {
+  const avqm = changeInMass/changeInTime;
   return avqm.toFixed(3);
 }
 
@@ -684,8 +739,8 @@ massFlowRate(deltaM:number, deltaT:number) {
 @param: deltaT - change in time
 @unit: s
 */
-volumeFlowRate(deltaVol:number, deltaT:number) {
-  const avqv = deltaVol/deltaT;
+volumeFlowRate(changeInVolume:number, changeInTime:number) {
+  const avqv = changeInVolume/changeInTime;
   return avqv.toFixed(3);
 }
 
@@ -696,8 +751,8 @@ volumeFlowRate(deltaVol:number, deltaT:number) {
 @param: gamma - shear rate
 @unit: s⁻¹
 */
-dynamicViscosityEquation(T:number, gamma:number) {
-  const eta = T/gamma;
+dynamicViscosityEquation(shearingStress:number, shearRate:number) {
+  const eta = shearingStress/shearRate;
   return eta.toFixed(3);
 }
 
@@ -708,8 +763,8 @@ dynamicViscosityEquation(T:number, gamma:number) {
 @param: rho - density
 @unit: kg/m³
 */
-kinematicViscosity(eta:number, rho:number) {
-  const v = eta/rho;
+kinematicViscosity(dynamicViscosty:number, density:number) {
+  const v = dynamicViscosty/density;
   return v.toFixed(3);
 }
 
@@ -724,8 +779,13 @@ kinematicViscosity(eta:number, rho:number) {
 @param: A - cross sectional area
 @unit: m²
 */
-drag(rho:number, v:number, Cd:number, A:number)  {
-  const FD = 0.5*(rho*(v**2)*Cd*A);
+drag(
+  density:number, 
+  speedOfTheObjectRelativeToTheFluid:number, 
+  dragCoefficient:number, 
+  crossSectionalArea:number
+  )  {
+  const FD = 0.5*(density*(speedOfTheObjectRelativeToTheFluid**2)*dragCoefficient*crossSectionalArea);
   return FD.toFixed(3);
 }
 
@@ -737,8 +797,8 @@ drag(rho:number, v:number, Cd:number, A:number)  {
 @param: c - speed of sound in the medium
 @unit: m/s
 */
-machNumber(u:number, c:number) {
-  const Ma = u/c;
+machNumber(localFlowVelocity:number, speedOfSoundTheMedium:number) {
+  const Ma = localFlowVelocity/speedOfSoundTheMedium;
   return Ma.toFixed(3);
 }
 
@@ -753,8 +813,13 @@ machNumber(u:number, c:number) {
 @param: eta - dynamic viscosity
 @unit: Pa·s
 */
-reynoldsNumber(rho:number, u:number, L:number, eta:number) {
-  const Re = (rho*u*L)/eta;
+reynoldsNumber(
+  density:number, 
+  flowSpeed:number, 
+  characteristicLinearDimension:number, 
+  dynamicViscosity:number
+  ) {
+  const Re = (density*flowSpeed*characteristicLinearDimension)/dynamicViscosity;
   return Re.toFixed(3);
 }
 
@@ -767,8 +832,12 @@ reynoldsNumber(rho:number, u:number, L:number, eta:number) {
 @param: d - depth of flow
 @unit: m
 */
-froudeNumber(u:number, g:number=9.80665, d:number) {
-  const Fr = u/Math.sqrt(g*d);
+froudeNumber(
+  flowSpeed:number, 
+  gravitationalConstant:number=9.80665, 
+  depthOfFlow:number
+  ) {
+  const Fr = flowSpeed/Math.sqrt(gravitationalConstant*depthOfFlow);
   return Fr.toFixed(3);
 }
 
@@ -779,8 +848,11 @@ froudeNumber(u:number, g:number=9.80665, d:number) {
 @param: epsilon - strain, or proportional deformation
 @unit: no units
 */
-youngsModulus(sigma:number, epsilon:number) {
-  const E = sigma/epsilon;
+youngsModulus(
+  uniaxialStressOrUniaxialForcePerUnitSurface:number, 
+  strainOrProportionalDeformation:number
+  ) {
+  const E = uniaxialStressOrUniaxialForcePerUnitSurface/strainOrProportionalDeformation;
   return E.toFixed(3);
 }
 
@@ -791,22 +863,25 @@ youngsModulus(sigma:number, epsilon:number) {
 @param: gammaXY - shear strain
 @unit: no units
 */
-shearModulus(tauXY:number, gammaXY:number) {
-  const G = tauXY/gammaXY;
+shearModulus(
+  shearStressOrPressureInXYDirection:number, 
+  shearStrain:number
+  ) {
+  const G = shearStressOrPressureInXYDirection/shearStrain;
   return G.toFixed(3);
 }
 
 //bulk modulus (Pa)
 /*
-@param: V - initial volume of the substance
+@param: V0 - initial volume of the substance
 @unit: m³
 @param: deltaV - change in volume
 @unit: m³
 @param: deltaP - change in pressure
 @unit: Pa
 */
-bulkModulus(V0:number, deltaV:number, deltaP:number) {
-  const k = -(V0*(deltaP/deltaV));
+bulkModulus(initialVolumeOfTheSubstance:number, changeInVolume:number, changeInPressure:number) {
+  const k = -(initialVolumeOfTheSubstance*(changeInPressure/changeInVolume));
   return k.toFixed(3);
 }
 
@@ -817,8 +892,8 @@ bulkModulus(V0:number, deltaV:number, deltaP:number) {
 @param: L - length
 @unit: m
 */
-surfaceTension(F:number, L:number) {
-  const gamma = 0.5*(F/L);
+surfaceTension(force:number, length:number) {
+  const gamma = 0.5*(force/length);
   return gamma.toFixed(3);
 }
 
