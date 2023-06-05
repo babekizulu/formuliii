@@ -4,14 +4,14 @@
  * @Date: 2022/02/07
  */
 
-class Depreciation {
+class depreciation {
     //straight-line depreciation formula
-    sl(cost:number, salvageValue:number, lifespan:number) {
+    straightLine(cost:number, salvageValue:number, lifespan:number) {
       const d = (cost - salvageValue) / lifespan;
       return d.toFixed(2);
     }
     //double-declining balance depreciation formula
-    ddb(lifespan:number, startingBookValue:number, salvageValue:number) {
+    doubleDecliningBalance(lifespan:number, startingBookValue:number, salvageValue:number) {
       //solve for ddb rate
       const ddbRate: number = (1 / (lifespan * 2));
       ddbRate.toFixed(2);
@@ -27,7 +27,7 @@ class Depreciation {
      return fyd.toFixed(2);
     }
     //units of production depreciation formula
-    up(
+    unitsOfProduction(
       costBasisOfAsset:number,
       salvageValue:number,
       estimatedTotalUnitsToBeProducedOverLifespan:number,
@@ -42,7 +42,7 @@ class Depreciation {
       return d.toFixed(2);
     }
     //sum of years digits depreciation formula
-    syd(lifespan:number=0, cost:number=0, salvageValue:number=0) {
+    sumOfYearsDigits(lifespan:number=0, cost:number=0, salvageValue:number=0) {
       //solve for some of years
       // - Add the number of each year of the lifespan
       // e.g 5 years = 5 + 4 + 3 + 2 + 1, which equals 15
@@ -57,4 +57,4 @@ class Depreciation {
       return syd.toFixed(2);
     }
   }
-  module.exports = Depreciation;
+  module.exports = depreciation;

@@ -3,16 +3,16 @@
  * @Desc: A library of economics depreciation formulae
  * @Date: 2022/02/07
  */
-var Depreciation = /** @class */ (function () {
-    function Depreciation() {
+var depreciation = /** @class */ (function () {
+    function depreciation() {
     }
     //straight-line depreciation formula
-    Depreciation.prototype.sl = function (cost, salvageValue, lifespan) {
+    depreciation.prototype.straightLine = function (cost, salvageValue, lifespan) {
         var d = (cost - salvageValue) / lifespan;
         return d.toFixed(2);
     };
     //double-declining balance depreciation formula
-    Depreciation.prototype.ddb = function (lifespan, startingBookValue, salvageValue) {
+    depreciation.prototype.doubleDecliningBalance = function (lifespan, startingBookValue, salvageValue) {
         //solve for ddb rate
         var ddbRate = (1 / (lifespan * 2));
         ddbRate.toFixed(2);
@@ -28,7 +28,7 @@ var Depreciation = /** @class */ (function () {
         return fyd.toFixed(2);
     };
     //units of production depreciation formula
-    Depreciation.prototype.up = function (costBasisOfAsset, salvageValue, estimatedTotalUnitsToBeProducedOverLifespan, actualUnitsProduced) {
+    depreciation.prototype.unitsOfProduction = function (costBasisOfAsset, salvageValue, estimatedTotalUnitsToBeProducedOverLifespan, actualUnitsProduced) {
         //solve for units of production rate
         var upRate = (costBasisOfAsset - salvageValue) /
             estimatedTotalUnitsToBeProducedOverLifespan;
@@ -37,7 +37,7 @@ var Depreciation = /** @class */ (function () {
         return d.toFixed(2);
     };
     //sum of years digits depreciation formula
-    Depreciation.prototype.syd = function (lifespan, cost, salvageValue) {
+    depreciation.prototype.sumOfYearsDigits = function (lifespan, cost, salvageValue) {
         if (lifespan === void 0) { lifespan = 0; }
         if (cost === void 0) { cost = 0; }
         if (salvageValue === void 0) { salvageValue = 0; }
@@ -54,6 +54,6 @@ var Depreciation = /** @class */ (function () {
         var syd = (lifespan / sumOfYears) * depreciableAmount;
         return syd.toFixed(2);
     };
-    return Depreciation;
+    return depreciation;
 }());
-module.exports = Depreciation;
+module.exports = depreciation;

@@ -9,8 +9,8 @@ class Ratios {
     @param: ca - current account
     @param: gdp - gross domestic product
     */
-   currentAccountToGDP(ca:number, gdp:number) {
-    const ratio = (ca/gdp) * 100;
+   currentAccountToGDP(currentAccount:number, grossDomesticProduct:number) {
+    const ratio = (currentAccount/grossDomesticProduct) * 100;
     return ratio.toFixed(2);
    }
     //government debt to gdp ratio
@@ -18,8 +18,8 @@ class Ratios {
     @param: gd - government debt
     @param: gdp - gross domestic product
     */
-   governmentDebtToGDP(gd:number, gdp:number) {
-    const ratio = (gd/gdp) * 100;
+   governmentDebtToGDP(governmentDebt:number, grossDomesticProduct:number) {
+    const ratio = (governmentDebt/grossDomesticProduct) * 100;
     return ratio.toFixed(2);
    }
 }

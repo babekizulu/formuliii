@@ -10,8 +10,8 @@ class BalanceSheet {
     @param: od - outstanding debt
     @param: oe - owners equity
     */
-   basic(od:number, oe:number) {
-    const t = od + oe;
+   basic(outstandingDebt:number, ownersEquity:number) {
+    const t = outstandingDebt + ownersEquity;
     return t.toFixed(2);
    }
     //current assets
@@ -21,8 +21,12 @@ class BalanceSheet {
     @param: i - inventories
     @param: p - prepaid expenses
     */
-   currentAssets(c:number, a:number, i:number, p:number) {
-    const ca = c + a + i + p;
+   currentAssets(
+     cash:number, 
+     accountsReceivable:number, 
+     inventories:number, 
+     prepaidExpenses:number) {
+    const ca = cash + accountsReceivable + inventories + prepaidExpenses;
     return ca.toFixed(2);
    }
     //current debt
@@ -32,8 +36,12 @@ class BalanceSheet {
     @param: ae - accrued expenses
     @param: stn - short-term notes
     */
-   currentDebt(a:number, o:number, ae:number, stn:number) {
-    const cd = a + o + ae + stn;
+   currentDebt(
+     accountsPayable:number, 
+     otherPayables:number, 
+     accruedExpenses:number, 
+     shortTermNotes:number) {
+    const cd = accountsPayable + otherPayables + accruedExpenses + shortTermNotes;
     return cd.toFixed(2);
    }
     //debt capital 
@@ -41,8 +49,8 @@ class BalanceSheet {
     @param: cd - current debt
     @param: ltd - long-term debt
     */
-   debtCapital(cd:number, ltd:number) {
-    const dc = cd + ltd;
+   debtCapital(currentDebt:number, longTermDebt:number) {
+    const dc = currentDebt + longTermDebt;
     return dc.toFixed(2);
    }
     //fixed assets
@@ -51,8 +59,8 @@ class BalanceSheet {
     @param: b - buildings
     @param: l - land
     */
-   fixedAssets(me:number, b:number, l:number) {
-        const fa = me + b + l;
+   fixedAssets(machineryAndEquipment:number, buildings:number, land:number) {
+        const fa = machineryAndEquipment + buildings + land;
         return fa.toFixed(2);
    }
     //long term debt
@@ -60,8 +68,8 @@ class BalanceSheet {
     @param: ltn - long-term notes
     @param: m - mortgages
     */
-   longTermDebt(ltn:number, m:number) {
-    const ltd = ltn + m;
+   longTermDebt(longTermNotes:number, mortgages:number) {
+    const ltd = longTermNotes + mortgages;
     return ltd.toFixed(2);
    }
     //other assets
@@ -69,8 +77,8 @@ class BalanceSheet {
     @param: i - investments
     @param: p - patents
     */
-   otherAssets(i:number, p:number) {
-    const oa = i + p;
+   otherAssets(investments:number, patents:number) {
+    const oa = investments + patents;
     return oa.toFixed(2);
    }
     //owners equity capital
@@ -79,8 +87,11 @@ class BalanceSheet {
     @param: pe - partnership equity
     @param: cse - common stock equity
     */
-   ownersEquityCapital(onw:number, pe:number, cse:number) {
-    const oec = onw + pe + cse;
+   ownersEquityCapital(
+     ownersNetWorth:number, 
+     partnershipEquity:number, 
+     commonStockEquity:number) {
+    const oec = ownersNetWorth + partnershipEquity + commonStockEquity;
     return oec.toFixed(2);
    }
     //total assets
@@ -89,8 +100,11 @@ class BalanceSheet {
     @param: f - fixed assets
     @param: o - other assets
     */
-   totalAssets(c:number, f:number, o:number) {
-    const t = c + f + o;
+   totalAssets(
+     currentAssets:number, 
+     fixedAssets:number, 
+     otherAssets:number) {
+    const t = currentAssets + fixedAssets + otherAssets;
     return t.toFixed(2);
    }
     //total debt & equity
@@ -98,8 +112,8 @@ class BalanceSheet {
     @param: d - debt capital
     @param: oe - owners equity capital
     */
-   totalDebtEquity(d:number, oe:number) {
-    const t = d + oe;
+   totalDebtEquity(debtCapital:number, ownersEquity:number) {
+    const t = debtCapital + ownersEquity;
     return t.toFixed(2);
    }
 }

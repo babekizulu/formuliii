@@ -11,8 +11,13 @@ class Interest {
     @param: n - n times compounded
     @param: t - time period
     */
-    compound(p:number, r:number, n:number, t:number) {
-        const i = p*(1+(r/100)/n)**(n*t);
+    compound(
+        principalAmount:number, 
+        rateOfInterest:number, 
+        numberOfTimesCompounded:number, 
+        timePeriod:number
+        ) {
+        const i = principalAmount*(1+(rateOfInterest/100)/numberOfTimesCompounded)**(numberOfTimesCompounded*timePeriod);
         return i.toFixed(2);
     }
     //simple interest
@@ -21,8 +26,8 @@ class Interest {
     @param: p - principal amount
     @param: t - time period
     */
-   simple(r:number, p:number, t:number) {
-    const i = (p*r*t)/100;
+   simple(rateOfInterest:number, principalAmount:number, timePeriod:number) {
+    const i = (principalAmount*rateOfInterest*timePeriod)/100;
     return i.toFixed(2);
    }
 }

@@ -11,8 +11,8 @@ class GDP {
     @param: n - nominal gdp
     @param: r - real gdp
     */
-   deflator(n:number, r:number) {
-    const d = (n/r) * 100;
+   deflator(nominalGDP:number, realGDP:number) {
+    const d = (nominalGDP/realGDP) * 100;
     return d.toFixed(2);
    }
     //expenditure approach
@@ -22,8 +22,8 @@ class GDP {
     @param: g - government expenditure
     @param: nx - net exports
     */
-   expenditureApproach(c:number, i:number, g:number, nx:number) {
-    const gdp = c + i + g + nx;
+   expenditureApproach(consumption:number, investment:number, governmentExpenditure:number, netExports:number) {
+    const gdp = consumption + investment + governmentExpenditure + netExports;
     return gdp.toFixed(2);
    }
     //income approach
@@ -33,8 +33,8 @@ class GDP {
     @param: d - depreciation
     @param: nffi - net foreign factor income
     */
-   incomeApproach(tni:number, st:number, d:number, nffi:number) {
-    const gdp = tni + st + d + nffi;
+   incomeApproach(totalNationalIncome:number, salesTaxes:number, depreciation:number, netForeignFactorIncome:number) {
+    const gdp = totalNationalIncome + salesTaxes + depreciation + netForeignFactorIncome;
     return gdp.toFixed(2);
    }
     //net exports
@@ -42,8 +42,8 @@ class GDP {
     @param: e - value of exports
     @param: i - value of imports
     */
-   netExports(e:number, i:number) {
-    const nx = e - i;
+   netExports(valueOfExports:number, valueOfImports:number) {
+    const nx = valueOfExports - valueOfImports;
     return nx.toFixed(2);
    }
     //real gdp
@@ -51,8 +51,8 @@ class GDP {
     @param: n - nominal gdp
     @param: d - deflator
     */
-   realGDP(n:number, d:number) {
-    const gdp = n/d;
+   realGDP(nominalGDP:number, deflator:number) {
+    const gdp = nominalGDP/deflator;
     return gdp.toFixed(2);
    }
 }

@@ -10,8 +10,8 @@ class IncomeStatement {
     @param: s - sales
     @param: x - expenses
     */
-   basic(s:number, x:number) {
-    const p = s-x;
+   basic(sales:number, expenses:number) {
+    const p = sales-expenses;
     return p.toFixed(2);
    }
     //earnings before income & taxes equation
@@ -19,8 +19,11 @@ class IncomeStatement {
     @param: g - gross profit
     @param: x - operating expenses
     */
-   earningsBeforeIncomeAndTaxes(g:number, x:number) {
-    const e = g - x;
+   earningsBeforeIncomeAndTaxes(
+    grossProfit:number, 
+    operatingExpenses:number
+    ) {
+    const e = grossProfit - operatingExpenses;
     return e.toFixed(2);
    }
     //earnings before taxes equation
@@ -28,8 +31,8 @@ class IncomeStatement {
     @param: oi - operating income
     @param: ix - interest expense
     */
-   earningsBeforeTaxes(oi:number, ix:number) {
-    const e = oi - ix;
+   earningsBeforeTaxes(operatingIncome:number, interestExpense:number) {
+    const e = operatingIncome - interestExpense;
     return e.toFixed(2);
    }
     //gross profit equation
@@ -37,8 +40,8 @@ class IncomeStatement {
     @param: s - sales revenue
     @param: c - cost of production
     */
-   grossProfit(s:number, c:number) {
-    const p = s - c;
+   grossProfit(salesRevenue:number, costOfProduction:number) {
+    const p = salesRevenue - costOfProduction;
     return p.toFixed(2);
    }
     //net income equation
@@ -46,18 +49,22 @@ class IncomeStatement {
     @param: ebt - earnings before taxes
     @param: ct - corportate taxes
     */
-   netIncome(ebt:number, ct:number) {
-    const i = ebt - ct;
+   netIncome(earningsBeforeTaxes:number, corporateTaxes:number) {
+    const i = earningsBeforeTaxes - corporateTaxes;
     return i.toFixed(2);
    }
     //operating expenses equation
     /*
     @param: m - marketing expense
-    @param: d - distributive expense
+    @param: d - distribution expense
     @param: a - administrative expense
     */
-   operatingExpenses(m:number, d:number, a:number) {
-    const x = m + d + a;
+   operatingExpenses(
+    marketing:number, 
+    distributionExpense:number, 
+    administrativeExpense:number
+    ) {
+    const x = marketing+ distributionExpense + administrativeExpense;
     return x.toFixed(2);
    }
 }

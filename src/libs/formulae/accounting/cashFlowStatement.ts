@@ -11,8 +11,13 @@ class CashFlowStatement {
       @param: divsPaid - dividends paid
       @param: deltaS - change in stock
       */
-    financing(ip: number, deltaDP: number, divsPaid: number, deltaS: number) {
-        const cf = ip + deltaDP + divsPaid + deltaS;
+    financing(
+        interestPayments: number, 
+        changeInDebtPrincipal: number,
+         dividendsPaid: number, 
+         changeInStock: number
+         ) {
+        const cf = interestPayments + changeInDebtPrincipal + dividendsPaid + changeInStock;
         return cf.toFixed(2);
     }
     //firm cash flow equations
@@ -32,8 +37,11 @@ class CashFlowStatement {
             @param: inowc - investment in net operating working capital
             @param: ifoa - investment in fixed assets & other assets
             */
-            cashFlows : (atcf:number, inowc:number, ifoa:number) => {
-                const cf = atcf - inowc - ifoa;
+            cashFlows : (
+                afterTaxCashFlows:number, 
+                investmentInNetOperatingWorkingCapital:number, 
+                investmentInFixedAssetsAndOtherAssets:number) => {
+                const cf = afterTaxCashFlows - investmentInNetOperatingWorkingCapital - investmentInFixedAssetsAndOtherAssets;
                 return cf.toFixed(2);
             },
             //earnings before income, taxes, depreciation & amortization
@@ -41,8 +49,8 @@ class CashFlowStatement {
             @param: oi - operating income
             @param: d - depreciation
             */
-            ebitda : (oi:number, d:number) => {
-                const ebitda = oi + d;
+            ebitda : (operatingIncome:number, depreciation:number) => {
+                const ebitda = operatingIncome + depreciation;
                 return ebitda.toFixed(2);
             },
             //after-tax cash flows from operations
@@ -50,8 +58,11 @@ class CashFlowStatement {
             @param: ebitda - earnings before income, taxes, depreciation & amortization
             @param: ctp - cash tax payments
             */
-            atcfo: (ebitda:number, ctp:number) => {
-            const atcfo = ebitda - ctp;
+            atcfo: (
+                earningsBeforeIncomeTaxesDepreciationAndAmortization:number, 
+                cashTaxPayments:number
+                ) => {
+            const atcfo = earningsBeforeIncomeTaxesDepreciationAndAmortization - cashTaxPayments;
             return atcfo.toFixed(2);
             },
             //cash taxes
@@ -59,8 +70,8 @@ class CashFlowStatement {
             @param: it - income taxes
             @param: deltaADT - changes in accrued or deferred taxes
             */
-            cashTaxes: (it:number, deltaADT:number) => {
-                const ct = it - deltaADT;
+            cashTaxes: (incomeTaxes:number, changesInAccruedOrDeferredTaxes:number) => {
+                const ct = incomeTaxes - changesInAccruedOrDeferredTaxes;
                 return ct.toFixed(2);
             },
             //change in net operating working capital
@@ -68,8 +79,11 @@ class CashFlowStatement {
             @param: deltaCA - change in current assets
             @param: deltaNIBCOL - change in net income before current operating liabilities
             */
-            deltaNOWC: (deltaCA:number, deltaNIBCOL:number) => {
-                const deltaNOWC = deltaCA - deltaNIBCOL;
+            deltaNOWC: (
+                changeInCurrentAssets:number, 
+                changeInNetIncomeBeforeCurrentOperatingLiabilities:number
+                ) => {
+                const deltaNOWC = changeInCurrentAssets - changeInNetIncomeBeforeCurrentOperatingLiabilities;
                 return deltaNOWC.toFixed(2);
             },
             //change in long-term assets
@@ -77,8 +91,11 @@ class CashFlowStatement {
             @param: gpfa - gross purchase price of fixed assets
             @param: nci - net cash used for investments
             */
-            deltaLTA: (gpfa:number, nci:number) => {
-                const deltaLTA = gpfa + nci;
+            deltaLTA: (
+                grossPurchasePriceOfFixedAssets:number, 
+                netCashUsedForInvestments:number
+                ) => {
+                const deltaLTA = grossPurchasePriceOfFixedAssets + netCashUsedForInvestments;
                 return deltaLTA.toFixed(2);
             }
         }
