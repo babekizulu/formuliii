@@ -13,8 +13,8 @@ var GDP = /** @class */ (function () {
     @param: n - nominal gdp
     @param: r - real gdp
     */
-    GDP.prototype.deflator = function (n, r) {
-        var d = (n / r) * 100;
+    GDP.prototype.deflator = function (nominalGDP, realGDP) {
+        var d = (nominalGDP / realGDP) * 100;
         return d.toFixed(2);
     };
     //expenditure approach
@@ -24,8 +24,8 @@ var GDP = /** @class */ (function () {
     @param: g - government expenditure
     @param: nx - net exports
     */
-    GDP.prototype.expenditureApproach = function (c, i, g, nx) {
-        var gdp = c + i + g + nx;
+    GDP.prototype.expenditureApproach = function (consumption, investment, governmentExpenditure, netExports) {
+        var gdp = consumption + investment + governmentExpenditure + netExports;
         return gdp.toFixed(2);
     };
     //income approach
@@ -35,8 +35,8 @@ var GDP = /** @class */ (function () {
     @param: d - depreciation
     @param: nffi - net foreign factor income
     */
-    GDP.prototype.incomeApproach = function (tni, st, d, nffi) {
-        var gdp = tni + st + d + nffi;
+    GDP.prototype.incomeApproach = function (totalNationalIncome, salesTaxes, depreciation, netForeignFactorIncome) {
+        var gdp = totalNationalIncome + salesTaxes + depreciation + netForeignFactorIncome;
         return gdp.toFixed(2);
     };
     //net exports
@@ -44,8 +44,8 @@ var GDP = /** @class */ (function () {
     @param: e - value of exports
     @param: i - value of imports
     */
-    GDP.prototype.netExports = function (e, i) {
-        var nx = e - i;
+    GDP.prototype.netExports = function (valueOfExports, valueOfImports) {
+        var nx = valueOfExports - valueOfImports;
         return nx.toFixed(2);
     };
     //real gdp
@@ -53,8 +53,8 @@ var GDP = /** @class */ (function () {
     @param: n - nominal gdp
     @param: d - deflator
     */
-    GDP.prototype.realGDP = function (n, d) {
-        var gdp = n / d;
+    GDP.prototype.realGDP = function (nominalGDP, deflator) {
+        var gdp = nominalGDP / deflator;
         return gdp.toFixed(2);
     };
     return GDP;

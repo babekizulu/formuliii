@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const OtherAssets = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [investments, setInvestments] = useState('');
   const [patents, setPatents] = useState('');
   const [currency, setCurrency] = useState('ZAR');

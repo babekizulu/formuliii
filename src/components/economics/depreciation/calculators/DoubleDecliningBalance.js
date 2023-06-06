@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const DoubleDecliningBalance = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [lifespan, setLifespan] = useState('');
   const [startingBookValue, setStartingBookValue] = useState('');
   const [salvageValue, setSalvageValue] = useState('');

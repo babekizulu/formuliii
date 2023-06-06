@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const DebtCapital = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [currentDebt, setCurrentDebt] = useState('');
   const [longTermDebt, setLongTermDebt] = useState('');
   const [currency, setCurrency] = useState('ZAR');

@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const FixedAssets = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [machineryAndEquipment, setMachineryAndEquipment] = useState('');
   const [buildings, setBuildings] = useState('');
   const [land, setLand] = useState('');

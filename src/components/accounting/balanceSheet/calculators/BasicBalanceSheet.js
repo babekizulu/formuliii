@@ -10,7 +10,7 @@ import ACBtn from '../../../buttons/ACBtn';
 import SolveBtn from '../../../buttons/SolveBtn';
 const BasicBalanceSheet = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [outstandingDebt, setOutstandingDebt] = useState('');
   const [ownersEquity, setOwnersEquity] = useState('');
   const [currency, setCurrency] = useState('ZAR');

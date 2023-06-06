@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const TotalAssets = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [currentAssets, setCurrentAssets] = useState('');
   const [fixedAssets, setFixedAssets] = useState('');
   const [otherAssets, setOtherAssets] = useState('');

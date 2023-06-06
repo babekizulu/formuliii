@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const OwnersEquityCapital = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [ownersNetWorth, setOwnersNetWorth] = useState('');
   const [partnershipEquity, setPartnershipEquity] = useState('');
   const [commonStockEquity, setCommonStockEquity] = useState('');

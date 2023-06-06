@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
+@Author: Lwandle Babekizulu Dlamini
 @Desc: A library of cash flow statement formulae
 @Date: 2023/01/23
 */
@@ -13,8 +13,8 @@ var CashFlowStatement = /** @class */ (function () {
       @param: divsPaid - dividends paid
       @param: deltaS - change in stock
       */
-    CashFlowStatement.prototype.financing = function (ip, deltaDP, divsPaid, deltaS) {
-        var cf = ip + deltaDP + divsPaid + deltaS;
+    CashFlowStatement.prototype.financing = function (interestPayments, changeInDebtPrincipal, dividendsPaid, changeInStock) {
+        var cf = interestPayments + changeInDebtPrincipal + dividendsPaid + changeInStock;
         return cf.toFixed(2);
     };
     //firm cash flow equations
@@ -34,8 +34,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: inowc - investment in net operating working capital
             @param: ifoa - investment in fixed assets & other assets
             */
-            cashFlows: function (atcf, inowc, ifoa) {
-                var cf = atcf - inowc - ifoa;
+            cashFlows: function (afterTaxCashFlows, investmentInNetOperatingWorkingCapital, investmentInFixedAssetsAndOtherAssets) {
+                var cf = afterTaxCashFlows - investmentInNetOperatingWorkingCapital - investmentInFixedAssetsAndOtherAssets;
                 return cf.toFixed(2);
             },
             //earnings before income, taxes, depreciation & amortization
@@ -43,8 +43,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: oi - operating income
             @param: d - depreciation
             */
-            ebitda: function (oi, d) {
-                var ebitda = oi + d;
+            ebitda: function (operatingIncome, depreciation) {
+                var ebitda = operatingIncome + depreciation;
                 return ebitda.toFixed(2);
             },
             //after-tax cash flows from operations
@@ -52,8 +52,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: ebitda - earnings before income, taxes, depreciation & amortization
             @param: ctp - cash tax payments
             */
-            atcfo: function (ebitda, ctp) {
-                var atcfo = ebitda - ctp;
+            atcfo: function (earningsBeforeIncomeTaxesDepreciationAndAmortization, cashTaxPayments) {
+                var atcfo = earningsBeforeIncomeTaxesDepreciationAndAmortization - cashTaxPayments;
                 return atcfo.toFixed(2);
             },
             //cash taxes
@@ -61,8 +61,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: it - income taxes
             @param: deltaADT - changes in accrued or deferred taxes
             */
-            cashTaxes: function (it, deltaADT) {
-                var ct = it - deltaADT;
+            cashTaxes: function (incomeTaxes, changesInAccruedOrDeferredTaxes) {
+                var ct = incomeTaxes - changesInAccruedOrDeferredTaxes;
                 return ct.toFixed(2);
             },
             //change in net operating working capital
@@ -70,8 +70,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: deltaCA - change in current assets
             @param: deltaNIBCOL - change in net income before current operating liabilities
             */
-            deltaNOWC: function (deltaCA, deltaNIBCOL) {
-                var deltaNOWC = deltaCA - deltaNIBCOL;
+            deltaNOWC: function (changeInCurrentAssets, changeInNetIncomeBeforeCurrentOperatingLiabilities) {
+                var deltaNOWC = changeInCurrentAssets - changeInNetIncomeBeforeCurrentOperatingLiabilities;
                 return deltaNOWC.toFixed(2);
             },
             //change in long-term assets
@@ -79,8 +79,8 @@ var CashFlowStatement = /** @class */ (function () {
             @param: gpfa - gross purchase price of fixed assets
             @param: nci - net cash used for investments
             */
-            deltaLTA: function (gpfa, nci) {
-                var deltaLTA = gpfa + nci;
+            deltaLTA: function (grossPurchasePriceOfFixedAssets, netCashUsedForInvestments) {
+                var deltaLTA = grossPurchasePriceOfFixedAssets + netCashUsedForInvestments;
                 return deltaLTA.toFixed(2);
             }
         };

@@ -60,11 +60,11 @@ class IncomeStatement {
     @param: a - administrative expense
     */
    operatingExpenses(
-    marketing:number, 
+    marketingExpense:number, 
     distributionExpense:number, 
     administrativeExpense:number
     ) {
-    const x = marketing+ distributionExpense + administrativeExpense;
+    const x = marketingExpense+ distributionExpense + administrativeExpense;
     return x.toFixed(2);
    }
 }

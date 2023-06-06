@@ -11,7 +11,7 @@ import SolveBtn from '../../../buttons/SolveBtn';
 
 const CurrentDebt = () => {
   //state management
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('rand');
   const [accountsPayable, setAccountsPayable] = useState('');
   const [otherPayables, setOtherPayables] = useState('');
   const [accruedExpenses, setAccruedExpenses] = useState('');

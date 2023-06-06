@@ -1,5 +1,5 @@
 /*
-@Author: Lwandle Babekizulu Dlamini (https://github.com/babekizulu)
+@Author: Lwandle Babekizulu Dlamini
 @Desc: A library of income statement formulae
 @Date: 2023/01/23
 */
@@ -11,8 +11,8 @@ var IncomeStatement = /** @class */ (function () {
     @param: s - sales
     @param: x - expenses
     */
-    IncomeStatement.prototype.basic = function (s, x) {
-        var p = s - x;
+    IncomeStatement.prototype.basic = function (sales, expenses) {
+        var p = sales - expenses;
         return p.toFixed(2);
     };
     //earnings before income & taxes equation
@@ -20,8 +20,8 @@ var IncomeStatement = /** @class */ (function () {
     @param: g - gross profit
     @param: x - operating expenses
     */
-    IncomeStatement.prototype.earningsBeforeIncomeAndTaxes = function (g, x) {
-        var e = g - x;
+    IncomeStatement.prototype.earningsBeforeIncomeAndTaxes = function (grossProfit, operatingExpenses) {
+        var e = grossProfit - operatingExpenses;
         return e.toFixed(2);
     };
     //earnings before taxes equation
@@ -29,8 +29,8 @@ var IncomeStatement = /** @class */ (function () {
     @param: oi - operating income
     @param: ix - interest expense
     */
-    IncomeStatement.prototype.earningsBeforeTaxes = function (oi, ix) {
-        var e = oi - ix;
+    IncomeStatement.prototype.earningsBeforeTaxes = function (operatingIncome, interestExpense) {
+        var e = operatingIncome - interestExpense;
         return e.toFixed(2);
     };
     //gross profit equation
@@ -38,8 +38,8 @@ var IncomeStatement = /** @class */ (function () {
     @param: s - sales revenue
     @param: c - cost of production
     */
-    IncomeStatement.prototype.grossProfit = function (s, c) {
-        var p = s - c;
+    IncomeStatement.prototype.grossProfit = function (salesRevenue, costOfProduction) {
+        var p = salesRevenue - costOfProduction;
         return p.toFixed(2);
     };
     //net income equation
@@ -47,18 +47,18 @@ var IncomeStatement = /** @class */ (function () {
     @param: ebt - earnings before taxes
     @param: ct - corportate taxes
     */
-    IncomeStatement.prototype.netIncome = function (ebt, ct) {
-        var i = ebt - ct;
+    IncomeStatement.prototype.netIncome = function (earningsBeforeTaxes, corporateTaxes) {
+        var i = earningsBeforeTaxes - corporateTaxes;
         return i.toFixed(2);
     };
     //operating expenses equation
     /*
     @param: m - marketing expense
-    @param: d - distributive expense
+    @param: d - distribution expense
     @param: a - administrative expense
     */
-    IncomeStatement.prototype.operatingExpenses = function (m, d, a) {
-        var x = m + d + a;
+    IncomeStatement.prototype.operatingExpenses = function (marketingExpense, distributionExpense, administrativeExpense) {
+        var x = marketingExpense + distributionExpense + administrativeExpense;
         return x.toFixed(2);
     };
     return IncomeStatement;
