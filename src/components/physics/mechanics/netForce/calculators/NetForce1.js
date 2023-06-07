@@ -12,7 +12,7 @@ const NetForce1 = () => {
   //state management
   const [mass, setMass] = useState('');
   const [acceleration, setAcceleration] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Mass';
   const variableName2 = 'Acceleration';

@@ -3,7 +3,7 @@
     @include wh100;
     @include centerFlex;
     position: relative;
-    top: 90px;
+    top: 110px;
 }
 
 .menu-grid {
@@ -16,8 +16,7 @@
     border: 4px solid $dark;
     border-radius: 8px;
     color: $dark;
-    font-family: $js;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     padding: 18px;
     margin-top: 18px;
     background: none;

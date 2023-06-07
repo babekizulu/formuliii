@@ -1,7 +1,7 @@
 @import 'utils';
 .solution-container {
     position: sticky;
-    top: 180px;
+    top: 140px;
     @include centerFlex;
     width: 100%;
     height: 70px;
@@ -20,4 +20,5 @@
     color: $dark;
     font-family: $arc;
     font-size: 1.4rem;
+    z-index: 4;
 }

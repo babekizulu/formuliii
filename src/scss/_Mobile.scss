@@ -1,0 +1,77 @@
+@import 'utils';
+@media screen and (max-width: 414px) {
+    //
+    .menu-item {
+        width: 368px;
+    }
+    .solution-container {
+        width: 368px;
+    }
+    .input-container {
+        input {
+            width: 368px;
+        }
+    }
+    .ac-btn {
+        width: 368px;
+    }
+    .solve-btn {
+        width: 368px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .menu-item {
+        width: 324px;
+    }
+    .solution-container {
+        width: 324px;
+    }
+    .input-container {
+        input {
+            width: 324px;
+        }
+    }
+    .ac-btn {
+        width: 324px;
+    }
+    .solve-btn {
+        width: 324px;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    //
+    .explorer-grid {
+        flex-direction: column;
+    }
+    .explorer-item {
+        margin: 18px auto;
+    }
+    .menu-item {
+        width: 244px;
+        font-size: 1rem;
+    }
+    .currency-selector {
+        width: 140px;
+        font-size: 0.8rem;
+    }
+    .solution-container {
+        width: 244px;
+    }
+    .solution {
+        font-size: 1rem;
+    }
+    .input-container {
+        input {
+            width: 244px;
+            font-size: 1rem;
+        }
+    }
+    .ac-btn {
+        width: 244px;
+    }
+    .solve-btn {
+        width: 244px;
+    }
+}

@@ -124,12 +124,6 @@ const Mechanics = () => {
           Universal Gravitation Calculator
         </Link>
         <Link
-          href='/physics/mechanics/gravitational-field'
-          className='menu-item'
-        >
-          Gravitational Field Calculator
-        </Link>
-        <Link
           href='/physics/mechanics/gravitational-potential-energy-2'
           className='menu-item'
         >

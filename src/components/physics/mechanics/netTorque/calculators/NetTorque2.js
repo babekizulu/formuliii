@@ -12,7 +12,7 @@ const NetTorque2 = () => {
   //state management
   const [changeInLength, setChangeInLength] = useState('');
   const [changeInTime, setChangeInTime] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Change in Length';
   const variableName2 = 'Change in Time';

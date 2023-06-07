@@ -1,0 +1,39 @@
+@import 'utils';
+@media screen and (max-width: 540px) {
+    .app-container {
+        max-width: 100%;
+    }
+    .calculator {
+        width: 100%;
+    }
+    .currency-selector {
+        width: 180px;
+        padding: 9px 18px;
+        margin-right: 18px;
+    }
+    .explorer-item {
+        @include centerFlex;
+        width: 100px;
+        height: 100px;
+        svg {
+            max-width: 100%;
+        }
+    }
+    .menu-item {
+        width: 500px;
+    }
+    .solution-container {
+        width: 500px;
+    }
+    .input-container {
+        input {
+            width: 500px;
+        }
+    }
+    .ac-btn {
+        width: 500px;
+    }
+    .solve-btn {
+        width: 500px;
+    }
+}

@@ -7,15 +7,20 @@
     width: 100%;
     border: none;
     border-radius: 12px;
+    font-family: $robmon;
     font-size: 2rem;
     font-weight: 500;
-    color: #fff;
+    color: $light;
     background: $dark;
     padding: 12px 12px;
     margin: 9px 0;
     cursor: pointer;
     transition: $eio;
     &:hover {
+        background: $dark-active;
+        transition: $eio;
+    }
+    &:active {
         background: $dark-active;
         transition: $eio;
     }

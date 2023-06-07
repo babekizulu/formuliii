@@ -8,9 +8,9 @@ import PhysicsIcon from './PhysicsIcon';
 import AccountingIcon from './AccountingIcon';
 
 const Explorer = () => {
-  const [economicsColor, setEconomicsColor] = useState('#D9D9D9');
-  const [physicsColor, setPhysicsColor] = useState('#D9D9D9');
-  const [accountingColor, setAccountingColor] = useState('#D9D9D9');
+  const [economicsColor, setEconomicsColor] = useState('#000');
+  const [physicsColor, setPhysicsColor] = useState('#000');
+  const [accountingColor, setAccountingColor] = useState('#000');
   //handlers
   const onHover = (iconName) => {
     if (iconName === 'economics') {
@@ -24,9 +24,9 @@ const Explorer = () => {
     }
   };
   const unHover = () => {
-    setEconomicsColor('#d9d9d9');
-    setPhysicsColor('#d9d9d9');
-    setAccountingColor('#d9d9d9');
+    setEconomicsColor('#000');
+    setPhysicsColor('#000');
+    setAccountingColor('#000');
   };
   return (
     <div className='explorer'>

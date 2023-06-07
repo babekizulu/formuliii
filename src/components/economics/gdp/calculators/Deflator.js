@@ -142,7 +142,7 @@ const Deflator = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/economics/' />
+      <BackBtn prevDir='/economics/gdp' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

@@ -1,9 +1,9 @@
 @import 'utils';
 .input-container {
+    margin-top: 18px;
     @include grid1;
     label {
         @include centerFlex;
-        font-family: $arc;
         font-size: 1.2rem;
         font-weight: 600;
         margin: 3px 0;
@@ -12,11 +12,13 @@
         @include centerFlex;
         width: 100%;
         height: 50px;
-        border: 2px solid $light;
+        border: 2px solid $dark;
         border-radius: 12px;
+        background: $light;
         color: $dark;
-        font-size: 1rem;
-        margin: 9px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 9px auto;
         &:active {
             border: 2px solid $dark;
         }

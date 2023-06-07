@@ -64,7 +64,7 @@ const VelocityEM = () => {
         stateValue={acceleration}
         onChangeHandler={onChangeHandler}
         um={um2}
-        name={variableName3}
+        name={variableName2}
         type={type}
       />
       <Input

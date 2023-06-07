@@ -442,7 +442,7 @@ var Mechanics = /** @class */ (function () {
     */
     Mechanics.prototype.universalGravitation = function (gravitationalConstant, mass1, mass2, distanceBetweenCentersOfTheMasses) {
         if (gravitationalConstant === void 0) { gravitationalConstant = 6.67430 * Math.pow(10, -11); }
-        var Fg = gravitationalConstant * ((mass1 * mass2) / Math.pow(distanceBetweenCentersOfTheMasses, 2));
+        var Fg = gravitationalConstant * mass1 * mass2 / Math.pow(distanceBetweenCentersOfTheMasses, 2);
         return Fg.toFixed(3);
     };
     //gravitational field equation (N/kg)

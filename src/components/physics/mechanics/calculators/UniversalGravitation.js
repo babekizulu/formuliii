@@ -30,7 +30,7 @@ const UniversalGravitation = () => {
   const um1 = 'N·m²/kg²';
   const um2 = 'kg';
   const um3 = 'm';
-  const solutionUM = 'G';
+  const solutionUM = 'N';
   const type = 'scientific';
   //handlers
   const onChangeHandler = (variableName, value) => {
@@ -40,10 +40,10 @@ const UniversalGravitation = () => {
     if (variableName === variableName2) {
       setMass1(value);
     }
-    if (variableName === variableName2) {
+    if (variableName === variableName3) {
       setMass2(value);
     }
-    if (variableName === variableName2) {
+    if (variableName === variableName4) {
       setDistanceBetweenCentersOfTheMasses(value);
     }
   };

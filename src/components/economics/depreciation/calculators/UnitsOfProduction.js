@@ -159,7 +159,7 @@ const UnitsOfProduction = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn />
+      <BackBtn prevDir='/economics/depreciation' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

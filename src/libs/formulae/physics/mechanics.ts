@@ -489,7 +489,7 @@ universalGravitation(
   mass2:number, 
   distanceBetweenCentersOfTheMasses:number
   ){
-  const Fg = gravitationalConstant*((mass1*mass2)/distanceBetweenCentersOfTheMasses**2);
+  const Fg = gravitationalConstant*mass1*mass2/distanceBetweenCentersOfTheMasses**2;
   return Fg.toFixed(3);
 }
 

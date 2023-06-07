@@ -7,7 +7,7 @@
     width: 100%;
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: $light;
     font-size: 2rem;
     font-weight: 600;
     background: $dark;
@@ -16,6 +16,10 @@
     cursor: pointer;
     transition: $eio;
     &:hover {
+        background: $dark-active;
+        transition: $eio;
+    }
+    &:active {
         background: $dark-active;
         transition: $eio;
     }

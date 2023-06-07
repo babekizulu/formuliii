@@ -12,7 +12,7 @@ const NetForce2 = () => {
   //state management
   const [changeInMomentum, setChangeInMomentum] = useState('');
   const [changeInTime, setChangeInTime] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Change in Momentum';
   const variableName2 = 'Change in Time';

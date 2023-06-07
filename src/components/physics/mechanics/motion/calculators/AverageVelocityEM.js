@@ -12,7 +12,7 @@ const AverageVelocityEM = () => {
   //state management
   const [initialVelocity, setInitialVelocity] = useState('');
   const [velocity, setVelocity] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Initial Velocity';
   const variableName2 = 'Velocity';

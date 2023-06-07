@@ -12,7 +12,7 @@ const AverageAngularVeloictyEOR = () => {
   //state management
   const [angularVelocity, setAngularVelocity] = useState('');
   const [initialAngularVelocity, setInitialAngularVelocity] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Angular Velocity';
   const variableName2 = 'Initial Angular Velocity';

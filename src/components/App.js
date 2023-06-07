@@ -72,7 +72,6 @@ import FluidPressure from './physics/mechanics/calculators/FluidPressure';
 import Frequency from './physics/mechanics/calculators/Frequency';
 import FroudeNumber from './physics/mechanics/calculators/FroudeNumber';
 import GeneralPotentialEnergy from './physics/mechanics/calculators/GeneralPotentialEnergy';
-import GravitationalField from './physics/mechanics/calculators/GravitationalField';
 import GravitationalPotential from './physics/mechanics/calculators/GravitationalPotential';
 import GravitationalPotentialEnergy from './physics/mechanics/calculators/GravitationalPotentialEnergy';
 import GravitationalPotentialEnergy2 from './physics/mechanics/calculators/GravitationalPotentialEnergy2';
@@ -106,6 +105,22 @@ import Weight from './physics/mechanics/calculators/Weight';
 import Work from './physics/mechanics/calculators/Work';
 import WorkEnergy from './physics/mechanics/calculators/WorkEnergy';
 import YoungsModulus from './physics/mechanics/calculators/YoungsModulus';
+//physics: motion calculators
+import AverageVelocityEM from './physics/mechanics/motion/calculators/AverageVelocityEM';
+import DisplacementEM from './physics/mechanics/motion/calculators/DisplacementEM';
+import VelocityEM from './physics/mechanics/motion/calculators/VelocityEM';
+import VelocitySquaredEM from './physics/mechanics/motion/calculators/VelocitySquaredEM';
+//physics: net-force calculators
+import NetForce1 from './physics/mechanics/netForce/calculators/NetForce1';
+import NetForce2 from './physics/mechanics/netForce/calculators/NetForce2';
+//physics: net-torque calculators
+import NetTorque1 from './physics/mechanics/netTorque/calculators/NetTorque1';
+import NetTorque2 from './physics/mechanics/netTorque/calculators/NetTorque2';
+//physics: rotation calculators
+import AngularRotationEOR from './physics/mechanics/rotation/calculators/AngularRotationEOR';
+import AngularVelocityEOR from './physics/mechanics/rotation/calculators/AngularVelocityEOR';
+import AngularVelocitySquaredEOR from './physics/mechanics/rotation/calculators/AngularVelocitySquaredEOR';
+import AverageAngularVelocityEOR from './physics/mechanics/rotation/calculators/AverageAngularVelocityEOR';
 //economics sets
 import Depreciation from './economics/depreciation/Depreciation';
 import GDP from './economics/gdp/GDP';
@@ -313,9 +328,6 @@ const App = () => {
       <Route path='/physics/mechanics/general-potential-energy'>
         <GeneralPotentialEnergy />
       </Route>
-      <Route path='/physics/mechanics/gravitational-field'>
-        <GravitationalField />
-      </Route>
       <Route path='/physics/mechanics/gravitational-potential'>
         <GravitationalPotential />
       </Route>
@@ -414,6 +426,46 @@ const App = () => {
       </Route>
       <Route path='/physics/mechanics/youngs-modulus'>
         <YoungsModulus />
+      </Route>
+      {/* PHYSICS: EQUATIONS OF MOTION CALCULATORS */}
+      <Route path='/physics/mechanics/motion/average-velocity'>
+        <AverageVelocityEM />
+      </Route>
+      <Route path='/physics/mechanics/motion/displacement'>
+        <DisplacementEM />
+      </Route>
+      <Route path='/physics/mechanics/motion/velocity'>
+        <VelocityEM />
+      </Route>
+      <Route path='/physics/mechanics/motion/velocity-quared'>
+        <VelocitySquaredEM />
+      </Route>
+      {/*PHYSICS: NET-FORCE EQUATION CALCULATORS*/}
+      <Route path='/physics/mechanics/net-force/1'>
+        <NetForce1 />
+      </Route>
+      <Route path='/physics/mechanics/net-force/2'>
+        <NetForce2 />
+      </Route>
+      {/*PHYSICS: NET-TORQUE EQUATION CALCULATORS*/}
+      <Route path='/physics/mechanics/net-torque/1'>
+        <NetTorque1 />
+      </Route>
+      <Route path='/physics/mechanics/net-torque/2'>
+        <NetTorque2 />
+      </Route>
+      {/*PHYSICS: ROTATION EQUATION CALCULATORS*/}
+      <Route path='/physics/mechanics/rotation/angular-rotation'>
+        <AngularRotationEOR />
+      </Route>
+      <Route path='/physics/mechanics/rotation/angular-velocity'>
+        <AngularVelocityEOR />
+      </Route>
+      <Route path='/physics/mechanics/rotation/angular-velocity-squared'>
+        <AngularVelocitySquaredEOR />
+      </Route>
+      <Route path='/physics/mechanics/rotation/average-angular-velocity'>
+        <AverageAngularVelocityEOR />
       </Route>
       {/* ECONOMICS SETS */}
       <Route path='/economics/depreciation'>

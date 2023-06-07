@@ -12,16 +12,22 @@
 
 body {
     @include wh100;
+    background: $light;
+    font-family: $robmon;
+    overflow-x: hidden;
 }
 
 .app-container {
     @include wh100;
     @include grid1;
+    background: $light;
+    font-family: $robmon;
 }
 
 @import 'Header';
 @import 'Explorer';
 @import 'BackBtn';
+@import 'CurrencySelector';
 @import 'CalculatorSet';
 @import 'Calculator';
 @import 'GoTo';
@@ -29,3 +35,5 @@ body {
 @import 'Input';
 @import 'ACBtn';
 @import 'SolveBtn';
+@import 'Tablet';
+@import 'Mobile';

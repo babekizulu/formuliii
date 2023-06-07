@@ -12,7 +12,7 @@ const NetTorque1 = () => {
   //state management
   const [momentOfInertia, setMomentOfInertia] = useState('');
   const [angularAcceleration, setAngularAcceleration] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Moment of Inertia';
   const variableName2 = 'Angular Acceleration';

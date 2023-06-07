@@ -14,7 +14,7 @@ const AngularRotationEOR = () => {
   const [initialAngularVelocity, setInitialAngularVelocity] = useState('');
   const [time, setTime] = useState('');
   const [acceleration, setAcceleration] = useState('');
-  const [solution, setSolution] = useState('');
+  const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Initial Angular Rotation';
   const variableName2 = 'Initial Angular Velocity';

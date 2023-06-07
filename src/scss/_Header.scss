@@ -5,7 +5,9 @@
     position: fixed;
     top: 0;
     z-index: 3;
-    background: #fff;
+    background: $light_alpha;
+    backdrop-filter: blur(2.7px);
+    -webkit-backdrop-filter: blur(2.7px);
 }
 
 .logo-container {

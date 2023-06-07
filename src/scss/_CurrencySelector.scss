@@ -1,0 +1,21 @@
+@import 'utils';
+.currency-selector-container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    text-align: right;
+    position: sticky;
+    top: 90px;
+    right: 0;
+    z-index: 3;
+}
+
+.currency-selector {
+    @include centerFlex;
+    padding: 9px 22px;
+    background: $dark;
+    color: $light;
+    font-family: $robmon;
+    font-size: 1.2rem;
+    font-weight: 700px;
+}
