@@ -2,11 +2,13 @@
 import React from 'react';
 //component
 import Link from '../../Link';
+import BackBtn from '../../buttons/BackBtn';
 
 const IncomeStatement = () => {
   return (
     <div className='menu'>
       <div className='menu-grid'>
+        <BackBtn prevDir='/accounting' />
         <Link href='/accounting/income-statement/basic' className='menu-item'>
           Basic Income Statement Calculator
         </Link>
