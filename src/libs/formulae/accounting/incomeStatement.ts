@@ -4,7 +4,7 @@
 @Date: 2023/01/23
 */
 
-class IncomeStatement {
+class incomeStatement {
     //basic income equation
     /*
     @param: s - sales
@@ -69,4 +69,4 @@ class IncomeStatement {
    }
 }
 
-module.exports = IncomeStatement;
+module.exports = incomeStatement;

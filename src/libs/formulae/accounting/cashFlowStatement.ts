@@ -3,7 +3,7 @@
 @Desc: A library of cash flow statement formulae
 @Date: 2023/01/23
 */
-class CashFlowStatement {
+class cashFlowStatement {
     //financing cash flow
     /*
       @param: ip - interest payments
@@ -102,4 +102,4 @@ class CashFlowStatement {
     }
 }
 
-module.exports = CashFlowStatement;
+module.exports = cashFlowStatement;

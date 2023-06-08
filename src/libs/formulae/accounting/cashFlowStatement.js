@@ -3,8 +3,8 @@
 @Desc: A library of cash flow statement formulae
 @Date: 2023/01/23
 */
-var CashFlowStatement = /** @class */ (function () {
-    function CashFlowStatement() {
+var cashFlowStatement = /** @class */ (function () {
+    function cashFlowStatement() {
     }
     //financing cash flow
     /*
@@ -13,7 +13,7 @@ var CashFlowStatement = /** @class */ (function () {
       @param: divsPaid - dividends paid
       @param: deltaS - change in stock
       */
-    CashFlowStatement.prototype.financing = function (interestPayments, changeInDebtPrincipal, dividendsPaid, changeInStock) {
+    cashFlowStatement.prototype.financing = function (interestPayments, changeInDebtPrincipal, dividendsPaid, changeInStock) {
         var cf = interestPayments + changeInDebtPrincipal + dividendsPaid + changeInStock;
         return cf.toFixed(2);
     };
@@ -26,7 +26,7 @@ var CashFlowStatement = /** @class */ (function () {
     @method: deltaNOWC - change in net operating working capital equation
     @method: deltaLTA - change in long-term assets equation
     */
-    CashFlowStatement.prototype.firmCashFlow = function () {
+    cashFlowStatement.prototype.firmCashFlow = function () {
         return {
             //cash flows equation
             /*
@@ -85,6 +85,6 @@ var CashFlowStatement = /** @class */ (function () {
             }
         };
     };
-    return CashFlowStatement;
+    return cashFlowStatement;
 }());
-module.exports = CashFlowStatement;
+module.exports = cashFlowStatement;

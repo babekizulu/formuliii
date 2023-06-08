@@ -3,15 +3,15 @@
 @Desc: A library of income statement formulae
 @Date: 2023/01/23
 */
-var IncomeStatement = /** @class */ (function () {
-    function IncomeStatement() {
+var incomeStatement = /** @class */ (function () {
+    function incomeStatement() {
     }
     //basic income equation
     /*
     @param: s - sales
     @param: x - expenses
     */
-    IncomeStatement.prototype.basic = function (sales, expenses) {
+    incomeStatement.prototype.basic = function (sales, expenses) {
         var p = sales - expenses;
         return p.toFixed(2);
     };
@@ -20,7 +20,7 @@ var IncomeStatement = /** @class */ (function () {
     @param: g - gross profit
     @param: x - operating expenses
     */
-    IncomeStatement.prototype.earningsBeforeIncomeAndTaxes = function (grossProfit, operatingExpenses) {
+    incomeStatement.prototype.earningsBeforeIncomeAndTaxes = function (grossProfit, operatingExpenses) {
         var e = grossProfit - operatingExpenses;
         return e.toFixed(2);
     };
@@ -29,7 +29,7 @@ var IncomeStatement = /** @class */ (function () {
     @param: oi - operating income
     @param: ix - interest expense
     */
-    IncomeStatement.prototype.earningsBeforeTaxes = function (operatingIncome, interestExpense) {
+    incomeStatement.prototype.earningsBeforeTaxes = function (operatingIncome, interestExpense) {
         var e = operatingIncome - interestExpense;
         return e.toFixed(2);
     };
@@ -38,7 +38,7 @@ var IncomeStatement = /** @class */ (function () {
     @param: s - sales revenue
     @param: c - cost of production
     */
-    IncomeStatement.prototype.grossProfit = function (salesRevenue, costOfProduction) {
+    incomeStatement.prototype.grossProfit = function (salesRevenue, costOfProduction) {
         var p = salesRevenue - costOfProduction;
         return p.toFixed(2);
     };
@@ -47,7 +47,7 @@ var IncomeStatement = /** @class */ (function () {
     @param: ebt - earnings before taxes
     @param: ct - corportate taxes
     */
-    IncomeStatement.prototype.netIncome = function (earningsBeforeTaxes, corporateTaxes) {
+    incomeStatement.prototype.netIncome = function (earningsBeforeTaxes, corporateTaxes) {
         var i = earningsBeforeTaxes - corporateTaxes;
         return i.toFixed(2);
     };
@@ -57,10 +57,10 @@ var IncomeStatement = /** @class */ (function () {
     @param: d - distribution expense
     @param: a - administrative expense
     */
-    IncomeStatement.prototype.operatingExpenses = function (marketingExpense, distributionExpense, administrativeExpense) {
+    incomeStatement.prototype.operatingExpenses = function (marketingExpense, distributionExpense, administrativeExpense) {
         var x = marketingExpense + distributionExpense + administrativeExpense;
         return x.toFixed(2);
     };
-    return IncomeStatement;
+    return incomeStatement;
 }());
-module.exports = IncomeStatement;
+module.exports = incomeStatement;
