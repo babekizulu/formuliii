@@ -143,6 +143,7 @@ const CurrentAssets = () => {
     setAccountsReceivable('');
     setInventories('');
     setPrepaidExpenses('');
+    setSolution(0);
   };
   const onSolveHandler = () => {
     const solution = new balanceSheet().currentAssets(

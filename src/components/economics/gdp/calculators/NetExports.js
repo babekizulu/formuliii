@@ -131,6 +131,7 @@ const NetExports = () => {
   const onACHandler = () => {
     setValueExports('');
     setValueImports('');
+    setSolution(0);
   };
   const onSolveHandler = () => {
     const solution = new gdp().netExports(valueOfExports, valueOfImports);

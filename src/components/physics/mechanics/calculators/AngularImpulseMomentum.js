@@ -66,7 +66,7 @@ const AngularImpulseMomentum = () => {
         stateValue={changeInAngularVelocity}
         onChangeHandler={onChangeHandler}
         um={um2}
-        name={variableName1}
+        name={variableName2}
         type={type}
       />
       <ACBtn onACHandler={onACHandler} />

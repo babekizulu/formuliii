@@ -71,14 +71,14 @@ const Buoyancy = () => {
         stateValue={accelerationDueToGravity}
         onChangeHandler={onChangeHandler}
         um={um2}
-        name={variableName1}
+        name={variableName2}
         type={type}
       />
       <Input
         stateValue={volumeDisplaced}
         onChangeHandler={onChangeHandler}
         um={um3}
-        name={variableName2}
+        name={variableName3}
         type={type}
       />
       <ACBtn onACHandler={onACHandler} />

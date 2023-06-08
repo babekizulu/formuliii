@@ -63,21 +63,24 @@ const AngularImpulse = () => {
       </div> */}
       <Solution solution={solution} solutionUM={solutionUM} />
       <Input
-        value={averageTorque}
+        stateValue={averageTorque}
         onChangeHandler={onChangeHandler}
         um={um1}
+        name={variableName1}
         type={type}
       />
       <Input
-        value={initialTime}
+        stateValue={initialTime}
         onChangeHandler={onChangeHandler}
         um={um2}
+        name={variableName2}
         type={type}
       />
       <Input
-        value={finalTime}
+        stateValue={finalTime}
         onChangeHandler={onChangeHandler}
         um={um3}
+        name={variableName3}
         type={type}
       />
       <ACBtn onACHandler={onACHandler} />

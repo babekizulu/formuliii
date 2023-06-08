@@ -120,10 +120,10 @@ const BasicBalanceSheet = () => {
   }, [selected]);
   //handlers
   const onChangeHandler = (variableName, value) => {
-    if (variableName === value) {
+    if (variableName === variableName1) {
       setOutstandingDebt(value);
     }
-    if (variableName === value) {
+    if (variableName === variableName2) {
       setOwnersEquity(value);
     }
   };

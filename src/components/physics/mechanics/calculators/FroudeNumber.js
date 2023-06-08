@@ -73,7 +73,7 @@ const FroudeNumber = () => {
         stateValue={gravitationalAcceleration}
         onChangeHandler={onChangeHandler}
         um={um2}
-        name={variableName1}
+        name={variableName2}
         type={type}
       />
       <Input

@@ -37,10 +37,10 @@ const FluidPressure = () => {
     if (variableName === variableName2) {
       setDensity(value);
     }
-    if (variableName === variableName2) {
+    if (variableName === variableName3) {
       setAccelerationDueToGravity(value);
     }
-    if (variableName === variableName2) {
+    if (variableName === variableName4) {
       setFluidDepth(value);
     }
   };

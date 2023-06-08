@@ -131,6 +131,7 @@ const RealGDP = () => {
   const onACHandler = () => {
     setNominalGDP('');
     setDeflator('');
+    setSolution(0);
   };
   const onSolveHandler = () => {
     const solution = new gdp().realGDP(nominalGDP, deflator);
