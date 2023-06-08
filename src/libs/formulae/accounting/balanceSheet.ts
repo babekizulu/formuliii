@@ -4,7 +4,7 @@
 @Date: 2023/01/23
 */
 
-class BalanceSheet {
+class balanceSheet {
     //basic balance sheet
     /*
     @param: od - outstanding debt
@@ -96,7 +96,7 @@ class BalanceSheet {
    }
     //total assets
     /*
-    @param: c - current assets
+    @param: c - current assetss
     @param: f - fixed assets
     @param: o - other assets
     */
@@ -118,4 +118,4 @@ class BalanceSheet {
    }
 }
 
-module.exports = BalanceSheet;
+module.exports = balanceSheet;
