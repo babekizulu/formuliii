@@ -3,57 +3,69 @@
  * @Desc: A library of economics depreciation formulae
  * @Date: 2022/02/07
  */
-var depreciation = /** @class */ (function () {
-    function depreciation() {
+
+class depreciation {
+  //straight-line depreciation formula
+  straightLine(cost, salvageValue, lifespan) {
+    const c = parseFloat(cost);
+    const sv = parseFloat(salvageValue);
+    const l = parseFloat(lifespan);
+    const d = (c - sv) / l;
+    return d.toFixed(2);
+  }
+  //double-declining balance depreciation formula
+  doubleDecliningBalance(lifespan, startingBookValue, salvageValue) {
+    const l = parseFloat(lifespan);
+    const sbv = parseFloat(startingBookValue);
+    const sv = parseFloat(salvageValue);
+    //solve for ddb rate
+    const ddbRate = 1 / (l * 2);
+    ddbRate.toFixed(2);
+    //solve for current year depreciation
+    const cyd = sbv * ddbRate;
+    cyd.toFixed(2);
+    //solve for end book value
+    const ebv = sbv - cyd;
+    ebv.toFixed(2);
+    //solve for final year depreciation
+    const fyd = ebv - sv;
+    //return fyd
+    return fyd.toFixed(2);
+  }
+  //units of production depreciation formula
+  unitsOfProduction(
+    costBasisOfAsset,
+    salvageValue,
+    estimatedTotalUnitsToBeProducedOverLifespan,
+    actualUnitsProduced,
+  ) {
+    const cba = parseFloat(costBasisOfAsset);
+    const sv = parseFloat(salvageValue);
+    const est = parseFloat(estimatedTotalUnitsToBeProducedOverLifespan);
+    const aup = parseFloat(actualUnitsProduced);
+    //solve for units of production rate
+    const upRate = (cba - sv) / est;
+    upRate.toFixed(2);
+    const d = upRate * aup;
+    return d.toFixed(2);
+  }
+  //sum of years digits depreciation formula
+  sumOfYearsDigits(lifespan = 0, cost = 0, salvageValue = 0) {
+    const l = parseFloat(lifespan);
+    const c = parseFloat(cost);
+    const sv = parseFloat(salvageValue);
+    //solve for some of years
+    // - Add the number of each year of the lifespan
+    // e.g 5 years = 5 + 4 + 3 + 2 + 1, which equals 15
+    let sumOfYears = 0;
+    for (let i = 0; i < l; i++) {
+      sumOfYears += l - i;
     }
-    //straight-line depreciation formula
-    depreciation.prototype.straightLine = function (cost, salvageValue, lifespan) {
-        var d = (cost - salvageValue) / lifespan;
-        return d.toFixed(2);
-    };
-    //double-declining balance depreciation formula
-    depreciation.prototype.doubleDecliningBalance = function (lifespan, startingBookValue, salvageValue) {
-        //solve for ddb rate
-        var ddbRate = (1 / (lifespan * 2));
-        ddbRate.toFixed(2);
-        //solve for current year depreciation
-        var cyd = (startingBookValue * ddbRate);
-        cyd.toFixed(2);
-        //solve for end book value
-        var ebv = (startingBookValue - cyd);
-        ebv.toFixed(2);
-        //solve for final year depreciation
-        var fyd = (ebv - salvageValue);
-        //return fyd
-        return fyd.toFixed(2);
-    };
-    //units of production depreciation formula
-    depreciation.prototype.unitsOfProduction = function (costBasisOfAsset, salvageValue, estimatedTotalUnitsToBeProducedOverLifespan, actualUnitsProduced) {
-        //solve for units of production rate
-        var upRate = (costBasisOfAsset - salvageValue) /
-            estimatedTotalUnitsToBeProducedOverLifespan;
-        upRate.toFixed(2);
-        var d = upRate * actualUnitsProduced;
-        return d.toFixed(2);
-    };
-    //sum of years digits depreciation formula
-    depreciation.prototype.sumOfYearsDigits = function (lifespan, cost, salvageValue) {
-        if (lifespan === void 0) { lifespan = 0; }
-        if (cost === void 0) { cost = 0; }
-        if (salvageValue === void 0) { salvageValue = 0; }
-        //solve for some of years
-        // - Add the number of each year of the lifespan
-        // e.g 5 years = 5 + 4 + 3 + 2 + 1, which equals 15
-        var sumOfYears = 0;
-        for (var i = 0; i < lifespan; i++) {
-            sumOfYears += lifespan - i;
-        }
-        //solve for depreciable amount
-        var depreciableAmount = cost - salvageValue;
-        //solve for sum of years digits depreciation
-        var syd = (lifespan / sumOfYears) * depreciableAmount;
-        return syd.toFixed(2);
-    };
-    return depreciation;
-}());
-module.exports = depreciation;
+    //solve for depreciable amount
+    const depreciableAmount = c - sv;
+    //solve for sum of years digits depreciation
+    const syd = (l / sumOfYears) * depreciableAmount;
+    return syd.toFixed(2);
+  }
+}
+export default depreciation;

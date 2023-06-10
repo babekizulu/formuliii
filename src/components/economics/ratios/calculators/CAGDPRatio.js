@@ -19,6 +19,7 @@ const CAGDPRatio = () => {
   //variables
   const variableName1 = 'Current Account';
   const variableName2 = 'Gross Domestic Product';
+  const solutionUM = '%';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -147,7 +148,7 @@ const CAGDPRatio = () => {
     <div className='calculator'>
       <BackBtn prevDir='/economics/ratios' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
-      <Solution solution={solution} solutionUM={currency} />
+      <Solution solution={solution} solutionUM={solutionUM} />
       <Input
         stateValue={currentAccount}
         onChangeHandler={onChangeHandler}

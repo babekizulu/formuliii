@@ -153,7 +153,7 @@ const OperatingExpenses = () => {
   //calculator
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/accounting/balance-sheet' />
+      <BackBtn prevDir='/accounting/income-statement' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

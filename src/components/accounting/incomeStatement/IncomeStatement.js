@@ -16,7 +16,7 @@ const IncomeStatement = () => {
           Earnings Before Income & Taxes Calculator
         </Link>
         <Link href='/accounting/income-statement/ebt' className='menu-item'>
-          Earnings Before Taxes
+          Earnings Before Taxes Calculator
         </Link>
         <Link
           href='/accounting/income-statement/gross-profit'

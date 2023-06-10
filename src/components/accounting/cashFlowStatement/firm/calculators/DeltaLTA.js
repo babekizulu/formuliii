@@ -133,7 +133,7 @@ const DeltaLTA = () => {
   const onACHandler = () => {
     setGrossPurchasePriceOfFixedAssets('');
     setNetCashUsedForInvestments('');
-    setSolution(solution);
+    setSolution(0);
   };
   const onSolveHandler = () => {
     const solution = new cashFlowStatement()
@@ -146,7 +146,7 @@ const DeltaLTA = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/accounting/cash-flow-statement' />
+      <BackBtn prevDir='/accounting/cash-flow-statement/firm' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

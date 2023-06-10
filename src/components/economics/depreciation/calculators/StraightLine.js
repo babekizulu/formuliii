@@ -19,8 +19,9 @@ const StraightLine = () => {
   const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Cost';
-  const variableName2 = 'salvageValue';
+  const variableName2 = 'Salvage Value';
   const variableName3 = 'Lifespan';
+  const um3 = 'Years';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -144,12 +145,8 @@ const StraightLine = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new depreciation().straightLine(
-      cost,
-      salvageValue,
-      lifespan,
-    );
-    setSolution(solution);
+    const sol = new depreciation().straightLine(cost, salvageValue, lifespan);
+    setSolution(sol);
   };
   return (
     <div className='calculator'>
@@ -173,7 +170,7 @@ const StraightLine = () => {
       <Input
         stateValue={lifespan}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um3}
         name={variableName3}
         type={type}
       />

@@ -5,58 +5,81 @@
 @TODO:
     - Consider measuring GDP values in Millions
 */
-var GDP = /** @class */ (function () {
-    function GDP() {
-    }
-    //deflator
-    /*
+class gdp {
+  //deflator
+  /*
     @param: n - nominal gdp
     @param: r - real gdp
     */
-    GDP.prototype.deflator = function (nominalGDP, realGDP) {
-        var d = (nominalGDP / realGDP) * 100;
-        return d.toFixed(2);
-    };
-    //expenditure approach
-    /*
+  deflator(nominalGDP, realGDP) {
+    const n = parseFloat(nominalGDP);
+    const r = parseFloat(realGDP);
+    const d = (n / r) * 100;
+    return d.toFixed(2);
+  }
+  //expenditure approach
+  /*
     @param: c - consumption
     @param: i - investment
     @param: g - government expenditure
     @param: nx - net exports
     */
-    GDP.prototype.expenditureApproach = function (consumption, investment, governmentExpenditure, netExports) {
-        var gdp = consumption + investment + governmentExpenditure + netExports;
-        return gdp.toFixed(2);
-    };
-    //income approach
-    /*
+  expenditureApproach(
+    consumption,
+    investment,
+    governmentExpenditure,
+    netExports,
+  ) {
+    const c = parseFloat(consumption);
+    const i = parseFloat(investment);
+    const g = parseFloat(governmentExpenditure);
+    const nx = parseFloat(netExports);
+    const solution = c + i + g + nx;
+
+    return solution.toFixed(2);
+  }
+  //income approach
+  /*
     @param: tni - total national income
     @param: st - sales taxes
     @param: d - depreciation
     @param: nffi - net foreign factor income
     */
-    GDP.prototype.incomeApproach = function (totalNationalIncome, salesTaxes, depreciation, netForeignFactorIncome) {
-        var gdp = totalNationalIncome + salesTaxes + depreciation + netForeignFactorIncome;
-        return gdp.toFixed(2);
-    };
-    //net exports
-    /*
+  incomeApproach(
+    totalNationalIncome,
+    salesTaxes,
+    depreciation,
+    netForeignFactorIncome,
+  ) {
+    const tni = parseFloat(totalNationalIncome);
+    const st = parseFloat(salesTaxes);
+    const d = parseFloat(depreciation);
+    const nffi = parseFloat(netForeignFactorIncome);
+    const solution = parseFloat(tni + st + d + nffi);
+    return solution.toFixed(2);
+  }
+  //net exports
+  /*
     @param: e - value of exports
     @param: i - value of imports
     */
-    GDP.prototype.netExports = function (valueOfExports, valueOfImports) {
-        var nx = valueOfExports - valueOfImports;
-        return nx.toFixed(2);
-    };
-    //real gdp
-    /*
+  netExports(valueOfExports, valueOfImports) {
+    const e = parseFloat(valueOfExports);
+    const i = parseFloat(valueOfImports);
+    const nx = e - i;
+    return nx.toFixed(2);
+  }
+  //real gdp
+  /*
     @param: n - nominal gdp
     @param: d - deflator
     */
-    GDP.prototype.realGDP = function (nominalGDP, deflator) {
-        var gdp = nominalGDP / deflator;
-        return gdp.toFixed(2);
-    };
-    return GDP;
-}());
-module.exports = GDP;
+  realGDP(nominalGDP, deflator) {
+    const n = parseFloat(nominalGDP);
+    const d = parseFloat(deflator);
+    const gdp = n / d;
+    return gdp.toFixed(2);
+  }
+}
+
+export default gdp;

@@ -19,6 +19,7 @@ const Deflator = () => {
   //variables
   const variableName1 = 'Nominal GDP';
   const variableName2 = 'Real GDP';
+  const solutionUM = '%';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -144,7 +145,7 @@ const Deflator = () => {
     <div className='calculator'>
       <BackBtn prevDir='/economics/gdp' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
-      <Solution solution={solution} solutionUM={currency} />
+      <Solution solution={solution} solutionUM={solutionUM} />
       <Input
         stateValue={nominalGDP}
         onChangeHandler={onChangeHandler}

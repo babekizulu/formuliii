@@ -15,7 +15,7 @@ const AverageVelocityEM = () => {
   const [solution, setSolution] = useState(0);
   //variables
   const variableName1 = 'Initial Velocity';
-  const variableName2 = 'Velocity';
+  const variableName2 = 'Final Velocity';
   const solutionUM = 'm/s';
   const type = 'scientific';
   //handlers

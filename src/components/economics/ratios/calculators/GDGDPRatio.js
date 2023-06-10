@@ -19,6 +19,7 @@ const GDGDPRatio = () => {
   //variables
   const variableName1 = 'Government Debt';
   const variableName2 = 'Gross Domestic Product';
+  const solutionUM = '%';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -134,7 +135,10 @@ const GDGDPRatio = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new ratios().governmentDebtToGDP();
+    const solution = new ratios().governmentDebtToGDP(
+      governmentDebt,
+      grossDomesticProduct,
+    );
     setSolution(solution);
   };
   const selectHandler = (e) => {
@@ -144,7 +148,7 @@ const GDGDPRatio = () => {
     <div className='calculator'>
       <BackBtn prevDir='/economics/ratios' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
-      <Solution solution={solution} solutionUM={currency} />
+      <Solution solution={solution} solutionUM={solutionUM} />
       <Input
         stateValue={governmentDebt}
         onChangeHandler={onChangeHandler}

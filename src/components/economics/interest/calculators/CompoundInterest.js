@@ -23,6 +23,9 @@ const CompoundInterest = () => {
   const variableName2 = 'Rate of Interest';
   const variableName3 = 'Number of Times Compounded';
   const variableName4 = 'Time Period';
+  const um2 = '%';
+  const um3 = '';
+  const um4 = 'Years';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -146,7 +149,7 @@ const CompoundInterest = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new interest().compoundInterest(
+    const solution = new interest().compound(
       principalAmount,
       rateOfInterest,
       numberOfTimesCompounded,
@@ -172,21 +175,21 @@ const CompoundInterest = () => {
       <Input
         stateValue={rateOfInterest}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um2}
         name={variableName2}
         type={type}
       />
       <Input
         stateValue={numberOfTimesCompounded}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um3}
         name={variableName3}
         type={type}
       />
       <Input
         stateValue={timePeriod}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um4}
         name={variableName4}
         type={type}
       />

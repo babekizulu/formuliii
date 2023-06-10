@@ -3,30 +3,40 @@
 @Desc: A library of interest formulae
 @Date: 2023/01/22
 */
-var Interest = /** @class */ (function () {
-    function Interest() {
-    }
-    //compound interest
-    /*
+class interest {
+  //compound interest
+  /*
     @param: p - principal amount
     @param: r - rate of interest
     @param: n - n times compounded
     @param: t - time period
     */
-    Interest.prototype.compound = function (principalAmount, rateOfInterest, numberOfTimesCompounded, timePeriod) {
-        var i = principalAmount * Math.pow((1 + (rateOfInterest / 100) / numberOfTimesCompounded), (numberOfTimesCompounded * timePeriod));
-        return i.toFixed(2);
-    };
-    //simple interest
-    /*
+  compound(
+    principalAmount,
+    rateOfInterest,
+    numberOfTimesCompounded,
+    timePeriod,
+  ) {
+    const p = parseFloat(principalAmount);
+    const r = parseFloat(rateOfInterest);
+    const n = parseFloat(numberOfTimesCompounded);
+    const t = parseFloat(timePeriod);
+    const i = p * (1 + r / 100 / n) ** (n * t);
+    return i.toFixed(2);
+  }
+  //simple interest
+  /*
     @param: r - rate of interest
     @param: p - principal amount
     @param: t - time period
     */
-    Interest.prototype.simple = function (rateOfInterest, principalAmount, timePeriod) {
-        var i = (principalAmount * rateOfInterest * timePeriod) / 100;
-        return i.toFixed(2);
-    };
-    return Interest;
-}());
-module.exports = Interest;
+  simple(rateOfInterest, principalAmount, timePeriod) {
+    const r = parseFloat(rateOfInterest);
+    const p = parseFloat(principalAmount);
+    const t = parseFloat(timePeriod);
+    const i = parseFloat((p * r * t) / 100);
+    return i.toFixed(2);
+  }
+}
+
+export default interest;

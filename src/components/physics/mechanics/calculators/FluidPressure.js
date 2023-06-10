@@ -27,7 +27,7 @@ const FluidPressure = () => {
   const um2 = 'kg/m³';
   const um3 = 'm/s²';
   const um4 = 'm';
-  const solutionUM = '';
+  const solutionUM = 'Pa';
   const type = 'scientific';
   //handlers
   const onChangeHandler = (variableName, value) => {

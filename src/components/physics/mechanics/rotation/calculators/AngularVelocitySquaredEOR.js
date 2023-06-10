@@ -18,7 +18,7 @@ const AngularVelocitySquaredEOR = () => {
   //variables
   const variableName1 = 'Initial Angular Velocity';
   const variableName2 = 'Acceleration';
-  const variableName3 = 'Angular Rotation';
+  const variableName3 = 'Final Angular Rotation';
   const variableName4 = 'Initial Angular Rotation';
   const um1 = 'rad/s';
   const um2 = 'm/s²';

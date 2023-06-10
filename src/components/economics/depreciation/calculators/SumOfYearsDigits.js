@@ -21,6 +21,7 @@ const SumOfYearsDigits = () => {
   const variableName1 = 'Lifespan';
   const variableName2 = 'Cost';
   const variableName3 = 'Salvage Value';
+  const um1 = 'Years';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -143,12 +144,12 @@ const SumOfYearsDigits = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new depreciation().sumOfYearsDigits(
+    const sol = new depreciation().sumOfYearsDigits(
       lifespan,
       cost,
       salvageValue,
     );
-    setSolution(solution);
+    setSolution(sol);
   };
   return (
     <div className='calculator'>
@@ -158,7 +159,7 @@ const SumOfYearsDigits = () => {
       <Input
         stateValue={lifespan}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um1}
         name={variableName1}
         type={type}
       />

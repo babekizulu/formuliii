@@ -9,12 +9,12 @@ const CashFlowStatement = () => {
     <div className='menu'>
       <BackBtn prevDir='/accounting' />
       <div className='menu-grid'>
-        <Link
+        {/* <Link
           href='/accounting/cash-flow-statement/financing'
           className='menu-item'
         >
           Financing Cash Flow
-        </Link>
+        </Link> */}
         <Link href='/accounting/cash-flow-statement/firm' className='menu-item'>
           Firm Cash Flow
         </Link>

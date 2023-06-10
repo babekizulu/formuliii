@@ -12,7 +12,7 @@
 
 body {
     @include wh100;
-    background: $light;
+    background: #fff;
     font-family: $robmon;
     overflow-x: hidden;
 }
@@ -20,7 +20,7 @@ body {
 .app-container {
     @include wh100;
     @include grid1;
-    background: $light;
+    background: #fff;
     font-family: $robmon;
 }
 

@@ -5,7 +5,7 @@ const Input = ({ stateValue, onChangeHandler, um, name }) => {
   return (
     <div className='input-container'>
       <label>
-        {name} ({um})
+        {name} {um ? `(${um})` : ''}
       </label>
       <input
         value={stateValue}

@@ -153,6 +153,7 @@ const ExpenditureApproach = () => {
       netExports,
     );
     setSolution(solution);
+    console.log(solution);
   };
   const selectHandler = (e) => {
     setSelected(e.target.value);

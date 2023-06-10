@@ -1,5 +1,5 @@
 //libs
-import React from 'react';
+import React, { useState } from 'react';
 //styling
 import '../scss/App.scss';
 //component
@@ -144,153 +144,157 @@ import SimpleInterest from './economics/interest/calculators/SimpleInterest';
 import CAGDPRatio from './economics/ratios/calculators/CAGDPRatio';
 import GDGDPRatio from './economics/ratios/calculators/GDGDPRatio';
 const App = () => {
+  const [scrolling, setScrolling] = useState('false');
+  const scrollHandler = () => {
+    setScrolling(true);
+  };
   return (
-    <div className='app-container'>
+    <div className='app-container' onScroll={scrollHandler}>
       <Header />
       <Route path='/'>
         <Explorer />
       </Route>
       {/* CALCULATOR SETS */}
       <Route path='/economics'>
-        <Economics />
+        <Economics scrolling={scrolling} />
       </Route>
       <Route path='/physics'>
-        <Physics />
+        <Physics scrolling={scrolling} />
       </Route>
       <Route path='/accounting'>
-        <Accounting />
+        <Accounting scrolling={scrolling} />
       </Route>
       {/*ACCOUNTING SETS*/}
       <Route path='/accounting/balance-sheet'>
-        <BalanceSheet />
+        <BalanceSheet scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement'>
-        <CashFlowStatement />
+        <CashFlowStatement scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement'>
-        <IncomeStatement />
+        <IncomeStatement scrolling={scrolling} />
       </Route>
       {/*BALANCE SHEET CALCULATORS*/}
       <Route path='/accounting/balance-sheet/basic'>
-        <BasicBalanceSheet />
+        <BasicBalanceSheet scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/current-assets'>
-        <CurrentAssets />
+        <CurrentAssets scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/current-debt'>
-        <CurrentDebt />
+        <CurrentDebt scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/debt-capital'>
-        <DebtCapital />
+        <DebtCapital scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/fixed-assets'>
-        <FixedAssets />
+        <FixedAssets scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/long-term-debt'>
-        <LongTermDebt />
+        <LongTermDebt scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/other-assets'>
-        <OtherAssets />
+        <OtherAssets scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/owners-equity-capital'>
-        <OwnersEquityCapital />
+        <OwnersEquityCapital scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/total-assets'>
-        <TotalAssets />
+        <TotalAssets scrolling={scrolling} />
       </Route>
       <Route path='/accounting/balance-sheet/total-debt-equity'>
-        <TotalDebtEquity />
+        <TotalDebtEquity scrolling={scrolling} />
       </Route>
       {/* ACCOUNTING: CASH FLOW SETS*/}
       <Route path='/accounting/cash-flow-statement/firm'>
-        <FirmCashFlow />
+        <FirmCashFlow scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/financing'>
-        <FinancingCashFlow />
+        <FinancingCashFlow scrolling={scrolling} />
       </Route>
       {/* ACCOUNTING: FIRM CASH FLOW CALCULATORS*/}
       <Route path='/accounting/cash-flow-statement/firm/cash-flow'>
-        <CashFlowFirm />
+        <CashFlowFirm scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/firm/ebitda'>
-        <EBITDA />
+        <EBITDA scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/firm/atcfo'>
-        <ATCFO />
+        <ATCFO scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/firm/cash-taxes'>
-        <CashTaxes />
+        <CashTaxes scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/firm/deltaNOWC'>
-        <DeltaNOWC />
+        <DeltaNOWC scrolling={scrolling} />
       </Route>
       <Route path='/accounting/cash-flow-statement/firm/deltaLTA'>
-        <DeltaLTA />
+        <DeltaLTA scrolling={scrolling} />
       </Route>
       {/* ACCOUNTING: FINANCING CASH FLOW CALCULATORS */}
       <Route path='/accounting/cash-flow-statement/financing/cash-flow'>
-        <CashFlowFinancing />
+        <CashFlowFinancing scrolling={scrolling} />
       </Route>
       {/* ACCOUNTING: INCOME STATEMENT CALCULATORS */}
       <Route path='/accounting/income-statement/basic'>
-        <BasicIncomeStatement />
+        <BasicIncomeStatement scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement/ebit'>
-        <EBIT />
+        <EBIT scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement/ebt'>
-        <EBT />
+        <EBT scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement/gross-profit'>
-        <GrossProfit />
+        <GrossProfit scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement/net-income'>
-        <NetIncome />
+        <NetIncome scrolling={scrolling} />
       </Route>
       <Route path='/accounting/income-statement/operating-expenses'>
-        <OperatingExpenses />
+        <OperatingExpenses scrolling={scrolling} />
       </Route>
       {/* PHYSICS: CALCULATOR SETS */}
       <Route path='/physics/mechanics'>
-        <Mechanics />
+        <Mechanics scrolling={scrolling} />
       </Route>
       {/* PHYSICS: MECHANICS SETS */}
       <Route path='/physics/mechanics/motion'>
-        <Motion />
+        <Motion scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/net-force'>
-        <NetForce />
+        <NetForce scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/net-torque'>
-        <NetTorque />
+        <NetTorque scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/rotation'>
-        <Rotation />
+        <Rotation scrolling={scrolling} />
       </Route>
       {/* PHYSICS: MECHANICS CALCULATORS */}
       <Route path='/physics/mechanics/acceleration'>
-        <Acceleration />
+        <Acceleration scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/angular-acceleration'>
-        <AngularAcceleration />
+        <AngularAcceleration scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/angular-frequency'>
-        <AngularFrequency />
+        <AngularFrequency scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/angular-impulse'>
-        <AngularImpulse />
+        <AngularImpulse scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/angular-impulse-momentum'>
-        <AngularImpulseMomentum />
+        <AngularImpulseMomentum scrolling={scrolling} />
       </Route>
       <Route path='/phsyics/mechanics/angular-momentum'>
-        <AngularMomentum />
+        <AngularMomentum scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/angular-velocity'>
-        <AngularVelocity />
+        <AngularVelocity scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/bulk-modulus'>
-        <BulkModulus />
+        <BulkModulus scrolling={scrolling} />
       </Route>
       <Route path='/physics/mechanics/buoyancy'>
         <Buoyancy />
@@ -391,7 +395,7 @@ const App = () => {
       <Route path='/physics/mechanics/shear-modulus'>
         <ShearModulus />
       </Route>
-      <Route path='/physics/mechanics/simple-harmonics-oscillator'>
+      <Route path='/physics/mechanics/simple-harmonic-oscillator'>
         <SimpleHarmonicOscillator />
       </Route>
       <Route path='/physics/mechanics/simple-pendulum'>

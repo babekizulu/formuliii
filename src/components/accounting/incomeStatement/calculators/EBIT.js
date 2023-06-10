@@ -134,7 +134,10 @@ const EBIT = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new incomeStatement().ebit(grossProfit, operatingExpenses);
+    const solution = new incomeStatement().earningsBeforeIncomeAndTaxes(
+      grossProfit,
+      operatingExpenses,
+    );
     setSolution(solution);
   };
   const selectHandler = (e) => {
@@ -143,7 +146,7 @@ const EBIT = () => {
   //calculator
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/accounting/balance-sheet' />
+      <BackBtn prevDir='/accounting/income-statement' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

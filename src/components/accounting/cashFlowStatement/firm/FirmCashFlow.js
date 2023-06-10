@@ -2,11 +2,13 @@
 import React from 'react';
 //components
 import Link from '../../../Link';
+import BackBtn from '../../../buttons/BackBtn';
 
 const Firm = () => {
   return (
     <div className='menu'>
       <div className='menu-grid'>
+        <BackBtn prevDir='/accounting/cash-flow-statement' />
         <Link
           href='/accounting/cash-flow-statement/firm/cash-flow'
           className='menu-item'
@@ -17,7 +19,8 @@ const Firm = () => {
           href='/accounting/cash-flow-statement/firm/ebitda'
           className='menu-item'
         >
-          Earnings Before Interest, Taxes & Amortization Calculator
+          Earnings Before Interest, Taxes, Depreciation & Amortization
+          Calculator
         </Link>
         <Link
           href='/accounting/cash-flow-statement/firm/atcfo'

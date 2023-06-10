@@ -21,6 +21,8 @@ const SimpleInterest = () => {
   const variableName1 = 'Rate of Interest';
   const variableName2 = 'Principal Amount';
   const variableName3 = 'Time Period';
+  const um1 = '%';
+  const um3 = 'Years';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -140,7 +142,7 @@ const SimpleInterest = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new interest().simpleInterest(
+    const solution = new interest().simple(
       rateOfInterest,
       principalAmount,
       timePeriod,
@@ -158,7 +160,7 @@ const SimpleInterest = () => {
       <Input
         stateValue={rateOfInterest}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um1}
         name={variableName1}
         type={type}
       />
@@ -172,7 +174,7 @@ const SimpleInterest = () => {
       <Input
         stateValue={timePeriod}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um3}
         name={variableName3}
         type={type}
       />

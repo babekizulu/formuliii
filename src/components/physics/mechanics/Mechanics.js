@@ -105,9 +105,9 @@ const Mechanics = () => {
         >
           Rotational Kinetic Energy Calculator
         </Link>
-        <Link href='/physics/mechanics/angular-momentum' className='menu-item'>
+        {/* <Link href='/physics/mechanics/angular-momentum' className='menu-item'>
           Angular Momentum Calculator
-        </Link>
+        </Link> */}
         <Link href='/physics/mechanics/angular-impulse' className='menu-item'>
           Angular Impulse Calculator
         </Link>

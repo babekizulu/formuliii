@@ -144,7 +144,7 @@ const EBITDA = () => {
   };
   return (
     <div className='calculator'>
-      <BackBtn prevDir='/accounting/cash-flow-statement' />
+      <BackBtn prevDir='/accounting/cash-flow-statement/firm' />
       <CurrencySelector selectHandler={selectHandler} selected={selected} />
       <Solution solution={solution} solutionUM={currency} />
       <Input

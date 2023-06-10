@@ -14,7 +14,7 @@ const AverageAngularVeloictyEOR = () => {
   const [initialAngularVelocity, setInitialAngularVelocity] = useState('');
   const [solution, setSolution] = useState(0);
   //variables
-  const variableName1 = 'Angular Velocity';
+  const variableName1 = 'Final Angular Velocity';
   const variableName2 = 'Initial Angular Velocity';
   const um1 = 'rad/s';
   const um2 = 'rad/s';

@@ -21,6 +21,7 @@ const DoubleDecliningBalance = () => {
   const variableName1 = 'Lifespan';
   const variableName2 = 'Starting Book Value';
   const variableName3 = 'Salvage Value';
+  const um1 = 'Years';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -143,12 +144,12 @@ const DoubleDecliningBalance = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new depreciation().doubleDecliningBalance(
+    const sol = new depreciation().doubleDecliningBalance(
       lifespan,
       startingBookValue,
       salvageValue,
     );
-    setSolution(solution);
+    setSolution(sol);
   };
   //calculator
   return (
@@ -159,7 +160,7 @@ const DoubleDecliningBalance = () => {
       <Input
         stateValue={lifespan}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um1}
         name={variableName1}
         type={type}
       />

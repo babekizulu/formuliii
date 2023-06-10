@@ -45,10 +45,15 @@ const OrbitalSpeed = () => {
   const onACHandler = () => {
     setGravitationalConstant('');
     setMass('');
+    setDistanceBetweenCentersOfTheMasses('');
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new mechanics().orbitalSpeed(gravitationalConstant, mass);
+    const solution = new mechanics().orbitalSpeed(
+      gravitationalConstant,
+      mass,
+      distanceBetweenCentersOfTheMasses,
+    );
     setSolution(solution);
   };
   return (

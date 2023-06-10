@@ -23,6 +23,7 @@ const UnitsOfProduction = () => {
   const variableName2 = 'Salvage Value';
   const variableName3 = 'Total Units to be Produced';
   const variableName4 = 'Actual Units Produced';
+  const um3 = 'Units';
   const type = 'financial';
   //side effects
   useEffect(() => {
@@ -146,13 +147,13 @@ const UnitsOfProduction = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new depreciation().unitsOfProduction(
+    const sol = new depreciation().unitsOfProduction(
       costBasisOfAsset,
       salvageValue,
       totalUnitsToBeProduced,
       actualUnitsProduced,
     );
-    setSolution(solution);
+    setSolution(sol);
   };
   const selectHandler = (e) => {
     setSelected(e.target.value);
@@ -179,14 +180,14 @@ const UnitsOfProduction = () => {
       <Input
         stateValue={totalUnitsToBeProduced}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um3}
         name={variableName3}
         type={type}
       />
       <Input
         stateValue={actualUnitsProduced}
         onChangeHandler={onChangeHandler}
-        um={currency}
+        um={um3}
         name={variableName4}
         type={type}
       />

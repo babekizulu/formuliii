@@ -38,7 +38,10 @@ const DynamicViscosity = () => {
     setSolution(0);
   };
   const onSolveHandler = () => {
-    const solution = new mechanics().dynamicViscosity();
+    const solution = new mechanics().dynamicViscosity(
+      shearingStress,
+      shearRate,
+    );
     setSolution(solution);
   };
   return (
