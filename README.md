@@ -290,10 +290,10 @@
 
 - When dealing with the optional parameters in this method, provide a value for the
   variant which is the most appropriate for your use-case:
-  example: interestPaymentsToCreditors(10000,5000,null, 5000, null, 1500)
+  example: `interestPaymentsToCreditors(10000,5000,null, 5000, null, 1500)`
 - But do not leave both variants null, since a value for at least one of each variant
-  is required.
-  example: interestPaymentsToCreditors(1000, null, null, 5000, null, null)
+  is required:
+  example: `interestPaymentsToCreditors(1000, null, null, 5000, null, null)`
 - This will produce an Input Value Error:
   example: `Error: missing input values`
 
