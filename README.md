@@ -1,70 +1,368 @@
-# Getting Started with Create React App
+# FORMULiii Users Manual
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### @desc: A manual providing detailed instructions on how to use the FORMULiii library
 
-## Available Scripts
+### @authors:
 
-In the project directory, you can run:
+- Lwandle Babekizulu Dlamini
 
-### `npm start`
+### @date: 2024/04/04
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Accounting
+2. Economics
+3. Physics
+4. Mathematics
 
-### `npm test`
+# Accounting
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## INCOME STATEMENT
 
-### `npm run build`
+## Instantiating the Income Statement Class:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`new IncomeStatement()`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Methods:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- gross profit
+- earnings before interest and taxes (EBIT)
+- earnings before taxes
+- net income
 
-### `npm run eject`
+## Gross Profit
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Parameters:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. sales revenue TYPE: float
+2. cost of production TYPE: float
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Method:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+`new IncomeStatement().grossProfit(param1, param2)`
 
-## Learn More
+## Earnings Before Interest and Taxes (EBIT)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Parameters:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. gross profit TYPE: float
+2. marketing expenses TYPE: float
+3. distribution expenses TYPE: float
+4. adminstrative expenses TYPE: float
+5. general expenses TYPE: float
 
-### Code Splitting
+### Method:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+`new IncomeStatement().earningsBeforeInterestAndTaxes(param1, param2, param3, param4, param5)`
 
-### Analyzing the Bundle Size
+## Earnings Before Taxes (EBT)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Parameters:
 
-### Making a Progressive Web App
+1. operating income TYPE: float
+2. interest expense on debt TYPE: float
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Method:
 
-### Advanced Configuration
+`new IncomeStatement().earningsBeforeTaxes(param1, param2)`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Net Income
 
-### Deployment
+### Parameters:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. earnings before taxes TYPE: float
+2. corporate taxes TYPE: float
 
-### `npm run build` fails to minify
+### Method:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`new IncomeStatement().netIncome(param1, param2)`
+
+## BALANCE SHEET
+
+## Instantiating the Balance Sheet Class:
+
+`new BalanceSheet()`
+
+## Methods:
+
+- current assets
+- fixed assets
+- other assets
+- current debt
+- long-term debt
+- debt capital
+- owners equity capital
+- total debt & equity
+
+## Current Assets
+
+### Parameters
+
+1. cash
+2. accounts receivable
+3. inventories
+4. prepaid expenses
+
+### Method
+
+`new BalanceSheet().currentAssets(param1, param2, param3, param4)`
+
+## Fixed Assets
+
+### Parameters
+
+1. machinery & equipment
+2. buildings
+3. land
+
+### Method
+
+`new BalanceSheet().fixedAssets(param1, param2, param3)`
+
+## Other Assets
+
+### Parameters
+
+1. Investments TYPE: float
+2. Patents TYPE: float
+
+### Method
+
+`new BalanceSheet().otherAssets(param1, param2)`
+
+## CurrentDebt
+
+### Parameters
+
+- accounts payable TYPE: float
+- other payables TYPE: float
+- accrued expenses TYPE: float
+- short-term notes TYPE: float
+
+### Method
+
+`new BalanceSheet().currentDebt(param1, param2, param3, param4)`
+
+## Long-Term Debt
+
+### Parameters
+
+1. long-term notes TYPE: float
+2. mortgages TYPE: float
+
+### Method
+
+`new BalanceSheet().longTermDebt(param1, param2)`
+
+## Debt Capital
+
+### Parameters
+
+1. current debt TYPE: float
+2. long-term debt TYPE: float
+
+### Method
+
+`new BalanceSheet().debtCapital(param1, param2)`
+
+## Owners Equity Capital
+
+### Parameters
+
+1. owners net worth TYPE: float
+2. partnership-equity TYPE: float
+3. common stock equity TYPE: float
+
+### Method
+
+`new BalanceSheet().ownersEquityCapital(param1, param2, param3)`
+
+## Total Debt Equity
+
+### Parameters
+
+1. debt capital TYPE: float
+2. owners equity capital TYPE: float
+
+### Method
+
+`new BalanceSheet().totalDebtEquity(param1, param2)`
+
+## CASH FLOW STATEMENT
+
+## Instantiating the Cash Flow Statement Class:
+
+`new CashFlowStatement()`
+
+## Methods:
+
+1. earnings before interest, taxes, depreciation & amortization (EBITDA)
+2. cash tax payments
+3. after-tax cash flows from operations
+4. change in net operating working capital
+5. change in long-term assets
+6. firm cash flow
+7. financing cash flow
+
+## Earnings Before Interest, Taxes, Depreciation & Amortization (EBITDA)
+
+### Parameters:
+
+1. operating income TYPE: float
+2. depreciation TYPE: float
+
+### Method:
+
+`new CashFlowStatement().earningsBeforeInterestTaxesDepreciationAndAmortization(param1, param2)`
+
+## Cash Tax Payments
+
+### Parameters:
+
+1. income taxes reported in income statement TYPE: float
+2. changes in accrued or deferred taxes reported in balance sheet TYPE: float
+
+### Method:
+
+`new CashFlowStatement().cashTaxPayments(param1, param2)`
+
+## After-Tax Cash Flows from Operations
+
+### Parameters:
+
+1. earnings before interest, taxes, depreciation and amortization TYPE: float
+2. cash tax payments TYPE: float
+
+### Method:
+
+`new CashFlowStatement().earningsBeforeInterestTaxesDepreciationAndAmortization(param1, param2)`
+
+## Change in Net Operating Working Capital
+
+### Parameters:
+
+1. change in current assets TYPE: float
+2. change in non-interest-bearing current operating liabilities TYPE: float
+
+### Method:
+
+`new CashFlowStatement().changeInNetOperatingWorkingCapital(param1, param2)`
+
+## Change in Long-Term Assets
+
+### Parameters:
+
+1. gross purchase price of fixed assets
+2. net cash used for investments
+
+### Method:
+
+`new CashFlowStatement().changeInLongTermAssets(param1, param2)`
+
+## Firm Cash Flow
+
+### Parameters:
+
+1. after-tax cash flows from operations TYPE: float
+2. investments in net operating working capital TYPE: float
+3. investments in fixed assets and other assets TYPE: float
+
+### Method:
+
+`new CashFlowStatement().firmCashFlow(param1, param2, param3)`
+
+## Financing Cash Flow
+
+### Parameters:
+
+1. interest payments to creditors TYPE: float
+2. increase in debt principal (optional) TYPE: float
+3. decrease in debt principal (optional) TYPE: float
+4. dividends paid to stockholders TYPE: float
+5. increase in stock (optional) TYPE: float
+6. decrease in stock (optional) TYPE: float
+
+### Method:
+
+`new CashFlowStatement().interestPaymentsToCreditors(param1, param2(optional), param3(optional), param4, param5(optional), param6(optional))`
+
+### Optional Parameters (For Increasing vs Decreasing variants)
+
+- When dealing with the optional parameters in this method, provide a value for the
+  variant which is the most appropriate for your use-case:
+  example: interestPaymentsToCreditors(10000,5000,null, 5000, null, 1500)
+- But do not leave both variants null, since a value for at least one of each variant
+  is required.
+  example: interestPaymentsToCreditors(1000, null, null, 5000, null, null)
+- This will produce an Input Value Error:
+  example: `Error: missing input values`
+
+## FORECASTING
+
+## Instantiating the Forecasting Class
+
+`new Forecasting()`
+
+## Methods
+
+1. Projected Cost of Goods Sold
+2. Projected Total Operating Expenses
+3. Projected Operating Profits
+4. Projected Earnings Before Tax
+5. Projected Net Income
+
+## Projected Cost of Goods Sold
+
+### Parameters:
+
+1. fixed costs TYPE: float
+2. variable costs TYPE: float
+
+### Method:
+
+`new Forecasting().fixedCosts(param1, param2)`
+
+## Projected Total Operating Expenses
+
+### Parameters:
+
+1. fixed expenses TYPE: float
+2. variable expenses TYPE: float
+
+### Method:
+
+`new Forecasting().fixedExpenses(param1, param2)`
+
+## Projected Operating Profits
+
+### Parameters:
+
+1. sales projections TYPE: float
+2. projected cost of goods sold TYPE: float
+3. projected total operating expenses TYPE: float
+
+### Method:
+
+`new Forecasting().salesProjections(param1, param2, param3)`
+
+## Projected Earnings Before Tax
+
+### Parameters:
+
+1. projected operating profits TYPE: float
+2. interest expense TYPE: float
+
+### Method:
+
+`new Forecasting().projectedEarningsBeforeTax(param1, param2)`
+
+## Projected Net Income
+
+### Parameters:
+
+1. projected earnings before tax TYPE: float
+2. estimated income taxes TYPE: float
+
+### Method:
+
+`new Forecasting().projectedNetIncome(param1, param2)`

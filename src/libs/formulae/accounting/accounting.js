@@ -3,10 +3,18 @@
 @author: Lwandle Babekizulu Dlamini
 @date: 2024/04/04
 */
-//globals
+//globalsth
 const inputValErr = 'Error: missing input values';
 class IncomeStatement {
-  //gross profit
+  /*
+  @desc: class containing income statement methods
+  @methods:
+  - gross profit
+  - earnings before interest and taxes (EBIT)
+  - earnings before taxes
+  - net income
+  */
+  //1. gross profit
   /*
     @desc: gross profit equations
     @params:
@@ -16,7 +24,7 @@ class IncomeStatement {
   grossProfit = (salesRevenue = 0, costOfProduction = 0) => {
     return (parseFloat(salesRevenue) - parseFloat(costOfProduction)).toFixed(2);
   };
-  //earnings before interest and taxes (EBIT)
+  //2. earnings before interest and taxes (EBIT)
   /*
   @desc: EBIT equations
   @params:
@@ -41,7 +49,7 @@ class IncomeStatement {
         parseFloat(generalExpenses))
     ).toFixed(2);
   };
-  //earnings before taxes (EBT)
+  //3. earnings before taxes (EBT)
   /*
   @desc: EBT Equations
   @params: 
@@ -53,7 +61,7 @@ class IncomeStatement {
       parseFloat(operatingIncome) - parseFloat(interestExpenseOnDebt)
     ).toFixed(2);
   };
-  //net income
+  //4. net income
   /*
   @desc: net income available to owners
   @params:
@@ -68,8 +76,20 @@ class IncomeStatement {
 }
 
 class BalanceSheet {
+  /*
+  @desc: class containing balance sheet methods
+  @methods:
+  - current assets
+  - fixed assets
+  - other assets
+  - current debt
+  - long-term debt
+  - debt capital
+  - owners equity capital
+  - total debt & equity
+  */
   //ASSETS
-  //current assets
+  //1. current assets
   /*
     @desc: current assets equation
     @param: 
@@ -91,7 +111,7 @@ class BalanceSheet {
       parseFloat(prepaidExpenses)
     ).toFixed(2);
   };
-  //fixed assets
+  //2. fixed assets
   /*
       @desc: fixed assets equation
       @param:
@@ -106,7 +126,7 @@ class BalanceSheet {
       parseFloat(land)
     ).toFixed(2);
   };
-  //other assets
+  //3. other assets
   /*
       @desc: other assets equation
       @params:
@@ -117,7 +137,7 @@ class BalanceSheet {
     return (parseFloat(investments) + parseFloat(patents)).toFixed(2);
   };
   //DEBT & EQUITY
-  //current debt
+  //4. current debt
   /*
   @desc: current debt equations
   @params: 
@@ -139,7 +159,7 @@ class BalanceSheet {
       parseFloat(shortTermNotes)
     ).toFixed(2);
   };
-  //long-term debt
+  //5. long-term debt
   /*
   @desc: long-term debt equation
   @params: 
@@ -149,7 +169,7 @@ class BalanceSheet {
   longTermDebt = (longTermNotes = 0, mortgages = 0) => {
     return (parseFloat(longTermNotes) + parseFloat(mortgages)).toFixed(2);
   };
-  //debt capital
+  //6. debt capital
   /*
   @desc: debt capital equations
   @params: 
@@ -159,7 +179,7 @@ class BalanceSheet {
   debtCapital = (currentDebt = 0, longTermDebt = 0) => {
     return parseFloat(currentDebt) + parseFloat(longTermDebt);
   };
-  //owners equity capital
+  //7. owners equity capital
   /*
   @desc: owners equity capital equations
   @params:
@@ -188,7 +208,7 @@ class BalanceSheet {
       return inputValErr;
     }
   };
-  //total debt & equity
+  //8. total debt & equity
   /*
   @desc: total debt & equity equation
   @params: 
@@ -203,8 +223,19 @@ class BalanceSheet {
 }
 
 class CashFlowStatement {
+  /*
+  @desc: Class containing Cash Flow Statement methods
+  @methods:
+  1. earnings before interest, taxes, depreciation & amortization (EBITDA)
+  2. cash tax payments
+  3. after-tax cash flows from operations
+  4. change in net operating working capital
+  5. change in long-term assets
+  6. firm cash flow
+  7. financing cash flow
+  */
   //FIRM
-  //earnings before interest, taxes, depreciation & amortization (EBITDA)
+  //1. earnings before interest, taxes, depreciation & amortization (EBITDA)
   /*
     @desc: EBITDA equation
     @params:
@@ -217,7 +248,7 @@ class CashFlowStatement {
   ) => {
     return (parseFloat(operatingIncome) + parseFloat(depreciation)).toFixed(2);
   };
-  //cash tax payments
+  //2. cash tax payments
   /*
   @desc: cash tax payments equation
   @params: 
@@ -233,7 +264,7 @@ class CashFlowStatement {
       parseFloat(changesInAccruedOrDeferredTaxesReportedInBalanceSheet)
     ).toFixed(2);
   };
-  //after-tax cash flows from operations
+  //3. after-tax cash flows from operations
   /*
     @desc: after-tax cash flows from operations equation
     @params: 
@@ -249,7 +280,7 @@ class CashFlowStatement {
       parseFloat(cashTaxPayments)
     ).toFixed(2);
   };
-  //change in net operating working capital
+  //4. change in net operating working capital
   /*
   @desc: change in net operating working capital
   @params: 
@@ -265,7 +296,7 @@ class CashFlowStatement {
       parseFloat(changeInNonInterestBearingCurrentOperatingLiabilities)
     ).toFixed(2);
   };
-  //change in long-term assets
+  //5. change in long-term assets
   /*
   - gross purchase price of fixed assets
   - net cash used for investments
@@ -279,7 +310,7 @@ class CashFlowStatement {
       parseFloat(netCashUsedForInvestments)
     ).toFixed(2);
   };
-  //firm cash flow
+  //6. firm cash flow
   /*
   @desc: firm cash flow equation
   @params:
@@ -299,7 +330,7 @@ class CashFlowStatement {
     ).toFixed(2);
   };
   //FINANCING
-  //financing cash flow
+  //7. financing cash flow
   /*
   @desc: financing cash flow equation
   @params: 
@@ -353,7 +384,16 @@ class CashFlowStatement {
 }
 
 class Forecasting {
-  //projected cost of goods sold
+  /*
+  @desc: Class containing Forecasting methods
+  @params:
+  1. projected cost of goods sold
+  2. projected total operating expenses
+  3. projected operating profits
+  4. projected earnings before tax
+  5. projected net income
+  */
+  //1. projected cost of goods sold
   /*
   @desc: projected cost of goods sold equation
   @params: 
@@ -363,7 +403,7 @@ class Forecasting {
   projectedCostOfGoodsSold = (fixedCosts = 0, variableCosts = 0) => {
     return (parseFloat(fixedCosts) + parseFloat(variableCosts)).toFixed(2);
   };
-  //projected total operating expenses
+  //2. projected total operating expenses
   /*
   @desc: projected total operating expenses equation
   @params: 
@@ -378,7 +418,7 @@ class Forecasting {
       2,
     );
   };
-  //projected operating profits
+  //3. projected operating profits
   /*
   @desc: projected operating profits equation
   @params:
@@ -397,7 +437,7 @@ class Forecasting {
         parseFloat(projectedTotalOperatingExpenses))
     );
   };
-  //projected earnings before tax
+  //4. projected earnings before tax
   /*
   @desc: projected earnings before tax equation
   @params: 
@@ -412,7 +452,7 @@ class Forecasting {
       parseFloat(projectedOperatingProfits) - parseFloat(interestExpense)
     ).toFixed(2);
   };
-  //projected net income
+  //5. projected net income
   /*
   @desc: projected net income equation
   @params:
