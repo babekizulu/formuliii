@@ -353,7 +353,80 @@ class CashFlowStatement {
 }
 
 class Forecasting {
-  //
+  //projected cost of goods sold
+  /*
+  @desc: projected cost of goods sold equation
+  @params: 
+  - fixed costs TYPE: float
+  - variable costs TYPE: float
+  */
+  projectedCostOfGoodsSold = (fixedCosts = 0, variableCosts = 0) => {
+    return (parseFloat(fixedCosts) + parseFloat(variableCosts)).toFixed(2);
+  };
+  //projected total operating expenses
+  /*
+  @desc: projected total operating expenses equation
+  @params: 
+  - fixed expenses TYPE: float
+  - variable expenses TYPE: float
+  */
+  projectedTotalOperatingExpenses = (
+    fixedExpenses = 0,
+    variableExpenses = 0,
+  ) => {
+    return (parseFloat(fixedExpenses) + parseFloat(variableExpenses)).toFixed(
+      2,
+    );
+  };
+  //projected operating profits
+  /*
+  @desc: projected operating profits equation
+  @params:
+  - sales projections TYPE: float
+  - projected cost of goods sold TYPE: float
+  - projected total operating expenses TYPE: float
+  */
+  projectedOperatingProfits = (
+    salesProjections = 0,
+    projectedCostOfGoodsSold = 0,
+    projectedTotalOperatingExpenses = 0,
+  ) => {
+    return (
+      parseFloat(salesProjections) -
+      (parseFloat(projectedCostOfGoodsSold) +
+        parseFloat(projectedTotalOperatingExpenses))
+    );
+  };
+  //projected earnings before tax
+  /*
+  @desc: projected earnings before tax equation
+  @params: 
+  - projected operating profits TYPE: float
+  - interest expense TYPE: float
+  */
+  projectedEarningsBeforeTax = (
+    projectedOperatingProfits = 0,
+    interestExpense = 0,
+  ) => {
+    return (
+      parseFloat(projectedOperatingProfits) - parseFloat(interestExpense)
+    ).toFixed(2);
+  };
+  //projected net income
+  /*
+  @desc: projected net income equation
+  @params:
+  - projected earnings before tax TYPE: float
+  - estimated income taxes TYPE: float
+  */
+  projectedNetIncome = (
+    projectedEarningsBeforeTax = 0,
+    estimatedIncomeTaxes = 0,
+  ) => {
+    return (
+      parseFloat(projectedEarningsBeforeTax) - parseFloat(estimatedIncomeTaxes)
+    ).toFixed(2);
+  };
 }
 
 export { IncomeStatement, BalanceSheet, CashFlowStatement, Forecasting };
