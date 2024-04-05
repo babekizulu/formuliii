@@ -1,0 +1,12 @@
+/*IMPORTS*/
+
+@import 'utils';
+
+/*PAGES*/
+
+.page {
+    @include grid1;
+    @include wh100;
+    position: relative;
+    top: 60px;
+}

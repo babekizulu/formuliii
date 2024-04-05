@@ -1,0 +1,42 @@
+/*IMPORTS*/
+
+@import 'utils';
+
+/*BUTTONS*/
+
+.back-btn-container {
+    position: fixed;
+    top: 60px;
+    margin: 27px 18px;
+    z-index: 1;
+    font-family: $mul;
+    font-weight: 600;
+}
+
+.auth-box {
+    margin: 140px auto;
+}
+
+.auth-btn-container {
+    @include centerFlex;
+    margin: auto;
+}
+
+.btn {
+    background: $dark;
+    padding: 9px 21px;
+    border-radius: 9px;
+    font-size: 1.4rem;
+    margin: 18px auto;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-family: $mul;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: $dark-active;
+    transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,32 @@
+/*IMPORTS*/
+
+@import 'utils';
+
+/*APP*/
+
+*::before,
+*::after,
+* {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    @include wh100;
+    background: #fff;
+    font-family: $ibm;
+}
+
+.app-container {
+    @include wh100;
+    @include grid1;
+}
+
+@import 'Header';
+@import 'Pages';
+@import 'Home';
+@import 'Buttons';

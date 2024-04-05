@@ -7,13 +7,11 @@ const Link = ({ href, className, children }) => {
       return;
     }
     e.preventDefault();
-    const { pushState } = window.history;
-    pushState({}, '', href);
+    window.history.pushState({}, '', href);
 
     //create a new pop state event instance
     const navEvent = new PopStateEvent('popstate');
-    const { dispatchEvent } = window;
-    dispatchEvent(navEvent);
+    window.dispatchEvent(navEvent);
   };
 
   return (

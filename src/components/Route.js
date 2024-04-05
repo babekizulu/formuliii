@@ -3,13 +3,11 @@ import { useEffect, useState } from 'react';
 
 const Route = ({ path, children }) => {
   //create a current path & setter
-  const { pathname } = window.location;
-  const [currentPath, setCurrentPath] = useState(pathname);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   //change pathname on nav event
   useEffect(() => {
     const onLocationChange = () => {
-      const { pathname } = window.location;
-      setCurrentPath(pathname);
+      setCurrentPath(window.location.pathname);
     };
     //run location change function on nav event
     window.addEventListener('popstate', onLocationChange);

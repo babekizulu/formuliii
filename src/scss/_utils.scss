@@ -1,0 +1,46 @@
+//mixins
+@mixin wh100 {
+    width: 100%;
+    height: 100%;
+}
+
+@mixin centerFlex {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+@mixin grid1 {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+@mixin grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@mixin grid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+//colors
+$dark: #131313;
+$dark-active: #5c5c5c;
+$light: #bfc2c2;
+$light-active: #7e7e7e;
+$light-alpha: #bfc2c2b7;
+$orange: #ffbb38;
+$red: #ff5959;
+$blue: #8cd6ff;
+//fonts
+$mul: 'Mullish',
+sans-serif;
+$ibm: 'IBM Plex Mono',
+monospace;
+//transitions
+$e: all 0.2s ease;
+$ei: all 0.2s ease-in;
+$eio: all 0.2s ease-in-out;
