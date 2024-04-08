@@ -1,13 +1,14 @@
 /*
 @desc: A library of physics formulae
 @author: Lwandle Babekizulu Dlamini
-@date: 2024/04/05
+@date: 2024/04/08
 @TODO:
 - mechanics
 - thermal physics
 - waves & optics
 - electricity & magnetism
 - modern physics
+** COMPLETE CHECKS
 */
 
 class Mechanics {
@@ -23,9 +24,9 @@ class Mechanics {
   - centripetal acceleration
   - momentum
   - impulse
-  ____________________
   - impulse-momentum
   - work
+   ____________________
   - work-energy
   - kinetic energy
   - general potential energy
@@ -85,21 +86,41 @@ class Mechanics {
   //average velocity
   /*
  @params:
- - displacement
- - change in time
+ - initial position
+ - final position
+ - initial time
+ - final time
  */
-  averageVelocity = (displacement, changeInTime) => {
-    return (parseFloat(displacement) / parseFloat(changeInTime)).toFixed(3);
+  averageVelocity = (
+    initialPosition,
+    finalPosition,
+    initialTime,
+    finalTime,
+  ) => {
+    return (
+      parseFloat(finalPosition - initialPosition) /
+      parseFloat(finalTime - initialTime)
+    ).toFixed(3);
   };
   //ACCELERATION
   // average acceleration
   /*
   @params:
-  - change in velocity
-  - change in time
+  - initial velocity
+  - final velocity
+  - initial time
+  - final time
   */
-  averageAcceleration = (changeInVelocity, changeInTime) => {
-    return (parseFloat(changeInVelocity) / parseFloat(changeInTime)).toFixed(3);
+  averageAcceleration = (
+    initialVelocity,
+    finalVelocity,
+    initialTime,
+    finalTime,
+  ) => {
+    return (
+      parseFloat(finalVelocity - initialVelocity) /
+      parseFloat(finalTime - initialTime)
+    ).toFixed(3);
   };
   // EQUATIONS OF MOTION
   //velocity
@@ -174,14 +195,48 @@ class Mechanics {
   /*
   @params:
   - average force
-  - change in time
+  - inital time
+  - final time
   */
-  impulse = (averageForce, changeInTime) => {
-    return (parseFloat(averageForce) * parseFloat(changeInTime)).toFixed(3);
+  impulse = (averageForce, initialTime, finalTime) => {
+    return (
+      parseFloat(averageForce) * parseFloat(finalTime - initialTime)
+    ).toFixed(3);
   };
-  // - impulse-momentum
-  // - work
-  // - work-energy
+  //IMPULSE MOMENTUM
+  /*
+  @params: 
+  - mass
+  - initial velocity
+  - final velocity
+  */
+  impulseMomentum = (mass, initialVelocity, finalVelocity) => {
+    return (
+      parseFloat(mass) * parseFloat(finalVelocity - initialVelocity)
+    ).toFixed(3);
+  };
+  //WORK
+  /*
+  @params:
+  - average force
+  - initial position
+  - final position
+  - theta **CHECK
+  */
+  work = (averageForce, initialPosition, finalPosition, theta) => {
+    return (
+      parseFloat(averageForce) *
+      parseFloat(finalPosition - initialPosition) *
+      Math.cos(theta)
+    ).toFixed(3);
+  };
+  //WORK-ENERGY
+  /*
+  @params:
+  - initial energy
+  - final energy
+  */
+  workEnergy = () => {};
   // - kinetic energy
   // - general potential energy
   // - gravitational potential energy
