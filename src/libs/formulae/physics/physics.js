@@ -30,6 +30,7 @@ class Mechanics {
   - work-energy
   - kinetic energy
   - general potential energy
+  ___________________________
   - gravitational potential energy
   - efficiency
   - power 
@@ -236,9 +237,39 @@ class Mechanics {
   - initial energy
   - final energy
   */
-  workEnergy = () => {};
-  // - kinetic energy
-  // - general potential energy
+  workEnergy = (initialEnergy, finalEnergy) => {
+    return parseFloat(finalEnergy - initialEnergy).toFixed(3);
+  };
+  //KINETIC ENERGY
+  //kinetic energy 1
+  /*
+  @params:
+  - mass
+  - velocity
+  */
+  kineticEnergy1 = (mass, velocity) => {
+    return (0.5 * (parseFloat(mass) * parseFloat(velocity)) ** 2).toFixed(3);
+  };
+  //kinetic energy 2
+  /*
+  @params:
+  - momentum
+  - mass
+  */
+  kineticEnergy2 = (momentum, mass) => {
+    return ((parseFloat(momentum) ** 2 / 2) * mass).toFixed(2);
+  };
+  //GENERAL POTENTIAL ENERGY
+  /*
+  @params:
+  - initial potential energy
+  - final potential energy
+  */
+  generalPotentialEnergy = (initialPotentialEnergy, finalPotentialEnergy) => {
+    return (-parseFloat(finalPotentialEnergy - initialPotentialEnergy)).toFixed(
+      3,
+    );
+  };
   // - gravitational potential energy
   // - efficiency
   // - power
