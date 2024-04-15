@@ -1,7 +1,7 @@
 /*
 @desc: A library of physics formulae
 @author: Lwandle Babekizulu Dlamini
-@date: 2024/04/08
+@date: 2024/04/15
 @TODO:
 - mechanics
 - thermal physics
@@ -9,6 +9,7 @@
 - electricity & magnetism
 - modern physics
 ** COMPLETE CHECKS
+** Replace Theta variables with Angular Position
 */
 
 class Mechanics {
@@ -26,7 +27,6 @@ class Mechanics {
   - impulse
   - impulse-momentum
   - work
-   ____________________
   - work-energy
   - kinetic energy
   - general potential energy
@@ -36,6 +36,7 @@ class Mechanics {
   - power 
   - power-velocity
   - angular velocity
+  _______________________________
   - angular acceleration
   - equations of rotation
   - torque
@@ -270,12 +271,92 @@ class Mechanics {
       3,
     );
   };
-  // - gravitational potential energy
-  // - efficiency
-  // - power
-  // - power-velocity
-  // - angular velocity
-  // - angular acceleration
+  // GRAVITATIONAL POTENTIAL ENERGY 1
+  /*
+  @params: 
+  - mass
+  - acceleration due to gravity
+  - initial height
+  - final height
+  */
+  gravitationalPotentialEnergy = (
+    mass,
+    accelerationDueToGravity,
+    initialHeight,
+    finalHeight,
+  ) => {
+    return (
+      parseFloat(mass) *
+      parseFloat(accelerationDueToGravity) *
+      parseFloat(finalHeight - initialHeight)
+    ).toFixed(2);
+  };
+  // EFFICIENCY
+  /*
+  @params: 
+  - work output
+  - energy input
+  */
+  efficiency = (workOutput, energyInput) => {
+    return parseFloat(workOutput / energyInput).toFixed(2);
+  };
+  //POWER
+  /*
+  @params:
+  - initial work
+  - final work
+  - initial time
+  - final time
+  */
+  power = (initialWork, finalWork, initialTime, finalTime) => {
+    return (
+      parseFloat(finalWork - initialWork) / parseFloat(finalTime - initialTime)
+    );
+  };
+  //POWER-VELOCITY
+  //power-velocity 1
+  /*
+  @params:
+  - force
+  - velocity
+  - angular position
+  */
+  powerVelocity1 = (force, velocity, angularPosition) => {
+    return (
+      parseFloat(force) *
+      parseFloat(velocity) *
+      parseFloat(Math.cos(angularPosition))
+    ).toFixed(2);
+  };
+  //power-velocity 2
+  /*
+  @params:
+  - force
+  - velocity
+  */
+  powerVelocity = (force, velocity) => {
+    return (parseFloat(force) * parseFloat(velocity)).toFixed(2);
+  };
+  //ANGULAR VELOCITY
+  /*
+  @params:
+  - initial angular position
+  - final angular position
+  - initial time
+  - final time
+  */
+  angularVelocity = (
+    initialAngularPosition,
+    finalAngularPosition,
+    initialTime,
+    finalTime,
+  ) => {
+    return (
+      parseFloat(finalAngularPosition - initialAngularPosition) /
+      parseFloat(finalTime - initialTime)
+    ).toFixed(2);
+  };
+  //ANGULAR ACCELERATIONION
   // - equations of rotation
   // - torque
   // - 2nd law for rotation
