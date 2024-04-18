@@ -9,6 +9,7 @@
 - electricity & magnetism
 - modern physics
 ** COMPLETE CHECKS
+- Check that all returned values are fixed to 2 decimal spaces
 ** Replace Theta variables with Angular Position
 */
 
@@ -30,7 +31,6 @@ class Mechanics {
   - work-energy
   - kinetic energy
   - general potential energy
-  ___________________________
   - gravitational potential energy
   - efficiency
   - power 
@@ -50,6 +50,7 @@ class Mechanics {
   - angular impulse momentum
   - universal gravitation
   - gravitational field
+  __________________________________
   - gravitational potential energy
   - gravitational potential
   - orbital speed
@@ -289,7 +290,7 @@ class Mechanics {
       parseFloat(mass) *
       parseFloat(accelerationDueToGravity) *
       parseFloat(finalHeight - initialHeight)
-    ).toFixed(2);
+    ).toFixed(3);
   };
   // EFFICIENCY
   /*
@@ -298,7 +299,7 @@ class Mechanics {
   - energy input
   */
   efficiency = (workOutput, energyInput) => {
-    return parseFloat(workOutput / energyInput).toFixed(2);
+    return parseFloat(workOutput / energyInput).toFixed(3);
   };
   //POWER
   /*
@@ -311,7 +312,7 @@ class Mechanics {
   power = (initialWork, finalWork, initialTime, finalTime) => {
     return (
       parseFloat(finalWork - initialWork) / parseFloat(finalTime - initialTime)
-    );
+    ).toFixed(3);
   };
   //POWER-VELOCITY
   //power-velocity 1
@@ -326,7 +327,7 @@ class Mechanics {
       parseFloat(force) *
       parseFloat(velocity) *
       parseFloat(Math.cos(angularPosition))
-    ).toFixed(2);
+    ).toFixed(3);
   };
   //power-velocity 2
   /*
@@ -335,7 +336,7 @@ class Mechanics {
   - velocity
   */
   powerVelocity = (force, velocity) => {
-    return (parseFloat(force) * parseFloat(velocity)).toFixed(2);
+    return (parseFloat(force) * parseFloat(velocity)).toFixed(3);
   };
   //ANGULAR VELOCITY
   /*
@@ -354,22 +355,196 @@ class Mechanics {
     return (
       parseFloat(finalAngularPosition - initialAngularPosition) /
       parseFloat(finalTime - initialTime)
-    ).toFixed(2);
+    ).toFixed(3);
   };
-  //ANGULAR ACCELERATIONION
-  // - equations of rotation
-  // - torque
-  // - 2nd law for rotation
-  // - moment of inertia
-  // - rotational work
-  // - rotational power
-  // - rotational kinetic energy
-  // - angular momentum
-  // - angular impulse
-  // - angular impulse momentum
-  // - universal gravitation
-  // - gravitational field
-  // - gravitational potential energy
+  //AVERAGE ANGULAR ACCELERATION
+  /*
+  @params: 
+  - initial angular rotation
+  - final angular rotation
+  - initial time
+  - final time
+  */
+  averageAngularAcceleration = (
+    initialAngularRotation,
+    finalAngularRotation,
+    initialTime,
+    finalTime,
+  ) => {
+    return (
+      parseFloat(finalAngularRotation - initialAngularRotation) /
+      parseFloat(finalTime - initialTime)
+    ).toFixed(3);
+  };
+  //EQUATIONS OF ROTATION
+  /*
+  - initialAngularRotation
+  - angular acceleration
+  - time
+  */
+  equationsOfRotation = (initialAngularRotation, angularAcceleration, time) => {
+    return (
+      parseFloat(initialAngularRotation) +
+      parseFloat(angularAcceleration * time)
+    ).toFixed(3);
+  };
+  //TORQUE
+  /*
+  @params:
+  - radius
+  - force
+  - angle between force and the lever arm
+  */
+  torque = (radius, force, angleBetweenForceAndTheLeverArm) => {
+    return (
+      parseFloat(radius) *
+      parseFloat(force) *
+      parseFloat(Math.sin(angleBetweenForceAndTheLeverArm))
+    ).toFixed(3);
+  };
+  //Net Torque
+  /*
+  @params:
+  - moment of inertia
+  - angular acceleration
+  */
+  netTorque = (momentOfInertia, angularAcceleration) => {
+    return (
+      parseFloat(momentOfInertia) * parseFloat(angularAcceleration)
+    ).toFixed(3);
+  };
+  //MOMENT OF INERTIA
+  /*
+  @params:
+  - net mass
+  - radius
+  */
+  momentOfInertia = (netMass, radius) => {
+    return (parseFloat(netMass) * parseFloat(radius ** 2)).toFixed(3);
+  };
+  //ROTATIONAL WORK
+  /*
+  @params:
+  - average torque
+  - initial angular position
+  - final angular position
+  */
+  rotationalWork = (
+    averageTorque,
+    initialAngularPosition,
+    finalAngularPosition,
+  ) => {
+    return (
+      parseFloat(averageTorque) *
+      parseFloat(finalAngularPosition - initialAngularPosition)
+    ).toFixed(3);
+  };
+
+  //ROTATIONAL POWER
+  /*
+  @params:
+  - torque
+  - angular rotation
+  - rotational position
+  */
+  rotationalPower = (torque, angularRotation, rotationalPosition) => {
+    return (
+      parseFloat(torque) *
+      parseFloat(angularRotation) *
+      parseFloat(Math.cos(rotationalPosition))
+    ).toFixed(3);
+  };
+  //ROTATIONAL KINETIC ENERGY
+  /*
+  @params:
+  - moment of inertia
+  - angular rotation
+  */
+  rotationalKineticEnergy = (momentOfInertia, angularRotation) => {
+    return (
+      parseFloat(0.5 * momentOfInertia) * parseFloat(angularRotation ** 2)
+    ).toFixed(3);
+  };
+  //ANGULAR MOMENTUM
+  /*
+  @params:
+  - mass
+  - radius
+  - velocity
+  - rotational position
+  */
+  angularMomentum = (mass, radius, velocity, rotationalPosition) => {
+    return (
+      parseFloat(mass) *
+      parseFloat(radius) *
+      parseFloat(velocity) *
+      parseFloat(Math.sin(rotationalPosition))
+    ).toFixed(3);
+  };
+  //ANGULAR IMPULSE
+  /*
+  @params:
+  - average torque
+  - initial time
+  - final time
+  */
+  angularImpulse = (averageTorque, initialTime, finalTime) => {
+    return (
+      parseFloat(averageTorque) * parseFloat(finalTime - initialTime)
+    ).toFixed(3);
+  };
+  //ANGULAR IMPULSE MOMENTUM
+  /*
+  - mass
+  - initial angular rotation
+  - final angular rotation
+  */
+  angularImpulseMomentum = (
+    mass,
+    initialAngularRotation,
+    finalAngularRotation,
+  ) => {
+    return (
+      parseFloat(mass) *
+      parseFloat(finalAngularRotation - initialAngularRotation)
+    ).toFixed(3);
+  };
+  //UNIVERSAL GRAVITATION
+  /*
+  @params:
+  - gravitational constant
+  - mass1
+  - mass2
+  - distance between centers
+  */
+  universalGravitation = (
+    gravitationalConstant,
+    mass1,
+    mass2,
+    distanceBetweenCenters,
+  ) => {
+    return (
+      parseFloat(gravitationalConstant) *
+      ((parseFloat(mass1) * parseFloat(mass2)) /
+        parseFloat(distanceBetweenCenters))
+    ).toFixed(3);
+  };
+  //GRAVITATIONAL FIELD
+  /*
+  @params:
+  - gravitational constant
+  - mass
+  - radius
+  */
+  gravitationalField = (gravitationalConstant, mass, radius) => {
+    return (
+      (parseFloat(gravitationalConstant) * parseFloat(mass)) /
+      parseFloat(radius ** 2)
+    ).toFixed(3);
+  };
+  //GRAVITATIONAL POTENTIAL ENERGY
+  /*
+   */
   // - gravitational potential
   // - orbital speed
   // - escape speed
