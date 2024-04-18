@@ -57,6 +57,7 @@ class Mechanics {
   - escape speed
   - hooke's law
   - spring potential energy
+  ___________________________________
   - simple harmonic oscillator
   - simple pendulum
   - frequency
@@ -544,13 +545,88 @@ class Mechanics {
   };
   //GRAVITATIONAL POTENTIAL ENERGY
   /*
-   */
-  // - gravitational potential
-  // - orbital speed
-  // - escape speed
-  // - hooke's law
-  // - spring potential energy
-  // - simple harmonic oscillator
+  @params:
+  - gravitational constant
+  - mass1
+  - mass2
+  - radius
+  */
+  gravitationalPotentialEnergy2 = (
+    gravitationalConstant,
+    mass1,
+    mass2,
+    radius,
+  ) => {
+    return (
+      parseFloat(gravitationalConstant * mass1 * mass2) / parseFloat(radius)
+    ).toFixed(3);
+  };
+  //GRAVITATIONAL POTENTIAL
+  /*
+  @params:
+  - gravitational constant
+  - mass
+  - radius
+  */
+  gravitationalPotential = (gravitationalConstant, mass, radius) => {
+    return (
+      parseFloat(gravitationalConstant * mass) / parseFloat(radius)
+    ).toFixed(3);
+  };
+  //ORBITAL SPEED
+  /*
+  @params:
+  - gravitational constant
+  - mass
+  - radius
+  */
+  orbitalSpeed = (gravitationalConstant, mass, radius) => {
+    return parseFloat(
+      Math.sqrt((gravitationalConstant * mass) / radius),
+    ).toFixed(3);
+  };
+  //ESCAPE SPEED
+  /*
+  @params: 
+  - gravitational constant
+  - mass
+  - radius
+  */
+  escapeSpeed = (gravitationalConstant, mass, radius) => {
+    return parseFloat(
+      Math.sqrt((2 * gravitationalConstant * mass) / radius),
+    ).toFixed(3);
+  };
+  //HOOKE'S LAW
+  /*
+  @params: 
+  - kinetic energy
+  - original spring length
+  - final spring length
+  */
+  hookesLaw = (kineticEnergy, originalSpringLength, finalSpringLength) => {
+    return (
+      parseFloat(kineticEnergy) *
+      parseFloat(finalSpringLength - originalSpringLength)
+    ).toFixed(3);
+  };
+  //SPRING POTENTIAL ENERGY
+  /*
+  @params:
+  - kinetic energy
+  - original spring length
+  - final spring length
+  */
+  springPotentialEnergy = (
+    kineticEnergy,
+    originalSpringLength,
+    finalSpringLength,
+  ) => {
+    return parseFloat(
+      0.5 * kineticEnergy * (finalSpringLength - originalSpringLength) ** 2,
+    ).toFixed(3);
+  };
+  //SIMPLE HARMONIC OSCILLATOR
   // - simple pendulum
   // - frequency
   // - angular frequency
