@@ -36,7 +36,6 @@ class Mechanics {
   - power 
   - power-velocity
   - angular velocity
-  _______________________________
   - angular acceleration
   - equations of rotation
   - torque
@@ -50,14 +49,12 @@ class Mechanics {
   - angular impulse momentum
   - universal gravitation
   - gravitational field
-  __________________________________
   - gravitational potential energy
   - gravitational potential
   - orbital speed
   - escape speed
   - hooke's law
   - spring potential energy
-  ___________________________________
   - simple harmonic oscillator
   - simple pendulum
   - frequency
@@ -627,28 +624,263 @@ class Mechanics {
     ).toFixed(3);
   };
   //SIMPLE HARMONIC OSCILLATOR
-  // - simple pendulum
-  // - frequency
-  // - angular frequency
-  // - density
-  // - pressure
-  // - pressure in a fluid
-  // - buoyancy
-  // - mass flow rate
-  // - volume flow rate
-  // - mass continuity
-  // - volume continuity
-  // - bernoulli's equation
-  // - dynamic viscosity
-  // - kinematic viscosity
-  // - drag
-  // - mach number
-  // - reynolds number
-  // - froude number
-  // - young's modulus
-  // - shear modulus
-  // - bulk modulus
-  // - surface tension
+  /*
+  - amplitude
+  - angular frequency
+  - time
+  - phase shift
+  */
+  simpleHarmonicOscillator = (
+    amplitude,
+    angularFrequency,
+    time,
+    phaseShift,
+  ) => {
+    return parseFloat(
+      amplitude * Math.cos(angularFrequency * time + phaseShift),
+    ).toFixed(3);
+  };
+  //SIMPLE PENDULUM
+  /*
+  - length
+  - acceleration due to gravity
+  */
+  simplePendulum = (length, accelerationDueToGravity) => {
+    return parseFloat(
+      2 * Math.PI * Math.sqrt(length / accelerationDueToGravity),
+    ).toFixed(3);
+  };
+  //FREQUENCY
+  /*
+  - period
+  */
+  frequency = (period) => {
+    return parseFloat(1 / period).toFixed(3);
+  };
+  //ANGULAR FREQUENCY
+  /*
+  - frequency
+  */
+  angularFrequency = (frequency) => {
+    return parseFloat(2 * Math.PI * frequency).toFixed(3);
+  };
+  //DENSITY
+  /*
+  - mass
+  - volume
+  */
+  density = (mass, volume) => {
+    return parseFloat(mass / volume).toFixed(3);
+  };
+  //PRESSURE
+  /*
+  - force
+  - area
+  */
+  pressure = (force, area) => {
+    return parseFloat(force / area).toFixed(3);
+  };
+  //PRESSURE IN A FLUID
+  /*
+  - initial pressure
+  - density
+  - acceleration due to gravity
+  - depth
+  */
+  pressureInAFluid = (
+    initialPressure,
+    density,
+    accelerationDueToGravity,
+    depth,
+  ) => {
+    return parseFloat(
+      initialPressure + density * accelerationDueToGravity * depth,
+    ).toFixed(3);
+  };
+  //BUOYANCY
+  /*
+  @params:
+  - density
+  - acceleration due to gravity
+  - volume displaced
+  */
+  buoyancy = (density, accelerationDueToGravity, volumeDisplaced) => {
+    return parseFloat(
+      density * accelerationDueToGravity * volumeDisplaced,
+    ).toFixed(3);
+  };
+  //MASS FLOW RATE
+  /*
+  - initial mass
+  - final mass
+  - initial time
+  - final time
+  */
+  massFlowRate = (initialMass, finalMass, initialTime, finalTime) => {
+    return parseFloat(
+      finalMass - initialMass / finalTime - initialTime,
+    ).toFixed(3);
+  };
+  //VOLUME FLOW RATE
+  /*
+  @params:
+  - initial volume
+  - final volume
+  - initial time
+  - final time
+  */
+  volumeFlowRate = (initialVolume, finalVolume, initialTime, finalTime) => {
+    return parseFloat(
+      (finalVolume - initialVolume) / (finalTime - initialTime),
+    ).toFixed(3);
+  };
+  //DYNAMIC VISCOSITY
+  /*
+  @params:
+  - force
+  - area
+  - fluidLayer1Height
+  - fluidLayer2Height
+  - fluidLayer1Speed
+  - fluidLayer2Speed
+  */
+  dynamicViscosity = (
+    force,
+    area,
+    fluidLayer1Height,
+    fluidLayer2Height,
+    fluidLayer1Speed,
+    fluidLayer2Speed,
+  ) => {
+    return parseFloat(
+      (force / area) *
+        ((fluidLayer2Height - fluidLayer1Height) /
+          (fluidLayer2Speed - fluidLayer1Speed)),
+    ).toFixed(3);
+  };
+  //KINEMATIC VISCOSITY
+  /*
+  @params:
+  - viscosity
+  - density
+  */
+  kinematicViscosity = (viscosity, density) => {
+    return parseFloat(viscosity / density).toFixed(3);
+  };
+  //DRAG
+  /*
+  @params:
+  - density
+  - coefficient of drag
+  - area
+  - velocity
+  */
+  drag = (density, coefficientOfDrag, area, velocity) => {
+    return parseFloat(
+      0.5 * density * coefficientOfDrag * area * velocity ** 2,
+    ).toFixed(3);
+  };
+  //MACH NUMBER
+  /*
+  @params:
+  - velocity
+  - speed of sound in fluid
+  */
+  machNumber = (velocity, speedOfSoundInFluid) => {
+    return parseFloat(velocity / speedOfSoundInFluid).toFixed(3);
+  };
+  //REYNOLDS NUMBER
+  /*
+  @params: 
+  - density
+  - velocity
+  - characeristic length of the system
+  - dynamic viscosity of the fluid
+  */
+  reynoldsNumber = (
+    density,
+    velocity,
+    characteristicLengthOfTheSystem,
+    dynamicViscosityOfTheFluid,
+  ) => {
+    return parseFloat(
+      (density * velocity * characteristicLengthOfTheSystem) /
+        dynamicViscosityOfTheFluid,
+    ).toFixed(3);
+  };
+  //FROUDE NUMBER
+  /*
+  @params:
+  - velocity
+  - acceleration due to gravity
+  - characteristic length of the system
+  */
+  froudeNumber = (
+    velocity,
+    accelerationDueToGravity,
+    characteristicLengthOfTheSystem,
+  ) => {
+    return parseFloat(
+      velocity /
+        Math.sqrt(accelerationDueToGravity * characteristicLengthOfTheSystem),
+    ).toFixed(3);
+  };
+  //YOUNG'S MODULUS
+  /*
+  @params: 
+  - energy
+  - initial length of the rod
+  - final length of the rod
+  */
+  youngsModulus = (energy, initialLengthOfTheRod, finalLengthOfTheRod) => {
+    return parseFloat(
+      energy *
+        ((finalLengthOfTheRod - initialLengthOfTheRod) / initialLengthOfTheRod),
+    ).toFixed(3);
+  };
+  //SHEAR MODULUS
+  /*
+  @params:
+  - gravitational constant
+  - shear strain
+  */
+  shearModulus = (gravitationalConstant, shearStrain) => {
+    return parseFloat(gravitationalConstant * shearStrain).toFixed(3);
+  };
+  //BULK MODULUS
+  /*
+  @params:
+  - initial force
+  - final force
+  - initial area
+  - final area
+  - initial volume
+  - final volume
+  */
+  bulkModulus = (
+    initialForce,
+    finalForce,
+    initialArea,
+    finalArea,
+    initialVolume,
+    finalVolume,
+  ) => {
+    return parseFloat(
+      initialForce / initialArea -
+        finalForce /
+          finalArea /
+          ((finalVolume - initialVolume) / initialVolume),
+    ).toFixed(3);
+  };
+  //SURFACE TENSION
+  /*
+  @params:
+  - force
+  - length
+  */
+  surfaceTension = (force, length) => {
+    return parseFloat(force / length).toFixed(3);
+  };
 }
 class ThermalPhysics {}
 class WavesAndOptics {}
