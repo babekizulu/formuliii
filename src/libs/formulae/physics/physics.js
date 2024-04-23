@@ -882,7 +882,309 @@ class Mechanics {
     return parseFloat(force / length).toFixed(3);
   };
 }
-class ThermalPhysics {}
+class ThermalPhysics {
+  /*
+  @desc: Class containing thermal physics equations
+  @methods:
+  - solid expansion
+  - liquid expansion
+  - sensible heat
+  - latent heat
+  - ideal gas law
+  - molecular constants
+  - maxwell-boltzmann
+  - molecular kinetic energy
+  - molecular speeds
+  - heat flow rate
+  - thermal conduction
+  - stefan-boltzmann law
+  ___________________________________________
+  - wien's law
+  - internal energy
+  - thermodynamic work
+  - 1st law of thermodynamics
+  - entropy
+  - efficiency
+  - coefficient of performance
+  */
+  //SOLID EXPANSION
+  //solid length expansion
+  /*
+  @params:
+  - coefficient of linear expansion
+  - initial length
+  - initial temperature
+  - final temperature
+  */
+  solidLengthExpansion = (
+    coefficientOfLinearExpansion,
+    initialLength,
+    initialTemperature,
+    finalTemperature,
+  ) => {
+    return parseFloat(
+      coefficientOfLinearExpansion *
+        initialLength *
+        (finalTemperature - initialTemperature),
+    ).toFixed(3);
+  };
+  //solid area expansion
+  /*
+  @params: 
+  - coefficient of linear expansion
+  - initial area
+  - initial temperature
+  - final temperature
+  */
+  solidAreaExpansion = (
+    coefficientOfLinearExpansion,
+    initialArea,
+    initialTemperature,
+    finalTemperature,
+  ) => {
+    return parseFloat(
+      2 *
+        coefficientOfLinearExpansion *
+        initialArea *
+        (finalTemperature - initialTemperature),
+    ).toFixed(3);
+  };
+  //solid volume expansion
+  /*
+  @params:
+  - coefficient of linear expansion
+  - initial volume
+  - initial temperature
+  - final temperature
+  */
+  solidVolumeExpansion = (
+    coefficientOfLinearExpansion,
+    initialVolume,
+    initialTemperature,
+    finalTemperature,
+  ) => {
+    return parseFloat(
+      3 *
+        coefficientOfLinearExpansion *
+        initialVolume *
+        (finalTemperature - initialTemperature),
+    ).toFixed(3);
+  };
+  //LIQUID EXPANSION
+  /*
+  @params:
+  - coefficient of volume expansion
+  - initial volume
+  - initial temperature
+  - final temperature
+  */
+  liquidExpansion = (
+    coefficientOfVolumeExpansion,
+    initialVolume,
+    initialTemperature,
+    finalTemperature,
+  ) => {
+    return parseFloat(
+      coefficientOfVolumeExpansion *
+        initialVolume *
+        (finalTemperature - initialTemperature),
+    ).toFixed(3);
+  };
+
+  //SENSIBLE HEAT
+  /*
+  @params:
+  - mass
+  - specific heat capacity
+  - initial temperature
+  - final temperature
+  */
+  sensibleHeat = (
+    mass,
+    specificHeatCapacity,
+    initialTemperature,
+    finalTemperature,
+  ) => {
+    return parseFloat(
+      mass * specificHeatCapacity * (finalTemperature - initialTemperature),
+    ).toFixed(3);
+  };
+
+  //LATENT HEAT
+  //specific latent heat of a substance
+  /*
+  @params:
+  - energy released or absorbed during phase change
+  - mass
+  */
+  specificLatentHeat = (energyReleasedOrAbsorbedDuringPhaseChange, mass) => {
+    return parseFloat(energyReleasedOrAbsorbedDuringPhaseChange / mass).toFixed(
+      3,
+    );
+  };
+  //IDEAL GAS LAW
+  //constant temperature
+  /*
+  @params:
+  - number of moles
+  - gas constant (8.314)
+  - absolute temperature
+  */
+  constantTemperature = (
+    numberOfMoles,
+    gasConstant = 8.314,
+    absoluteTemperature,
+  ) => {
+    return parseFloat(
+      numberOfMoles * gasConstant * absoluteTemperature,
+    ).toFixed(3);
+  };
+  //MOLECULAR CONSTANTS
+  /*
+  @params:
+  - number of particles
+  - boltzmann constant (1.381*10**-23)
+  */
+  molecularConstants = (
+    numberOfParticles,
+    boltzmannConstant = 1.381 * 10 ** -23,
+  ) => {
+    return parseFloat(numberOfParticles * boltzmannConstant).toFixed(3);
+  };
+
+  //maxwell-boltzmann
+  /*
+  - velocity
+  - mass
+  - boltzmann constant (1.381*10**-23)
+  - temperature
+  */
+  maxwellBoltzmann = (velocity, mass, boltzmannConstant, temperature) => {
+    return parseFloat(
+      ((4 * velocity ** 2) / Math.sqrt(Math.PI)) *
+        ((mass / 2) * boltzmannConstant * temperature) ** (3 / 2) *
+        Math.E **
+          (((-mass * velocity ** 2) / 2) * boltzmannConstant * temperature),
+    ).toFixed(3);
+  };
+  //MOLECULAR KINETIC ENERGY
+  /*
+  @params:
+  - boltzmann constant
+  - temperature
+  */
+  molecularKineticEnergy = (boltzmannConstant, temperature) => {
+    return parseFloat((3 / 2) * boltzmannConstant * temperature).toFixed(3);
+  };
+  //MOLECULAR SPEEDS
+  //most probable speed
+  /*
+  @params:
+  - boltzmann constant
+  - temperature
+  - mass
+  */
+  mostProbableSpeed = (boltzmannConstant, temperature, mass) => {
+    return parseFloat(
+      Math.sqrt((2 * boltzmannConstant * temperature) / mass),
+    ).toFixed(3);
+  };
+  //mean speed
+  /*
+  @params:
+  - boltzmann constant
+  - temperature
+  - mass
+  */
+  meanSpeed = (boltzmannConstant, temperature, mass) => {
+    return parseFloat(
+      Math.sqrt(((8 * boltzmannConstant * temperature) / Math.PI) * mass),
+    ).toFixed(3);
+  };
+
+  //root mean square speed
+  /*
+  @params:
+  - boltzmann constant
+  - temperature
+  - mass
+  */
+  rootMeanSquareSpeed = (boltzmannConstant, temperature, mass) => {
+    return parseFloat(
+      Math.sqrt((3 * boltzmannConstant * temperature) / mass),
+    ).toFixed(3);
+  };
+  //HEAT FLOW RATE
+  //average heat flow rate
+  /*
+  @params:
+  - initial heat abosrbed
+  - initial heat released
+  - final heat absorbed
+  - final heat released
+  - initial time
+  - final time
+  */
+  averageHeatFlowRate = (
+    initialHeatAbsorbed,
+    initialHeatReleased,
+    finalHeatAbsorbed,
+    finalHeatReleased,
+    initialTime,
+    finalTime,
+  ) => {
+    return parseFloat(
+      (finalHeatAbsorbed -
+        finalHeatReleased -
+        (initialHeatAbsorbed - initialHeatReleased)) /
+        (finalTime - initialTime),
+    ).toFixed(3);
+  };
+  //THERMAL CONDUCTION
+  /*
+  @params:
+  - boltzmann constant
+  - area
+  - initial temperature
+  - final temperature
+  - length
+  */
+  thermalConduction = (
+    boltzmannConstant,
+    area,
+    initialTemperature,
+    finalTemperature,
+    length,
+  ) => {
+    return parseFloat(
+      (boltzmannConstant * area * (finalTemperature - initialTemperature)) /
+        length,
+    ).toFixed(3);
+  };
+  //STEFAN-BOLTZMANN LAW
+  /*
+  - emissivity
+  - stefan's constant (5.670*(10**(-8)))
+  - surface area
+  - absolute temperature of the object
+  - absolute temperature of the environment
+  */
+  stefanBoltzmannLaw = (
+    emissivity,
+    stefansConstant,
+    surfaceArea,
+    absoluteTemperatureOfTheObject,
+    absoluteTemperatureOfTheEnvironment,
+  ) => {
+    return parseFloat(
+      emissivity *
+        stefansConstant *
+        surfaceArea *
+        (absoluteTemperatureOfTheObject ** 4 -
+          absoluteTemperatureOfTheEnvironment ** 4),
+    ).toFixed(3);
+  };
+}
 class WavesAndOptics {}
 class ElectricityAndMagnetism {}
 class ModernPhysics {}
