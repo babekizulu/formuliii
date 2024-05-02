@@ -11,6 +11,9 @@
 ** COMPLETE CHECKS
 - Check that all returned values are fixed to 2 decimal spaces
 ** Replace Theta variables with Angular Position
+** Add default values for all constants (where applicable)
+** Comment in Units of Measurement
+** Test equations
 */
 
 class Mechanics {
@@ -1182,6 +1185,161 @@ class ThermalPhysics {
         surfaceArea *
         (absoluteTemperatureOfTheObject ** 4 -
           absoluteTemperatureOfTheEnvironment ** 4),
+    ).toFixed(3);
+  };
+  //WIEN'S LAW
+  //peak wavelength
+  /*
+  @params:
+  - wien's displacement constant
+  - absolute surface temperature
+  */
+  peakWavelength = (wiensDisplacementConstant, absoluteSurfaceTemperature) => {
+    return parseFloat(
+      wiensDisplacementConstant / absoluteSurfaceTemperature,
+    ).toFixed(3);
+  };
+  //peak frequency
+  /*
+  @params:
+  - wien's frequency displacement constant
+  - absolute surface temperature
+  */
+  peakFrequency = (
+    wiensFrequencyDisplacementConstant,
+    absoluteSurfaceTemperature,
+  ) => {
+    return parseFloat(
+      wiensFrequencyDisplacementConstant * absoluteSurfaceTemperature,
+    ).toFixed(3);
+  };
+  //INTERNAL ENERGY
+  //internal energy 1
+  /*
+  @params:
+  - number of moles
+  - gas constant
+  - initial absolute temperature
+  - final absolute temperature
+  */
+  internalEnergy1 = (
+    numberOfMoles,
+    gasConstant,
+    initialAbsoluteTemperature,
+    finalAbsoluteTemperature,
+  ) => {
+    return parseFloat(
+      1.5 *
+        numberOfMoles *
+        gasConstant *
+        (finalAbsoluteTemperature - initialAbsoluteTemperature),
+    ).toFixed(3);
+  };
+  //internal energy 2
+  /*
+ @params:
+ - number of molecules
+ - boltzmanns constant
+ - initial absolute temperature
+ - final absolute temperature
+ */
+  internalEnergy2 = (
+    numberOfMolecules,
+    boltzmannsConstant,
+    initialAbsoluteTemperature,
+    finalAbsoluteTemperature,
+  ) => {
+    return parseFloat(
+      1.5 *
+        numberOfMolecules *
+        boltzmannsConstant *
+        (finalAbsoluteTemperature - initialAbsoluteTemperature),
+    ).toFixed(3);
+  };
+  //THERMODYNAMIC WORK (TODO)
+  //1ST LAW OF THERMODYNAMICS
+  //internal energy 3
+  /*
+  @params:
+  - heat absorbed
+  - heat released
+  - work
+  */
+  internalEnergy3 = (heatAbsorbed, heatReleased, work) => {
+    return parseFloat(heatAbsorbed - heatReleased + work).toFixed(3);
+  };
+  //ENTROPY
+  /*
+  - initial heat absorbed
+  - initial heat released
+  - final heat absorbed
+  - final heat released
+  - absolute temperature
+  */
+  entropy = (
+    initialHeatAbsorbed,
+    initialHeatReleased,
+    finalHeatAbsorbed,
+    finalHeatReleased,
+    absoluteTemperature,
+  ) => {
+    return parseFloat(
+      (initialHeatAbsorbed -
+        initialHeatReleased -
+        (finalHeatAbsorbed - finalHeatReleased)) /
+        absoluteTemperature,
+    ).toFixed(3);
+  };
+  //EFFICIENCY
+  //real efficiency
+  /*
+  - cold heat absorbed
+  - cold heat released
+  - hot heat absorbed
+  - hot heat released
+  */
+  realEfficiency = (
+    coldHeatAbsorbed,
+    coldHeatReleased,
+    hotHeatAbsorbed,
+    hotHeatReleased,
+  ) => {
+    return parseFloat(
+      1 -
+        (coldHeatAbsorbed - coldHeatReleased) /
+          (hotHeatAbsorbed - hotHeatReleased),
+    ).toFixed(3);
+  };
+  //ideal efficiency
+  /*
+@params:
+- cold absolute temperature
+- hot absolute temperature
+ */
+  idealEfficiency = (coldAbsoluteTemperature, hotAbsoluteTemperature) => {
+    return parseFloat(
+      1 - coldAbsoluteTemperature / hotAbsoluteTemperature,
+    ).toFixed(3);
+  };
+  //COEFFICIENT OF PERFORMANCE
+  //real coefficient of performance
+  /*
+  @params:
+  - cold heat absorbed
+  - cold heat released
+  - hot heat absorbed 
+  - hot heat released
+  */
+  realCoefficientOfPerformance = (
+    coldHeatAbsorbed,
+    coldHeatReleased,
+    hotHeatAbsorbed,
+    hotHeatReleased,
+  ) => {
+    return parseFloat(
+      (coldHeatAbsorbed - coldHeatReleased) /
+        (hotHeatAbsorbed - hotHeatReleased) -
+        (coldHeatAbsorbed - coldHeatReleased),
     ).toFixed(3);
   };
 }
