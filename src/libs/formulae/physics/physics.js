@@ -901,7 +901,6 @@ class ThermalPhysics {
   - heat flow rate
   - thermal conduction
   - stefan-boltzmann law
-  ___________________________________________
   - wien's law
   - internal energy
   - thermodynamic work
@@ -1343,7 +1342,44 @@ class ThermalPhysics {
     ).toFixed(3);
   };
 }
-class WavesAndOptics {}
+class WavesAndOptics {
+  /*
+  @desc: Class containing equations for waves and optics
+  @methods:
+  - PERIODIC WAVES
+  - FREQUENCY
+  - BEAT FREQUENCY
+  - INTENSITY
+  - INTENSITY LEVEL
+  - PRESSURE LEVEL
+  - DOPPLER EFFECT
+  - MACH ANGLE
+  - CERENKOV ANGLE
+  - INTERFERENCE FRINGES
+  - INDEX OF REFRACTION
+  - SNELL'S LAW
+  - CRITICAL ANGLE
+  - IMAGE LOCATION
+  - IMAGE SIZE
+  - SPHERICAL MIRRORS
+  */
+  // - PERIODIC WAVES
+  // - FREQUENCY
+  // - BEAT FREQUENCY
+  // - INTENSITY
+  // - INTENSITY LEVEL
+  // - PRESSURE LEVEL
+  // - DOPPLER EFFECT
+  // - MACH ANGLE
+  // - CERENKOV ANGLE
+  // - INTERFERENCE FRINGES
+  // - INDEX OF REFRACTION
+  // - SNELL'S LAW
+  // - CRITICAL ANGLE
+  // - IMAGE LOCATION
+  // - IMAGE SIZE
+  // - SPHERICAL MIRRORS
+}
 class ElectricityAndMagnetism {}
 class ModernPhysics {}
 

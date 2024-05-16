@@ -34,9 +34,15 @@
     cursor: pointer;
     font-family: $mul;
     font-weight: 600;
+    border: none;
 }
 
 .btn:hover {
+    background: $dark-active;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:active {
     background: $dark-active;
     transition: all 0.2s ease-in-out;
 }
