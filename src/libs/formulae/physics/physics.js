@@ -1,7 +1,7 @@
 /*
 @desc: A library of physics formulae
 @author: Lwandle Babekizulu Dlamini
-@date: 2024/04/15
+@date: 2024/06/15
 @TODO:
 - mechanics
 - thermal physics
@@ -15,6 +15,96 @@
 ** Comment in Units of Measurement
 ** Test equations
 */
+
+class Physics {
+  /*
+  @desc: Class for solving every equation in one function
+  @methods:
+  - velocity
+  - acceleration
+  - equations of motion
+  - newton's 2nd law
+  - weight
+  - dry friction
+  - centripetal acceleration
+  - momentum
+  - impulse
+  - impulse-momentum
+  - work
+  - work-energy
+  - kinetic energy
+  - general potential energy
+  - gravitational potential energy
+  - efficiency
+  - power 
+  - power-velocity
+  - angular velocity
+  - angular acceleration
+  - equations of rotation
+  - torque
+  - 2nd law for rotation
+  - moment of inertia 
+  - rotational work
+  - rotational power
+  - rotational kinetic energy
+  - angular momentum
+  - angular impulse
+  - angular impulse momentum
+  - universal gravitation
+  - gravitational field
+  - gravitational potential energy
+  - gravitational potential
+  - orbital speed
+  - escape speed
+  - hooke's law
+  - spring potential energy
+  - simple harmonic oscillator
+  - simple pendulum
+  - frequency
+  - angular frequency
+  - density
+  - pressure
+  - pressure in a fluid
+  - buoyancy
+  - mass flow rate
+  - volume flow rate
+  - mass continuity
+  - volume continuity
+  - bernoulli's equation
+  - dynamic viscosity
+  - kinematic viscosity
+  - drag
+  - mach number
+  - reynolds number
+  - froude number
+  - young's modulus
+  - shear modulus
+  - bulk modulus
+  - surface tension
+  */
+
+  //PRIVATE
+  equationArr = [
+    {
+      name: 'average velocity',
+      operation: function (
+        initialPosition,
+        finalPosition,
+        initialTime,
+        finalTime,
+      ) {
+        return (
+          parseFloat(finalPosition - initialPosition) /
+          parseFloat(finalTime - initialTime)
+        ).toFixed(3);
+      },
+    },
+  ];
+
+  solve = (eqnVariables, eqn) => {
+    for (let i = 0; i < eqnVariables.length; i++) {}
+  };
+}
 
 class Mechanics {
   /*
